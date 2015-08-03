@@ -4,6 +4,7 @@
   "description": "A guessing game for Massachusetts towns",
   "main": "index.html",
   "scripts": {
+    "start": "node_modules/.bin/beefy js/guess.js:js/app.js -p 3000 --live",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Chris Amico",

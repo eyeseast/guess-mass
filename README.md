@@ -24,5 +24,12 @@ make data/towns.json
 And serve:
 
 ```bash
+npm start
+```
+
+Or build javascript files and serve another way:
+
+```bash
+npm run build
 serve .
 ```
