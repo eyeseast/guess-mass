@@ -1,0 +1,28 @@
+{
+  "name": "guess-mass",
+  "version": "0.0.1",
+  "description": "A guessing game for Massachusetts towns",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Chris Amico",
+  "license": "null",
+  "dependencies": {
+    "topojson": "^1.6.19"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/eyeseast/guess-mass"
+  },
+  "keywords": [
+    "geographpy",
+    "Massachusettes",
+    "games"
+  ],
+  "bugs": {
+    "url": "https://github.com/eyeseast/guess-mass/issues"
+  },
+  "homepage": "https://github.com/eyeseast/guess-mass"
+}
