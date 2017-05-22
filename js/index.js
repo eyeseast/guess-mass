@@ -5,12 +5,12 @@ var width = parseInt(d3.select('#map').style('width'), 10);
 var height = width * .5;
 var towns;
 
-var projection = d3.geo.mercator()
+var projection = d3.geoMercator()
     .center([-71.3824374, 42.4072107])
     .scale(width * 10)
     //.translate([width / 2, height / 2]);
 
-var path = d3.geo.path()
+var path = d3.geoPath()
     .projection(projection);
 
 var map = d3.select('#map').append('svg')
