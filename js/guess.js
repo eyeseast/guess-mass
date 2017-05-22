@@ -17,7 +17,9 @@ var map = d3.select('#map').append('svg')
     .style('width', width + 'px')
     .style('height', height + 'px');
 
-d3.json('data/towns.json', function(data) {
+d3.json('data/towns.json', function(err, data) {
+    if (err) throw err;
+    
     window.data = data;
     var bounds = topojson.feature(data, data.objects.TOWNS_POLYM);
     
