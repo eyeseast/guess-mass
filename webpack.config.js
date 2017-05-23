@@ -1,4 +1,7 @@
-var path = require('path');
+const fs = require('fs');
+const path = require('path');
+
+const babelSettings = JSON.parse(fs.readFileSync('.babelrc'));
 
 module.exports = {
 
@@ -11,6 +14,15 @@ module.exports = {
 
     module: {
         rules: [
+            {
+                test: /\.(html|js)$/,
+                exclude: /node_modules/,
+                use: {
+                    loader: 'babel-loader',
+                    query: babelSettings
+                }
+            },
+
             {
                 test: /\.html$/,
                 exclude: /node_modules/,
