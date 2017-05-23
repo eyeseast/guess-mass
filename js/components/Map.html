@@ -15,14 +15,19 @@
 
 <script>
 import {json} from 'd3-request';
-import {geoPath, geoMercator} from 'd3-geo';
+import {geoPath, geoConicConformal} from 'd3-geo';
 import * as topojson from 'topojson';
 
-const projection = geoMercator()
-    .center([-71.3824374, 42.4072107]);
+//const projection = geoMercator()
+//    .center([-71.3824374, 42.4072107]);
 
-var path = geoPath()
+const projection = geoConicConformal()
+    .parallels([41 + 43 / 60, 42 + 41 / 60])
+    .rotate([71 + 30 / 60, -41]);
+
+const path = geoPath()
     .projection(projection);
+
 
 export default {
 
@@ -42,17 +47,33 @@ export default {
     methods: {
         resize() {
             const {width, height} = this.refs.svg.getBoundingClientRect();
+            let features = this.get('features');
 
             this.set({ height: width / 2 });
 
-            projection.scale(width * 10);
-        }
+            if (features) {
+                projection.scale(1).translate([0, 0]);
+
+                var b = path.bounds(this.get()),
+                    s = .95 / Math.max((b[1][0] - b[0][0]) / width, (b[1][1] - b[0][1]) / height),
+                    t = [(width - s * (b[1][0] + b[0][0])) / 2, (height - s * (b[1][1] + b[0][1])) / 2];
+
+                projection.scale(s).translate(t);
+
+                this.set({ features: features });
+            }
+        },
+
+        path,
+        projection
     },
 
     oncreate() {
-        this.resize();
         json(this.get('url'), (err, data) => {
             this.set(topojson.feature(data, data.objects[this.get('object')]));
+            this.set({ bbox: topojson.bbox(data) });
+
+            this.resize();
         });
     },
 }
