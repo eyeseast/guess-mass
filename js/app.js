@@ -1,1 +1,7867 @@
-!function(t){function n(r){if(e[r])return e[r].exports;var i=e[r]={i:r,l:!1,exports:{}};return t[r].call(i.exports,i,i.exports,n),i.l=!0,i.exports}var e={};n.m=t,n.c=e,n.i=function(t){return t},n.d=function(t,e,r){n.o(t,e)||Object.defineProperty(t,e,{configurable:!1,enumerable:!0,get:r})},n.n=function(t){var e=t&&t.__esModule?function(){return t.default}:function(){return t};return n.d(e,"a",e),e},n.o=function(t,n){return Object.prototype.hasOwnProperty.call(t,n)},n.p="",n(n.s=2)}([function(t,n,e){!function(t,e){e(n)}(0,function(t){"use strict";function n(t){return function(n,e){return Hs(t(n),e)}}function e(t,n){return[t,n]}function r(t,n,e){var r=(n-t)/Math.max(0,e),i=Math.floor(Math.log(r)/Math.LN10),o=r/Math.pow(10,i);return i>=0?(o>=sf?10:o>=ff?5:o>=lf?2:1)*Math.pow(10,i):-Math.pow(10,-i)/(o>=sf?10:o>=ff?5:o>=lf?2:1)}function i(t,n,e){var r=Math.abs(n-t)/Math.max(0,e),i=Math.pow(10,Math.floor(Math.log(r)/Math.LN10)),o=r/i;return o>=sf?i*=10:o>=ff?i*=5:o>=lf&&(i*=2),n<t?-i:i}function o(t){return t.length}function u(t){return"translate("+(t+.5)+",0)"}function a(t){return"translate(0,"+(t+.5)+")"}function c(t){var n=Math.max(0,t.bandwidth()-1)/2;return t.round()&&(n=Math.round(n)),function(e){return t(e)+n}}function s(){return!this.__axis}function f(t,n){function e(e){var u=null==i?n.ticks?n.ticks.apply(n,r):n.domain():i,a=null==o?n.tickFormat?n.tickFormat.apply(n,r):Cf:o,g=Math.max(f,0)+h,y=n.range(),_=y[0]+.5,m=y[y.length-1]+.5,x=(n.bandwidth?c:Cf)(n.copy()),b=e.selection?e.selection():e,w=b.selectAll(".domain").data([null]),M=b.selectAll(".tick").data(u,n).order(),k=M.exit(),E=M.enter().append("g").attr("class","tick"),T=M.select("line"),S=M.select("text");w=w.merge(w.enter().insert("path",".tick").attr("class","domain").attr("stroke","#000")),M=M.merge(E),T=T.merge(E.append("line").attr("stroke","#000").attr(d+"2",p*f)),S=S.merge(E.append("text").attr("fill","#000").attr(d,p*g).attr("dy",t===Pf?"0em":t===Lf?"0.71em":"0.32em")),e!==b&&(w=w.transition(e),M=M.transition(e),T=T.transition(e),S=S.transition(e),k=k.transition(e).attr("opacity",qf).attr("transform",function(t){return isFinite(t=x(t))?v(t):this.getAttribute("transform")}),E.attr("opacity",qf).attr("transform",function(t){var n=this.parentNode.__axis;return v(n&&isFinite(n=n(t))?n:x(t))})),k.remove(),w.attr("d",t===Rf||t==zf?"M"+p*l+","+_+"H0.5V"+m+"H"+p*l:"M"+_+","+p*l+"V0.5H"+m+"V"+p*l),M.attr("opacity",1).attr("transform",function(t){return v(x(t))}),T.attr(d+"2",p*f),S.attr(d,p*g).text(a),b.filter(s).attr("fill","none").attr("font-size",10).attr("font-family","sans-serif").attr("text-anchor",t===zf?"start":t===Rf?"end":"middle"),b.each(function(){this.__axis=x})}var r=[],i=null,o=null,f=6,l=6,h=3,p=t===Pf||t===Rf?-1:1,d=t===Rf||t===zf?"x":"y",v=t===Pf||t===Lf?u:a;return e.scale=function(t){return arguments.length?(n=t,e):n},e.ticks=function(){return r=Nf.call(arguments),e},e.tickArguments=function(t){return arguments.length?(r=null==t?[]:Nf.call(t),e):r.slice()},e.tickValues=function(t){return arguments.length?(i=null==t?null:Nf.call(t),e):i&&i.slice()},e.tickFormat=function(t){return arguments.length?(o=t,e):o},e.tickSize=function(t){return arguments.length?(f=l=+t,e):f},e.tickSizeInner=function(t){return arguments.length?(f=+t,e):f},e.tickSizeOuter=function(t){return arguments.length?(l=+t,e):l},e.tickPadding=function(t){return arguments.length?(h=+t,e):h},e}function l(t){return f(Pf,t)}function h(t){return f(zf,t)}function p(t){return f(Lf,t)}function d(t){return f(Rf,t)}function v(){for(var t,n=0,e=arguments.length,r={};n<e;++n){if(!(t=arguments[n]+"")||t in r)throw new Error("illegal type: "+t);r[t]=[]}return new g(r)}function g(t){this._=t}function y(t,n){return t.trim().split(/^|\s+/).map(function(t){var e="",r=t.indexOf(".");if(r>=0&&(e=t.slice(r+1),t=t.slice(0,r)),t&&!n.hasOwnProperty(t))throw new Error("unknown type: "+t);return{type:t,name:e}})}function _(t,n){for(var e,r=0,i=t.length;r<i;++r)if((e=t[r]).name===n)return e.value}function m(t,n,e){for(var r=0,i=t.length;r<i;++r)if(t[r].name===n){t[r]=Uf,t=t.slice(0,r).concat(t.slice(r+1));break}return null!=e&&t.push({name:n,value:e}),t}function x(t){return function(){var n=this.ownerDocument,e=this.namespaceURI;return e===Of&&n.documentElement.namespaceURI===Of?n.createElement(t):n.createElementNS(e,t)}}function b(t){return function(){return this.ownerDocument.createElementNS(t.space,t.local)}}function w(){return new M}function M(){this._="@"+(++jf).toString(36)}function k(t,n,e){return t=E(t,n,e),function(n){var e=n.relatedTarget;e&&(e===this||8&e.compareDocumentPosition(this))||t.call(this,n)}}function E(n,e,r){return function(i){var o=t.event;t.event=i;try{n.call(this,this.__data__,e,r)}finally{t.event=o}}}function T(t){return t.trim().split(/^|\s+/).map(function(t){var n="",e=t.indexOf(".");return e>=0&&(n=t.slice(e+1),t=t.slice(0,e)),{type:t,name:n}})}function S(t){return function(){var n=this.__on;if(n){for(var e,r=0,i=-1,o=n.length;r<o;++r)e=n[r],t.type&&e.type!==t.type||e.name!==t.name?n[++i]=e:this.removeEventListener(e.type,e.listener,e.capture);++i?n.length=i:delete this.__on}}}function A(t,n,e){var r=Gf.hasOwnProperty(t.type)?k:E;return function(i,o,u){var a,c=this.__on,s=r(n,o,u);if(c)for(var f=0,l=c.length;f<l;++f)if((a=c[f]).type===t.type&&a.name===t.name)return this.removeEventListener(a.type,a.listener,a.capture),this.addEventListener(a.type,a.listener=s,a.capture=e),void(a.value=n);this.addEventListener(t.type,s,e),a={type:t.type,name:t.name,value:n,listener:s,capture:e},c?c.push(a):this.__on=[a]}}function N(n,e,r,i){var o=t.event;n.sourceEvent=t.event,t.event=n;try{return e.apply(r,i)}finally{t.event=o}}function C(){}function P(){return[]}function z(t,n){this.ownerDocument=t.ownerDocument,this.namespaceURI=t.namespaceURI,this._next=null,this._parent=t,this.__data__=n}function L(t,n,e,r,i,o){for(var u,a=0,c=n.length,s=o.length;a<s;++a)(u=n[a])?(u.__data__=o[a],r[a]=u):e[a]=new z(t,o[a]);for(;a<c;++a)(u=n[a])&&(i[a]=u)}function R(t,n,e,r,i,o,u){var a,c,s,f={},l=n.length,h=o.length,p=new Array(l);for(a=0;a<l;++a)(c=n[a])&&(p[a]=s=ol+u.call(c,c.__data__,a,n),s in f?i[a]=c:f[s]=c);for(a=0;a<h;++a)s=ol+u.call(t,o[a],a,o),(c=f[s])?(r[a]=c,c.__data__=o[a],f[s]=null):e[a]=new z(t,o[a]);for(a=0;a<l;++a)(c=n[a])&&f[p[a]]===c&&(i[a]=c)}function q(t,n){return t<n?-1:t>n?1:t>=n?0:NaN}function U(t){return function(){this.removeAttribute(t)}}function O(t){return function(){this.removeAttributeNS(t.space,t.local)}}function D(t,n){return function(){this.setAttribute(t,n)}}function I(t,n){return function(){this.setAttributeNS(t.space,t.local,n)}}function F(t,n){return function(){var e=n.apply(this,arguments);null==e?this.removeAttribute(t):this.setAttribute(t,e)}}function j(t,n){return function(){var e=n.apply(this,arguments);null==e?this.removeAttributeNS(t.space,t.local):this.setAttributeNS(t.space,t.local,e)}}function Y(t){return function(){this.style.removeProperty(t)}}function B(t,n,e){return function(){this.style.setProperty(t,n,e)}}function H(t,n,e){return function(){var r=n.apply(this,arguments);null==r?this.style.removeProperty(t):this.style.setProperty(t,r,e)}}function X(t,n){return t.style.getPropertyValue(n)||_l(t).getComputedStyle(t,null).getPropertyValue(n)}function G(t){return function(){delete this[t]}}function $(t,n){return function(){this[t]=n}}function V(t,n){return function(){var e=n.apply(this,arguments);null==e?delete this[t]:this[t]=e}}function W(t){return t.trim().split(/^|\s+/)}function Z(t){return t.classList||new J(t)}function J(t){this._node=t,this._names=W(t.getAttribute("class")||"")}function Q(t,n){for(var e=Z(t),r=-1,i=n.length;++r<i;)e.add(n[r])}function K(t,n){for(var e=Z(t),r=-1,i=n.length;++r<i;)e.remove(n[r])}function tt(t){return function(){Q(this,t)}}function nt(t){return function(){K(this,t)}}function et(t,n){return function(){(n.apply(this,arguments)?Q:K)(this,t)}}function rt(){this.textContent=""}function it(t){return function(){this.textContent=t}}function ot(t){return function(){var n=t.apply(this,arguments);this.textContent=null==n?"":n}}function ut(){this.innerHTML=""}function at(t){return function(){this.innerHTML=t}}function ct(t){return function(){var n=t.apply(this,arguments);this.innerHTML=null==n?"":n}}function st(){this.nextSibling&&this.parentNode.appendChild(this)}function ft(){this.previousSibling&&this.parentNode.insertBefore(this,this.parentNode.firstChild)}function lt(){return null}function ht(){var t=this.parentNode;t&&t.removeChild(this)}function pt(t,n,e){var r=_l(t),i=r.CustomEvent;"function"==typeof i?i=new i(n,e):(i=r.document.createEvent("Event"),e?(i.initEvent(n,e.bubbles,e.cancelable),i.detail=e.detail):i.initEvent(n,!1,!1)),t.dispatchEvent(i)}function dt(t,n){return function(){return pt(this,t,n)}}function vt(t,n){return function(){return pt(this,t,n.apply(this,arguments))}}function gt(t,n){this._groups=t,this._parents=n}function yt(){return new gt([[document.documentElement]],Pl)}function _t(){t.event.stopImmediatePropagation()}function mt(t,n){var e=t.document.documentElement,r=zl(t).on("dragstart.drag",null);n&&(r.on("click.drag",Ul,!0),setTimeout(function(){r.on("click.drag",null)},0)),"onselectstart"in e?r.on("selectstart.drag",null):(e.style.MozUserSelect=e.__noselect,delete e.__noselect)}function xt(t,n,e,r,i,o,u,a,c,s){this.target=t,this.type=n,this.subject=e,this.identifier=r,this.active=i,this.x=o,this.y=u,this.dx=a,this.dy=c,this._=s}function bt(){return!t.event.button}function wt(){return this.parentNode}function Mt(n){return null==n?{x:t.event.x,y:t.event.y}:n}function kt(t,n){var e=Object.create(t.prototype);for(var r in n)e[r]=n[r];return e}function Et(){}function Tt(t){var n;return t=(t+"").trim().toLowerCase(),(n=Hl.exec(t))?(n=parseInt(n[1],16),new Pt(n>>8&15|n>>4&240,n>>4&15|240&n,(15&n)<<4|15&n,1)):(n=Xl.exec(t))?St(parseInt(n[1],16)):(n=Gl.exec(t))?new Pt(n[1],n[2],n[3],1):(n=$l.exec(t))?new Pt(255*n[1]/100,255*n[2]/100,255*n[3]/100,1):(n=Vl.exec(t))?At(n[1],n[2],n[3],n[4]):(n=Wl.exec(t))?At(255*n[1]/100,255*n[2]/100,255*n[3]/100,n[4]):(n=Zl.exec(t))?zt(n[1],n[2]/100,n[3]/100,1):(n=Jl.exec(t))?zt(n[1],n[2]/100,n[3]/100,n[4]):Ql.hasOwnProperty(t)?St(Ql[t]):"transparent"===t?new Pt(NaN,NaN,NaN,0):null}function St(t){return new Pt(t>>16&255,t>>8&255,255&t,1)}function At(t,n,e,r){return r<=0&&(t=n=e=NaN),new Pt(t,n,e,r)}function Nt(t){return t instanceof Et||(t=Tt(t)),t?(t=t.rgb(),new Pt(t.r,t.g,t.b,t.opacity)):new Pt}function Ct(t,n,e,r){return 1===arguments.length?Nt(t):new Pt(t,n,e,null==r?1:r)}function Pt(t,n,e,r){this.r=+t,this.g=+n,this.b=+e,this.opacity=+r}function zt(t,n,e,r){return r<=0?t=n=e=NaN:e<=0||e>=1?t=n=NaN:n<=0&&(t=NaN),new qt(t,n,e,r)}function Lt(t){if(t instanceof qt)return new qt(t.h,t.s,t.l,t.opacity);if(t instanceof Et||(t=Tt(t)),!t)return new qt;if(t instanceof qt)return t;t=t.rgb();var n=t.r/255,e=t.g/255,r=t.b/255,i=Math.min(n,e,r),o=Math.max(n,e,r),u=NaN,a=o-i,c=(o+i)/2;return a?(u=n===o?(e-r)/a+6*(e<r):e===o?(r-n)/a+2:(n-e)/a+4,a/=c<.5?o+i:2-o-i,u*=60):a=c>0&&c<1?0:u,new qt(u,a,c,t.opacity)}function Rt(t,n,e,r){return 1===arguments.length?Lt(t):new qt(t,n,e,null==r?1:r)}function qt(t,n,e,r){this.h=+t,this.s=+n,this.l=+e,this.opacity=+r}function Ut(t,n,e){return 255*(t<60?n+(e-n)*t/60:t<180?e:t<240?n+(e-n)*(240-t)/60:n)}function Ot(t){if(t instanceof It)return new It(t.l,t.a,t.b,t.opacity);if(t instanceof Gt){var n=t.h*Kl;return new It(t.l,Math.cos(n)*t.c,Math.sin(n)*t.c,t.opacity)}t instanceof Pt||(t=Nt(t));var e=Bt(t.r),r=Bt(t.g),i=Bt(t.b),o=Ft((.4124564*e+.3575761*r+.1804375*i)/nh),u=Ft((.2126729*e+.7151522*r+.072175*i)/eh);return new It(116*u-16,500*(o-u),200*(u-Ft((.0193339*e+.119192*r+.9503041*i)/rh)),t.opacity)}function Dt(t,n,e,r){return 1===arguments.length?Ot(t):new It(t,n,e,null==r?1:r)}function It(t,n,e,r){this.l=+t,this.a=+n,this.b=+e,this.opacity=+r}function Ft(t){return t>ah?Math.pow(t,1/3):t/uh+ih}function jt(t){return t>oh?t*t*t:uh*(t-ih)}function Yt(t){return 255*(t<=.0031308?12.92*t:1.055*Math.pow(t,1/2.4)-.055)}function Bt(t){return(t/=255)<=.04045?t/12.92:Math.pow((t+.055)/1.055,2.4)}function Ht(t){if(t instanceof Gt)return new Gt(t.h,t.c,t.l,t.opacity);t instanceof It||(t=Ot(t));var n=Math.atan2(t.b,t.a)*th;return new Gt(n<0?n+360:n,Math.sqrt(t.a*t.a+t.b*t.b),t.l,t.opacity)}function Xt(t,n,e,r){return 1===arguments.length?Ht(t):new Gt(t,n,e,null==r?1:r)}function Gt(t,n,e,r){this.h=+t,this.c=+n,this.l=+e,this.opacity=+r}function $t(t){if(t instanceof Wt)return new Wt(t.h,t.s,t.l,t.opacity);t instanceof Pt||(t=Nt(t));var n=t.r/255,e=t.g/255,r=t.b/255,i=(vh*r+ph*n-dh*e)/(vh+ph-dh),o=r-i,u=(hh*(e-i)-fh*o)/lh,a=Math.sqrt(u*u+o*o)/(hh*i*(1-i)),c=a?Math.atan2(u,o)*th-120:NaN;return new Wt(c<0?c+360:c,a,i,t.opacity)}function Vt(t,n,e,r){return 1===arguments.length?$t(t):new Wt(t,n,e,null==r?1:r)}function Wt(t,n,e,r){this.h=+t,this.s=+n,this.l=+e,this.opacity=+r}function Zt(t,n,e,r,i){var o=t*t,u=o*t;return((1-3*t+3*o-u)*n+(4-6*o+3*u)*e+(1+3*t+3*o-3*u)*r+u*i)/6}function Jt(t,n){return function(e){return t+e*n}}function Qt(t,n,e){return t=Math.pow(t,e),n=Math.pow(n,e)-t,e=1/e,function(r){return Math.pow(t+r*n,e)}}function Kt(t,n){var e=n-t;return e?Jt(t,e>180||e<-180?e-360*Math.round(e/360):e):kh(isNaN(t)?n:t)}function tn(t){return 1==(t=+t)?nn:function(n,e){return e-n?Qt(n,e,t):kh(isNaN(n)?e:n)}}function nn(t,n){var e=n-t;return e?Jt(t,e):kh(isNaN(t)?n:t)}function en(t){return function(n){var e,r,i=n.length,o=new Array(i),u=new Array(i),a=new Array(i);for(e=0;e<i;++e)r=Ct(n[e]),o[e]=r.r||0,u[e]=r.g||0,a[e]=r.b||0;return o=t(o),u=t(u),a=t(a),r.opacity=1,function(t){return r.r=o(t),r.g=u(t),r.b=a(t),r+""}}}function rn(t){return function(){return t}}function on(t){return function(n){return t(n)+""}}function un(t){return"none"===t?Dh:(gh||(gh=document.createElement("DIV"),yh=document.documentElement,_h=document.defaultView),gh.style.transform=t,t=_h.getComputedStyle(yh.appendChild(gh),null).getPropertyValue("transform"),yh.removeChild(gh),t=t.slice(7,-1).split(","),Ih(+t[0],+t[1],+t[2],+t[3],+t[4],+t[5]))}function an(t){return null==t?Dh:(mh||(mh=document.createElementNS("http://www.w3.org/2000/svg","g")),mh.setAttribute("transform",t),(t=mh.transform.baseVal.consolidate())?(t=t.matrix,Ih(t.a,t.b,t.c,t.d,t.e,t.f)):Dh)}function cn(t,n,e,r){function i(t){return t.length?t.pop()+" ":""}function o(t,r,i,o,u,a){if(t!==i||r!==o){var c=u.push("translate(",null,n,null,e);a.push({i:c-4,x:Ch(t,i)},{i:c-2,x:Ch(r,o)})}else(i||o)&&u.push("translate("+i+n+o+e)}function u(t,n,e,o){t!==n?(t-n>180?n+=360:n-t>180&&(t+=360),o.push({i:e.push(i(e)+"rotate(",null,r)-2,x:Ch(t,n)})):n&&e.push(i(e)+"rotate("+n+r)}function a(t,n,e,o){t!==n?o.push({i:e.push(i(e)+"skewX(",null,r)-2,x:Ch(t,n)}):n&&e.push(i(e)+"skewX("+n+r)}function c(t,n,e,r,o,u){if(t!==e||n!==r){var a=o.push(i(o)+"scale(",null,",",null,")");u.push({i:a-4,x:Ch(t,e)},{i:a-2,x:Ch(n,r)})}else 1===e&&1===r||o.push(i(o)+"scale("+e+","+r+")")}return function(n,e){var r=[],i=[];return n=t(n),e=t(e),o(n.translateX,n.translateY,e.translateX,e.translateY,r,i),u(n.rotate,e.rotate,r,i),a(n.skewX,e.skewX,r,i),c(n.scaleX,n.scaleY,e.scaleX,e.scaleY,r,i),n=e=null,function(t){for(var n,e=-1,o=i.length;++e<o;)r[(n=i[e]).i]=n.x(t);return r.join("")}}}function sn(t){return((t=Math.exp(t))+1/t)/2}function fn(t){return((t=Math.exp(t))-1/t)/2}function ln(t){return((t=Math.exp(2*t))-1)/(t+1)}function hn(t){return function(n,e){var r=t((n=Rt(n)).h,(e=Rt(e)).h),i=nn(n.s,e.s),o=nn(n.l,e.l),u=nn(n.opacity,e.opacity);return function(t){return n.h=r(t),n.s=i(t),n.l=o(t),n.opacity=u(t),n+""}}}function pn(t,n){var e=nn((t=Dt(t)).l,(n=Dt(n)).l),r=nn(t.a,n.a),i=nn(t.b,n.b),o=nn(t.opacity,n.opacity);return function(n){return t.l=e(n),t.a=r(n),t.b=i(n),t.opacity=o(n),t+""}}function dn(t){return function(n,e){var r=t((n=Xt(n)).h,(e=Xt(e)).h),i=nn(n.c,e.c),o=nn(n.l,e.l),u=nn(n.opacity,e.opacity);return function(t){return n.h=r(t),n.c=i(t),n.l=o(t),n.opacity=u(t),n+""}}}function vn(t){return function n(e){function r(n,r){var i=t((n=Vt(n)).h,(r=Vt(r)).h),o=nn(n.s,r.s),u=nn(n.l,r.l),a=nn(n.opacity,r.opacity);return function(t){return n.h=i(t),n.s=o(t),n.l=u(Math.pow(t,e)),n.opacity=a(t),n+""}}return e=+e,r.gamma=n,r}(1)}function gn(){return ep||(op(yn),ep=ip.now()+rp)}function yn(){ep=0}function _n(){this._call=this._time=this._next=null}function mn(t,n,e){var r=new _n;return r.restart(t,n,e),r}function xn(){gn(),++Jh;for(var t,n=xh;n;)(t=ep-n._time)>=0&&n._call.call(null,t),n=n._next;--Jh}function bn(){ep=(np=ip.now())+rp,Jh=Qh=0;try{xn()}finally{Jh=0,Mn(),ep=0}}function wn(){var t=ip.now(),n=t-np;n>tp&&(rp-=n,np=t)}function Mn(){for(var t,n,e=xh,r=1/0;e;)e._call?(r>e._time&&(r=e._time),t=e,e=e._next):(n=e._next,e._next=null,e=t?t._next=n:xh=n);bh=t,kn(r)}function kn(t){if(!Jh){Qh&&(Qh=clearTimeout(Qh));var n=t-ep;n>24?(t<1/0&&(Qh=setTimeout(bn,n)),Kh&&(Kh=clearInterval(Kh))):(Kh||(np=ep,Kh=setInterval(wn,tp)),Jh=1,op(bn))}}function En(t,n){var e=t.__transition;if(!e||!(e=e[n])||e.state>fp)throw new Error("too late");return e}function Tn(t,n){var e=t.__transition;if(!e||!(e=e[n])||e.state>hp)throw new Error("too late");return e}function Sn(t,n){var e=t.__transition;if(!e||!(e=e[n]))throw new Error("too late");return e}function An(t,n,e){function r(t){e.state=lp,e.timer.restart(i,e.delay,e.time),e.delay<=t&&i(t-e.delay)}function i(r){var s,f,l,h;if(e.state!==lp)return u();for(s in c)if(h=c[s],h.name===e.name){if(h.state===pp)return up(i);h.state===dp?(h.state=gp,h.timer.stop(),h.on.call("interrupt",t,t.__data__,h.index,h.group),delete c[s]):+s<n&&(h.state=gp,h.timer.stop(),delete c[s])}if(up(function(){e.state===pp&&(e.state=dp,e.timer.restart(o,e.delay,e.time),o(r))}),e.state=hp,e.on.call("start",t,t.__data__,e.index,e.group),e.state===hp){for(e.state=pp,a=new Array(l=e.tween.length),s=0,f=-1;s<l;++s)(h=e.tween[s].value.call(t,t.__data__,e.index,e.group))&&(a[++f]=h);a.length=f+1}}function o(n){for(var r=n<e.duration?e.ease.call(null,n/e.duration):(e.timer.restart(u),e.state=vp,1),i=-1,o=a.length;++i<o;)a[i].call(null,r);e.state===vp&&(e.on.call("end",t,t.__data__,e.index,e.group),u())}function u(){e.state=gp,e.timer.stop(),delete c[n];for(var r in c)return;delete t.__transition}var a,c=t.__transition;c[n]=e,e.timer=mn(r,0,e.time)}function Nn(t,n){var e,r;return function(){var i=Tn(this,t),o=i.tween;if(o!==e){r=e=o;for(var u=0,a=r.length;u<a;++u)if(r[u].name===n){r=r.slice(),r.splice(u,1);break}}i.tween=r}}function Cn(t,n,e){var r,i;if("function"!=typeof e)throw new Error;return function(){var o=Tn(this,t),u=o.tween;if(u!==r){i=(r=u).slice();for(var a={name:n,value:e},c=0,s=i.length;c<s;++c)if(i[c].name===n){i[c]=a;break}c===s&&i.push(a)}o.tween=i}}function Pn(t,n,e){var r=t._id;return t.each(function(){var t=Tn(this,r);(t.value||(t.value={}))[n]=e.apply(this,arguments)}),function(t){return Sn(t,r).value[n]}}function zn(t){return function(){this.removeAttribute(t)}}function Ln(t){return function(){this.removeAttributeNS(t.space,t.local)}}function Rn(t,n,e){var r,i;return function(){var o=this.getAttribute(t);return o===e?null:o===r?i:i=n(r=o,e)}}function qn(t,n,e){var r,i;return function(){var o=this.getAttributeNS(t.space,t.local);return o===e?null:o===r?i:i=n(r=o,e)}}function Un(t,n,e){var r,i,o;return function(){var u,a=e(this);return null==a?void this.removeAttribute(t):(u=this.getAttribute(t),u===a?null:u===r&&a===i?o:o=n(r=u,i=a))}}function On(t,n,e){var r,i,o;return function(){var u,a=e(this);return null==a?void this.removeAttributeNS(t.space,t.local):(u=this.getAttributeNS(t.space,t.local),u===a?null:u===r&&a===i?o:o=n(r=u,i=a))}}function Dn(t,n){function e(){var e=this,r=n.apply(e,arguments);return r&&function(n){e.setAttributeNS(t.space,t.local,r(n))}}return e._value=n,e}function In(t,n){function e(){var e=this,r=n.apply(e,arguments);return r&&function(n){e.setAttribute(t,r(n))}}return e._value=n,e}function Fn(t,n){return function(){En(this,t).delay=+n.apply(this,arguments)}}function jn(t,n){return n=+n,function(){En(this,t).delay=n}}function Yn(t,n){return function(){Tn(this,t).duration=+n.apply(this,arguments)}}function Bn(t,n){return n=+n,function(){Tn(this,t).duration=n}}function Hn(t,n){if("function"!=typeof n)throw new Error;return function(){Tn(this,t).ease=n}}function Xn(t){return(t+"").trim().split(/^|\s+/).every(function(t){var n=t.indexOf(".");return n>=0&&(t=t.slice(0,n)),!t||"start"===t})}function Gn(t,n,e){var r,i,o=Xn(n)?En:Tn;return function(){var u=o(this,t),a=u.on;a!==r&&(i=(r=a).copy()).on(n,e),u.on=i}}function $n(t){return function(){var n=this.parentNode;for(var e in this.__transition)if(+e!==t)return;n&&n.removeChild(this)}}function Vn(t,n){var e,r,i;return function(){var o=X(this,t),u=(this.style.removeProperty(t),X(this,t));return o===u?null:o===e&&u===r?i:i=n(e=o,r=u)}}function Wn(t){return function(){this.style.removeProperty(t)}}function Zn(t,n,e){var r,i;return function(){var o=X(this,t);return o===e?null:o===r?i:i=n(r=o,e)}}function Jn(t,n,e){var r,i,o;return function(){var u=X(this,t),a=e(this);return null==a&&(this.style.removeProperty(t),a=X(this,t)),u===a?null:u===r&&a===i?o:o=n(r=u,i=a)}}function Qn(t,n,e){function r(){var r=this,i=n.apply(r,arguments);return i&&function(n){r.style.setProperty(t,i(n),e)}}return r._value=n,r}function Kn(t){return function(){this.textContent=t}}function te(t){return function(){var n=t(this);this.textContent=null==n?"":n}}function ne(t,n,e,r){this._groups=t,this._parents=n,this._name=e,this._id=r}function ee(t){return yt().transition(t)}function re(){return++Ip}function ie(t){return+t}function oe(t){return t*t}function ue(t){return t*(2-t)}function ae(t){return((t*=2)<=1?t*t:--t*(2-t)+1)/2}function ce(t){return t*t*t}function se(t){return--t*t*t+1}function fe(t){return((t*=2)<=1?t*t*t:(t-=2)*t*t+2)/2}function le(t){return 1-Math.cos(t*Xp)}function he(t){return Math.sin(t*Xp)}function pe(t){return(1-Math.cos(Hp*t))/2}function de(t){return Math.pow(2,10*t-10)}function ve(t){return 1-Math.pow(2,-10*t)}function ge(t){return((t*=2)<=1?Math.pow(2,10*t-10):2-Math.pow(2,10-10*t))/2}function ye(t){return 1-Math.sqrt(1-t*t)}function _e(t){return Math.sqrt(1- --t*t)}function me(t){return((t*=2)<=1?1-Math.sqrt(1-t*t):Math.sqrt(1-(t-=2)*t)+1)/2}function xe(t){return 1-be(1-t)}function be(t){return(t=+t)<Gp?nd*t*t:t<Vp?nd*(t-=$p)*t+Wp:t<Jp?nd*(t-=Zp)*t+Qp:nd*(t-=Kp)*t+td}function we(t){return((t*=2)<=1?1-be(1-t):be(t-1)+1)/2}function Me(t,n){for(var e;!(e=t.__transition)||!(e=e[n]);)if(!(t=t.parentNode))return sd.time=gn(),sd;return e}function ke(){t.event.stopImmediatePropagation()}function Ee(t){return{type:t}}function Te(){return!t.event.button}function Se(){var t=this.ownerSVGElement||this;return[[0,0],[t.width.baseVal.value,t.height.baseVal.value]]}function Ae(t){for(;!t.__brush;)if(!(t=t.parentNode))return;return t.__brush}function Ne(t){return t[0][0]===t[1][0]||t[0][1]===t[1][1]}function Ce(t){var n=t.__brush;return n?n.dim.output(n.selection):null}function Pe(){return Le(xd)}function ze(){return Le(bd)}function Le(n){function e(t){var e=t.property("__brush",a).selectAll(".overlay").data([Ee("overlay")]);e.enter().append("rect").attr("class","overlay").attr("pointer-events","all").attr("cursor",Md.overlay).merge(e).each(function(){var t=Ae(this).extent;zl(this).attr("x",t[0][0]).attr("y",t[0][1]).attr("width",t[1][0]-t[0][0]).attr("height",t[1][1]-t[0][1])}),t.selectAll(".selection").data([Ee("selection")]).enter().append("rect").attr("class","selection").attr("cursor",Md.selection).attr("fill","#777").attr("fill-opacity",.3).attr("stroke","#fff").attr("shape-rendering","crispEdges");var i=t.selectAll(".handle").data(n.handles,function(t){return t.type});i.exit().remove(),i.enter().append("rect").attr("class",function(t){return"handle handle--"+t.type}).attr("cursor",function(t){return Md[t.type]}),t.each(r).attr("fill","none").attr("pointer-events","all").style("-webkit-tap-highlight-color","rgba(0,0,0,0)").on("mousedown.brush touchstart.brush",u)}function r(){var t=zl(this),n=Ae(this).selection;n?(t.selectAll(".selection").style("display",null).attr("x",n[0][0]).attr("y",n[0][1]).attr("width",n[1][0]-n[0][0]).attr("height",n[1][1]-n[0][1]),t.selectAll(".handle").style("display",null).attr("x",function(t){return"e"===t.type[t.type.length-1]?n[1][0]-h/2:n[0][0]-h/2}).attr("y",function(t){return"s"===t.type[0]?n[1][1]-h/2:n[0][1]-h/2}).attr("width",function(t){return"n"===t.type||"s"===t.type?n[1][0]-n[0][0]+h:h}).attr("height",function(t){return"e"===t.type||"w"===t.type?n[1][1]-n[0][1]+h:h})):t.selectAll(".selection,.handle").style("display","none").attr("x",null).attr("y",null).attr("width",null).attr("height",null)}function i(t,n){return t.__brush.emitter||new o(t,n)}function o(t,n){this.that=t,this.args=n,this.state=t.__brush,this.active=0}function u(){function e(){var t=Zf(k);!U||w||M||(Math.abs(t[0]-D[0])>Math.abs(t[1]-D[1])?M=!0:w=!0),D=t,b=!0,vd(),o()}function o(){var t;switch(m=D[0]-O[0],x=D[1]-O[1],T){case yd:case gd:S&&(m=Math.max(z-l,Math.min(R-v,m)),h=l+m,g=v+m),A&&(x=Math.max(L-p,Math.min(q-y,x)),d=p+x,_=y+x);break;case _d:S<0?(m=Math.max(z-l,Math.min(R-l,m)),h=l+m,g=v):S>0&&(m=Math.max(z-v,Math.min(R-v,m)),h=l,g=v+m),A<0?(x=Math.max(L-p,Math.min(q-p,x)),d=p+x,_=y):A>0&&(x=Math.max(L-y,Math.min(q-y,x)),d=p,_=y+x);break;case md:S&&(h=Math.max(z,Math.min(R,l-m*S)),g=Math.max(z,Math.min(R,v+m*S))),A&&(d=Math.max(L,Math.min(q,p-x*A)),_=Math.max(L,Math.min(q,y+x*A)))}g<h&&(S*=-1,t=l,l=v,v=t,t=h,h=g,g=t,E in kd&&j.attr("cursor",Md[E=kd[E]])),_<d&&(A*=-1,t=p,p=y,y=t,t=d,d=_,_=t,E in Ed&&j.attr("cursor",Md[E=Ed[E]])),N.selection&&(P=N.selection),w&&(h=P[0][0],g=P[1][0]),M&&(d=P[0][1],_=P[1][1]),P[0][0]===h&&P[0][1]===d&&P[1][0]===g&&P[1][1]===_||(N.selection=[[h,d],[g,_]],r.call(k),I.brush())}function u(){if(ke(),t.event.touches){if(t.event.touches.length)return;c&&clearTimeout(c),c=setTimeout(function(){c=null},500),F.on("touchmove.brush touchend.brush touchcancel.brush",null)}else mt(t.event.view,b),Y.on("keydown.brush keyup.brush mousemove.brush mouseup.brush",null);F.attr("pointer-events","all"),j.attr("cursor",Md.overlay),N.selection&&(P=N.selection),Ne(P)&&(N.selection=null,r.call(k)),I.end()}function a(){switch(t.event.keyCode){case 16:U=S&&A;break;case 18:T===_d&&(S&&(v=g-m*S,l=h+m*S),A&&(y=_-x*A,p=d+x*A),T=md,o());break;case 32:T!==_d&&T!==md||(S<0?v=g-m:S>0&&(l=h-m),A<0?y=_-x:A>0&&(p=d-x),T=yd,j.attr("cursor",Md.selection),o());break;default:return}vd()}function s(){switch(t.event.keyCode){case 16:U&&(w=M=U=!1,o());break;case 18:T===md&&(S<0?v=g:S>0&&(l=h),A<0?y=_:A>0&&(p=d),T=_d,o());break;case 32:T===yd&&(t.event.altKey?(S&&(v=g-m*S,l=h+m*S),A&&(y=_-x*A,p=d+x*A),T=md):(S<0?v=g:S>0&&(l=h),A<0?y=_:A>0&&(p=d),T=_d),j.attr("cursor",Md[E]),o());break;default:return}vd()}if(t.event.touches){if(t.event.changedTouches.length<t.event.touches.length)return vd()}else if(c)return;if(f.apply(this,arguments)){var l,h,p,d,v,g,y,_,m,x,b,w,M,k=this,E=t.event.target.__data__.type,T="selection"===(t.event.metaKey?E="overlay":E)?gd:t.event.altKey?md:_d,S=n===bd?null:Td[E],A=n===xd?null:Sd[E],N=Ae(k),C=N.extent,P=N.selection,z=C[0][0],L=C[0][1],R=C[1][0],q=C[1][1],U=S&&A&&t.event.shiftKey,O=Zf(k),D=O,I=i(k,arguments).beforestart();"overlay"===E?N.selection=P=[[l=n===bd?z:O[0],p=n===xd?L:O[1]],[v=n===bd?R:l,y=n===xd?q:p]]:(l=P[0][0],p=P[0][1],v=P[1][0],y=P[1][1]),h=l,d=p,g=v,_=y;var F=zl(k).attr("pointer-events","none"),j=F.selectAll(".overlay").attr("cursor",Md[E]);if(t.event.touches)F.on("touchmove.brush",e,!0).on("touchend.brush touchcancel.brush",u,!0);else{var Y=zl(t.event.view).on("keydown.brush",a,!0).on("keyup.brush",s,!0).on("mousemove.brush",e,!0).on("mouseup.brush",u,!0);Ol(t.event.view)}ke(),_p(k),r.call(k),I.start()}}function a(){var t=this.__brush||{selection:null};return t.extent=s.apply(this,arguments),t.dim=n,t}var c,s=Se,f=Te,l=v(e,"start","brush","end"),h=6;return e.move=function(t,e){t.selection?t.on("start.brush",function(){i(this,arguments).beforestart().start()}).on("interrupt.brush end.brush",function(){i(this,arguments).end()}).tween("brush",function(){function t(t){u.selection=1===t&&Ne(s)?null:f(t),r.call(o),a.brush()}var o=this,u=o.__brush,a=i(o,arguments),c=u.selection,s=n.input("function"==typeof e?e.apply(this,arguments):e,u.extent),f=qh(c,s);return c&&s?t:t(1)}):t.each(function(){var t=this,o=arguments,u=t.__brush,a=n.input("function"==typeof e?e.apply(t,o):e,u.extent),c=i(t,o).beforestart();_p(t),u.selection=null==a||Ne(a)?null:a,r.call(t),c.start().brush().end()})},o.prototype={beforestart:function(){return 1==++this.active&&(this.state.emitter=this,this.starting=!0),this},start:function(){return this.starting&&(this.starting=!1,this.emit("start")),this},brush:function(){return this.emit("brush"),this},end:function(){return 0==--this.active&&(delete this.state.emitter,this.emit("end")),this},emit:function(t){N(new dd(e,t,n.output(this.state.selection)),l.apply,l,[t,this.that,this.args])}},e.extent=function(t){return arguments.length?(s="function"==typeof t?t:pd([[+t[0][0],+t[0][1]],[+t[1][0],+t[1][1]]]),e):s},e.filter=function(t){return arguments.length?(f="function"==typeof t?t:pd(!!t),e):f},e.handleSize=function(t){return arguments.length?(h=+t,e):h},e.on=function(){var t=l.on.apply(l,arguments);return t===l?e:t},e}function Re(t){return function(n,e){return t(n.source.value+n.target.value,e.source.value+e.target.value)}}function qe(){this._x0=this._y0=this._x1=this._y1=null,this._=""}function Ue(){return new qe}function Oe(t){return t.source}function De(t){return t.target}function Ie(t){return t.radius}function Fe(t){return t.startAngle}function je(t){return t.endAngle}function Ye(){}function Be(t,n){var e=new Ye;if(t instanceof Ye)t.each(function(t,n){e.set(n,t)});else if(Array.isArray(t)){var r,i=-1,o=t.length;if(null==n)for(;++i<o;)e.set(i,t[i]);else for(;++i<o;)e.set(n(r=t[i],i,t),r)}else if(t)for(var u in t)e.set(u,t[u]);return e}function He(){return{}}function Xe(t,n,e){t[n]=e}function Ge(){return Be()}function $e(t,n,e){t.set(n,e)}function Ve(){}function We(t,n){var e=new Ve;if(t instanceof Ve)t.each(function(t){e.add(t)});else if(t){var r=-1,i=t.length;if(null==n)for(;++r<i;)e.add(t[r]);else for(;++r<i;)e.add(n(t[r],r,t))}return e}function Ze(t){return new Function("d","return {"+t.map(function(t,n){return JSON.stringify(t)+": d["+n+"]"}).join(",")+"}")}function Je(t,n){var e=Ze(t);return function(r,i){return n(e(r),i,t)}}function Qe(t){var n=Object.create(null),e=[];return t.forEach(function(t){for(var r in t)r in n||e.push(n[r]=r)}),e}function Ke(t,n,e,r){if(isNaN(n)||isNaN(e))return t;var i,o,u,a,c,s,f,l,h,p=t._root,d={data:r},v=t._x0,g=t._y0,y=t._x1,_=t._y1;if(!p)return t._root=d,t;for(;p.length;)if((s=n>=(o=(v+y)/2))?v=o:y=o,(f=e>=(u=(g+_)/2))?g=u:_=u,i=p,!(p=p[l=f<<1|s]))return i[l]=d,t;if(a=+t._x.call(null,p.data),c=+t._y.call(null,p.data),n===a&&e===c)return d.next=p,i?i[l]=d:t._root=d,t;do{i=i?i[l]=new Array(4):t._root=new Array(4),(s=n>=(o=(v+y)/2))?v=o:y=o,(f=e>=(u=(g+_)/2))?g=u:_=u}while((l=f<<1|s)==(h=(c>=u)<<1|a>=o));return i[h]=p,i[l]=d,t}function tr(t){var n,e,r,i,o=t.length,u=new Array(o),a=new Array(o),c=1/0,s=1/0,f=-1/0,l=-1/0;for(e=0;e<o;++e)isNaN(r=+this._x.call(null,n=t[e]))||isNaN(i=+this._y.call(null,n))||(u[e]=r,a[e]=i,r<c&&(c=r),r>f&&(f=r),i<s&&(s=i),i>l&&(l=i));for(f<c&&(c=this._x0,f=this._x1),l<s&&(s=this._y0,l=this._y1),this.cover(c,s).cover(f,l),e=0;e<o;++e)Ke(this,u[e],a[e],t[e]);return this}function nr(t){for(var n=0,e=t.length;n<e;++n)this.remove(t[n]);return this}function er(t){return t[0]}function rr(t){return t[1]}function ir(t,n,e){var r=new or(null==n?er:n,null==e?rr:e,NaN,NaN,NaN,NaN);return null==t?r:r.addAll(t)}function or(t,n,e,r,i,o){this._x=t,this._y=n,this._x0=e,this._y0=r,this._x1=i,this._y1=o,this._root=void 0}function ur(t){for(var n={data:t.data},e=n;t=t.next;)e=e.next={data:t.data};return n}function ar(t){return t.x+t.vx}function cr(t){return t.y+t.vy}function sr(t){return t.index}function fr(t,n){var e=t.get(n);if(!e)throw new Error("missing: "+n);return e}function lr(t){return t.x}function hr(t){return t.y}function pr(t){return new dr(t)}function dr(t){if(!(n=Dv.exec(t)))throw new Error("invalid format: "+t);var n,e=n[1]||" ",r=n[2]||">",i=n[3]||"-",o=n[4]||"",u=!!n[5],a=n[6]&&+n[6],c=!!n[7],s=n[8]&&+n[8].slice(1),f=n[9]||"";"n"===f?(c=!0,f="g"):Ov[f]||(f=""),(u||"0"===e&&"="===r)&&(u=!0,e="0",r="="),this.fill=e,this.align=r,this.sign=i,this.symbol=o,this.zero=u,this.width=a,this.comma=c,this.precision=s,this.type=f}function vr(n){return Iv=Yv(n),t.format=Iv.format,t.formatPrefix=Iv.formatPrefix,Iv}function gr(){this.reset()}function yr(t,n,e){var r=t.s=n+e,i=r-n,o=r-i;t.t=n-o+(e-i)}function _r(t){return t>1?0:t<-1?Tg:Math.acos(t)}function mr(t){return t>1?Sg:t<-1?-Sg:Math.asin(t)}function xr(t){return(t=Fg(t/2))*t}function br(){}function wr(t,n){t&&Xg.hasOwnProperty(t.type)&&Xg[t.type](t,n)}function Mr(t,n,e){var r,i=-1,o=t.length-e;for(n.lineStart();++i<o;)r=t[i],n.point(r[0],r[1],r[2]);n.lineEnd()}function kr(t,n){var e=-1,r=t.length;for(n.polygonStart();++e<r;)Mr(t[e],n,1);n.polygonEnd()}function Er(){Wg.point=Sr}function Tr(){Ar($v,Vv)}function Sr(t,n){Wg.point=Ar,$v=t,Vv=n,t*=Pg,n*=Pg,Wv=t,Zv=qg(n=n/2+Ag),Jv=Fg(n)}function Ar(t,n){t*=Pg,n*=Pg,n=n/2+Ag;var e=t-Wv,r=e>=0?1:-1,i=r*e,o=qg(n),u=Fg(n),a=Jv*u,c=Zv*o+a*qg(i),s=a*r*Fg(i);$g.add(Rg(s,c)),Wv=t,Zv=o,Jv=u}function Nr(t){return[Rg(t[1],t[0]),mr(t[2])]}function Cr(t){var n=t[0],e=t[1],r=qg(e);return[r*qg(n),r*Fg(n),Fg(e)]}function Pr(t,n){return t[0]*n[0]+t[1]*n[1]+t[2]*n[2]}function zr(t,n){return[t[1]*n[2]-t[2]*n[1],t[2]*n[0]-t[0]*n[2],t[0]*n[1]-t[1]*n[0]]}function Lr(t,n){t[0]+=n[0],t[1]+=n[1],t[2]+=n[2]}function Rr(t,n){return[t[0]*n,t[1]*n,t[2]*n]}function qr(t){var n=Yg(t[0]*t[0]+t[1]*t[1]+t[2]*t[2]);t[0]/=n,t[1]/=n,t[2]/=n}function Ur(t,n){ug.push(ag=[Qv=t,tg=t]),n<Kv&&(Kv=n),n>ng&&(ng=n)}function Or(t,n){var e=Cr([t*Pg,n*Pg]);if(og){var r=zr(og,e),i=[r[1],-r[0],0],o=zr(i,r);qr(o),o=Nr(o);var u,a=t-eg,c=a>0?1:-1,s=o[0]*Cg*c,f=zg(a)>180;f^(c*eg<s&&s<c*t)?(u=o[1]*Cg)>ng&&(ng=u):(s=(s+360)%360-180,f^(c*eg<s&&s<c*t)?(u=-o[1]*Cg)<Kv&&(Kv=u):(n<Kv&&(Kv=n),n>ng&&(ng=n))),f?t<eg?Br(Qv,t)>Br(Qv,tg)&&(tg=t):Br(t,tg)>Br(Qv,tg)&&(Qv=t):tg>=Qv?(t<Qv&&(Qv=t),t>tg&&(tg=t)):t>eg?Br(Qv,t)>Br(Qv,tg)&&(tg=t):Br(t,tg)>Br(Qv,tg)&&(Qv=t)}else ug.push(ag=[Qv=t,tg=t]);n<Kv&&(Kv=n),n>ng&&(ng=n),og=e,eg=t}function Dr(){Qg.point=Or}function Ir(){ag[0]=Qv,ag[1]=tg,Qg.point=Ur,og=null}function Fr(t,n){if(og){var e=t-eg;Jg.add(zg(e)>180?e+(e>0?360:-360):e)}else rg=t,ig=n;Wg.point(t,n),Or(t,n)}function jr(){Wg.lineStart()}function Yr(){Fr(rg,ig),Wg.lineEnd(),zg(Jg)>Eg&&(Qv=-(tg=180)),ag[0]=Qv,ag[1]=tg,og=null}function Br(t,n){return(n-=t)<0?n+360:n}function Hr(t,n){return t[0]-n[0]}function Xr(t,n){return t[0]<=t[1]?t[0]<=n&&n<=t[1]:n<t[0]||t[1]<n}function Gr(t,n){t*=Pg,n*=Pg;var e=qg(n);$r(e*qg(t),e*Fg(t),Fg(n))}function $r(t,n,e){++cg,fg+=(t-fg)/cg,lg+=(n-lg)/cg,hg+=(e-hg)/cg}function Vr(){ty.point=Wr}function Wr(t,n){t*=Pg,n*=Pg;var e=qg(n);bg=e*qg(t),wg=e*Fg(t),Mg=Fg(n),ty.point=Zr,$r(bg,wg,Mg)}function Zr(t,n){t*=Pg,n*=Pg;var e=qg(n),r=e*qg(t),i=e*Fg(t),o=Fg(n),u=Rg(Yg((u=wg*o-Mg*i)*u+(u=Mg*r-bg*o)*u+(u=bg*i-wg*r)*u),bg*r+wg*i+Mg*o);sg+=u,pg+=u*(bg+(bg=r)),dg+=u*(wg+(wg=i)),vg+=u*(Mg+(Mg=o)),$r(bg,wg,Mg)}function Jr(){ty.point=Gr}function Qr(){ty.point=ti}function Kr(){ni(mg,xg),ty.point=Gr}function ti(t,n){mg=t,xg=n,t*=Pg,n*=Pg,ty.point=ni;var e=qg(n);bg=e*qg(t),wg=e*Fg(t),Mg=Fg(n),$r(bg,wg,Mg)}function ni(t,n){t*=Pg,n*=Pg;var e=qg(n),r=e*qg(t),i=e*Fg(t),o=Fg(n),u=wg*o-Mg*i,a=Mg*r-bg*o,c=bg*i-wg*r,s=Yg(u*u+a*a+c*c),f=mr(s),l=s&&-f/s;gg+=l*u,yg+=l*a,_g+=l*c,sg+=f,pg+=f*(bg+(bg=r)),dg+=f*(wg+(wg=i)),vg+=f*(Mg+(Mg=o)),$r(bg,wg,Mg)}function ei(t,n){return[t>Tg?t-Ng:t<-Tg?t+Ng:t,n]}function ri(t,n,e){return(t%=Ng)?n||e?ry(oi(t),ui(n,e)):oi(t):n||e?ui(n,e):ei}function ii(t){return function(n,e){return n+=t,[n>Tg?n-Ng:n<-Tg?n+Ng:n,e]}}function oi(t){var n=ii(t);return n.invert=ii(-t),n}function ui(t,n){function e(t,n){var e=qg(n),a=qg(t)*e,c=Fg(t)*e,s=Fg(n),f=s*r+a*i;return[Rg(c*o-f*u,a*r-s*i),mr(f*o+c*u)]}var r=qg(t),i=Fg(t),o=qg(n),u=Fg(n);return e.invert=function(t,n){var e=qg(n),a=qg(t)*e,c=Fg(t)*e,s=Fg(n),f=s*o-c*u;return[Rg(c*o+s*u,a*r+f*i),mr(f*r-a*i)]},e}function ai(t,n,e,r,i,o){if(e){var u=qg(n),a=Fg(n),c=r*e;null==i?(i=n+r*Ng,o=n-c/2):(i=ci(u,i),o=ci(u,o),(r>0?i<o:i>o)&&(i+=r*Ng));for(var s,f=i;r>0?f>o:f<o;f-=c)s=Nr([u,-a*qg(f),-a*Fg(f)]),t.point(s[0],s[1])}}function ci(t,n){n=Cr(n),n[0]-=t,qr(n);var e=_r(-n[1]);return((-n[2]<0?-e:e)+Ng-Eg)%Ng}function si(t,n,e,r){this.x=t,this.z=n,this.o=e,this.e=r,this.v=!1,this.n=this.p=null}function fi(t){if(n=t.length){for(var n,e,r=0,i=t[0];++r<n;)i.n=e=t[r],e.p=i,i=e;i.n=e=t[0],e.p=i}}function li(t,n,e,r){function i(i,o){return t<=i&&i<=e&&n<=o&&o<=r}function o(i,o,a,s){var f=0,l=0;if(null==i||(f=u(i,a))!==(l=u(o,a))||c(i,o)<0^a>0)do{s.point(0===f||3===f?t:e,f>1?r:n)}while((f=(f+a+4)%4)!==l);else s.point(o[0],o[1])}function u(r,i){return zg(r[0]-t)<Eg?i>0?0:3:zg(r[0]-e)<Eg?i>0?2:1:zg(r[1]-n)<Eg?i>0?1:0:i>0?3:2}function a(t,n){return c(t.x,n.x)}function c(t,n){var e=u(t,1),r=u(n,1);return e!==r?e-r:0===e?n[1]-t[1]:1===e?t[0]-n[0]:2===e?t[1]-n[1]:n[0]-t[0]}return function(u){function c(t,n){i(t,n)&&T.point(t,n)}function s(){for(var n=0,e=0,i=g.length;e<i;++e)for(var o,u,a=g[e],c=1,s=a.length,f=a[0],l=f[0],h=f[1];c<s;++c)o=l,u=h,f=a[c],l=f[0],h=f[1],u<=r?h>r&&(l-o)*(r-u)>(h-u)*(t-o)&&++n:h<=r&&(l-o)*(r-u)<(h-u)*(t-o)&&--n;return n}function f(){T=S,v=[],g=[],E=!0}function l(){var t=s(),n=E&&t,e=(v=bf(v)).length;(n||e)&&(u.polygonStart(),n&&(u.lineStart(),o(null,null,1,u),u.lineEnd()),e&&xy(v,a,t,o,u),u.polygonEnd()),T=u,v=g=y=null}function h(){A.point=d,g&&g.push(y=[]),k=!0,M=!1,b=w=NaN}function p(){v&&(d(_,m),x&&M&&S.rejoin(),v.push(S.result())),A.point=c,M&&T.lineEnd()}function d(o,u){var a=i(o,u);if(g&&y.push([o,u]),k)_=o,m=u,x=a,k=!1,a&&(T.lineStart(),T.point(o,u));else if(a&&M)T.point(o,u);else{var c=[b=Math.max(wy,Math.min(by,b)),w=Math.max(wy,Math.min(by,w))],s=[o=Math.max(wy,Math.min(by,o)),u=Math.max(wy,Math.min(by,u))];_y(c,s,t,n,e,r)?(M||(T.lineStart(),T.point(c[0],c[1])),T.point(s[0],s[1]),a||T.lineEnd(),E=!1):a&&(T.lineStart(),T.point(o,u),E=!1)}b=o,w=u,M=a}var v,g,y,_,m,x,b,w,M,k,E,T=u,S=yy(),A={point:c,lineStart:h,lineEnd:p,polygonStart:f,polygonEnd:l};return A}}function hi(){Sy.point=di,Sy.lineEnd=pi}function pi(){Sy.point=Sy.lineEnd=br}function di(t,n){t*=Pg,n*=Pg,iy=t,oy=Fg(n),uy=qg(n),Sy.point=vi}function vi(t,n){t*=Pg,n*=Pg;var e=Fg(n),r=qg(n),i=zg(t-iy),o=qg(i),u=Fg(i),a=r*u,c=uy*e-oy*r*o,s=oy*e+uy*r*o;Ty.add(Rg(Yg(a*a+c*c),s)),iy=t,oy=e,uy=r}function gi(t,n){return!(!t||!Ly.hasOwnProperty(t.type))&&Ly[t.type](t,n)}function yi(t,n){return 0===Py(t,n)}function _i(t,n){var e=Py(t[0],t[1]);return Py(t[0],n)+Py(n,t[1])<=e+Eg}function mi(t,n){return!!Ey(t.map(xi),bi(n))}function xi(t){return t=t.map(bi),t.pop(),t}function bi(t){return[t[0]*Pg,t[1]*Pg]}function wi(t,n,e){var r=cf(t,n-Eg,e).concat(n);return function(t){return r.map(function(n){return[t,n]})}}function Mi(t,n,e){var r=cf(t,n-Eg,e).concat(n);return function(t){return r.map(function(n){return[n,t]})}}function ki(){function t(){return{type:"MultiLineString",coordinates:n()}}function n(){return cf(Ug(o/g)*g,i,g).map(h).concat(cf(Ug(s/y)*y,c,y).map(p)).concat(cf(Ug(r/d)*d,e,d).filter(function(t){return zg(t%g)>Eg}).map(f)).concat(cf(Ug(a/v)*v,u,v).filter(function(t){return zg(t%y)>Eg}).map(l))}var e,r,i,o,u,a,c,s,f,l,h,p,d=10,v=d,g=90,y=360,_=2.5;return t.lines=function(){return n().map(function(t){return{type:"LineString",coordinates:t}})},t.outline=function(){return{type:"Polygon",coordinates:[h(o).concat(p(c).slice(1),h(i).reverse().slice(1),p(s).reverse().slice(1))]}},t.extent=function(n){return arguments.length?t.extentMajor(n).extentMinor(n):t.extentMinor()},t.extentMajor=function(n){return arguments.length?(o=+n[0][0],i=+n[1][0],s=+n[0][1],c=+n[1][1],o>i&&(n=o,o=i,i=n),s>c&&(n=s,s=c,c=n),t.precision(_)):[[o,s],[i,c]]},t.extentMinor=function(n){return arguments.length?(r=+n[0][0],e=+n[1][0],a=+n[0][1],u=+n[1][1],r>e&&(n=r,r=e,e=n),a>u&&(n=a,a=u,u=n),t.precision(_)):[[r,a],[e,u]]},t.step=function(n){return arguments.length?t.stepMajor(n).stepMinor(n):t.stepMinor()},t.stepMajor=function(n){return arguments.length?(g=+n[0],y=+n[1],t):[g,y]},t.stepMinor=function(n){return arguments.length?(d=+n[0],v=+n[1],t):[d,v]},t.precision=function(n){return arguments.length?(_=+n,f=wi(a,u,90),l=Mi(r,e,_),h=wi(s,c,90),p=Mi(o,i,_),t):_},t.extentMajor([[-180,-90+Eg],[180,90-Eg]]).extentMinor([[-180,-80-Eg],[180,80+Eg]])}function Ei(){return ki()()}function Ti(){Iy.point=Si}function Si(t,n){Iy.point=Ai,ay=sy=t,cy=fy=n}function Ai(t,n){Dy.add(fy*t-sy*n),sy=t,fy=n}function Ni(){Ai(ay,cy)}function Ci(t,n){t<Fy&&(Fy=t),t>Yy&&(Yy=t),n<jy&&(jy=n),n>By&&(By=n)}function Pi(t,n){Xy+=t,Gy+=n,++$y}function zi(){t_.point=Li}function Li(t,n){t_.point=Ri,Pi(py=t,dy=n)}function Ri(t,n){var e=t-py,r=n-dy,i=Yg(e*e+r*r);Vy+=i*(py+t)/2,Wy+=i*(dy+n)/2,Zy+=i,Pi(py=t,dy=n)}function qi(){t_.point=Pi}function Ui(){t_.point=Di}function Oi(){Ii(ly,hy)}function Di(t,n){t_.point=Ii,Pi(ly=py=t,hy=dy=n)}function Ii(t,n){var e=t-py,r=n-dy,i=Yg(e*e+r*r);Vy+=i*(py+t)/2,Wy+=i*(dy+n)/2,Zy+=i,i=dy*t-py*n,Jy+=i*(py+t),Qy+=i*(dy+n),Ky+=3*i,Pi(py=t,dy=n)}function Fi(t){this._context=t}function ji(t,n){a_.point=Yi,e_=i_=t,r_=o_=n}function Yi(t,n){i_-=t,o_-=n,u_.add(Yg(i_*i_+o_*o_)),i_=t,o_=n}function Bi(){this._string=[]}function Hi(t){return"m0,"+t+"a"+t+","+t+" 0 1,1 0,"+-2*t+"a"+t+","+t+" 0 1,1 0,"+2*t+"z"}function Xi(t){return t.length>1}function Gi(t,n){return((t=t.x)[0]<0?t[1]-Sg-Eg:Sg-t[1])-((n=n.x)[0]<0?n[1]-Sg-Eg:Sg-n[1])}function $i(t){var n,e=NaN,r=NaN,i=NaN;return{lineStart:function(){t.lineStart(),n=1},point:function(o,u){var a=o>0?Tg:-Tg,c=zg(o-e);zg(c-Tg)<Eg?(t.point(e,r=(r+u)/2>0?Sg:-Sg),t.point(i,r),t.lineEnd(),t.lineStart(),t.point(a,r),t.point(o,r),n=0):i!==a&&c>=Tg&&(zg(e-i)<Eg&&(e-=i*Eg),zg(o-a)<Eg&&(o-=a*Eg),r=Vi(e,r,o,u),t.point(i,r),t.lineEnd(),t.lineStart(),t.point(a,r),n=0),t.point(e=o,r=u),i=a},lineEnd:function(){t.lineEnd(),e=r=NaN},clean:function(){return 2-n}}}function Vi(t,n,e,r){var i,o,u=Fg(t-e);return zg(u)>Eg?Lg((Fg(n)*(o=qg(r))*Fg(e)-Fg(r)*(i=qg(n))*Fg(t))/(i*o*u)):(n+r)/2}function Wi(t,n,e,r){var i;if(null==t)i=e*Sg,r.point(-Tg,i),r.point(0,i),r.point(Tg,i),r.point(Tg,0),r.point(Tg,-i),r.point(0,-i),r.point(-Tg,-i),r.point(-Tg,0),r.point(-Tg,i);else if(zg(t[0]-n[0])>Eg){var o=t[0]<n[0]?Tg:-Tg;i=e*o/2,r.point(-o,i),r.point(0,i),r.point(o,i)}else r.point(n[0],n[1])}function Zi(t){return function(n){var e=new Ji;for(var r in t)e[r]=t[r];return e.stream=n,e}}function Ji(){}function Qi(t,n,e){var r=n[1][0]-n[0][0],i=n[1][1]-n[0][1],o=t.clipExtent&&t.clipExtent();t.scale(150).translate([0,0]),null!=o&&t.clipExtent(null),Gg(e,t.stream(Hy));var u=Hy.result(),a=Math.min(r/(u[1][0]-u[0][0]),i/(u[1][1]-u[0][1])),c=+n[0][0]+(r-a*(u[1][0]+u[0][0]))/2,s=+n[0][1]+(i-a*(u[1][1]+u[0][1]))/2;return null!=o&&t.clipExtent(o),t.scale(150*a).translate([c,s])}function Ki(t,n,e){return Qi(t,[[0,0],n],e)}function to(t){return Zi({point:function(n,e){n=t(n,e),this.stream.point(n[0],n[1])}})}function no(t,n){function e(r,i,o,u,a,c,s,f,l,h,p,d,v,g){var y=s-r,_=f-i,m=y*y+_*_;if(m>4*n&&v--){var x=u+h,b=a+p,w=c+d,M=Yg(x*x+b*b+w*w),k=mr(w/=M),E=zg(zg(w)-1)<Eg||zg(o-l)<Eg?(o+l)/2:Rg(b,x),T=t(E,k),S=T[0],A=T[1],N=S-r,C=A-i,P=_*N-y*C;(P*P/m>n||zg((y*N+_*C)/m-.5)>.3||u*h+a*p+c*d<d_)&&(e(r,i,o,u,a,c,S,A,E,x/=M,b/=M,w,v,g),g.point(S,A),e(S,A,E,x,b,w,s,f,l,h,p,d,v,g))}}return function(n){function r(e,r){e=t(e,r),n.point(e[0],e[1])}function i(){y=NaN,w.point=o,n.lineStart()}function o(r,i){var o=Cr([r,i]),u=t(r,i);e(y,_,g,m,x,b,y=u[0],_=u[1],g=r,m=o[0],x=o[1],b=o[2],p_,n),n.point(y,_)}function u(){w.point=r,n.lineEnd()}function a(){i(),w.point=c,w.lineEnd=s}function c(t,n){o(f=t,n),l=y,h=_,p=m,d=x,v=b,w.point=o}function s(){e(y,_,g,m,x,b,l,h,f,p,d,v,p_,n),w.lineEnd=u,u()}var f,l,h,p,d,v,g,y,_,m,x,b,w={point:r,lineStart:i,lineEnd:u,polygonStart:function(){n.polygonStart(),w.lineStart=a},polygonEnd:function(){n.polygonEnd(),w.lineStart=i}};return w}}function eo(t){return ro(function(){return t})()}function ro(t){function n(t){return t=f(t[0]*Pg,t[1]*Pg),[t[0]*g+a,c-t[1]*g]}function e(t){return(t=f.invert((t[0]-a)/g,(c-t[1])/g))&&[t[0]*Cg,t[1]*Cg]}function r(t,n){return t=u(t,n),[t[0]*g+a,c-t[1]*g]}function i(){f=ry(s=ri(b,w,M),u);var t=u(m,x);return a=y-t[0]*g,c=_+t[1]*g,o()}function o(){return d=v=null,n}var u,a,c,s,f,l,h,p,d,v,g=150,y=480,_=250,m=0,x=0,b=0,w=0,M=0,k=null,E=f_,T=null,S=Uy,A=.5,N=v_(r,A);return n.stream=function(t){return d&&v===t?d:d=g_(E(s,N(S(v=t))))},n.clipAngle=function(t){return arguments.length?(E=+t?l_(k=t*Pg,6*Pg):(k=null,f_),o()):k*Cg},n.clipExtent=function(t){return arguments.length?(S=null==t?(T=l=h=p=null,Uy):li(T=+t[0][0],l=+t[0][1],h=+t[1][0],p=+t[1][1]),o()):null==T?null:[[T,l],[h,p]]},n.scale=function(t){return arguments.length?(g=+t,i()):g},n.translate=function(t){return arguments.length?(y=+t[0],_=+t[1],i()):[y,_]},n.center=function(t){return arguments.length?(m=t[0]%360*Pg,x=t[1]%360*Pg,i()):[m*Cg,x*Cg]},n.rotate=function(t){return arguments.length?(b=t[0]%360*Pg,w=t[1]%360*Pg,M=t.length>2?t[2]%360*Pg:0,i()):[b*Cg,w*Cg,M*Cg]},n.precision=function(t){return arguments.length?(N=v_(r,A=t*t),o()):Yg(A)},n.fitExtent=function(t,e){return Qi(n,t,e)},n.fitSize=function(t,e){return Ki(n,t,e)},function(){return u=t.apply(this,arguments),n.invert=u.invert&&e,i()}}function io(t){var n=0,e=Tg/3,r=ro(t),i=r(n,e);return i.parallels=function(t){return arguments.length?r(n=t[0]*Pg,e=t[1]*Pg):[n*Cg,e*Cg]},i}function oo(t){function n(t,n){return[t*e,Fg(n)/e]}var e=qg(t);return n.invert=function(t,n){return[t/e,mr(n*e)]},n}function uo(t,n){function e(t,n){var e=Yg(o-2*i*Fg(n))/i;return[e*Fg(t*=i),u-e*qg(t)]}var r=Fg(t),i=(r+Fg(n))/2;if(zg(i)<Eg)return oo(t);var o=1+r*(2*i-r),u=Yg(o)/i;return e.invert=function(t,n){var e=u-n;return[Rg(t,zg(e))/i*jg(e),mr((o-(t*t+e*e)*i*i)/(2*i))]},e}function ao(t){var n=t.length;return{point:function(e,r){for(var i=-1;++i<n;)t[i].point(e,r)},sphere:function(){for(var e=-1;++e<n;)t[e].sphere()},lineStart:function(){for(var e=-1;++e<n;)t[e].lineStart()},lineEnd:function(){for(var e=-1;++e<n;)t[e].lineEnd()},polygonStart:function(){for(var e=-1;++e<n;)t[e].polygonStart()},polygonEnd:function(){for(var e=-1;++e<n;)t[e].polygonEnd()}}}function co(t){return function(n,e){var r=qg(n),i=qg(e),o=t(r*i);return[o*i*Fg(n),o*Fg(e)]}}function so(t){return function(n,e){var r=Yg(n*n+e*e),i=t(r),o=Fg(i),u=qg(i);return[Rg(n*o,r*u),mr(r&&e*o/r)]}}function fo(t,n){return[t,Dg(Bg((Sg+n)/2))]}function lo(t){function n(){var n=Tg*a(),u=o(vy(o.rotate()).invert([0,0]));return s(null==f?[[u[0]-n,u[1]-n],[u[0]+n,u[1]+n]]:t===fo?[[Math.max(u[0]-n,f),e],[Math.min(u[0]+n,r),i]]:[[f,Math.max(u[1]-n,e)],[r,Math.min(u[1]+n,i)]])}var e,r,i,o=eo(t),u=o.center,a=o.scale,c=o.translate,s=o.clipExtent,f=null;return o.scale=function(t){return arguments.length?(a(t),n()):a()},o.translate=function(t){return arguments.length?(c(t),n()):c()},o.center=function(t){return arguments.length?(u(t),n()):u()},o.clipExtent=function(t){return arguments.length?(null==t?f=e=r=i=null:(f=+t[0][0],e=+t[0][1],r=+t[1][0],i=+t[1][1]),n()):null==f?null:[[f,e],[r,i]]},n()}function ho(t){return Bg((Sg+t)/2)}function po(t,n){function e(t,n){o>0?n<-Sg+Eg&&(n=-Sg+Eg):n>Sg-Eg&&(n=Sg-Eg);var e=o/Ig(ho(n),i);return[e*Fg(i*t),o-e*qg(i*t)]}var r=qg(t),i=t===n?Fg(t):Dg(r/qg(n))/Dg(ho(n)/ho(t)),o=r*Ig(ho(t),i)/i;return i?(e.invert=function(t,n){var e=o-n,r=jg(i)*Yg(t*t+e*e);return[Rg(t,zg(e))/i*jg(e),2*Lg(Ig(o/r,1/i))-Sg]},e):fo}function vo(t,n){return[t,n]}function go(t,n){function e(t,n){var e=o-n,r=i*t;return[e*Fg(r),o-e*qg(r)]}var r=qg(t),i=t===n?Fg(t):(r-qg(n))/(n-t),o=r/i+t;return zg(i)<Eg?vo:(e.invert=function(t,n){var e=o-n;return[Rg(t,zg(e))/i*jg(e),o-jg(i)*Yg(t*t+e*e)]},e)}function yo(t,n){var e=qg(n),r=qg(t)*e;return[e*Fg(t)/r,Fg(n)/r]}function _o(t,n,e,r){return 1===t&&1===n&&0===e&&0===r?Uy:Zi({point:function(i,o){this.stream.point(i*t+e,o*n+r)}})}function mo(t,n){return[qg(n)*Fg(t),Fg(n)]}function xo(t,n){var e=qg(n),r=1+qg(t)*e;return[e*Fg(t)/r,Fg(n)/r]}function bo(t,n){return[Dg(Bg((Sg+n)/2)),-t]}function wo(t,n){return t.parent===n.parent?1:2}function Mo(t){return t.reduce(ko,0)/t.length}function ko(t,n){return t+n.x}function Eo(t){return 1+t.reduce(To,0)}function To(t,n){return Math.max(t,n.y)}function So(t){for(var n;n=t.children;)t=n[0];return t}function Ao(t){for(var n;n=t.children;)t=n[n.length-1];return t}function No(t){var n=0,e=t.children,r=e&&e.length;if(r)for(;--r>=0;)n+=e[r].value;else n=1;t.value=n}function Co(t,n){if(t===n)return t;var e=t.ancestors(),r=n.ancestors(),i=null;for(t=e.pop(),n=r.pop();t===n;)i=t,t=e.pop(),n=r.pop();return i}function Po(t,n){var e,r,i,o,u,a=new Uo(t),c=+t.value&&(a.value=t.value),s=[a];for(null==n&&(n=Lo);e=s.pop();)if(c&&(e.value=+e.data.value),(i=n(e.data))&&(u=i.length))for(e.children=new Array(u),o=u-1;o>=0;--o)s.push(r=e.children[o]=new Uo(i[o])),r.parent=e,r.depth=e.depth+1;return a.eachBefore(qo)}function zo(){return Po(this).eachBefore(Ro)}function Lo(t){return t.children}function Ro(t){t.data=t.data.data}function qo(t){var n=0;do{t.height=n}while((t=t.parent)&&t.height<++n)}function Uo(t){this.data=t,this.depth=this.height=0,this.parent=null}function Oo(t){this._=t,this.next=null}function Do(t,n){var e=n.x-t.x,r=n.y-t.y,i=t.r-n.r;return i*i+1e-6>e*e+r*r}function Io(t,n){var e,r,i,o=null,u=t.head;switch(n.length){case 1:e=Fo(n[0]);break;case 2:e=jo(n[0],n[1]);break;case 3:e=Yo(n[0],n[1],n[2])}for(;u;)i=u._,r=u.next,e&&Do(e,i)?o=u:(o?(t.tail=o,o.next=null):t.head=t.tail=null,n.push(i),e=Io(t,n),n.pop(),t.head?(u.next=t.head,t.head=u):(u.next=null,t.head=t.tail=u),o=t.tail,o.next=r),u=r;return t.tail=o,e}function Fo(t){return{x:t.x,y:t.y,r:t.r}}function jo(t,n){var e=t.x,r=t.y,i=t.r,o=n.x,u=n.y,a=n.r,c=o-e,s=u-r,f=a-i,l=Math.sqrt(c*c+s*s);return{x:(e+o+c/l*f)/2,y:(r+u+s/l*f)/2,r:(l+i+a)/2}}function Yo(t,n,e){var r=t.x,i=t.y,o=t.r,u=n.x,a=n.y,c=n.r,s=e.x,f=e.y,l=e.r,h=2*(r-u),p=2*(i-a),d=2*(c-o),v=r*r+i*i-o*o-u*u-a*a+c*c,g=2*(r-s),y=2*(i-f),_=2*(l-o),m=r*r+i*i-o*o-s*s-f*f+l*l,x=g*p-h*y,b=(p*m-y*v)/x-r,w=(y*d-p*_)/x,M=(g*v-h*m)/x-i,k=(h*_-g*d)/x,E=w*w+k*k-1,T=2*(b*w+M*k+o),S=b*b+M*M-o*o,A=(-T-Math.sqrt(T*T-4*E*S))/(2*E);return{x:b+w*A+r,y:M+k*A+i,r:A}}function Bo(t,n,e){var r=t.x,i=t.y,o=n.r+e.r,u=t.r+e.r,a=n.x-r,c=n.y-i,s=a*a+c*c;if(s){var f=.5+((u*=u)-(o*=o))/(2*s),l=Math.sqrt(Math.max(0,2*o*(u+s)-(u-=s)*u-o*o))/(2*s);e.x=r+f*a+l*c,e.y=i+f*c-l*a}else e.x=r+u,e.y=i}function Ho(t,n){var e=n.x-t.x,r=n.y-t.y,i=t.r+n.r;return i*i-1e-6>e*e+r*r}function Xo(t,n,e){var r=t._,i=t.next._,o=r.r+i.r,u=(r.x*i.r+i.x*r.r)/o-n,a=(r.y*i.r+i.y*r.r)/o-e;return u*u+a*a}function Go(t){this._=t,this.next=null,this.previous=null}function $o(t){if(!(i=t.length))return 0;var n,e,r,i;if(n=t[0],n.x=0,n.y=0,!(i>1))return n.r;if(e=t[1],n.x=-e.r,e.x=n.r,e.y=0,!(i>2))return n.r+e.r;Bo(e,n,r=t[2]);var o,u,a,c,s,f,l,h=n.r*n.r,p=e.r*e.r,d=r.r*r.r,v=h+p+d,g=h*n.x+p*e.x+d*r.x,y=h*n.y+p*e.y+d*r.y;n=new Go(n),e=new Go(e),r=new Go(r),n.next=r.previous=e,e.next=n.previous=r,r.next=e.previous=n;t:for(a=3;a<i;++a){Bo(n._,e._,r=t[a]),r=new Go(r),c=e.next,s=n.previous,f=e._.r,l=n._.r;do{if(f<=l){if(Ho(c._,r._)){e=c,n.next=e,e.previous=n,--a;continue t}f+=c._.r,c=c.next}else{if(Ho(s._,r._)){n=s,n.next=e,e.previous=n,--a;continue t}l+=s._.r,s=s.previous}}while(c!==s.next);for(r.previous=n,r.next=e,n.next=e.previous=e=r,v+=d=r._.r*r._.r,g+=d*r._.x,y+=d*r._.y,h=Xo(n,o=g/v,u=y/v);(r=r.next)!==e;)(d=Xo(r,o,u))<h&&(n=r,h=d);e=n.next}for(n=[e._],r=e;(r=r.next)!==e;)n.push(r._);for(r=G_(n),a=0;a<i;++a)n=t[a],n.x-=r.x,n.y-=r.y;return r.r}function Vo(t){return null==t?null:Wo(t)}function Wo(t){if("function"!=typeof t)throw new Error;return t}function Zo(){return 0}function Jo(t){return Math.sqrt(t.value)}function Qo(t){return function(n){n.children||(n.r=Math.max(0,+t(n)||0))}}function Ko(t,n){return function(e){if(r=e.children){var r,i,o,u=r.length,a=t(e)*n||0;if(a)for(i=0;i<u;++i)r[i].r+=a;if(o=$o(r),a)for(i=0;i<u;++i)r[i].r-=a;e.r=o+a}}}function tu(t){return function(n){var e=n.parent;n.r*=t,e&&(n.x=e.x+t*n.x,n.y=e.y+t*n.y)}}function nu(t){return t.id}function eu(t){return t.parentId}function ru(t,n){return t.parent===n.parent?1:2}function iu(t){var n=t.children;return n?n[0]:t.t}function ou(t){var n=t.children;return n?n[n.length-1]:t.t}function uu(t,n,e){var r=e/(n.i-t.i);n.c-=r,n.s+=e,t.c+=r,n.z+=e,n.m+=e}function au(t){for(var n,e=0,r=0,i=t.children,o=i.length;--o>=0;)n=i[o],n.z+=e,n.m+=e,e+=n.s+(r+=n.c)}function cu(t,n,e){return t.a.parent===n.parent?t.a:e}function su(t,n){this._=t,this.parent=null,this.children=null,this.A=null,this.a=this,this.z=0,this.m=0,this.c=0,this.s=0,this.t=null,this.i=n}function fu(t){for(var n,e,r,i,o,u=new su(t,0),a=[u];n=a.pop();)if(r=n._.children)for(n.children=new Array(o=r.length),i=o-1;i>=0;--i)a.push(e=n.children[i]=new su(r[i],i)),e.parent=n;return(u.parent=new su(null,0)).children=[u],u}function lu(t,n,e,r,i,o){for(var u,a,c,s,f,l,h,p,d,v,g,y=[],_=n.children,m=0,x=0,b=_.length,w=n.value;m<b;){c=i-e,s=o-r;do{f=_[x++].value}while(!f&&x<b);for(l=h=f,v=Math.max(s/c,c/s)/(w*t),g=f*f*v,d=Math.max(h/g,g/l);x<b;++x){if(f+=a=_[x].value,a<l&&(l=a),a>h&&(h=a),g=f*f*v,(p=Math.max(h/g,g/l))>d){f-=a;break}d=p}y.push(u={value:f,dice:c<s,children:_.slice(m,x)}),u.dice?J_(u,e,r,i,w?r+=s*f/w:o):im(u,e,r,w?e+=c*f/w:i,o),w-=f,m=x}return y}function hu(t,n){return t[0]-n[0]||t[1]-n[1]}function pu(t){for(var n=t.length,e=[0,1],r=2,i=2;i<n;++i){for(;r>1&&pm(t[e[r-2]],t[e[r-1]],t[i])<=0;)--r;e[r++]=i}return e.slice(0,r)}function du(t){this._size=t,this._call=this._error=null,this._tasks=[],this._data=[],this._waiting=this._active=this._ended=this._start=0}function vu(t){if(!t._start)try{gu(t)}catch(n){if(t._tasks[t._ended+t._active-1])_u(t,n);else if(!t._data)throw n}}function gu(t){for(;t._start=t._waiting&&t._active<t._size;){var n=t._ended+t._active,e=t._tasks[n],r=e.length-1,i=e[r];e[r]=yu(t,n),--t._waiting,++t._active,e=i.apply(null,e),t._tasks[n]&&(t._tasks[n]=e||_m)}}function yu(t,n){return function(e,r){t._tasks[n]&&(--t._active,++t._ended,t._tasks[n]=null,null==t._error&&(null!=e?_u(t,e):(t._data[n]=r,t._waiting?vu(t):mu(t))))}}function _u(t,n){var e,r=t._tasks.length;for(t._error=n,t._data=void 0,t._waiting=NaN;--r>=0;)if((e=t._tasks[r])&&(t._tasks[r]=null,e.abort))try{e.abort()}catch(n){}t._active=NaN,mu(t)}function mu(t){if(!t._active&&t._call){var n=t._data;t._data=void 0,t._call(t._error,n)}}function xu(t){if(null==t)t=1/0;else if(!((t=+t)>=1))throw new Error("invalid concurrency");return new du(t)}function bu(t){return function(n,e){t(null==n?e:null)}}function wu(t){var n=t.responseType;return n&&"text"!==n?t.response:t.responseText}function Mu(t,n){return function(e){return t(e.responseText,n)}}function ku(t){function n(n){var o=n+"",u=e.get(o);if(!u){if(i!==Dm)return i;e.set(o,u=r.push(n))}return t[(u-1)%t.length]}var e=Be(),r=[],i=Dm;return t=null==t?[]:Om.call(t),n.domain=function(t){if(!arguments.length)return r.slice();r=[],e=Be();for(var i,o,u=-1,a=t.length;++u<a;)e.has(o=(i=t[u])+"")||e.set(o,r.push(i));return n},n.range=function(e){return arguments.length?(t=Om.call(e),n):t.slice()},n.unknown=function(t){return arguments.length?(i=t,n):i},n.copy=function(){return ku().domain(r).range(t).unknown(i)},n}function Eu(){function t(){var t=i().length,r=u[1]<u[0],l=u[r-0],h=u[1-r];n=(h-l)/Math.max(1,t-c+2*s),a&&(n=Math.floor(n)),l+=(h-l-n*(t-c))*f,e=n*(1-c),a&&(l=Math.round(l),e=Math.round(e));var p=cf(t).map(function(t){return l+n*t});return o(r?p.reverse():p)}var n,e,r=ku().unknown(void 0),i=r.domain,o=r.range,u=[0,1],a=!1,c=0,s=0,f=.5;return delete r.unknown,r.domain=function(n){return arguments.length?(i(n),t()):i()},r.range=function(n){return arguments.length?(u=[+n[0],+n[1]],t()):u.slice()},r.rangeRound=function(n){return u=[+n[0],+n[1]],a=!0,t()},r.bandwidth=function(){return e},r.step=function(){return n},r.round=function(n){return arguments.length?(a=!!n,t()):a},r.padding=function(n){return arguments.length?(c=s=Math.max(0,Math.min(1,n)),t()):c},r.paddingInner=function(n){return arguments.length?(c=Math.max(0,Math.min(1,n)),t()):c},r.paddingOuter=function(n){return arguments.length?(s=Math.max(0,Math.min(1,n)),t()):s},r.align=function(n){return arguments.length?(f=Math.max(0,Math.min(1,n)),t()):f},r.copy=function(){return Eu().domain(i()).range(u).round(a).paddingInner(c).paddingOuter(s).align(f)},t()}function Tu(t){var n=t.copy;return t.padding=t.paddingOuter,delete t.paddingInner,delete t.paddingOuter,t.copy=function(){return Tu(n())},t}function Su(){return Tu(Eu().paddingInner(1))}function Au(t,n){return(n-=t=+t)?function(e){return(e-t)/n}:Im(n)}function Nu(t){return function(n,e){var r=t(n=+n,e=+e);return function(t){return t<=n?0:t>=e?1:r(t)}}}function Cu(t){return function(n,e){var r=t(n=+n,e=+e);return function(t){return t<=0?n:t>=1?e:r(t)}}}function Pu(t,n,e,r){var i=t[0],o=t[1],u=n[0],a=n[1];return o<i?(i=e(o,i),u=r(a,u)):(i=e(i,o),u=r(u,a)),function(t){return u(i(t))}}function zu(t,n,e,r){var i=Math.min(t.length,n.length)-1,o=new Array(i),u=new Array(i),a=-1;for(t[i]<t[0]&&(t=t.slice().reverse(),n=n.slice().reverse());++a<i;)o[a]=e(t[a],t[a+1]),u[a]=r(n[a],n[a+1]);return function(n){var e=$s(t,n,1,i)-1;return u[e](o[e](n))}}function Lu(t,n){return n.domain(t.domain()).range(t.range()).interpolate(t.interpolate()).clamp(t.clamp())}function Ru(t,n){function e(){return i=Math.min(a.length,c.length)>2?zu:Pu,o=u=null,r}function r(n){return(o||(o=i(a,c,f?Nu(t):t,s)))(+n)}var i,o,u,a=jm,c=jm,s=qh,f=!1;return r.invert=function(t){return(u||(u=i(c,a,Au,f?Cu(n):n)))(+t)},r.domain=function(t){return arguments.length?(a=Um.call(t,Fm),e()):a.slice()},r.range=function(t){return arguments.length?(c=Om.call(t),e()):c.slice()},r.rangeRound=function(t){return c=Om.call(t),s=Uh,e()},r.clamp=function(t){return arguments.length?(f=!!t,e()):f},r.interpolate=function(t){return arguments.length?(s=t,e()):s},e()}function qu(t){var n=t.domain;return t.ticks=function(t){var e=n();return hf(e[0],e[e.length-1],null==t?10:t)},t.tickFormat=function(t,e){return Ym(n(),t,e)},t.nice=function(e){null==e&&(e=10);var i,o=n(),u=0,a=o.length-1,c=o[u],s=o[a];return s<c&&(i=c,c=s,s=i,i=u,u=a,a=i),i=r(c,s,e),i>0?(c=Math.floor(c/i)*i,s=Math.ceil(s/i)*i,i=r(c,s,e)):i<0&&(c=Math.ceil(c*i)/i,s=Math.floor(s*i)/i,i=r(c,s,e)),i>0?(o[u]=Math.floor(c/i)*i,o[a]=Math.ceil(s/i)*i,n(o)):i<0&&(o[u]=Math.ceil(c*i)/i,o[a]=Math.floor(s*i)/i,n(o)),t},t}function Uu(){var t=Ru(Au,Ch);return t.copy=function(){return Lu(t,Uu())},qu(t)}function Ou(){function t(t){return+t}var n=[0,1];return t.invert=t,t.domain=t.range=function(e){return arguments.length?(n=Um.call(e,Fm),t):n.slice()},t.copy=function(){return Ou().domain(n)},qu(t)}function Du(t,n){return(n=Math.log(n/t))?function(e){return Math.log(e/t)/n}:Im(n)}function Iu(t,n){return t<0?function(e){return-Math.pow(-n,e)*Math.pow(-t,1-e)}:function(e){return Math.pow(n,e)*Math.pow(t,1-e)}}function Fu(t){return isFinite(t)?+("1e"+t):t<0?0:t}function ju(t){return 10===t?Fu:t===Math.E?Math.exp:function(n){return Math.pow(t,n)}}function Yu(t){return t===Math.E?Math.log:10===t&&Math.log10||2===t&&Math.log2||(t=Math.log(t),function(n){return Math.log(n)/t})}function Bu(t){return function(n){return-t(-n)}}function Hu(){function n(){return o=Yu(i),u=ju(i),r()[0]<0&&(o=Bu(o),u=Bu(u)),e}var e=Ru(Du,Iu).domain([1,10]),r=e.domain,i=10,o=Yu(10),u=ju(10);return e.base=function(t){return arguments.length?(i=+t,n()):i},e.domain=function(t){return arguments.length?(r(t),n()):r()},e.ticks=function(t){var n,e=r(),a=e[0],c=e[e.length-1];(n=c<a)&&(h=a,a=c,c=h);var s,f,l,h=o(a),p=o(c),d=null==t?10:+t,v=[];if(!(i%1)&&p-h<d){if(h=Math.round(h)-1,p=Math.round(p)+1,a>0){for(;h<p;++h)for(f=1,s=u(h);f<i;++f)if(!((l=s*f)<a)){if(l>c)break;v.push(l)}}else for(;h<p;++h)for(f=i-1,s=u(h);f>=1;--f)if(!((l=s*f)<a)){if(l>c)break;v.push(l)}}else v=hf(h,p,Math.min(p-h,d)).map(u);return n?v.reverse():v},e.tickFormat=function(n,r){if(null==r&&(r=10===i?".0e":","),"function"!=typeof r&&(r=t.format(r)),n===1/0)return r;null==n&&(n=10);var a=Math.max(1,i*n/e.ticks().length);return function(t){var n=t/u(Math.round(o(t)));return n*i<i-.5&&(n*=i),n<=a?r(t):""}},e.nice=function(){return r(Bm(r(),{floor:function(t){return u(Math.floor(o(t)))},ceil:function(t){return u(Math.ceil(o(t)))}}))},e.copy=function(){return Lu(e,Hu().base(i))},e}function Xu(t,n){return t<0?-Math.pow(-t,n):Math.pow(t,n)}function Gu(){function t(t,n){return(n=Xu(n,e)-(t=Xu(t,e)))?function(r){return(Xu(r,e)-t)/n}:Im(n)}function n(t,n){return n=Xu(n,e)-(t=Xu(t,e)),function(r){return Xu(t+n*r,1/e)}}var e=1,r=Ru(t,n),i=r.domain;return r.exponent=function(t){return arguments.length?(e=+t,i(i())):e},r.copy=function(){return Lu(r,Gu().exponent(e))},qu(r)}function $u(){return Gu().exponent(.5)}function Vu(){function t(){var t=0,o=Math.max(1,r.length);for(i=new Array(o-1);++t<o;)i[t-1]=vf(e,t/o);return n}function n(t){if(!isNaN(t=+t))return r[$s(i,t)]}var e=[],r=[],i=[];return n.invertExtent=function(t){var n=r.indexOf(t);return n<0?[NaN,NaN]:[n>0?i[n-1]:e[0],n<i.length?i[n]:e[e.length-1]]},n.domain=function(n){if(!arguments.length)return e.slice();e=[];for(var r,i=0,o=n.length;i<o;++i)null==(r=n[i])||isNaN(r=+r)||e.push(r);return e.sort(Hs),t()},n.range=function(n){return arguments.length?(r=Om.call(n),t()):r.slice()},n.quantiles=function(){return i.slice()},n.copy=function(){return Vu().domain(e).range(r)},n}function Wu(){function t(t){if(t<=t)return u[$s(o,t,0,i)]}function n(){var n=-1;for(o=new Array(i);++n<i;)o[n]=((n+1)*r-(n-i)*e)/(i+1);return t}var e=0,r=1,i=1,o=[.5],u=[0,1];return t.domain=function(t){return arguments.length?(e=+t[0],r=+t[1],n()):[e,r]},t.range=function(t){return arguments.length?(i=(u=Om.call(t)).length-1,n()):u.slice()},t.invertExtent=function(t){var n=u.indexOf(t);return n<0?[NaN,NaN]:n<1?[e,o[0]]:n>=i?[o[i-1],r]:[o[n-1],o[n]]},t.copy=function(){return Wu().domain([e,r]).range(u)},qu(t)}function Zu(){function t(t){if(t<=t)return e[$s(n,t,0,r)]}var n=[.5],e=[0,1],r=1;return t.domain=function(i){return arguments.length?(n=Om.call(i),r=Math.min(n.length,e.length-1),t):n.slice()},t.range=function(i){return arguments.length?(e=Om.call(i),r=Math.min(n.length,e.length-1),t):e.slice()},t.invertExtent=function(t){var r=e.indexOf(t);return[n[r-1],n[r]]},t.copy=function(){return Zu().domain(n).range(e)},t}function Ju(t,n,e,r){function i(n){return t(n=new Date(+n)),n}return i.floor=i,i.ceil=function(e){return t(e=new Date(e-1)),n(e,1),t(e),e},i.round=function(t){var n=i(t),e=i.ceil(t);return t-n<e-t?n:e},i.offset=function(t,e){return n(t=new Date(+t),null==e?1:Math.floor(e)),t},i.range=function(e,r,o){var u=[];if(e=i.ceil(e),o=null==o?1:Math.floor(o),!(e<r&&o>0))return u;do{u.push(new Date(+e))}while(n(e,o),t(e),e<r);return u},i.filter=function(e){return Ju(function(n){if(n>=n)for(;t(n),!e(n);)n.setTime(n-1)},function(t,r){if(t>=t)for(;--r>=0;)for(;n(t,1),!e(t););})},e&&(i.count=function(n,r){return Hm.setTime(+n),Xm.setTime(+r),t(Hm),t(Xm),Math.floor(e(Hm,Xm))},i.every=function(t){return t=Math.floor(t),isFinite(t)&&t>0?t>1?i.filter(r?function(n){return r(n)%t==0}:function(n){return i.count(0,n)%t==0}):i:null}),i}function Qu(t){return Ju(function(n){n.setDate(n.getDate()-(n.getDay()+7-t)%7),n.setHours(0,0,0,0)},function(t,n){t.setDate(t.getDate()+7*n)},function(t,n){return(n-t-(n.getTimezoneOffset()-t.getTimezoneOffset())*Vm)/Wm})}function Ku(t){return Ju(function(n){n.setUTCDate(n.getUTCDate()-(n.getUTCDay()+7-t)%7),n.setUTCHours(0,0,0,0)},function(t,n){t.setUTCDate(t.getUTCDate()+7*n)},function(t,n){return(n-t)/Wm})}function ta(t){if(0<=t.y&&t.y<100){var n=new Date(-1,t.m,t.d,t.H,t.M,t.S,t.L);return n.setFullYear(t.y),n}return new Date(t.y,t.m,t.d,t.H,t.M,t.S,t.L)}function na(t){if(0<=t.y&&t.y<100){var n=new Date(Date.UTC(-1,t.m,t.d,t.H,t.M,t.S,t.L));return n.setUTCFullYear(t.y),n}return new Date(Date.UTC(t.y,t.m,t.d,t.H,t.M,t.S,t.L))}function ea(t){return{y:t,m:0,d:1,H:0,M:0,S:0,L:0}}function ra(t){function n(t,n){return function(e){var r,i,o,u=[],a=-1,c=0,s=t.length;for(e instanceof Date||(e=new Date(+e));++a<s;)37===t.charCodeAt(a)&&(u.push(t.slice(c,a)),null!=(i=$x[r=t.charAt(++a)])?r=t.charAt(++a):i="e"===r?" ":"0",(o=n[r])&&(r=o(e,i)),u.push(r),c=a+1);return u.push(t.slice(c,a)),u.join("")}}function e(t,n){return function(e){var i=ea(1900);if(r(i,t,e+="",0)!=e.length)return null;if("p"in i&&(i.H=i.H%12+12*i.p),"W"in i||"U"in i){"w"in i||(i.w="W"in i?1:0);var o="Z"in i?na(ea(i.y)).getUTCDay():n(ea(i.y)).getDay();i.m=0,i.d="W"in i?(i.w+6)%7+7*i.W-(o+5)%7:i.w+7*i.U-(o+6)%7}return"Z"in i?(i.H+=i.Z/100|0,i.M+=i.Z%100,na(i)):n(i)}}function r(t,n,e,r){for(var i,o,u=0,a=n.length,c=e.length;u<a;){if(r>=c)return-1;if(37===(i=n.charCodeAt(u++))){if(i=n.charAt(u++),!(o=Y[i in $x?n.charAt(u++):i])||(r=o(t,e,r))<0)return-1}else if(i!=e.charCodeAt(r++))return-1}return r}function i(t,n,e){var r=C.exec(n.slice(e));return r?(t.p=P[r[0].toLowerCase()],e+r[0].length):-1}function o(t,n,e){var r=R.exec(n.slice(e));return r?(t.w=q[r[0].toLowerCase()],e+r[0].length):-1}function u(t,n,e){var r=z.exec(n.slice(e));return r?(t.w=L[r[0].toLowerCase()],e+r[0].length):-1}function a(t,n,e){var r=D.exec(n.slice(e));return r?(t.m=I[r[0].toLowerCase()],e+r[0].length):-1}function c(t,n,e){var r=U.exec(n.slice(e));return r?(t.m=O[r[0].toLowerCase()],e+r[0].length):-1}function s(t,n,e){return r(t,w,n,e)}function f(t,n,e){return r(t,M,n,e)}function l(t,n,e){return r(t,k,n,e)}function h(t){return S[t.getDay()]}function p(t){return T[t.getDay()]}function d(t){return N[t.getMonth()]}function v(t){return A[t.getMonth()]}function g(t){return E[+(t.getHours()>=12)]}function y(t){return S[t.getUTCDay()]}function _(t){return T[t.getUTCDay()]}function m(t){return N[t.getUTCMonth()]}function x(t){return A[t.getUTCMonth()]}function b(t){return E[+(t.getUTCHours()>=12)]}var w=t.dateTime,M=t.date,k=t.time,E=t.periods,T=t.days,S=t.shortDays,A=t.months,N=t.shortMonths,C=ua(E),P=aa(E),z=ua(T),L=aa(T),R=ua(S),q=aa(S),U=ua(A),O=aa(A),D=ua(N),I=aa(N),F={a:h,A:p,b:d,B:v,c:null,d:wa,e:wa,H:Ma,I:ka,j:Ea,L:Ta,m:Sa,M:Aa,p:g,S:Na,U:Ca,w:Pa,W:za,x:null,X:null,y:La,Y:Ra,Z:qa,"%":Za},j={a:y,A:_,b:m,B:x,c:null,d:Ua,e:Ua,H:Oa,I:Da,j:Ia,L:Fa,m:ja,M:Ya,p:b,S:Ba,U:Ha,w:Xa,W:Ga,x:null,X:null,y:$a,Y:Va,Z:Wa,"%":Za},Y={a:o,A:u,b:a,B:c,c:s,d:va,e:va,H:ya,I:ya,j:ga,L:xa,m:da,M:_a,p:i,S:ma,U:sa,w:ca,W:fa,x:f,X:l,y:ha,Y:la,Z:pa,"%":ba};return F.x=n(M,F),F.X=n(k,F),F.c=n(w,F),j.x=n(M,j),j.X=n(k,j),j.c=n(w,j),{format:function(t){var e=n(t+="",F);return e.toString=function(){return t},e},parse:function(t){var n=e(t+="",ta);return n.toString=function(){return t},n},utcFormat:function(t){var e=n(t+="",j);return e.toString=function(){return t},e},utcParse:function(t){var n=e(t,na);return n.toString=function(){return t},n}}}function ia(t,n,e){var r=t<0?"-":"",i=(r?-t:t)+"",o=i.length;return r+(o<e?new Array(e-o+1).join(n)+i:i)}function oa(t){return t.replace(Zx,"\\$&")}function ua(t){return new RegExp("^(?:"+t.map(oa).join("|")+")","i")}function aa(t){for(var n={},e=-1,r=t.length;++e<r;)n[t[e].toLowerCase()]=e;return n}function ca(t,n,e){var r=Vx.exec(n.slice(e,e+1));return r?(t.w=+r[0],e+r[0].length):-1}function sa(t,n,e){var r=Vx.exec(n.slice(e));return r?(t.U=+r[0],e+r[0].length):-1}function fa(t,n,e){var r=Vx.exec(n.slice(e));return r?(t.W=+r[0],e+r[0].length):-1}function la(t,n,e){var r=Vx.exec(n.slice(e,e+4));return r?(t.y=+r[0],e+r[0].length):-1}function ha(t,n,e){var r=Vx.exec(n.slice(e,e+2));return r?(t.y=+r[0]+(+r[0]>68?1900:2e3),e+r[0].length):-1}function pa(t,n,e){var r=/^(Z)|([+-]\d\d)(?:\:?(\d\d))?/.exec(n.slice(e,e+6));return r?(t.Z=r[1]?0:-(r[2]+(r[3]||"00")),e+r[0].length):-1}function da(t,n,e){var r=Vx.exec(n.slice(e,e+2));return r?(t.m=r[0]-1,e+r[0].length):-1}function va(t,n,e){var r=Vx.exec(n.slice(e,e+2));return r?(t.d=+r[0],e+r[0].length):-1}function ga(t,n,e){var r=Vx.exec(n.slice(e,e+3));return r?(t.m=0,t.d=+r[0],e+r[0].length):-1}function ya(t,n,e){var r=Vx.exec(n.slice(e,e+2));return r?(t.H=+r[0],e+r[0].length):-1}function _a(t,n,e){var r=Vx.exec(n.slice(e,e+2));return r?(t.M=+r[0],e+r[0].length):-1}function ma(t,n,e){var r=Vx.exec(n.slice(e,e+2));return r?(t.S=+r[0],e+r[0].length):-1}function xa(t,n,e){var r=Vx.exec(n.slice(e,e+3));return r?(t.L=+r[0],e+r[0].length):-1}function ba(t,n,e){var r=Wx.exec(n.slice(e,e+1));return r?e+r[0].length:-1}function wa(t,n){return ia(t.getDate(),n,2)}function Ma(t,n){return ia(t.getHours(),n,2)}function ka(t,n){return ia(t.getHours()%12||12,n,2)}function Ea(t,n){return ia(1+ex.count(xx(t),t),n,3)}function Ta(t,n){return ia(t.getMilliseconds(),n,3)}function Sa(t,n){return ia(t.getMonth()+1,n,2)}function Aa(t,n){return ia(t.getMinutes(),n,2)}function Na(t,n){return ia(t.getSeconds(),n,2)}function Ca(t,n){return ia(ix.count(xx(t),t),n,2)}function Pa(t){return t.getDay()}function za(t,n){return ia(ox.count(xx(t),t),n,2)}function La(t,n){return ia(t.getFullYear()%100,n,2)}function Ra(t,n){return ia(t.getFullYear()%1e4,n,4)}function qa(t){var n=t.getTimezoneOffset();return(n>0?"-":(n*=-1,"+"))+ia(n/60|0,"0",2)+ia(n%60,"0",2)}function Ua(t,n){return ia(t.getUTCDate(),n,2)}function Oa(t,n){return ia(t.getUTCHours(),n,2)}function Da(t,n){return ia(t.getUTCHours()%12||12,n,2)}function Ia(t,n){return ia(1+Tx.count(Hx(t),t),n,3)}function Fa(t,n){return ia(t.getUTCMilliseconds(),n,3)}function ja(t,n){return ia(t.getUTCMonth()+1,n,2)}function Ya(t,n){return ia(t.getUTCMinutes(),n,2)}function Ba(t,n){return ia(t.getUTCSeconds(),n,2)}function Ha(t,n){return ia(Ax.count(Hx(t),t),n,2)}function Xa(t){return t.getUTCDay()}function Ga(t,n){return ia(Nx.count(Hx(t),t),n,2)}function $a(t,n){return ia(t.getUTCFullYear()%100,n,2)}function Va(t,n){return ia(t.getUTCFullYear()%1e4,n,4)}function Wa(){return"+0000"}function Za(){return"%"}function Ja(n){return Xx=ra(n),t.timeFormat=Xx.format,t.timeParse=Xx.parse,t.utcFormat=Xx.utcFormat,t.utcParse=Xx.utcParse,Xx}function Qa(t){return t.toISOString()}function Ka(t){var n=new Date(t);return isNaN(n)?null:n}function tc(t){return new Date(t)}function nc(t){return t instanceof Date?+t:+new Date(+t)}function ec(t,n,e,r,o,u,a,c,s){function f(i){return(a(i)<i?v:u(i)<i?g:o(i)<i?y:r(i)<i?_:n(i)<i?e(i)<i?m:x:t(i)<i?b:w)(i)}function l(n,e,r,o){if(null==n&&(n=10),"number"==typeof n){var u=Math.abs(r-e)/n,a=Xs(function(t){return t[2]}).right(M,u);a===M.length?(o=i(e/ob,r/ob,n),n=t):a?(a=M[u/M[a-1][2]<M[a][2]/u?a-1:a],o=a[1],n=a[0]):(o=i(e,r,n),n=c)}return null==o?n:n.every(o)}var h=Ru(Au,Ch),p=h.invert,d=h.domain,v=s(".%L"),g=s(":%S"),y=s("%I:%M"),_=s("%I %p"),m=s("%a %d"),x=s("%b %d"),b=s("%B"),w=s("%Y"),M=[[a,1,Kx],[a,5,5*Kx],[a,15,15*Kx],[a,30,30*Kx],[u,1,tb],[u,5,5*tb],[u,15,15*tb],[u,30,30*tb],[o,1,nb],[o,3,3*nb],[o,6,6*nb],[o,12,12*nb],[r,1,eb],[r,2,2*eb],[e,1,rb],[n,1,ib],[n,3,3*ib],[t,1,ob]];return h.invert=function(t){return new Date(p(t))},h.domain=function(t){return arguments.length?d(Um.call(t,nc)):d().map(tc)},h.ticks=function(t,n){var e,r=d(),i=r[0],o=r[r.length-1],u=o<i;return u&&(e=i,i=o,o=e),e=l(t,i,o,n),e=e?e.range(i,o+1):[],u?e.reverse():e},h.tickFormat=function(t,n){return null==n?f:s(n)},h.nice=function(t,n){var e=d();return(t=l(t,e[0],e[e.length-1],n))?d(Bm(e,t)):h},h.copy=function(){return Lu(h,ec(t,n,e,r,o,u,a,c,s))},h}function rc(t){var n=t.length;return function(e){return t[Math.max(0,Math.min(n-1,Math.floor(e*n)))]}}function ic(t){function n(n){var o=(n-e)/(r-e);return t(i?Math.max(0,Math.min(1,o)):o)}var e=0,r=1,i=!1;return n.domain=function(t){return arguments.length?(e=+t[0],r=+t[1],n):[e,r]},n.clamp=function(t){return arguments.length?(i=!!t,n):i},n.interpolator=function(e){return arguments.length?(t=e,n):t},n.copy=function(){return ic(t).domain([e,r]).clamp(i)},qu(n)}function oc(t){return t>1?0:t<-1?Pb:Math.acos(t)}function uc(t){return t>=1?zb:t<=-1?-zb:Math.asin(t)}function ac(t){return t.innerRadius}function cc(t){return t.outerRadius}function sc(t){return t.startAngle}function fc(t){return t.endAngle}function lc(t){return t&&t.padAngle}function hc(t,n,e,r,i,o,u,a){var c=e-t,s=r-n,f=u-i,l=a-o,h=(f*(n-o)-l*(t-i))/(l*c-f*s);return[t+h*c,n+h*s]}function pc(t,n,e,r,i,o,u){var a=t-e,c=n-r,s=(u?o:-o)/Nb(a*a+c*c),f=s*c,l=-s*a,h=t+f,p=n+l,d=e+f,v=r+l,g=(h+d)/2,y=(p+v)/2,_=d-h,m=v-p,x=_*_+m*m,b=i-o,w=h*v-d*p,M=(m<0?-1:1)*Nb(Tb(0,b*b*x-w*w)),k=(w*m-_*M)/x,E=(-w*_-m*M)/x,T=(w*m+_*M)/x,S=(-w*_+m*M)/x,A=k-g,N=E-y,C=T-g,P=S-y;return A*A+N*N>C*C+P*P&&(k=T,E=S),{cx:k,cy:E,x01:-f,y01:-l,x11:k*(i/b-1),y11:E*(i/b-1)}}function dc(t){this._context=t}function vc(t){return t[0]}function gc(t){return t[1]}function yc(t){this._curve=t}function _c(t){function n(n){return new yc(t(n))}return n._curve=t,n}function mc(t){var n=t.curve;return t.angle=t.x,delete t.x,t.radius=t.y,delete t.y,t.curve=function(t){return arguments.length?n(_c(t)):n()._curve},t}function xc(t){return t.source}function bc(t){return t.target}function wc(t){function n(){var n,a=Hb.call(arguments),c=e.apply(this,a),s=r.apply(this,a);if(u||(u=n=Ue()),t(u,+i.apply(this,(a[0]=c,a)),+o.apply(this,a),+i.apply(this,(a[0]=s,a)),+o.apply(this,a)),n)return u=null,n+""||null}var e=xc,r=bc,i=vc,o=gc,u=null;return n.source=function(t){return arguments.length?(e=t,n):e},n.target=function(t){return arguments.length?(r=t,n):r},n.x=function(t){return arguments.length?(i="function"==typeof t?t:wb(+t),n):i},n.y=function(t){return arguments.length?(o="function"==typeof t?t:wb(+t),n):o},n.context=function(t){return arguments.length?(u=null==t?null:t,n):u},n}function Mc(t,n,e,r,i){t.moveTo(n,e),t.bezierCurveTo(n=(n+r)/2,e,n,i,r,i)}function kc(t,n,e,r,i){t.moveTo(n,e),t.bezierCurveTo(n,e=(e+i)/2,r,e,r,i)}function Ec(t,n,e,r,i){var o=Xb(n,e),u=Xb(n,e=(e+i)/2),a=Xb(r,e),c=Xb(r,i);t.moveTo(o[0],o[1]),t.bezierCurveTo(u[0],u[1],a[0],a[1],c[0],c[1])}function Tc(){return wc(Mc)}function Sc(){return wc(kc)}function Ac(){var t=wc(Ec);return t.angle=t.x,delete t.x,t.radius=t.y,delete t.y,t}function Nc(t,n,e){t._context.bezierCurveTo((2*t._x0+t._x1)/3,(2*t._y0+t._y1)/3,(t._x0+2*t._x1)/3,(t._y0+2*t._y1)/3,(t._x0+4*t._x1+n)/6,(t._y0+4*t._y1+e)/6)}function Cc(t){this._context=t}function Pc(t){this._context=t}function zc(t){this._context=t}function Lc(t,n){this._basis=new Cc(t),this._beta=n}function Rc(t,n,e){t._context.bezierCurveTo(t._x1+t._k*(t._x2-t._x0),t._y1+t._k*(t._y2-t._y0),t._x2+t._k*(t._x1-n),t._y2+t._k*(t._y1-e),t._x2,t._y2)}function qc(t,n){this._context=t,this._k=(1-n)/6}function Uc(t,n){this._context=t,this._k=(1-n)/6}function Oc(t,n){this._context=t,this._k=(1-n)/6}function Dc(t,n,e){var r=t._x1,i=t._y1,o=t._x2,u=t._y2;if(t._l01_a>Cb){var a=2*t._l01_2a+3*t._l01_a*t._l12_a+t._l12_2a,c=3*t._l01_a*(t._l01_a+t._l12_a);r=(r*a-t._x0*t._l12_2a+t._x2*t._l01_2a)/c,i=(i*a-t._y0*t._l12_2a+t._y2*t._l01_2a)/c}if(t._l23_a>Cb){var s=2*t._l23_2a+3*t._l23_a*t._l12_a+t._l12_2a,f=3*t._l23_a*(t._l23_a+t._l12_a);o=(o*s+t._x1*t._l23_2a-n*t._l12_2a)/f,u=(u*s+t._y1*t._l23_2a-e*t._l12_2a)/f}t._context.bezierCurveTo(r,i,o,u,t._x2,t._y2)}function Ic(t,n){this._context=t,this._alpha=n}function Fc(t,n){this._context=t,this._alpha=n}function jc(t,n){this._context=t,this._alpha=n}function Yc(t){this._context=t}function Bc(t){return t<0?-1:1}function Hc(t,n,e){var r=t._x1-t._x0,i=n-t._x1,o=(t._y1-t._y0)/(r||i<0&&-0),u=(e-t._y1)/(i||r<0&&-0),a=(o*i+u*r)/(r+i);return(Bc(o)+Bc(u))*Math.min(Math.abs(o),Math.abs(u),.5*Math.abs(a))||0}function Xc(t,n){var e=t._x1-t._x0;return e?(3*(t._y1-t._y0)/e-n)/2:n}function Gc(t,n,e){var r=t._x0,i=t._y0,o=t._x1,u=t._y1,a=(o-r)/3;t._context.bezierCurveTo(r+a,i+a*n,o-a,u-a*e,o,u)}function $c(t){this._context=t}function Vc(t){this._context=new Wc(t)}function Wc(t){this._context=t}function Zc(t){return new $c(t)}function Jc(t){return new Vc(t)}function Qc(t){this._context=t}function Kc(t){var n,e,r=t.length-1,i=new Array(r),o=new Array(r),u=new Array(r);for(i[0]=0,o[0]=2,u[0]=t[0]+2*t[1],n=1;n<r-1;++n)i[n]=1,o[n]=4,u[n]=4*t[n]+2*t[n+1];for(i[r-1]=2,o[r-1]=7,u[r-1]=8*t[r-1]+t[r],n=1;n<r;++n)e=i[n]/o[n-1],o[n]-=e,u[n]-=e*u[n-1];for(i[r-1]=u[r-1]/o[r-1],n=r-2;n>=0;--n)i[n]=(u[n]-i[n+1])/o[n];for(o[r-1]=(t[r]+i[r-1])/2,n=0;n<r-1;++n)o[n]=2*t[n+1]-i[n+1];return[i,o]}function ts(t,n){this._context=t,this._t=n}function ns(t){return new ts(t,0)}function es(t){return new ts(t,1)}function rs(t,n){return t[n]}function is(t){for(var n,e=0,r=-1,i=t.length;++r<i;)(n=+t[r][1])&&(e+=n);return e}function os(t){return t[0]}function us(t){return t[1]}function as(){this._=null}function cs(t){t.U=t.C=t.L=t.R=t.P=t.N=null}function ss(t,n){var e=n,r=n.R,i=e.U;i?i.L===e?i.L=r:i.R=r:t._=r,r.U=i,e.U=r,e.R=r.L,e.R&&(e.R.U=e),r.L=e}function fs(t,n){var e=n,r=n.L,i=e.U;i?i.L===e?i.L=r:i.R=r:t._=r,r.U=i,e.U=r,e.L=r.R,e.L&&(e.L.U=e),r.R=e}function ls(t){for(;t.L;)t=t.L;return t}function hs(t,n,e,r){var i=[null,null],o=jw.push(i)-1;return i.left=t,i.right=n,e&&ds(i,t,n,e),r&&ds(i,n,t,r),Iw[t.index].halfedges.push(o),Iw[n.index].halfedges.push(o),i}function ps(t,n,e){var r=[n,e];return r.left=t,r}function ds(t,n,e,r){t[0]||t[1]?t.left===e?t[1]=r:t[0]=r:(t[0]=r,t.left=n,t.right=e)}function vs(t,n,e,r,i){var o,u=t[0],a=t[1],c=u[0],s=u[1],f=a[0],l=a[1],h=0,p=1,d=f-c,v=l-s;if(o=n-c,d||!(o>0)){if(o/=d,d<0){if(o<h)return;o<p&&(p=o)}else if(d>0){if(o>p)return;o>h&&(h=o)}if(o=r-c,d||!(o<0)){if(o/=d,d<0){if(o>p)return;o>h&&(h=o)}else if(d>0){if(o<h)return;o<p&&(p=o)}if(o=e-s,v||!(o>0)){if(o/=v,v<0){if(o<h)return;o<p&&(p=o)}else if(v>0){if(o>p)return;o>h&&(h=o)}if(o=i-s,v||!(o<0)){if(o/=v,v<0){if(o>p)return;o>h&&(h=o)}else if(v>0){if(o<h)return;o<p&&(p=o)}return!(h>0||p<1)||(h>0&&(t[0]=[c+h*d,s+h*v]),p<1&&(t[1]=[c+p*d,s+p*v]),!0)}}}}}function gs(t,n,e,r,i){var o=t[1];if(o)return!0;var u,a,c=t[0],s=t.left,f=t.right,l=s[0],h=s[1],p=f[0],d=f[1],v=(l+p)/2,g=(h+d)/2;if(d===h){if(v<n||v>=r)return;if(l>p){if(c){if(c[1]>=i)return}else c=[v,e];o=[v,i]}else{if(c){if(c[1]<e)return}else c=[v,i];o=[v,e]}}else if(u=(l-p)/(d-h),a=g-u*v,u<-1||u>1)if(l>p){if(c){if(c[1]>=i)return}else c=[(e-a)/u,e];o=[(i-a)/u,i]}else{if(c){if(c[1]<e)return}else c=[(i-a)/u,i];o=[(e-a)/u,e]}else if(h<d){if(c){if(c[0]>=r)return}else c=[n,u*n+a];o=[r,u*r+a]}else{if(c){if(c[0]<n)return}else c=[r,u*r+a];o=[n,u*n+a]}return t[0]=c,t[1]=o,!0}function ys(t,n,e,r){for(var i,o=jw.length;o--;)gs(i=jw[o],t,n,e,r)&&vs(i,t,n,e,r)&&(Math.abs(i[0][0]-i[1][0])>Hw||Math.abs(i[0][1]-i[1][1])>Hw)||delete jw[o]}function _s(t){return Iw[t.index]={site:t,halfedges:[]}}function ms(t,n){var e=t.site,r=n.left,i=n.right;return e===i&&(i=r,r=e),i?Math.atan2(i[1]-r[1],i[0]-r[0]):(e===r?(r=n[1],i=n[0]):(r=n[0],i=n[1]),Math.atan2(r[0]-i[0],i[1]-r[1]))}function xs(t,n){return n[+(n.left!==t.site)]}function bs(t,n){return n[+(n.left===t.site)]}function ws(){for(var t,n,e,r,i=0,o=Iw.length;i<o;++i)if((t=Iw[i])&&(r=(n=t.halfedges).length)){var u=new Array(r),a=new Array(r);for(e=0;e<r;++e)u[e]=e,a[e]=ms(t,jw[n[e]]);for(u.sort(function(t,n){return a[n]-a[t]}),e=0;e<r;++e)a[e]=n[u[e]];for(e=0;e<r;++e)n[e]=a[e]}}function Ms(t,n,e,r){var i,o,u,a,c,s,f,l,h,p,d,v,g=Iw.length,y=!0;for(i=0;i<g;++i)if(o=Iw[i]){for(u=o.site,c=o.halfedges,a=c.length;a--;)jw[c[a]]||c.splice(a,1);for(a=0,s=c.length;a<s;)p=bs(o,jw[c[a]]),d=p[0],v=p[1],f=xs(o,jw[c[++a%s]]),l=f[0],h=f[1],(Math.abs(d-l)>Hw||Math.abs(v-h)>Hw)&&(c.splice(a,0,jw.push(ps(u,p,Math.abs(d-t)<Hw&&r-v>Hw?[t,Math.abs(l-t)<Hw?h:r]:Math.abs(v-r)<Hw&&e-d>Hw?[Math.abs(h-r)<Hw?l:e,r]:Math.abs(d-e)<Hw&&v-n>Hw?[e,Math.abs(l-e)<Hw?h:n]:Math.abs(v-n)<Hw&&d-t>Hw?[Math.abs(h-n)<Hw?l:t,n]:null))-1),++s);s&&(y=!1)}if(y){var _,m,x,b=1/0;for(i=0,y=null;i<g;++i)(o=Iw[i])&&(u=o.site,_=u[0]-t,m=u[1]-n,(x=_*_+m*m)<b&&(b=x,y=o));if(y){var w=[t,n],M=[t,r],k=[e,r],E=[e,n];y.halfedges.push(jw.push(ps(u=y.site,w,M))-1,jw.push(ps(u,M,k))-1,jw.push(ps(u,k,E))-1,jw.push(ps(u,E,w))-1)}}for(i=0;i<g;++i)(o=Iw[i])&&(o.halfedges.length||delete Iw[i])}function ks(){cs(this),this.x=this.y=this.arc=this.site=this.cy=null}function Es(t){var n=t.P,e=t.N;if(n&&e){var r=n.site,i=t.site,o=e.site;if(r!==o){var u=i[0],a=i[1],c=r[0]-u,s=r[1]-a,f=o[0]-u,l=o[1]-a,h=2*(c*l-s*f);if(!(h>=-Xw)){var p=c*c+s*s,d=f*f+l*l,v=(l*p-s*d)/h,g=(c*d-f*p)/h,y=Yw.pop()||new ks;y.arc=t,y.site=i,y.x=v+u,y.y=(y.cy=g+a)+Math.sqrt(v*v+g*g),t.circle=y;for(var _=null,m=Fw._;m;)if(y.y<m.y||y.y===m.y&&y.x<=m.x){if(!m.L){_=m.P;break}m=m.L}else{if(!m.R){_=m;break}m=m.R}Fw.insert(_,y),_||(Ow=y)}}}}function Ts(t){var n=t.circle;n&&(n.P||(Ow=n.N),Fw.remove(n),Yw.push(n),cs(n),t.circle=null)}function Ss(){cs(this),this.edge=this.site=this.circle=null}function As(t){var n=Bw.pop()||new Ss;return n.site=t,n}function Ns(t){Ts(t),Dw.remove(t),Bw.push(t),cs(t)}function Cs(t){var n=t.circle,e=n.x,r=n.cy,i=[e,r],o=t.P,u=t.N,a=[t];Ns(t);for(var c=o;c.circle&&Math.abs(e-c.circle.x)<Hw&&Math.abs(r-c.circle.cy)<Hw;)o=c.P,a.unshift(c),Ns(c),c=o;a.unshift(c),Ts(c);for(var s=u;s.circle&&Math.abs(e-s.circle.x)<Hw&&Math.abs(r-s.circle.cy)<Hw;)u=s.N,a.push(s),Ns(s),s=u;a.push(s),Ts(s);var f,l=a.length;for(f=1;f<l;++f)s=a[f],c=a[f-1],ds(s.edge,c.site,s.site,i);c=a[0],s=a[l-1],s.edge=hs(c.site,s.site,null,i),Es(c),Es(s)}function Ps(t){for(var n,e,r,i,o=t[0],u=t[1],a=Dw._;a;)if((r=zs(a,u)-o)>Hw)a=a.L;else{if(!((i=o-Ls(a,u))>Hw)){r>-Hw?(n=a.P,e=a):i>-Hw?(n=a,e=a.N):n=e=a;break}if(!a.R){n=a;break}a=a.R}_s(t);var c=As(t);if(Dw.insert(n,c),n||e){if(n===e)return Ts(n),e=As(n.site),Dw.insert(c,e),c.edge=e.edge=hs(n.site,c.site),Es(n),void Es(e);if(!e)return void(c.edge=hs(n.site,c.site));Ts(n),Ts(e);var s=n.site,f=s[0],l=s[1],h=t[0]-f,p=t[1]-l,d=e.site,v=d[0]-f,g=d[1]-l,y=2*(h*g-p*v),_=h*h+p*p,m=v*v+g*g,x=[(g*_-p*m)/y+f,(h*m-v*_)/y+l];ds(e.edge,s,d,x),c.edge=hs(s,t,null,x),e.edge=hs(t,d,null,x),Es(n),Es(e)}}function zs(t,n){var e=t.site,r=e[0],i=e[1],o=i-n;if(!o)return r;var u=t.P;if(!u)return-1/0;e=u.site;var a=e[0],c=e[1],s=c-n;if(!s)return a;var f=a-r,l=1/o-1/s,h=f/s;return l?(-h+Math.sqrt(h*h-2*l*(f*f/(-2*s)-c+s/2+i-o/2)))/l+r:(r+a)/2}function Ls(t,n){var e=t.N;if(e)return zs(e,n);var r=t.site;return r[1]===n?r[0]:1/0}function Rs(t,n,e){return(t[0]-e[0])*(n[1]-t[1])-(t[0]-n[0])*(e[1]-t[1])}function qs(t,n){return n[1]-t[1]||n[0]-t[0]}function Us(t,n){var e,r,i,o=t.sort(qs).pop();for(jw=[],Iw=new Array(t.length),Dw=new as,Fw=new as;;)if(i=Ow,o&&(!i||o[1]<i.y||o[1]===i.y&&o[0]<i.x))o[0]===e&&o[1]===r||(Ps(o),e=o[0],r=o[1]),o=t.pop();else{if(!i)break;Cs(i.arc)}if(ws(),n){var u=+n[0][0],a=+n[0][1],c=+n[1][0],s=+n[1][1];ys(u,a,c,s),Ms(u,a,c,s)}this.edges=jw,this.cells=Iw,Dw=Fw=jw=Iw=null}function Os(t,n,e){this.target=t,this.type=n,this.transform=e}function Ds(t,n,e){this.k=t,this.x=n,this.y=e}function Is(t){return t.__zoom||Vw}function Fs(){t.event.stopImmediatePropagation()}function js(){return!t.event.button}function Ys(){var t,n,e=this;return e instanceof SVGElement?(e=e.ownerSVGElement||e,t=e.width.baseVal.value,n=e.height.baseVal.value):(t=e.clientWidth,n=e.clientHeight),[[0,0],[t,n]]}function Bs(){return this.__zoom||Vw}var Hs=function(t,n){return t<n?-1:t>n?1:t>=n?0:NaN},Xs=function(t){return 1===t.length&&(t=n(t)),{left:function(n,e,r,i){for(null==r&&(r=0),null==i&&(i=n.length);r<i;){var o=r+i>>>1;t(n[o],e)<0?r=o+1:i=o}return r},right:function(n,e,r,i){for(null==r&&(r=0),null==i&&(i=n.length);r<i;){var o=r+i>>>1;t(n[o],e)>0?i=o:r=o+1}return r}}},Gs=Xs(Hs),$s=Gs.right,Vs=Gs.left,Ws=function(t,n){null==n&&(n=e);for(var r=0,i=t.length-1,o=t[0],u=new Array(i<0?0:i);r<i;)u[r]=n(o,o=t[++r]);return u},Zs=function(t,n,r){var i,o,u,a,c=t.length,s=n.length,f=new Array(c*s);for(null==r&&(r=e),i=u=0;i<c;++i)for(a=t[i],o=0;o<s;++o,++u)f[u]=r(a,n[o]);return f},Js=function(t,n){return n<t?-1:n>t?1:n>=t?0:NaN},Qs=function(t){return null===t?NaN:+t},Ks=function(t,n){var e,r,i=t.length,o=0,u=-1,a=0,c=0;if(null==n)for(;++u<i;)isNaN(e=Qs(t[u]))||(r=e-a,a+=r/++o,c+=r*(e-a));else for(;++u<i;)isNaN(e=Qs(n(t[u],u,t)))||(r=e-a,a+=r/++o,c+=r*(e-a));if(o>1)return c/(o-1)},tf=function(t,n){var e=Ks(t,n);return e?Math.sqrt(e):e},nf=function(t,n){var e,r,i,o=t.length,u=-1;if(null==n){for(;++u<o;)if(null!=(e=t[u])&&e>=e)for(r=i=e;++u<o;)null!=(e=t[u])&&(r>e&&(r=e),i<e&&(i=e))}else for(;++u<o;)if(null!=(e=n(t[u],u,t))&&e>=e)for(r=i=e;++u<o;)null!=(e=n(t[u],u,t))&&(r>e&&(r=e),i<e&&(i=e));return[r,i]},ef=Array.prototype,rf=ef.slice,of=ef.map,uf=function(t){return function(){return t}},af=function(t){return t},cf=function(t,n,e){t=+t,n=+n,e=(i=arguments.length)<2?(n=t,t=0,1):i<3?1:+e;for(var r=-1,i=0|Math.max(0,Math.ceil((n-t)/e)),o=new Array(i);++r<i;)o[r]=t+r*e;return o},sf=Math.sqrt(50),ff=Math.sqrt(10),lf=Math.sqrt(2),hf=function(t,n,e){var i,o,u,a=n<t,c=-1;if(a&&(i=t,t=n,n=i),0===(u=r(t,n,e))||!isFinite(u))return[];if(u>0)for(t=Math.ceil(t/u),n=Math.floor(n/u),o=new Array(i=Math.ceil(n-t+1));++c<i;)o[c]=(t+c)*u;else for(t=Math.floor(t*u),n=Math.ceil(n*u),o=new Array(i=Math.ceil(t-n+1));++c<i;)o[c]=(t-c)/u;return a&&o.reverse(),o},pf=function(t){return Math.ceil(Math.log(t.length)/Math.LN2)+1},df=function(){function t(t){var o,u,a=t.length,c=new Array(a);for(o=0;o<a;++o)c[o]=n(t[o],o,t);var s=e(c),f=s[0],l=s[1],h=r(c,f,l);Array.isArray(h)||(h=i(f,l,h),h=cf(Math.ceil(f/h)*h,Math.floor(l/h)*h,h));for(var p=h.length;h[0]<=f;)h.shift(),--p;for(;h[p-1]>l;)h.pop(),--p;var d,v=new Array(p+1);for(o=0;o<=p;++o)d=v[o]=[],d.x0=o>0?h[o-1]:f,d.x1=o<p?h[o]:l;for(o=0;o<a;++o)u=c[o],f<=u&&u<=l&&v[$s(h,u,0,p)].push(t[o]);return v}var n=af,e=nf,r=pf;return t.value=function(e){return arguments.length?(n="function"==typeof e?e:uf(e),t):n},t.domain=function(n){return arguments.length?(e="function"==typeof n?n:uf([n[0],n[1]]),t):e},t.thresholds=function(n){return arguments.length?(r="function"==typeof n?n:uf(Array.isArray(n)?rf.call(n):n),t):r},t},vf=function(t,n,e){if(null==e&&(e=Qs),r=t.length){if((n=+n)<=0||r<2)return+e(t[0],0,t);if(n>=1)return+e(t[r-1],r-1,t);var r,i=(r-1)*n,o=Math.floor(i),u=+e(t[o],o,t);return u+(+e(t[o+1],o+1,t)-u)*(i-o)}},gf=function(t,n,e){return t=of.call(t,Qs).sort(Hs),Math.ceil((e-n)/(2*(vf(t,.75)-vf(t,.25))*Math.pow(t.length,-1/3)))},yf=function(t,n,e){return Math.ceil((e-n)/(3.5*tf(t)*Math.pow(t.length,-1/3)))},_f=function(t,n){var e,r,i=t.length,o=-1;if(null==n){for(;++o<i;)if(null!=(e=t[o])&&e>=e)for(r=e;++o<i;)null!=(e=t[o])&&e>r&&(r=e)}else for(;++o<i;)if(null!=(e=n(t[o],o,t))&&e>=e)for(r=e;++o<i;)null!=(e=n(t[o],o,t))&&e>r&&(r=e);return r},mf=function(t,n){var e,r=t.length,i=r,o=-1,u=0;if(null==n)for(;++o<r;)isNaN(e=Qs(t[o]))?--i:u+=e;else for(;++o<r;)isNaN(e=Qs(n(t[o],o,t)))?--i:u+=e;if(i)return u/i},xf=function(t,n){var e,r=t.length,i=-1,o=[];if(null==n)for(;++i<r;)isNaN(e=Qs(t[i]))||o.push(e);else for(;++i<r;)isNaN(e=Qs(n(t[i],i,t)))||o.push(e);return vf(o.sort(Hs),.5)},bf=function(t){for(var n,e,r,i=t.length,o=-1,u=0;++o<i;)u+=t[o].length;for(e=new Array(u);--i>=0;)for(r=t[i],n=r.length;--n>=0;)e[--u]=r[n];return e},wf=function(t,n){var e,r,i=t.length,o=-1;if(null==n){for(;++o<i;)if(null!=(e=t[o])&&e>=e)for(r=e;++o<i;)null!=(e=t[o])&&r>e&&(r=e)}else for(;++o<i;)if(null!=(e=n(t[o],o,t))&&e>=e)for(r=e;++o<i;)null!=(e=n(t[o],o,t))&&r>e&&(r=e);return r},Mf=function(t,n){for(var e=n.length,r=new Array(e);e--;)r[e]=t[n[e]];return r},kf=function(t,n){if(e=t.length){var e,r,i=0,o=0,u=t[o];for(null==n&&(n=Hs);++i<e;)(n(r=t[i],u)<0||0!==n(u,u))&&(u=r,o=i);return 0===n(u,u)?o:void 0}},Ef=function(t,n,e){for(var r,i,o=(null==e?t.length:e)-(n=null==n?0:+n);o;)i=Math.random()*o--|0,r=t[o+n],t[o+n]=t[i+n],t[i+n]=r;return t},Tf=function(t,n){var e,r=t.length,i=-1,o=0;if(null==n)for(;++i<r;)(e=+t[i])&&(o+=e);else for(;++i<r;)(e=+n(t[i],i,t))&&(o+=e);return o},Sf=function(t){if(!(i=t.length))return[];for(var n=-1,e=wf(t,o),r=new Array(e);++n<e;)for(var i,u=-1,a=r[n]=new Array(i);++u<i;)a[u]=t[u][n];return r},Af=function(){return Sf(arguments)},Nf=Array.prototype.slice,Cf=function(t){return t},Pf=1,zf=2,Lf=3,Rf=4,qf=1e-6,Uf={value:function(){}};g.prototype=v.prototype={constructor:g,on:function(t,n){var e,r=this._,i=y(t+"",r),o=-1,u=i.length;{if(!(arguments.length<2)){if(null!=n&&"function"!=typeof n)throw new Error("invalid callback: "+n);for(;++o<u;)if(e=(t=i[o]).type)r[e]=m(r[e],t.name,n);else if(null==n)for(e in r)r[e]=m(r[e],t.name,null);return this}for(;++o<u;)if((e=(t=i[o]).type)&&(e=_(r[e],t.name)))return e}},copy:function(){var t={},n=this._;for(var e in n)t[e]=n[e].slice();return new g(t)},call:function(t,n){if((e=arguments.length-2)>0)for(var e,r,i=new Array(e),o=0;o<e;++o)i[o]=arguments[o+2];if(!this._.hasOwnProperty(t))throw new Error("unknown type: "+t);for(r=this._[t],o=0,e=r.length;o<e;++o)r[o].value.apply(n,i)},apply:function(t,n,e){if(!this._.hasOwnProperty(t))throw new Error("unknown type: "+t);for(var r=this._[t],i=0,o=r.length;i<o;++i)r[i].value.apply(n,e)}};var Of="http://www.w3.org/1999/xhtml",Df={svg:"http://www.w3.org/2000/svg",xhtml:Of,xlink:"http://www.w3.org/1999/xlink",xml:"http://www.w3.org/XML/1998/namespace",xmlns:"http://www.w3.org/2000/xmlns/"},If=function(t){var n=t+="",e=n.indexOf(":");return e>=0&&"xmlns"!==(n=t.slice(0,e))&&(t=t.slice(e+1)),Df.hasOwnProperty(n)?{space:Df[n],local:t}:t},Ff=function(t){var n=If(t);return(n.local?b:x)(n)},jf=0;M.prototype=w.prototype={constructor:M,get:function(t){for(var n=this._;!(n in t);)if(!(t=t.parentNode))return;return t[n]},set:function(t,n){return t[this._]=n},remove:function(t){return this._ in t&&delete t[this._]},toString:function(){return this._}};var Yf=function(t){return function(){return this.matches(t)}};if("undefined"!=typeof document){var Bf=document.documentElement;if(!Bf.matches){var Hf=Bf.webkitMatchesSelector||Bf.msMatchesSelector||Bf.mozMatchesSelector||Bf.oMatchesSelector;Yf=function(t){return function(){return Hf.call(this,t)}}}}var Xf=Yf,Gf={};if(t.event=null,"undefined"!=typeof document){"onmouseenter"in document.documentElement||(Gf={mouseenter:"mouseover",mouseleave:"mouseout"})}var $f=function(t,n,e){var r,i,o=T(t+""),u=o.length;{if(!(arguments.length<2)){for(a=n?A:S,null==e&&(e=!1),r=0;r<u;++r)this.each(a(o[r],n,e));return this}var a=this.node().__on;if(a)for(var c,s=0,f=a.length;s<f;++s)for(r=0,c=a[s];r<u;++r)if((i=o[r]).type===c.type&&i.name===c.name)return c.value}},Vf=function(){for(var n,e=t.event;n=e.sourceEvent;)e=n;return e},Wf=function(t,n){var e=t.ownerSVGElement||t;if(e.createSVGPoint){var r=e.createSVGPoint();return r.x=n.clientX,r.y=n.clientY,r=r.matrixTransform(t.getScreenCTM().inverse()),[r.x,r.y]}var i=t.getBoundingClientRect();return[n.clientX-i.left-t.clientLeft,n.clientY-i.top-t.clientTop]},Zf=function(t){var n=Vf();return n.changedTouches&&(n=n.changedTouches[0]),Wf(t,n)},Jf=function(t){return null==t?C:function(){return this.querySelector(t)}},Qf=function(t){"function"!=typeof t&&(t=Jf(t));for(var n=this._groups,e=n.length,r=new Array(e),i=0;i<e;++i)for(var o,u,a=n[i],c=a.length,s=r[i]=new Array(c),f=0;f<c;++f)(o=a[f])&&(u=t.call(o,o.__data__,f,a))&&("__data__"in o&&(u.__data__=o.__data__),s[f]=u);return new gt(r,this._parents)},Kf=function(t){return null==t?P:function(){return this.querySelectorAll(t)}},tl=function(t){"function"!=typeof t&&(t=Kf(t));for(var n=this._groups,e=n.length,r=[],i=[],o=0;o<e;++o)for(var u,a=n[o],c=a.length,s=0;s<c;++s)(u=a[s])&&(r.push(t.call(u,u.__data__,s,a)),i.push(u));return new gt(r,i)},nl=function(t){"function"!=typeof t&&(t=Xf(t));for(var n=this._groups,e=n.length,r=new Array(e),i=0;i<e;++i)for(var o,u=n[i],a=u.length,c=r[i]=[],s=0;s<a;++s)(o=u[s])&&t.call(o,o.__data__,s,u)&&c.push(o);return new gt(r,this._parents)},el=function(t){return new Array(t.length)},rl=function(){return new gt(this._enter||this._groups.map(el),this._parents)};z.prototype={constructor:z,appendChild:function(t){return this._parent.insertBefore(t,this._next)},insertBefore:function(t,n){return this._parent.insertBefore(t,n)},querySelector:function(t){return this._parent.querySelector(t)},querySelectorAll:function(t){return this._parent.querySelectorAll(t)}};var il=function(t){return function(){return t}},ol="$",ul=function(t,n){if(!t)return p=new Array(this.size()),s=-1,this.each(function(t){p[++s]=t}),p;var e=n?R:L,r=this._parents,i=this._groups;"function"!=typeof t&&(t=il(t));for(var o=i.length,u=new Array(o),a=new Array(o),c=new Array(o),s=0;s<o;++s){var f=r[s],l=i[s],h=l.length,p=t.call(f,f&&f.__data__,s,r),d=p.length,v=a[s]=new Array(d),g=u[s]=new Array(d);e(f,l,v,g,c[s]=new Array(h),p,n);for(var y,_,m=0,x=0;m<d;++m)if(y=v[m]){for(m>=x&&(x=m+1);!(_=g[x])&&++x<d;);y._next=_||null}}return u=new gt(u,r),u._enter=a,u._exit=c,u},al=function(){return new gt(this._exit||this._groups.map(el),this._parents)},cl=function(t){for(var n=this._groups,e=t._groups,r=n.length,i=e.length,o=Math.min(r,i),u=new Array(r),a=0;a<o;++a)for(var c,s=n[a],f=e[a],l=s.length,h=u[a]=new Array(l),p=0;p<l;++p)(c=s[p]||f[p])&&(h[p]=c);for(;a<r;++a)u[a]=n[a];return new gt(u,this._parents)},sl=function(){for(var t=this._groups,n=-1,e=t.length;++n<e;)for(var r,i=t[n],o=i.length-1,u=i[o];--o>=0;)(r=i[o])&&(u&&u!==r.nextSibling&&u.parentNode.insertBefore(r,u),u=r);return this},fl=function(t){function n(n,e){return n&&e?t(n.__data__,e.__data__):!n-!e}t||(t=q);for(var e=this._groups,r=e.length,i=new Array(r),o=0;o<r;++o){for(var u,a=e[o],c=a.length,s=i[o]=new Array(c),f=0;f<c;++f)(u=a[f])&&(s[f]=u);s.sort(n)}return new gt(i,this._parents).order()},ll=function(){var t=arguments[0];return arguments[0]=this,t.apply(null,arguments),this},hl=function(){var t=new Array(this.size()),n=-1;return this.each(function(){t[++n]=this}),t},pl=function(){for(var t=this._groups,n=0,e=t.length;n<e;++n)for(var r=t[n],i=0,o=r.length;i<o;++i){var u=r[i];if(u)return u}return null},dl=function(){var t=0;return this.each(function(){++t}),t},vl=function(){return!this.node()},gl=function(t){for(var n=this._groups,e=0,r=n.length;e<r;++e)for(var i,o=n[e],u=0,a=o.length;u<a;++u)(i=o[u])&&t.call(i,i.__data__,u,o);return this},yl=function(t,n){var e=If(t);if(arguments.length<2){var r=this.node();return e.local?r.getAttributeNS(e.space,e.local):r.getAttribute(e)}return this.each((null==n?e.local?O:U:"function"==typeof n?e.local?j:F:e.local?I:D)(e,n))},_l=function(t){return t.ownerDocument&&t.ownerDocument.defaultView||t.document&&t||t.defaultView},ml=function(t,n,e){return arguments.length>1?this.each((null==n?Y:"function"==typeof n?H:B)(t,n,null==e?"":e)):X(this.node(),t)},xl=function(t,n){return arguments.length>1?this.each((null==n?G:"function"==typeof n?V:$)(t,n)):this.node()[t]};J.prototype={add:function(t){this._names.indexOf(t)<0&&(this._names.push(t),this._node.setAttribute("class",this._names.join(" ")))},remove:function(t){var n=this._names.indexOf(t);n>=0&&(this._names.splice(n,1),this._node.setAttribute("class",this._names.join(" ")))},contains:function(t){return this._names.indexOf(t)>=0}};var bl=function(t,n){var e=W(t+"");if(arguments.length<2){for(var r=Z(this.node()),i=-1,o=e.length;++i<o;)if(!r.contains(e[i]))return!1;return!0}return this.each(("function"==typeof n?et:n?tt:nt)(e,n))},wl=function(t){return arguments.length?this.each(null==t?rt:("function"==typeof t?ot:it)(t)):this.node().textContent},Ml=function(t){return arguments.length?this.each(null==t?ut:("function"==typeof t?ct:at)(t)):this.node().innerHTML},kl=function(){return this.each(st)},El=function(){return this.each(ft)},Tl=function(t){var n="function"==typeof t?t:Ff(t);return this.select(function(){return this.appendChild(n.apply(this,arguments))})},Sl=function(t,n){var e="function"==typeof t?t:Ff(t),r=null==n?lt:"function"==typeof n?n:Jf(n);return this.select(function(){return this.insertBefore(e.apply(this,arguments),r.apply(this,arguments)||null)})},Al=function(){return this.each(ht)},Nl=function(t){return arguments.length?this.property("__data__",t):this.node().__data__},Cl=function(t,n){return this.each(("function"==typeof n?vt:dt)(t,n))},Pl=[null];gt.prototype=yt.prototype={constructor:gt,select:Qf,selectAll:tl,filter:nl,data:ul,enter:rl,exit:al,merge:cl,order:sl,sort:fl,call:ll,nodes:hl,node:pl,size:dl,empty:vl,each:gl,attr:yl,style:ml,property:xl,classed:bl,text:wl,html:Ml,raise:kl,lower:El,append:Tl,insert:Sl,remove:Al,datum:Nl,on:$f,dispatch:Cl};var zl=function(t){return"string"==typeof t?new gt([[document.querySelector(t)]],[document.documentElement]):new gt([[t]],Pl)},Ll=function(t){return"string"==typeof t?new gt([document.querySelectorAll(t)],[document.documentElement]):new gt([null==t?[]:t],Pl)},Rl=function(t,n,e){arguments.length<3&&(e=n,n=Vf().changedTouches);for(var r,i=0,o=n?n.length:0;i<o;++i)if((r=n[i]).identifier===e)return Wf(t,r);return null},ql=function(t,n){null==n&&(n=Vf().touches);for(var e=0,r=n?n.length:0,i=new Array(r);e<r;++e)i[e]=Wf(t,n[e]);return i},Ul=function(){t.event.preventDefault(),t.event.stopImmediatePropagation()},Ol=function(t){var n=t.document.documentElement,e=zl(t).on("dragstart.drag",Ul,!0);"onselectstart"in n?e.on("selectstart.drag",Ul,!0):(n.__noselect=n.style.MozUserSelect,n.style.MozUserSelect="none")},Dl=function(t){return function(){return t}};xt.prototype.on=function(){var t=this._.on.apply(this._,arguments);return t===this._?this:t};var Il=function(){function n(t){t.on("mousedown.drag",e).on("touchstart.drag",o).on("touchmove.drag",u).on("touchend.drag touchcancel.drag",a).style("-webkit-tap-highlight-color","rgba(0,0,0,0)")}function e(){if(!h&&p.apply(this,arguments)){var n=c("mouse",d.apply(this,arguments),Zf,this,arguments);n&&(zl(t.event.view).on("mousemove.drag",r,!0).on("mouseup.drag",i,!0),Ol(t.event.view),_t(),l=!1,s=t.event.clientX,f=t.event.clientY,n("start"))}}function r(){if(Ul(),!l){var n=t.event.clientX-s,e=t.event.clientY-f;l=n*n+e*e>x}y.mouse("drag")}function i(){zl(t.event.view).on("mousemove.drag mouseup.drag",null),mt(t.event.view,l),Ul(),y.mouse("end")}function o(){if(p.apply(this,arguments)){var n,e,r=t.event.changedTouches,i=d.apply(this,arguments),o=r.length;for(n=0;n<o;++n)(e=c(r[n].identifier,i,Rl,this,arguments))&&(_t(),e("start"))}}function u(){var n,e,r=t.event.changedTouches,i=r.length;for(n=0;n<i;++n)(e=y[r[n].identifier])&&(Ul(),e("drag"))}function a(){var n,e,r=t.event.changedTouches,i=r.length;for(h&&clearTimeout(h),h=setTimeout(function(){h=null},500),n=0;n<i;++n)(e=y[r[n].identifier])&&(_t(),e("end"))}function c(e,r,i,o,u){var a,c,s,f=i(r,e),l=_.copy();if(N(new xt(n,"beforestart",a,e,m,f[0],f[1],0,0,l),function(){return null!=(t.event.subject=a=g.apply(o,u))&&(c=a.x-f[0]||0,s=a.y-f[1]||0,!0)}))return function t(h){var p,d=f;switch(h){case"start":y[e]=t,p=m++;break;case"end":delete y[e],--m;case"drag":f=i(r,e),p=m}N(new xt(n,h,a,e,p,f[0]+c,f[1]+s,f[0]-d[0],f[1]-d[1],l),l.apply,l,[h,o,u])}}var s,f,l,h,p=bt,d=wt,g=Mt,y={},_=v("start","drag","end"),m=0,x=0;return n.filter=function(t){return arguments.length?(p="function"==typeof t?t:Dl(!!t),n):p},n.container=function(t){return arguments.length?(d="function"==typeof t?t:Dl(t),n):d},n.subject=function(t){return arguments.length?(g="function"==typeof t?t:Dl(t),n):g},n.on=function(){var t=_.on.apply(_,arguments);return t===_?n:t},n.clickDistance=function(t){return arguments.length?(x=(t=+t)*t,n):Math.sqrt(x)},n},Fl=function(t,n,e){t.prototype=n.prototype=e,e.constructor=t},jl="\\s*([+-]?\\d+)\\s*",Yl="\\s*([+-]?\\d*\\.?\\d+(?:[eE][+-]?\\d+)?)\\s*",Bl="\\s*([+-]?\\d*\\.?\\d+(?:[eE][+-]?\\d+)?)%\\s*",Hl=/^#([0-9a-f]{3})$/,Xl=/^#([0-9a-f]{6})$/,Gl=new RegExp("^rgb\\("+[jl,jl,jl]+"\\)$"),$l=new RegExp("^rgb\\("+[Bl,Bl,Bl]+"\\)$"),Vl=new RegExp("^rgba\\("+[jl,jl,jl,Yl]+"\\)$"),Wl=new RegExp("^rgba\\("+[Bl,Bl,Bl,Yl]+"\\)$"),Zl=new RegExp("^hsl\\("+[Yl,Bl,Bl]+"\\)$"),Jl=new RegExp("^hsla\\("+[Yl,Bl,Bl,Yl]+"\\)$"),Ql={aliceblue:15792383,antiquewhite:16444375,aqua:65535,aquamarine:8388564,azure:15794175,beige:16119260,bisque:16770244,black:0,blanchedalmond:16772045,blue:255,blueviolet:9055202,brown:10824234,burlywood:14596231,cadetblue:6266528,chartreuse:8388352,chocolate:13789470,coral:16744272,cornflowerblue:6591981,cornsilk:16775388,crimson:14423100,cyan:65535,darkblue:139,darkcyan:35723,darkgoldenrod:12092939,darkgray:11119017,darkgreen:25600,darkgrey:11119017,darkkhaki:12433259,darkmagenta:9109643,darkolivegreen:5597999,darkorange:16747520,darkorchid:10040012,darkred:9109504,darksalmon:15308410,darkseagreen:9419919,darkslateblue:4734347,darkslategray:3100495,darkslategrey:3100495,darkturquoise:52945,darkviolet:9699539,deeppink:16716947,deepskyblue:49151,dimgray:6908265,dimgrey:6908265,dodgerblue:2003199,firebrick:11674146,floralwhite:16775920,forestgreen:2263842,fuchsia:16711935,gainsboro:14474460,ghostwhite:16316671,gold:16766720,goldenrod:14329120,gray:8421504,green:32768,greenyellow:11403055,grey:8421504,honeydew:15794160,hotpink:16738740,indianred:13458524,indigo:4915330,ivory:16777200,khaki:15787660,lavender:15132410,lavenderblush:16773365,lawngreen:8190976,lemonchiffon:16775885,lightblue:11393254,lightcoral:15761536,lightcyan:14745599,lightgoldenrodyellow:16448210,lightgray:13882323,lightgreen:9498256,lightgrey:13882323,lightpink:16758465,lightsalmon:16752762,lightseagreen:2142890,lightskyblue:8900346,lightslategray:7833753,lightslategrey:7833753,lightsteelblue:11584734,lightyellow:16777184,lime:65280,limegreen:3329330,linen:16445670,magenta:16711935,maroon:8388608,mediumaquamarine:6737322,mediumblue:205,mediumorchid:12211667,mediumpurple:9662683,mediumseagreen:3978097,mediumslateblue:8087790,mediumspringgreen:64154,mediumturquoise:4772300,mediumvioletred:13047173,midnightblue:1644912,mintcream:16121850,mistyrose:16770273,moccasin:16770229,navajowhite:16768685,navy:128,oldlace:16643558,olive:8421376,olivedrab:7048739,orange:16753920,orangered:16729344,orchid:14315734,palegoldenrod:15657130,palegreen:10025880,paleturquoise:11529966,palevioletred:14381203,papayawhip:16773077,peachpuff:16767673,peru:13468991,pink:16761035,plum:14524637,powderblue:11591910,purple:8388736,rebeccapurple:6697881,red:16711680,rosybrown:12357519,royalblue:4286945,saddlebrown:9127187,salmon:16416882,sandybrown:16032864,seagreen:3050327,seashell:16774638,sienna:10506797,silver:12632256,skyblue:8900331,slateblue:6970061,slategray:7372944,slategrey:7372944,snow:16775930,springgreen:65407,steelblue:4620980,tan:13808780,teal:32896,thistle:14204888,tomato:16737095,turquoise:4251856,violet:15631086,wheat:16113331,white:16777215,whitesmoke:16119285,yellow:16776960,yellowgreen:10145074};Fl(Et,Tt,{displayable:function(){return this.rgb().displayable()},toString:function(){return this.rgb()+""}}),Fl(Pt,Ct,kt(Et,{brighter:function(t){return t=null==t?1/.7:Math.pow(1/.7,t),new Pt(this.r*t,this.g*t,this.b*t,this.opacity)},darker:function(t){return t=null==t?.7:Math.pow(.7,t),new Pt(this.r*t,this.g*t,this.b*t,this.opacity)},rgb:function(){return this},displayable:function(){return 0<=this.r&&this.r<=255&&0<=this.g&&this.g<=255&&0<=this.b&&this.b<=255&&0<=this.opacity&&this.opacity<=1},toString:function(){var t=this.opacity;return t=isNaN(t)?1:Math.max(0,Math.min(1,t)),(1===t?"rgb(":"rgba(")+Math.max(0,Math.min(255,Math.round(this.r)||0))+", "+Math.max(0,Math.min(255,Math.round(this.g)||0))+", "+Math.max(0,Math.min(255,Math.round(this.b)||0))+(1===t?")":", "+t+")")}})),Fl(qt,Rt,kt(Et,{brighter:function(t){return t=null==t?1/.7:Math.pow(1/.7,t),new qt(this.h,this.s,this.l*t,this.opacity)},darker:function(t){return t=null==t?.7:Math.pow(.7,t),new qt(this.h,this.s,this.l*t,this.opacity)},rgb:function(){var t=this.h%360+360*(this.h<0),n=isNaN(t)||isNaN(this.s)?0:this.s,e=this.l,r=e+(e<.5?e:1-e)*n,i=2*e-r;return new Pt(Ut(t>=240?t-240:t+120,i,r),Ut(t,i,r),Ut(t<120?t+240:t-120,i,r),this.opacity)},displayable:function(){return(0<=this.s&&this.s<=1||isNaN(this.s))&&0<=this.l&&this.l<=1&&0<=this.opacity&&this.opacity<=1}}));var Kl=Math.PI/180,th=180/Math.PI,nh=.95047,eh=1,rh=1.08883,ih=4/29,oh=6/29,uh=3*oh*oh,ah=oh*oh*oh;Fl(It,Dt,kt(Et,{brighter:function(t){return new It(this.l+18*(null==t?1:t),this.a,this.b,this.opacity)},darker:function(t){return new It(this.l-18*(null==t?1:t),this.a,this.b,this.opacity)},rgb:function(){var t=(this.l+16)/116,n=isNaN(this.a)?t:t+this.a/500,e=isNaN(this.b)?t:t-this.b/200;return t=eh*jt(t),n=nh*jt(n),e=rh*jt(e),new Pt(Yt(3.2404542*n-1.5371385*t-.4985314*e),Yt(-.969266*n+1.8760108*t+.041556*e),Yt(.0556434*n-.2040259*t+1.0572252*e),this.opacity)}})),Fl(Gt,Xt,kt(Et,{brighter:function(t){return new Gt(this.h,this.c,this.l+18*(null==t?1:t),this.opacity)},darker:function(t){return new Gt(this.h,this.c,this.l-18*(null==t?1:t),this.opacity)},rgb:function(){return Ot(this).rgb()}}));var ch=-.14861,sh=1.78277,fh=-.29227,lh=-.90649,hh=1.97294,ph=hh*lh,dh=hh*sh,vh=sh*fh-lh*ch;Fl(Wt,Vt,kt(Et,{brighter:function(t){return t=null==t?1/.7:Math.pow(1/.7,t),new Wt(this.h,this.s,this.l*t,this.opacity)},darker:function(t){return t=null==t?.7:Math.pow(.7,t),new Wt(this.h,this.s,this.l*t,this.opacity)},rgb:function(){var t=isNaN(this.h)?0:(this.h+120)*Kl,n=+this.l,e=isNaN(this.s)?0:this.s*n*(1-n),r=Math.cos(t),i=Math.sin(t);return new Pt(255*(n+e*(ch*r+sh*i)),255*(n+e*(fh*r+lh*i)),255*(n+e*(hh*r)),this.opacity)}}));var gh,yh,_h,mh,xh,bh,wh=function(t){var n=t.length-1;return function(e){var r=e<=0?e=0:e>=1?(e=1,n-1):Math.floor(e*n),i=t[r],o=t[r+1],u=r>0?t[r-1]:2*i-o,a=r<n-1?t[r+2]:2*o-i;return Zt((e-r/n)*n,u,i,o,a)}},Mh=function(t){var n=t.length;return function(e){var r=Math.floor(((e%=1)<0?++e:e)*n),i=t[(r+n-1)%n],o=t[r%n],u=t[(r+1)%n],a=t[(r+2)%n];return Zt((e-r/n)*n,i,o,u,a)}},kh=function(t){return function(){return t}},Eh=function t(n){function e(t,n){var e=r((t=Ct(t)).r,(n=Ct(n)).r),i=r(t.g,n.g),o=r(t.b,n.b),u=nn(t.opacity,n.opacity);return function(n){return t.r=e(n),t.g=i(n),t.b=o(n),t.opacity=u(n),t+""}}var r=tn(n);return e.gamma=t,e}(1),Th=en(wh),Sh=en(Mh),Ah=function(t,n){var e,r=n?n.length:0,i=t?Math.min(r,t.length):0,o=new Array(r),u=new Array(r);for(e=0;e<i;++e)o[e]=qh(t[e],n[e]);for(;e<r;++e)u[e]=n[e];return function(t){for(e=0;e<i;++e)u[e]=o[e](t);return u}},Nh=function(t,n){var e=new Date;return t=+t,n-=t,function(r){return e.setTime(t+n*r),e}},Ch=function(t,n){return t=+t,n-=t,function(e){return t+n*e}},Ph=function(t,n){var e,r={},i={};null!==t&&"object"==typeof t||(t={}),null!==n&&"object"==typeof n||(n={});for(e in n)e in t?r[e]=qh(t[e],n[e]):i[e]=n[e];return function(t){for(e in r)i[e]=r[e](t);return i}},zh=/[-+]?(?:\d+\.?\d*|\.?\d+)(?:[eE][-+]?\d+)?/g,Lh=new RegExp(zh.source,"g"),Rh=function(t,n){var e,r,i,o=zh.lastIndex=Lh.lastIndex=0,u=-1,a=[],c=[];for(t+="",n+="";(e=zh.exec(t))&&(r=Lh.exec(n));)(i=r.index)>o&&(i=n.slice(o,i),a[u]?a[u]+=i:a[++u]=i),(e=e[0])===(r=r[0])?a[u]?a[u]+=r:a[++u]=r:(a[++u]=null,c.push({i:u,x:Ch(e,r)})),o=Lh.lastIndex;return o<n.length&&(i=n.slice(o),a[u]?a[u]+=i:a[++u]=i),a.length<2?c[0]?on(c[0].x):rn(n):(n=c.length,function(t){for(var e,r=0;r<n;++r)a[(e=c[r]).i]=e.x(t);return a.join("")})},qh=function(t,n){var e,r=typeof n;return null==n||"boolean"===r?kh(n):("number"===r?Ch:"string"===r?(e=Tt(n))?(n=e,Eh):Rh:n instanceof Tt?Eh:n instanceof Date?Nh:Array.isArray(n)?Ah:"function"!=typeof n.valueOf&&"function"!=typeof n.toString||isNaN(n)?Ph:Ch)(t,n)},Uh=function(t,n){return t=+t,n-=t,function(e){return Math.round(t+n*e)}},Oh=180/Math.PI,Dh={translateX:0,translateY:0,rotate:0,skewX:0,scaleX:1,scaleY:1},Ih=function(t,n,e,r,i,o){var u,a,c;return(u=Math.sqrt(t*t+n*n))&&(t/=u,n/=u),(c=t*e+n*r)&&(e-=t*c,r-=n*c),(a=Math.sqrt(e*e+r*r))&&(e/=a,r/=a,c/=a),t*r<n*e&&(t=-t,n=-n,c=-c,u=-u),{translateX:i,translateY:o,rotate:Math.atan2(n,t)*Oh,skewX:Math.atan(c)*Oh,scaleX:u,scaleY:a}},Fh=cn(un,"px, ","px)","deg)"),jh=cn(an,", ",")",")"),Yh=Math.SQRT2,Bh=function(t,n){var e,r,i=t[0],o=t[1],u=t[2],a=n[0],c=n[1],s=n[2],f=a-i,l=c-o,h=f*f+l*l;if(h<1e-12)r=Math.log(s/u)/Yh,e=function(t){return[i+t*f,o+t*l,u*Math.exp(Yh*t*r)]};else{var p=Math.sqrt(h),d=(s*s-u*u+4*h)/(2*u*2*p),v=(s*s-u*u-4*h)/(2*s*2*p),g=Math.log(Math.sqrt(d*d+1)-d),y=Math.log(Math.sqrt(v*v+1)-v);r=(y-g)/Yh,e=function(t){var n=t*r,e=sn(g),a=u/(2*p)*(e*ln(Yh*n+g)-fn(g));return[i+a*f,o+a*l,u*e/sn(Yh*n+g)]}}return e.duration=1e3*r,e},Hh=hn(Kt),Xh=hn(nn),Gh=dn(Kt),$h=dn(nn),Vh=vn(Kt),Wh=vn(nn),Zh=function(t,n){for(var e=new Array(n),r=0;r<n;++r)e[r]=t(r/(n-1));return e},Jh=0,Qh=0,Kh=0,tp=1e3,np=0,ep=0,rp=0,ip="object"==typeof performance&&performance.now?performance:Date,op="function"==typeof requestAnimationFrame?requestAnimationFrame:function(t){setTimeout(t,17)};_n.prototype=mn.prototype={constructor:_n,restart:function(t,n,e){if("function"!=typeof t)throw new TypeError("callback is not a function");e=(null==e?gn():+e)+(null==n?0:+n),this._next||bh===this||(bh?bh._next=this:xh=this,bh=this),this._call=t,this._time=e,kn()},stop:function(){this._call&&(this._call=null,this._time=1/0,kn())}};var up=function(t,n,e){var r=new _n;return n=null==n?0:+n,r.restart(function(e){r.stop(),t(e+n)},n,e),r},ap=function(t,n,e){var r=new _n,i=n;return null==n?(r.restart(t,n,e),r):(n=+n,e=null==e?gn():+e,r.restart(function o(u){u+=i,r.restart(o,i+=n,e),t(u)},n,e),r)},cp=v("start","end","interrupt"),sp=[],fp=0,lp=1,hp=2,pp=3,dp=4,vp=5,gp=6,yp=function(t,n,e,r,i,o){var u=t.__transition;if(u){if(e in u)return}else t.__transition={};An(t,e,{name:n,index:r,group:i,on:cp,tween:sp,time:o.time,delay:o.delay,duration:o.duration,ease:o.ease,timer:null,state:fp})},_p=function(t,n){var e,r,i,o=t.__transition,u=!0;if(o){n=null==n?null:n+"";for(i in o)(e=o[i]).name===n?(r=e.state>hp&&e.state<vp,e.state=gp,e.timer.stop(),r&&e.on.call("interrupt",t,t.__data__,e.index,e.group),delete o[i]):u=!1;u&&delete t.__transition}},mp=function(t){return this.each(function(){_p(this,t)})},xp=function(t,n){var e=this._id;if(t+="",arguments.length<2){for(var r,i=Sn(this.node(),e).tween,o=0,u=i.length;o<u;++o)if((r=i[o]).name===t)return r.value;return null}return this.each((null==n?Nn:Cn)(e,t,n))},bp=function(t,n){var e;return("number"==typeof n?Ch:n instanceof Tt?Eh:(e=Tt(n))?(n=e,Eh):Rh)(t,n)},wp=function(t,n){var e=If(t),r="transform"===e?jh:bp;return this.attrTween(t,"function"==typeof n?(e.local?On:Un)(e,r,Pn(this,"attr."+t,n)):null==n?(e.local?Ln:zn)(e):(e.local?qn:Rn)(e,r,n+""))},Mp=function(t,n){var e="attr."+t;if(arguments.length<2)return(e=this.tween(e))&&e._value;if(null==n)return this.tween(e,null);if("function"!=typeof n)throw new Error;var r=If(t);return this.tween(e,(r.local?Dn:In)(r,n))},kp=function(t){var n=this._id;return arguments.length?this.each(("function"==typeof t?Fn:jn)(n,t)):Sn(this.node(),n).delay},Ep=function(t){var n=this._id;return arguments.length?this.each(("function"==typeof t?Yn:Bn)(n,t)):Sn(this.node(),n).duration},Tp=function(t){var n=this._id;return arguments.length?this.each(Hn(n,t)):Sn(this.node(),n).ease},Sp=function(t){"function"!=typeof t&&(t=Xf(t));for(var n=this._groups,e=n.length,r=new Array(e),i=0;i<e;++i)for(var o,u=n[i],a=u.length,c=r[i]=[],s=0;s<a;++s)(o=u[s])&&t.call(o,o.__data__,s,u)&&c.push(o);return new ne(r,this._parents,this._name,this._id)},Ap=function(t){if(t._id!==this._id)throw new Error;for(var n=this._groups,e=t._groups,r=n.length,i=e.length,o=Math.min(r,i),u=new Array(r),a=0;a<o;++a)for(var c,s=n[a],f=e[a],l=s.length,h=u[a]=new Array(l),p=0;p<l;++p)(c=s[p]||f[p])&&(h[p]=c);for(;a<r;++a)u[a]=n[a];return new ne(u,this._parents,this._name,this._id)},Np=function(t,n){var e=this._id;return arguments.length<2?Sn(this.node(),e).on.on(t):this.each(Gn(e,t,n))},Cp=function(){return this.on("end.remove",$n(this._id))},Pp=function(t){var n=this._name,e=this._id;"function"!=typeof t&&(t=Jf(t));for(var r=this._groups,i=r.length,o=new Array(i),u=0;u<i;++u)for(var a,c,s=r[u],f=s.length,l=o[u]=new Array(f),h=0;h<f;++h)(a=s[h])&&(c=t.call(a,a.__data__,h,s))&&("__data__"in a&&(c.__data__=a.__data__),l[h]=c,yp(l[h],n,e,h,l,Sn(a,e)));return new ne(o,this._parents,n,e)},zp=function(t){var n=this._name,e=this._id;"function"!=typeof t&&(t=Kf(t));for(var r=this._groups,i=r.length,o=[],u=[],a=0;a<i;++a)for(var c,s=r[a],f=s.length,l=0;l<f;++l)if(c=s[l]){for(var h,p=t.call(c,c.__data__,l,s),d=Sn(c,e),v=0,g=p.length;v<g;++v)(h=p[v])&&yp(h,n,e,v,p,d);o.push(p),u.push(c)}return new ne(o,u,n,e)},Lp=yt.prototype.constructor,Rp=function(){return new Lp(this._groups,this._parents)},qp=function(t,n,e){var r="transform"==(t+="")?Fh:bp;return null==n?this.styleTween(t,Vn(t,r)).on("end.style."+t,Wn(t)):this.styleTween(t,"function"==typeof n?Jn(t,r,Pn(this,"style."+t,n)):Zn(t,r,n+""),e)},Up=function(t,n,e){var r="style."+(t+="");if(arguments.length<2)return(r=this.tween(r))&&r._value;if(null==n)return this.tween(r,null);if("function"!=typeof n)throw new Error;return this.tween(r,Qn(t,n,null==e?"":e))},Op=function(t){return this.tween("text","function"==typeof t?te(Pn(this,"text",t)):Kn(null==t?"":t+""))},Dp=function(){for(var t=this._name,n=this._id,e=re(),r=this._groups,i=r.length,o=0;o<i;++o)for(var u,a=r[o],c=a.length,s=0;s<c;++s)if(u=a[s]){var f=Sn(u,n);yp(u,t,e,s,a,{time:f.time+f.delay+f.duration,delay:0,duration:f.duration,ease:f.ease})}return new ne(r,this._parents,t,e)},Ip=0,Fp=yt.prototype;ne.prototype=ee.prototype={constructor:ne,select:Pp,selectAll:zp,filter:Sp,merge:Ap,selection:Rp,transition:Dp,call:Fp.call,nodes:Fp.nodes,node:Fp.node,size:Fp.size,empty:Fp.empty,each:Fp.each,on:Np,attr:wp,attrTween:Mp,style:qp,styleTween:Up,text:Op,remove:Cp,tween:xp,delay:kp,duration:Ep,ease:Tp};var jp=function t(n){function e(t){return Math.pow(t,n)}return n=+n,e.exponent=t,e}(3),Yp=function t(n){function e(t){return 1-Math.pow(1-t,n)}return n=+n,e.exponent=t,e}(3),Bp=function t(n){function e(t){return((t*=2)<=1?Math.pow(t,n):2-Math.pow(2-t,n))/2}return n=+n,e.exponent=t,e}(3),Hp=Math.PI,Xp=Hp/2,Gp=4/11,$p=6/11,Vp=8/11,Wp=.75,Zp=9/11,Jp=10/11,Qp=.9375,Kp=21/22,td=63/64,nd=1/Gp/Gp,ed=function t(n){function e(t){return t*t*((n+1)*t-n)}return n=+n,e.overshoot=t,e}(1.70158),rd=function t(n){function e(t){return--t*t*((n+1)*t+n)+1}return n=+n,e.overshoot=t,e}(1.70158),id=function t(n){function e(t){return((t*=2)<1?t*t*((n+1)*t-n):(t-=2)*t*((n+1)*t+n)+2)/2}return n=+n,e.overshoot=t,e}(1.70158),od=2*Math.PI,ud=function t(n,e){function r(t){return n*Math.pow(2,10*--t)*Math.sin((i-t)/e)}var i=Math.asin(1/(n=Math.max(1,n)))*(e/=od);return r.amplitude=function(n){return t(n,e*od)},r.period=function(e){return t(n,e)},r}(1,.3),ad=function t(n,e){function r(t){return 1-n*Math.pow(2,-10*(t=+t))*Math.sin((t+i)/e)}var i=Math.asin(1/(n=Math.max(1,n)))*(e/=od);return r.amplitude=function(n){return t(n,e*od)},r.period=function(e){return t(n,e)},r}(1,.3),cd=function t(n,e){function r(t){return((t=2*t-1)<0?n*Math.pow(2,10*t)*Math.sin((i-t)/e):2-n*Math.pow(2,-10*t)*Math.sin((i+t)/e))/2}var i=Math.asin(1/(n=Math.max(1,n)))*(e/=od);return r.amplitude=function(n){return t(n,e*od)},r.period=function(e){return t(n,e)},r}(1,.3),sd={time:null,delay:0,duration:250,ease:fe},fd=function(t){var n,e;t instanceof ne?(n=t._id,t=t._name):(n=re(),(e=sd).time=gn(),t=null==t?null:t+"");for(var r=this._groups,i=r.length,o=0;o<i;++o)for(var u,a=r[o],c=a.length,s=0;s<c;++s)(u=a[s])&&yp(u,t,n,s,a,e||Me(u,n));return new ne(r,this._parents,t,n)};yt.prototype.interrupt=mp,yt.prototype.transition=fd;var ld=[null],hd=function(t,n){var e,r,i=t.__transition;if(i){n=null==n?null:n+"";for(r in i)if((e=i[r]).state>lp&&e.name===n)return new ne([[t]],ld,n,+r)}return null},pd=function(t){return function(){return t}},dd=function(t,n,e){this.target=t,this.type=n,this.selection=e},vd=function(){t.event.preventDefault(),t.event.stopImmediatePropagation()},gd={name:"drag"},yd={name:"space"},_d={name:"handle"},md={name:"center"},xd={name:"x",handles:["e","w"].map(Ee),input:function(t,n){return t&&[[t[0],n[0][1]],[t[1],n[1][1]]]},output:function(t){return t&&[t[0][0],t[1][0]]}},bd={name:"y",handles:["n","s"].map(Ee),input:function(t,n){return t&&[[n[0][0],t[0]],[n[1][0],t[1]]]},output:function(t){return t&&[t[0][1],t[1][1]]}},wd={name:"xy",handles:["n","e","s","w","nw","ne","se","sw"].map(Ee),input:function(t){return t},output:function(t){return t}},Md={overlay:"crosshair",selection:"move",n:"ns-resize",e:"ew-resize",s:"ns-resize",w:"ew-resize",nw:"nwse-resize",ne:"nesw-resize",se:"nwse-resize",sw:"nesw-resize"},kd={e:"w",w:"e",nw:"ne",ne:"nw",se:"sw",sw:"se"},Ed={n:"s",s:"n",nw:"sw",ne:"se",se:"ne",sw:"nw"},Td={overlay:1,selection:1,n:null,e:1,s:null,w:-1,nw:-1,ne:1,se:1,sw:-1},Sd={overlay:1,selection:1,n:-1,e:null,s:1,w:null,nw:-1,ne:-1,se:1,sw:1},Ad=function(){return Le(wd)},Nd=Math.cos,Cd=Math.sin,Pd=Math.PI,zd=Pd/2,Ld=2*Pd,Rd=Math.max,qd=function(){function t(t){var o,u,a,c,s,f,l=t.length,h=[],p=cf(l),d=[],v=[],g=v.groups=new Array(l),y=new Array(l*l);for(o=0,s=-1;++s<l;){for(u=0,f=-1;++f<l;)u+=t[s][f];h.push(u),d.push(cf(l)),o+=u}for(e&&p.sort(function(t,n){return e(h[t],h[n])}),r&&d.forEach(function(n,e){n.sort(function(n,i){return r(t[e][n],t[e][i])})}),o=Rd(0,Ld-n*l)/o,c=o?n:Ld/l,u=0,s=-1;++s<l;){for(a=u,f=-1;++f<l;){var _=p[s],m=d[_][f],x=t[_][m],b=u,w=u+=x*o;y[m*l+_]={index:_,subindex:m,startAngle:b,endAngle:w,value:x}}g[_]={index:_,startAngle:a,endAngle:u,value:h[_]},u+=c}for(s=-1;++s<l;)for(f=s-1;++f<l;){var M=y[f*l+s],k=y[s*l+f];(M.value||k.value)&&v.push(M.value<k.value?{source:k,target:M}:{source:M,target:k})}return i?v.sort(i):v}var n=0,e=null,r=null,i=null;return t.padAngle=function(e){return arguments.length?(n=Rd(0,e),t):n},t.sortGroups=function(n){return arguments.length?(e=n,t):e},t.sortSubgroups=function(n){return arguments.length?(r=n,t):r},t.sortChords=function(n){return arguments.length?(null==n?i=null:(i=Re(n))._=n,t):i&&i._},t},Ud=Array.prototype.slice,Od=function(t){return function(){return t}},Dd=Math.PI,Id=2*Dd,Fd=Id-1e-6;qe.prototype=Ue.prototype={constructor:qe,moveTo:function(t,n){this._+="M"+(this._x0=this._x1=+t)+","+(this._y0=this._y1=+n)},closePath:function(){null!==this._x1&&(this._x1=this._x0,this._y1=this._y0,this._+="Z")},lineTo:function(t,n){this._+="L"+(this._x1=+t)+","+(this._y1=+n)},quadraticCurveTo:function(t,n,e,r){this._+="Q"+ +t+","+ +n+","+(this._x1=+e)+","+(this._y1=+r)},bezierCurveTo:function(t,n,e,r,i,o){this._+="C"+ +t+","+ +n+","+ +e+","+ +r+","+(this._x1=+i)+","+(this._y1=+o)},arcTo:function(t,n,e,r,i){t=+t,n=+n,e=+e,r=+r,i=+i;var o=this._x1,u=this._y1,a=e-t,c=r-n,s=o-t,f=u-n,l=s*s+f*f;if(i<0)throw new Error("negative radius: "+i);if(null===this._x1)this._+="M"+(this._x1=t)+","+(this._y1=n);else if(l>1e-6)if(Math.abs(f*a-c*s)>1e-6&&i){var h=e-o,p=r-u,d=a*a+c*c,v=h*h+p*p,g=Math.sqrt(d),y=Math.sqrt(l),_=i*Math.tan((Dd-Math.acos((d+l-v)/(2*g*y)))/2),m=_/y,x=_/g;Math.abs(m-1)>1e-6&&(this._+="L"+(t+m*s)+","+(n+m*f)),this._+="A"+i+","+i+",0,0,"+ +(f*h>s*p)+","+(this._x1=t+x*a)+","+(this._y1=n+x*c)}else this._+="L"+(this._x1=t)+","+(this._y1=n);else;},arc:function(t,n,e,r,i,o){t=+t,n=+n,e=+e;var u=e*Math.cos(r),a=e*Math.sin(r),c=t+u,s=n+a,f=1^o,l=o?r-i:i-r;if(e<0)throw new Error("negative radius: "+e);null===this._x1?this._+="M"+c+","+s:(Math.abs(this._x1-c)>1e-6||Math.abs(this._y1-s)>1e-6)&&(this._+="L"+c+","+s),e&&(l<0&&(l=l%Id+Id),l>Fd?this._+="A"+e+","+e+",0,1,"+f+","+(t-u)+","+(n-a)+"A"+e+","+e+",0,1,"+f+","+(this._x1=c)+","+(this._y1=s):l>1e-6&&(this._+="A"+e+","+e+",0,"+ +(l>=Dd)+","+f+","+(this._x1=t+e*Math.cos(i))+","+(this._y1=n+e*Math.sin(i))))},rect:function(t,n,e,r){this._+="M"+(this._x0=this._x1=+t)+","+(this._y0=this._y1=+n)+"h"+ +e+"v"+ +r+"h"+-e+"Z"},toString:function(){return this._}};var jd=function(){function t(){var t,a=Ud.call(arguments),c=n.apply(this,a),s=e.apply(this,a),f=+r.apply(this,(a[0]=c,a)),l=i.apply(this,a)-zd,h=o.apply(this,a)-zd,p=f*Nd(l),d=f*Cd(l),v=+r.apply(this,(a[0]=s,a)),g=i.apply(this,a)-zd,y=o.apply(this,a)-zd;if(u||(u=t=Ue()),u.moveTo(p,d),u.arc(0,0,f,l,h),l===g&&h===y||(u.quadraticCurveTo(0,0,v*Nd(g),v*Cd(g)),u.arc(0,0,v,g,y)),u.quadraticCurveTo(0,0,p,d),u.closePath(),t)return u=null,t+""||null}var n=Oe,e=De,r=Ie,i=Fe,o=je,u=null;return t.radius=function(n){return arguments.length?(r="function"==typeof n?n:Od(+n),t):r},t.startAngle=function(n){return arguments.length?(i="function"==typeof n?n:Od(+n),t):i},t.endAngle=function(n){return arguments.length?(o="function"==typeof n?n:Od(+n),t):o},t.source=function(e){return arguments.length?(n=e,t):n},t.target=function(n){return arguments.length?(e=n,t):e},t.context=function(n){return arguments.length?(u=null==n?null:n,t):u},t};Ye.prototype=Be.prototype={constructor:Ye,has:function(t){return"$"+t in this},get:function(t){return this["$"+t]},set:function(t,n){return this["$"+t]=n,this},remove:function(t){var n="$"+t;return n in this&&delete this[n]},clear:function(){for(var t in this)"$"===t[0]&&delete this[t]},keys:function(){var t=[];for(var n in this)"$"===n[0]&&t.push(n.slice(1));return t},values:function(){var t=[];for(var n in this)"$"===n[0]&&t.push(this[n]);return t},entries:function(){var t=[];for(var n in this)"$"===n[0]&&t.push({key:n.slice(1),value:this[n]});return t},size:function(){var t=0;for(var n in this)"$"===n[0]&&++t;return t},empty:function(){for(var t in this)if("$"===t[0])return!1;return!0},each:function(t){for(var n in this)"$"===n[0]&&t(this[n],n.slice(1),this)}};var Yd=function(){function t(n,i,u,a){if(i>=o.length)return null!=r?r(n):null!=e?n.sort(e):n;for(var c,s,f,l=-1,h=n.length,p=o[i++],d=Be(),v=u();++l<h;)(f=d.get(c=p(s=n[l])+""))?f.push(s):d.set(c,[s]);return d.each(function(n,e){a(v,e,t(n,i,u,a))}),v}function n(t,e){if(++e>o.length)return t;var i,a=u[e-1];return null!=r&&e>=o.length?i=t.entries():(i=[],t.each(function(t,r){i.push({key:r,values:n(t,e)})})),null!=a?i.sort(function(t,n){return a(t.key,n.key)}):i}var e,r,i,o=[],u=[];return i={object:function(n){return t(n,0,He,Xe)},map:function(n){return t(n,0,Ge,$e)},entries:function(e){return n(t(e,0,Ge,$e),0)},key:function(t){return o.push(t),i},sortKeys:function(t){return u[o.length-1]=t,i},sortValues:function(t){return e=t,i},rollup:function(t){return r=t,i}}},Bd=Be.prototype;Ve.prototype=We.prototype={constructor:Ve,has:Bd.has,add:function(t){return t+="",this["$"+t]=t,this},remove:Bd.remove,clear:Bd.clear,values:Bd.keys,size:Bd.size,empty:Bd.empty,each:Bd.each};var Hd=function(t){var n=[];for(var e in t)n.push(e);return n},Xd=function(t){var n=[];for(var e in t)n.push(t[e]);return n},Gd=function(t){var n=[];for(var e in t)n.push({key:e,value:t[e]});return n},$d=function(t){function n(t,n){var r,i,o=e(t,function(t,e){if(r)return r(t,e-1);i=t,r=n?Je(t,n):Ze(t)});return o.columns=i,o}function e(t,n){function e(){if(f>=s)return u;if(i)return i=!1,o;var n,e=f;if(34===t.charCodeAt(e)){for(var r=e;r++<s;)if(34===t.charCodeAt(r)){if(34!==t.charCodeAt(r+1))break;++r}return f=r+2,n=t.charCodeAt(r+1),13===n?(i=!0,10===t.charCodeAt(r+2)&&++f):10===n&&(i=!0),t.slice(e+1,r).replace(/""/g,'"')}for(;f<s;){var a=1;if(10===(n=t.charCodeAt(f++)))i=!0;else if(13===n)i=!0,10===t.charCodeAt(f)&&(++f,++a);else if(n!==c)continue;return t.slice(e,f-a)}return t.slice(e)}for(var r,i,o={},u={},a=[],s=t.length,f=0,l=0;(r=e())!==u;){for(var h=[];r!==o&&r!==u;)h.push(r),r=e();n&&null==(h=n(h,l++))||a.push(h)}return a}function r(n,e){return null==e&&(e=Qe(n)),[e.map(u).join(t)].concat(n.map(function(n){return e.map(function(t){return u(n[t])}).join(t)})).join("\n")}function i(t){return t.map(o).join("\n")}function o(n){return n.map(u).join(t)}function u(t){return null==t?"":a.test(t+="")?'"'+t.replace(/\"/g,'""')+'"':t}var a=new RegExp('["'+t+"\n\r]"),c=t.charCodeAt(0);return{parse:n,parseRows:e,format:r,formatRows:i}},Vd=$d(","),Wd=Vd.parse,Zd=Vd.parseRows,Jd=Vd.format,Qd=Vd.formatRows,Kd=$d("\t"),tv=Kd.parse,nv=Kd.parseRows,ev=Kd.format,rv=Kd.formatRows,iv=function(t,n){function e(){var e,i,o=r.length,u=0,a=0;for(e=0;e<o;++e)i=r[e],u+=i.x,a+=i.y;for(u=u/o-t,a=a/o-n,e=0;e<o;++e)i=r[e],i.x-=u,i.y-=a}var r;return null==t&&(t=0),null==n&&(n=0),e.initialize=function(t){r=t},e.x=function(n){return arguments.length?(t=+n,e):t},e.y=function(t){return arguments.length?(n=+t,e):n},e},ov=function(t){return function(){return t}},uv=function(){return 1e-6*(Math.random()-.5)},av=function(t){var n=+this._x.call(null,t),e=+this._y.call(null,t);return Ke(this.cover(n,e),n,e,t)},cv=function(t,n){if(isNaN(t=+t)||isNaN(n=+n))return this;var e=this._x0,r=this._y0,i=this._x1,o=this._y1;if(isNaN(e))i=(e=Math.floor(t))+1,o=(r=Math.floor(n))+1;else{if(!(e>t||t>i||r>n||n>o))return this;var u,a,c=i-e,s=this._root;switch(a=(n<(r+o)/2)<<1|t<(e+i)/2){case 0:do{u=new Array(4),u[a]=s,s=u}while(c*=2,i=e+c,o=r+c,t>i||n>o);break;case 1:do{u=new Array(4),u[a]=s,s=u}while(c*=2,e=i-c,o=r+c,e>t||n>o);break;case 2:do{u=new Array(4),u[a]=s,s=u}while(c*=2,i=e+c,r=o-c,t>i||r>n);break;case 3:do{u=new Array(4),u[a]=s,s=u}while(c*=2,e=i-c,r=o-c,e>t||r>n)}this._root&&this._root.length&&(this._root=s)}return this._x0=e,this._y0=r,this._x1=i,this._y1=o,this},sv=function(){var t=[];return this.visit(function(n){if(!n.length)do{t.push(n.data)}while(n=n.next)}),t},fv=function(t){return arguments.length?this.cover(+t[0][0],+t[0][1]).cover(+t[1][0],+t[1][1]):isNaN(this._x0)?void 0:[[this._x0,this._y0],[this._x1,this._y1]]},lv=function(t,n,e,r,i){this.node=t,this.x0=n,this.y0=e,this.x1=r,this.y1=i},hv=function(t,n,e){var r,i,o,u,a,c,s,f=this._x0,l=this._y0,h=this._x1,p=this._y1,d=[],v=this._root;for(v&&d.push(new lv(v,f,l,h,p)),null==e?e=1/0:(f=t-e,l=n-e,h=t+e,p=n+e,e*=e);c=d.pop();)if(!(!(v=c.node)||(i=c.x0)>h||(o=c.y0)>p||(u=c.x1)<f||(a=c.y1)<l))if(v.length){var g=(i+u)/2,y=(o+a)/2;d.push(new lv(v[3],g,y,u,a),new lv(v[2],i,y,g,a),new lv(v[1],g,o,u,y),new lv(v[0],i,o,g,y)),(s=(n>=y)<<1|t>=g)&&(c=d[d.length-1],d[d.length-1]=d[d.length-1-s],d[d.length-1-s]=c)}else{var _=t-+this._x.call(null,v.data),m=n-+this._y.call(null,v.data),x=_*_+m*m;if(x<e){var b=Math.sqrt(e=x);f=t-b,l=n-b,h=t+b,p=n+b,r=v.data}}return r},pv=function(t){if(isNaN(o=+this._x.call(null,t))||isNaN(u=+this._y.call(null,t)))return this;var n,e,r,i,o,u,a,c,s,f,l,h,p=this._root,d=this._x0,v=this._y0,g=this._x1,y=this._y1;if(!p)return this;if(p.length)for(;;){if((s=o>=(a=(d+g)/2))?d=a:g=a,(f=u>=(c=(v+y)/2))?v=c:y=c,n=p,!(p=p[l=f<<1|s]))return this;if(!p.length)break;(n[l+1&3]||n[l+2&3]||n[l+3&3])&&(e=n,h=l)}for(;p.data!==t;)if(r=p,!(p=p.next))return this;return(i=p.next)&&delete p.next,r?(i?r.next=i:delete r.next,this):n?(i?n[l]=i:delete n[l],(p=n[0]||n[1]||n[2]||n[3])&&p===(n[3]||n[2]||n[1]||n[0])&&!p.length&&(e?e[h]=p:this._root=p),this):(this._root=i,this)},dv=function(){return this._root},vv=function(){var t=0;return this.visit(function(n){if(!n.length)do{++t}while(n=n.next)}),t},gv=function(t){var n,e,r,i,o,u,a=[],c=this._root;for(c&&a.push(new lv(c,this._x0,this._y0,this._x1,this._y1));n=a.pop();)if(!t(c=n.node,r=n.x0,i=n.y0,o=n.x1,u=n.y1)&&c.length){var s=(r+o)/2,f=(i+u)/2;(e=c[3])&&a.push(new lv(e,s,f,o,u)),(e=c[2])&&a.push(new lv(e,r,f,s,u)),(e=c[1])&&a.push(new lv(e,s,i,o,f)),(e=c[0])&&a.push(new lv(e,r,i,s,f))}return this},yv=function(t){var n,e=[],r=[];for(this._root&&e.push(new lv(this._root,this._x0,this._y0,this._x1,this._y1));n=e.pop();){var i=n.node;if(i.length){var o,u=n.x0,a=n.y0,c=n.x1,s=n.y1,f=(u+c)/2,l=(a+s)/2;(o=i[0])&&e.push(new lv(o,u,a,f,l)),(o=i[1])&&e.push(new lv(o,f,a,c,l)),(o=i[2])&&e.push(new lv(o,u,l,f,s)),(o=i[3])&&e.push(new lv(o,f,l,c,s))}r.push(n)}for(;n=r.pop();)t(n.node,n.x0,n.y0,n.x1,n.y1);return this},_v=function(t){return arguments.length?(this._x=t,this):this._x},mv=function(t){return arguments.length?(this._y=t,this):this._y},xv=ir.prototype=or.prototype;xv.copy=function(){var t,n,e=new or(this._x,this._y,this._x0,this._y0,this._x1,this._y1),r=this._root;if(!r)return e;if(!r.length)return e._root=ur(r),e;for(t=[{source:r,target:e._root=new Array(4)}];r=t.pop();)for(var i=0;i<4;++i)(n=r.source[i])&&(n.length?t.push({source:n,target:r.target[i]=new Array(4)}):r.target[i]=ur(n));return e},xv.add=av,xv.addAll=tr,xv.cover=cv,xv.data=sv,xv.extent=fv,xv.find=hv,xv.remove=pv,xv.removeAll=nr,xv.root=dv,xv.size=vv,xv.visit=gv,xv.visitAfter=yv,xv.x=_v,xv.y=mv;var bv,wv=function(t){function n(){function t(t,n,e,r,i){var o=t.data,a=t.r,p=l+a;{if(!o)return n>s+p||r<s-p||e>f+p||i<f-p;if(o.index>c.index){var d=s-o.x-o.vx,v=f-o.y-o.vy,g=d*d+v*v;g<p*p&&(0===d&&(d=uv(),g+=d*d),0===v&&(v=uv(),g+=v*v),g=(p-(g=Math.sqrt(g)))/g*u,c.vx+=(d*=g)*(p=(a*=a)/(h+a)),c.vy+=(v*=g)*p,o.vx-=d*(p=1-p),o.vy-=v*p)}}}for(var n,r,c,s,f,l,h,p=i.length,d=0;d<a;++d)for(r=ir(i,ar,cr).visitAfter(e),n=0;n<p;++n)c=i[n],l=o[c.index],h=l*l,s=c.x+c.vx,f=c.y+c.vy,r.visit(t)}function e(t){if(t.data)return t.r=o[t.data.index];for(var n=t.r=0;n<4;++n)t[n]&&t[n].r>t.r&&(t.r=t[n].r)}function r(){if(i){var n,e,r=i.length;for(o=new Array(r),n=0;n<r;++n)e=i[n],o[e.index]=+t(e,n,i)}}var i,o,u=1,a=1;return"function"!=typeof t&&(t=ov(null==t?1:+t)),n.initialize=function(t){i=t,r()},n.iterations=function(t){return arguments.length?(a=+t,n):a},n.strength=function(t){return arguments.length?(u=+t,n):u},n.radius=function(e){return arguments.length?(t="function"==typeof e?e:ov(+e),r(),n):t},n},Mv=function(t){function n(t){return 1/Math.min(s[t.source.index],s[t.target.index])}function e(n){for(var e=0,r=t.length;e<d;++e)for(var i,o,c,s,l,h,p,v=0;v<r;++v)i=t[v],o=i.source,c=i.target,s=c.x+c.vx-o.x-o.vx||uv(),l=c.y+c.vy-o.y-o.vy||uv(),h=Math.sqrt(s*s+l*l),h=(h-a[v])/h*n*u[v],s*=h,l*=h,c.vx-=s*(p=f[v]),c.vy-=l*p,o.vx+=s*(p=1-p),o.vy+=l*p}function r(){if(c){var n,e,r=c.length,h=t.length,p=Be(c,l);for(n=0,s=new Array(r);n<h;++n)e=t[n],e.index=n,"object"!=typeof e.source&&(e.source=fr(p,e.source)),"object"!=typeof e.target&&(e.target=fr(p,e.target)),s[e.source.index]=(s[e.source.index]||0)+1,s[e.target.index]=(s[e.target.index]||0)+1;for(n=0,f=new Array(h);n<h;++n)e=t[n],f[n]=s[e.source.index]/(s[e.source.index]+s[e.target.index]);u=new Array(h),i(),a=new Array(h),o()}}function i(){if(c)for(var n=0,e=t.length;n<e;++n)u[n]=+h(t[n],n,t)}function o(){if(c)for(var n=0,e=t.length;n<e;++n)a[n]=+p(t[n],n,t)}var u,a,c,s,f,l=sr,h=n,p=ov(30),d=1;return null==t&&(t=[]),e.initialize=function(t){c=t,r()},e.links=function(n){return arguments.length?(t=n,r(),e):t},e.id=function(t){return arguments.length?(l=t,e):l},e.iterations=function(t){return arguments.length?(d=+t,e):d},e.strength=function(t){return arguments.length?(h="function"==typeof t?t:ov(+t),i(),e):h},e.distance=function(t){return arguments.length?(p="function"==typeof t?t:ov(+t),o(),e):p},e},kv=10,Ev=Math.PI*(3-Math.sqrt(5)),Tv=function(t){function n(){e(),p.call("tick",o),u<a&&(h.stop(),p.call("end",o))}function e(){var n,e,r=t.length;for(u+=(s-u)*c,l.each(function(t){t(u)}),n=0;n<r;++n)e=t[n],null==e.fx?e.x+=e.vx*=f:(e.x=e.fx,e.vx=0),null==e.fy?e.y+=e.vy*=f:(e.y=e.fy,e.vy=0)}function r(){for(var n,e=0,r=t.length;e<r;++e){if(n=t[e],n.index=e,isNaN(n.x)||isNaN(n.y)){var i=kv*Math.sqrt(e),o=e*Ev;n.x=i*Math.cos(o),n.y=i*Math.sin(o)}(isNaN(n.vx)||isNaN(n.vy))&&(n.vx=n.vy=0)}}function i(n){return n.initialize&&n.initialize(t),n}var o,u=1,a=.001,c=1-Math.pow(a,1/300),s=0,f=.6,l=Be(),h=mn(n),p=v("tick","end");return null==t&&(t=[]),r(),o={tick:e,restart:function(){return h.restart(n),o},stop:function(){return h.stop(),o},nodes:function(n){return arguments.length?(t=n,r(),l.each(i),o):t},alpha:function(t){return arguments.length?(u=+t,o):u},alphaMin:function(t){return arguments.length?(a=+t,o):a},alphaDecay:function(t){return arguments.length?(c=+t,o):+c},alphaTarget:function(t){return arguments.length?(s=+t,o):s},velocityDecay:function(t){return arguments.length?(f=1-t,o):1-f},force:function(t,n){return arguments.length>1?(null==n?l.remove(t):l.set(t,i(n)),o):l.get(t)},find:function(n,e,r){var i,o,u,a,c,s=0,f=t.length;for(null==r?r=1/0:r*=r,s=0;s<f;++s)a=t[s],i=n-a.x,o=e-a.y,(u=i*i+o*o)<r&&(c=a,r=u);return c},on:function(t,n){return arguments.length>1?(p.on(t,n),o):p.on(t)}}},Sv=function(){function t(t){var n,a=i.length,c=ir(i,lr,hr).visitAfter(e);for(u=t,n=0;n<a;++n)o=i[n],c.visit(r)}function n(){if(i){var t,n,e=i.length;for(a=new Array(e),t=0;t<e;++t)n=i[t],a[n.index]=+c(n,t,i)}}function e(t){var n,e,r,i,o,u=0;if(t.length){for(r=i=o=0;o<4;++o)(n=t[o])&&(e=n.value)&&(u+=e,r+=e*n.x,i+=e*n.y);t.x=r/u,t.y=i/u}else{n=t,n.x=n.data.x,n.y=n.data.y;do{u+=a[n.data.index]}while(n=n.next)}t.value=u}function r(t,n,e,r){if(!t.value)return!0;var i=t.x-o.x,c=t.y-o.y,h=r-n,p=i*i+c*c;if(h*h/l<p)return p<f&&(0===i&&(i=uv(),p+=i*i),0===c&&(c=uv(),p+=c*c),p<s&&(p=Math.sqrt(s*p)),o.vx+=i*t.value*u/p,o.vy+=c*t.value*u/p),!0;if(!(t.length||p>=f)){(t.data!==o||t.next)&&(0===i&&(i=uv(),p+=i*i),0===c&&(c=uv(),p+=c*c),p<s&&(p=Math.sqrt(s*p)));do{t.data!==o&&(h=a[t.data.index]*u/p,o.vx+=i*h,o.vy+=c*h)}while(t=t.next)}}var i,o,u,a,c=ov(-30),s=1,f=1/0,l=.81;return t.initialize=function(t){i=t,n()},t.strength=function(e){return arguments.length?(c="function"==typeof e?e:ov(+e),n(),t):c},t.distanceMin=function(n){return arguments.length?(s=n*n,t):Math.sqrt(s)},t.distanceMax=function(n){return arguments.length?(f=n*n,t):Math.sqrt(f)},t.theta=function(n){return arguments.length?(l=n*n,t):Math.sqrt(l)},t},Av=function(t){function n(t){for(var n,e=0,u=r.length;e<u;++e)n=r[e],n.vx+=(o[e]-n.x)*i[e]*t}function e(){if(r){var n,e=r.length;for(i=new Array(e),o=new Array(e),n=0;n<e;++n)i[n]=isNaN(o[n]=+t(r[n],n,r))?0:+u(r[n],n,r)}}var r,i,o,u=ov(.1);return"function"!=typeof t&&(t=ov(null==t?0:+t)),n.initialize=function(t){r=t,e()},n.strength=function(t){return arguments.length?(u="function"==typeof t?t:ov(+t),e(),n):u},n.x=function(r){return arguments.length?(t="function"==typeof r?r:ov(+r),e(),n):t},n},Nv=function(t){function n(t){for(var n,e=0,u=r.length;e<u;++e)n=r[e],n.vy+=(o[e]-n.y)*i[e]*t}function e(){if(r){var n,e=r.length;for(i=new Array(e),o=new Array(e),n=0;n<e;++n)i[n]=isNaN(o[n]=+t(r[n],n,r))?0:+u(r[n],n,r)}}var r,i,o,u=ov(.1);return"function"!=typeof t&&(t=ov(null==t?0:+t)),n.initialize=function(t){r=t,e()},n.strength=function(t){return arguments.length?(u="function"==typeof t?t:ov(+t),e(),n):u},n.y=function(r){return arguments.length?(t="function"==typeof r?r:ov(+r),e(),n):t},n},Cv=function(t,n){if((e=(t=n?t.toExponential(n-1):t.toExponential()).indexOf("e"))<0)return null;var e,r=t.slice(0,e);return[r.length>1?r[0]+r.slice(2):r,+t.slice(e+1)]},Pv=function(t){return t=Cv(Math.abs(t)),t?t[1]:NaN},zv=function(t,n){return function(e,r){for(var i=e.length,o=[],u=0,a=t[0],c=0;i>0&&a>0&&(c+a+1>r&&(a=Math.max(1,r-c)),o.push(e.substring(i-=a,i+a)),!((c+=a+1)>r));)a=t[u=(u+1)%t.length];return o.reverse().join(n)}},Lv=function(t){return function(n){return n.replace(/[0-9]/g,function(n){return t[+n]})}},Rv=function(t,n){t=t.toPrecision(n);t:for(var e,r=t.length,i=1,o=-1;i<r;++i)switch(t[i]){case".":o=e=i;break;case"0":0===o&&(o=i),e=i;break;case"e":break t;default:o>0&&(o=0)}return o>0?t.slice(0,o)+t.slice(e+1):t},qv=function(t,n){var e=Cv(t,n);if(!e)return t+"";var r=e[0],i=e[1],o=i-(bv=3*Math.max(-8,Math.min(8,Math.floor(i/3))))+1,u=r.length;return o===u?r:o>u?r+new Array(o-u+1).join("0"):o>0?r.slice(0,o)+"."+r.slice(o):"0."+new Array(1-o).join("0")+Cv(t,Math.max(0,n+o-1))[0]},Uv=function(t,n){var e=Cv(t,n);if(!e)return t+"";var r=e[0],i=e[1];return i<0?"0."+new Array(-i).join("0")+r:r.length>i+1?r.slice(0,i+1)+"."+r.slice(i+1):r+new Array(i-r.length+2).join("0")},Ov={"":Rv,"%":function(t,n){return(100*t).toFixed(n)},b:function(t){return Math.round(t).toString(2)},c:function(t){return t+""},d:function(t){return Math.round(t).toString(10)},e:function(t,n){return t.toExponential(n)},f:function(t,n){return t.toFixed(n)},g:function(t,n){return t.toPrecision(n)},o:function(t){return Math.round(t).toString(8)},p:function(t,n){return Uv(100*t,n)},r:Uv,s:qv,X:function(t){return Math.round(t).toString(16).toUpperCase()},x:function(t){return Math.round(t).toString(16)}},Dv=/^(?:(.)?([<>=^]))?([+\-\( ])?([$#])?(0)?(\d+)?(,)?(\.\d+)?([a-z%])?$/i;pr.prototype=dr.prototype,dr.prototype.toString=function(){return this.fill+this.align+this.sign+this.symbol+(this.zero?"0":"")+(null==this.width?"":Math.max(1,0|this.width))+(this.comma?",":"")+(null==this.precision?"":"."+Math.max(0,0|this.precision))+this.type};var Iv,Fv=function(t){return t},jv=["y","z","a","f","p","n","µ","m","","k","M","G","T","P","E","Z","Y"],Yv=function(t){function n(t){function n(t){var n,i,a,f=g,x=y;if("c"===v)x=_(t)+x,t="";else{t=+t;var b=t<0;if(t=_(Math.abs(t),d),b&&0==+t&&(b=!1),f=(b?"("===s?s:"-":"-"===s||"("===s?"":s)+f,x=x+("s"===v?jv[8+bv/3]:"")+(b&&"("===s?")":""),m)for(n=-1,i=t.length;++n<i;)if(48>(a=t.charCodeAt(n))||a>57){x=(46===a?o+t.slice(n+1):t.slice(n))+x,t=t.slice(0,n);break}}p&&!l&&(t=r(t,1/0));var w=f.length+t.length+x.length,M=w<h?new Array(h-w+1).join(e):"";switch(p&&l&&(t=r(M+t,M.length?h-x.length:1/0),M=""),c){case"<":t=f+t+x+M;break;case"=":t=f+M+t+x;break;case"^":t=M.slice(0,w=M.length>>1)+f+t+x+M.slice(w);break;default:t=M+f+t+x}return u(t)}t=pr(t);var e=t.fill,c=t.align,s=t.sign,f=t.symbol,l=t.zero,h=t.width,p=t.comma,d=t.precision,v=t.type,g="$"===f?i[0]:"#"===f&&/[boxX]/.test(v)?"0"+v.toLowerCase():"",y="$"===f?i[1]:/[%p]/.test(v)?a:"",_=Ov[v],m=!v||/[defgprs%]/.test(v);return d=null==d?v?6:12:/[gprs]/.test(v)?Math.max(1,Math.min(21,d)):Math.max(0,Math.min(20,d)),n.toString=function(){return t+""},n}function e(t,e){var r=n((t=pr(t),t.type="f",t)),i=3*Math.max(-8,Math.min(8,Math.floor(Pv(e)/3))),o=Math.pow(10,-i),u=jv[8+i/3];return function(t){return r(o*t)+u}}var r=t.grouping&&t.thousands?zv(t.grouping,t.thousands):Fv,i=t.currency,o=t.decimal,u=t.numerals?Lv(t.numerals):Fv,a=t.percent||"%";return{format:n,formatPrefix:e}};vr({decimal:".",thousands:",",grouping:[3],currency:["$",""]});var Bv=function(t){return Math.max(0,-Pv(Math.abs(t)))},Hv=function(t,n){return Math.max(0,3*Math.max(-8,Math.min(8,Math.floor(Pv(n)/3)))-Pv(Math.abs(t)))},Xv=function(t,n){return t=Math.abs(t),n=Math.abs(n)-t,Math.max(0,Pv(n)-Pv(t))+1},Gv=function(){return new gr};gr.prototype={constructor:gr,reset:function(){this.s=this.t=0},add:function(t){yr(kg,t,this.t),yr(this,kg.s,this.s),this.s?this.t+=kg.t:this.s=kg.t},valueOf:function(){return this.s}};var $v,Vv,Wv,Zv,Jv,Qv,Kv,tg,ng,eg,rg,ig,og,ug,ag,cg,sg,fg,lg,hg,pg,dg,vg,gg,yg,_g,mg,xg,bg,wg,Mg,kg=new gr,Eg=1e-6,Tg=Math.PI,Sg=Tg/2,Ag=Tg/4,Ng=2*Tg,Cg=180/Tg,Pg=Tg/180,zg=Math.abs,Lg=Math.atan,Rg=Math.atan2,qg=Math.cos,Ug=Math.ceil,Og=Math.exp,Dg=Math.log,Ig=Math.pow,Fg=Math.sin,jg=Math.sign||function(t){return t>0?1:t<0?-1:0},Yg=Math.sqrt,Bg=Math.tan,Hg={Feature:function(t,n){wr(t.geometry,n)},FeatureCollection:function(t,n){for(var e=t.features,r=-1,i=e.length;++r<i;)wr(e[r].geometry,n)}},Xg={Sphere:function(t,n){n.sphere()},Point:function(t,n){t=t.coordinates,n.point(t[0],t[1],t[2])},MultiPoint:function(t,n){for(var e=t.coordinates,r=-1,i=e.length;++r<i;)t=e[r],n.point(t[0],t[1],t[2])},LineString:function(t,n){Mr(t.coordinates,n,0)},MultiLineString:function(t,n){for(var e=t.coordinates,r=-1,i=e.length;++r<i;)Mr(e[r],n,0)},Polygon:function(t,n){kr(t.coordinates,n)},MultiPolygon:function(t,n){for(var e=t.coordinates,r=-1,i=e.length;++r<i;)kr(e[r],n)},GeometryCollection:function(t,n){for(var e=t.geometries,r=-1,i=e.length;++r<i;)wr(e[r],n)}},Gg=function(t,n){t&&Hg.hasOwnProperty(t.type)?Hg[t.type](t,n):wr(t,n)},$g=Gv(),Vg=Gv(),Wg={point:br,lineStart:br,lineEnd:br,polygonStart:function(){$g.reset(),Wg.lineStart=Er,Wg.lineEnd=Tr},polygonEnd:function(){var t=+$g;Vg.add(t<0?Ng+t:t),this.lineStart=this.lineEnd=this.point=br},sphere:function(){Vg.add(Ng)}},Zg=function(t){return Vg.reset(),Gg(t,Wg),2*Vg},Jg=Gv(),Qg={point:Ur,lineStart:Dr,lineEnd:Ir,polygonStart:function(){Qg.point=Fr,Qg.lineStart=jr,Qg.lineEnd=Yr,Jg.reset(),Wg.polygonStart()},polygonEnd:function(){Wg.polygonEnd(),Qg.point=Ur,Qg.lineStart=Dr,Qg.lineEnd=Ir,$g<0?(Qv=-(tg=180),Kv=-(ng=90)):Jg>Eg?ng=90:Jg<-Eg&&(Kv=-90),ag[0]=Qv,ag[1]=tg}},Kg=function(t){var n,e,r,i,o,u,a;if(ng=tg=-(Qv=Kv=1/0),ug=[],Gg(t,Qg),e=ug.length){for(ug.sort(Hr),n=1,r=ug[0],o=[r];n<e;++n)i=ug[n],Xr(r,i[0])||Xr(r,i[1])?(Br(r[0],i[1])>Br(r[0],r[1])&&(r[1]=i[1]),Br(i[0],r[1])>Br(r[0],r[1])&&(r[0]=i[0])):o.push(r=i);for(u=-1/0,e=o.length-1,n=0,r=o[e];n<=e;r=i,++n)i=o[n],(a=Br(r[1],i[0]))>u&&(u=a,Qv=i[0],tg=r[1])}return ug=ag=null,Qv===1/0||Kv===1/0?[[NaN,NaN],[NaN,NaN]]:[[Qv,Kv],[tg,ng]]},ty={sphere:br,point:Gr,lineStart:Vr,lineEnd:Jr,polygonStart:function(){ty.lineStart=Qr,ty.lineEnd=Kr},polygonEnd:function(){ty.lineStart=Vr,ty.lineEnd=Jr}},ny=function(t){cg=sg=fg=lg=hg=pg=dg=vg=gg=yg=_g=0,Gg(t,ty);var n=gg,e=yg,r=_g,i=n*n+e*e+r*r;return i<1e-12&&(n=pg,e=dg,r=vg,sg<Eg&&(n=fg,e=lg,r=hg),(i=n*n+e*e+r*r)<1e-12)?[NaN,NaN]:[Rg(e,n)*Cg,mr(r/Yg(i))*Cg]},ey=function(t){return function(){return t}},ry=function(t,n){function e(e,r){return e=t(e,r),n(e[0],e[1])}return t.invert&&n.invert&&(e.invert=function(e,r){return(e=n.invert(e,r))&&t.invert(e[0],e[1])}),e};ei.invert=ei;var iy,oy,uy,ay,cy,sy,fy,ly,hy,py,dy,vy=function(t){function n(n){return n=t(n[0]*Pg,n[1]*Pg),n[0]*=Cg,n[1]*=Cg,n}return t=ri(t[0]*Pg,t[1]*Pg,t.length>2?t[2]*Pg:0),n.invert=function(n){return n=t.invert(n[0]*Pg,n[1]*Pg),n[0]*=Cg,n[1]*=Cg,n},n},gy=function(){function t(t,n){e.push(t=r(t,n)),t[0]*=Cg,t[1]*=Cg}function n(){var t=i.apply(this,arguments),n=o.apply(this,arguments)*Pg,c=u.apply(this,arguments)*Pg;return e=[],r=ri(-t[0]*Pg,-t[1]*Pg,0).invert,ai(a,n,c,1),t={type:"Polygon",coordinates:[e]},e=r=null,t}var e,r,i=ey([0,0]),o=ey(90),u=ey(6),a={point:t};return n.center=function(t){return arguments.length?(i="function"==typeof t?t:ey([+t[0],+t[1]]),n):i},n.radius=function(t){return arguments.length?(o="function"==typeof t?t:ey(+t),n):o},n.precision=function(t){return arguments.length?(u="function"==typeof t?t:ey(+t),n):u},n},yy=function(){var t,n=[];return{point:function(n,e){t.push([n,e])},lineStart:function(){n.push(t=[])},lineEnd:br,rejoin:function(){n.length>1&&n.push(n.pop().concat(n.shift()))},result:function(){var e=n;return n=[],t=null,e}}},_y=function(t,n,e,r,i,o){var u,a=t[0],c=t[1],s=n[0],f=n[1],l=0,h=1,p=s-a,d=f-c;if(u=e-a,p||!(u>0)){if(u/=p,p<0){if(u<l)return;u<h&&(h=u)}else if(p>0){if(u>h)return;u>l&&(l=u)}if(u=i-a,p||!(u<0)){if(u/=p,p<0){if(u>h)return;u>l&&(l=u)}else if(p>0){if(u<l)return;u<h&&(h=u)}if(u=r-c,d||!(u>0)){if(u/=d,d<0){if(u<l)return;u<h&&(h=u)}else if(d>0){if(u>h)return;u>l&&(l=u)}if(u=o-c,d||!(u<0)){if(u/=d,d<0){if(u>h)return;u>l&&(l=u)}else if(d>0){if(u<l)return;u<h&&(h=u)}return l>0&&(t[0]=a+l*p,t[1]=c+l*d),h<1&&(n[0]=a+h*p,n[1]=c+h*d),!0}}}}},my=function(t,n){return zg(t[0]-n[0])<Eg&&zg(t[1]-n[1])<Eg},xy=function(t,n,e,r,i){var o,u,a=[],c=[];if(t.forEach(function(t){if(!((n=t.length-1)<=0)){var n,e,r=t[0],u=t[n];if(my(r,u)){for(i.lineStart(),o=0;o<n;++o)i.point((r=t[o])[0],r[1]);return void i.lineEnd()}a.push(e=new si(r,t,null,!0)),c.push(e.o=new si(r,null,e,!1)),a.push(e=new si(u,t,null,!1)),c.push(e.o=new si(u,null,e,!0))}}),a.length){for(c.sort(n),fi(a),fi(c),o=0,u=c.length;o<u;++o)c[o].e=e=!e;for(var s,f,l=a[0];;){for(var h=l,p=!0;h.v;)if((h=h.n)===l)return;s=h.z,i.lineStart();do{if(h.v=h.o.v=!0,h.e){if(p)for(o=0,u=s.length;o<u;++o)i.point((f=s[o])[0],f[1]);else r(h.x,h.n.x,1,i);h=h.n}else{if(p)for(s=h.p.z,o=s.length-1;o>=0;--o)i.point((f=s[o])[0],f[1]);else r(h.x,h.p.x,-1,i);h=h.p}h=h.o,s=h.z,p=!p}while(!h.v);i.lineEnd()}}},by=1e9,wy=-by,My=function(){var t,n,e,r=0,i=0,o=960,u=500;return e={stream:function(e){return t&&n===e?t:t=li(r,i,o,u)(n=e)},extent:function(a){return arguments.length?(r=+a[0][0],i=+a[0][1],o=+a[1][0],u=+a[1][1],t=n=null,e):[[r,i],[o,u]]}}},ky=Gv(),Ey=function(t,n){var e=n[0],r=n[1],i=[Fg(e),-qg(e),0],o=0,u=0;ky.reset();for(var a=0,c=t.length;a<c;++a)if(f=(s=t[a]).length)for(var s,f,l=s[f-1],h=l[0],p=l[1]/2+Ag,d=Fg(p),v=qg(p),g=0;g<f;++g,h=_,d=x,v=b,l=y){var y=s[g],_=y[0],m=y[1]/2+Ag,x=Fg(m),b=qg(m),w=_-h,M=w>=0?1:-1,k=M*w,E=k>Tg,T=d*x;if(ky.add(Rg(T*M*Fg(k),v*b+T*qg(k))),o+=E?w+M*Ng:w,E^h>=e^_>=e){var S=zr(Cr(l),Cr(y));qr(S);var A=zr(i,S);qr(A);var N=(E^w>=0?-1:1)*mr(A[2]);(r>N||r===N&&(S[0]||S[1]))&&(u+=E^w>=0?1:-1)}}return(o<-Eg||o<Eg&&ky<-Eg)^1&u},Ty=Gv(),Sy={sphere:br,point:br,lineStart:hi,lineEnd:br,polygonStart:br,polygonEnd:br},Ay=function(t){return Ty.reset(),Gg(t,Sy),+Ty},Ny=[null,null],Cy={type:"LineString",coordinates:Ny},Py=function(t,n){return Ny[0]=t,Ny[1]=n,Ay(Cy)},zy={Feature:function(t,n){return gi(t.geometry,n)},FeatureCollection:function(t,n){for(var e=t.features,r=-1,i=e.length;++r<i;)if(gi(e[r].geometry,n))return!0;return!1}},Ly={Sphere:function(){return!0},Point:function(t,n){return yi(t.coordinates,n)},MultiPoint:function(t,n){for(var e=t.coordinates,r=-1,i=e.length;++r<i;)if(yi(e[r],n))return!0;return!1},LineString:function(t,n){return _i(t.coordinates,n)},MultiLineString:function(t,n){for(var e=t.coordinates,r=-1,i=e.length;++r<i;)if(_i(e[r],n))return!0;return!1},Polygon:function(t,n){return mi(t.coordinates,n)},MultiPolygon:function(t,n){for(var e=t.coordinates,r=-1,i=e.length;++r<i;)if(mi(e[r],n))return!0;return!1},GeometryCollection:function(t,n){for(var e=t.geometries,r=-1,i=e.length;++r<i;)if(gi(e[r],n))return!0;return!1}},Ry=function(t,n){return(t&&zy.hasOwnProperty(t.type)?zy[t.type]:gi)(t,n)},qy=function(t,n){var e=t[0]*Pg,r=t[1]*Pg,i=n[0]*Pg,o=n[1]*Pg,u=qg(r),a=Fg(r),c=qg(o),s=Fg(o),f=u*qg(e),l=u*Fg(e),h=c*qg(i),p=c*Fg(i),d=2*mr(Yg(xr(o-r)+u*c*xr(i-e))),v=Fg(d),g=d?function(t){var n=Fg(t*=d)/v,e=Fg(d-t)/v,r=e*f+n*h,i=e*l+n*p,o=e*a+n*s;return[Rg(i,r)*Cg,Rg(o,Yg(r*r+i*i))*Cg]}:function(){return[e*Cg,r*Cg]};return g.distance=d,g},Uy=function(t){return t},Oy=Gv(),Dy=Gv(),Iy={point:br,lineStart:br,lineEnd:br,polygonStart:function(){Iy.lineStart=Ti,Iy.lineEnd=Ni},polygonEnd:function(){Iy.lineStart=Iy.lineEnd=Iy.point=br,Oy.add(zg(Dy)),Dy.reset()},result:function(){var t=Oy/2;return Oy.reset(),t}},Fy=1/0,jy=Fy,Yy=-Fy,By=Yy,Hy={point:Ci,lineStart:br,lineEnd:br,polygonStart:br,polygonEnd:br,result:function(){var t=[[Fy,jy],[Yy,By]];return Yy=By=-(jy=Fy=1/0),t}},Xy=0,Gy=0,$y=0,Vy=0,Wy=0,Zy=0,Jy=0,Qy=0,Ky=0,t_={point:Pi,lineStart:zi,lineEnd:qi,polygonStart:function(){t_.lineStart=Ui,t_.lineEnd=Oi},polygonEnd:function(){t_.point=Pi,t_.lineStart=zi,t_.lineEnd=qi},result:function(){var t=Ky?[Jy/Ky,Qy/Ky]:Zy?[Vy/Zy,Wy/Zy]:$y?[Xy/$y,Gy/$y]:[NaN,NaN];return Xy=Gy=$y=Vy=Wy=Zy=Jy=Qy=Ky=0,t}};Fi.prototype={_radius:4.5,pointRadius:function(t){return this._radius=t,this},polygonStart:function(){this._line=0},polygonEnd:function(){this._line=NaN},lineStart:function(){this._point=0},lineEnd:function(){0===this._line&&this._context.closePath(),this._point=NaN},point:function(t,n){switch(this._point){case 0:this._context.moveTo(t,n),this._point=1;break;case 1:this._context.lineTo(t,n);break;default:this._context.moveTo(t+this._radius,n),this._context.arc(t,n,this._radius,0,Ng)}},result:br};var n_,e_,r_,i_,o_,u_=Gv(),a_={point:br,lineStart:function(){a_.point=ji},lineEnd:function(){n_&&Yi(e_,r_),a_.point=br},polygonStart:function(){n_=!0},polygonEnd:function(){n_=null},result:function(){var t=+u_;return u_.reset(),t}};Bi.prototype={_radius:4.5,_circle:Hi(4.5),pointRadius:function(t){return(t=+t)!==this._radius&&(this._radius=t,this._circle=null),this},polygonStart:function(){this._line=0},polygonEnd:function(){this._line=NaN},lineStart:function(){this._point=0},lineEnd:function(){0===this._line&&this._string.push("Z"),this._point=NaN},point:function(t,n){switch(this._point){case 0:this._string.push("M",t,",",n),this._point=1;break;case 1:this._string.push("L",t,",",n);break;default:null==this._circle&&(this._circle=Hi(this._radius)),this._string.push("M",t,",",n,this._circle)}},result:function(){if(this._string.length){var t=this._string.join("");return this._string=[],t}return null}};var c_=function(t,n){function e(t){return t&&("function"==typeof o&&i.pointRadius(+o.apply(this,arguments)),Gg(t,r(i))),i.result()}var r,i,o=4.5;return e.area=function(t){return Gg(t,r(Iy)),Iy.result()},e.measure=function(t){return Gg(t,r(a_)),a_.result()},e.bounds=function(t){return Gg(t,r(Hy)),Hy.result()},e.centroid=function(t){return Gg(t,r(t_)),t_.result()},e.projection=function(n){return arguments.length?(r=null==n?(t=null,Uy):(t=n).stream,e):t},e.context=function(t){return arguments.length?(i=null==t?(n=null,new Bi):new Fi(n=t),"function"!=typeof o&&i.pointRadius(o),e):n},e.pointRadius=function(t){return arguments.length?(o="function"==typeof t?t:(i.pointRadius(+t),+t),e):o},e.projection(t).context(n)},s_=function(t,n,e,r){return function(i,o){function u(n,e){var r=i(n,e);t(n=r[0],e=r[1])&&o.point(n,e)}function a(t,n){var e=i(t,n);g.point(e[0],e[1])}function c(){b.point=a,g.lineStart()}function s(){b.point=u,g.lineEnd()}function f(t,n){v.push([t,n]);var e=i(t,n);m.point(e[0],e[1])}function l(){m.lineStart(),v=[]}function h(){f(v[0][0],v[0][1]),m.lineEnd();var t,n,e,r,i=m.clean(),u=_.result(),a=u.length;if(v.pop(),p.push(v),v=null,a)if(1&i){if(e=u[0],(n=e.length-1)>0){for(x||(o.polygonStart(),x=!0),o.lineStart(),t=0;t<n;++t)o.point((r=e[t])[0],r[1]);o.lineEnd()}}else a>1&&2&i&&u.push(u.pop().concat(u.shift())),d.push(u.filter(Xi))}var p,d,v,g=n(o),y=i.invert(r[0],r[1]),_=yy(),m=n(_),x=!1,b={point:u,lineStart:c,lineEnd:s,polygonStart:function(){b.point=f,b.lineStart=l,b.lineEnd=h,d=[],p=[]},polygonEnd:function(){b.point=u,b.lineStart=c,b.lineEnd=s,d=bf(d);var t=Ey(p,y);d.length?(x||(o.polygonStart(),x=!0),xy(d,Gi,t,e,o)):t&&(x||(o.polygonStart(),x=!0),o.lineStart(),e(null,null,1,o),o.lineEnd()),x&&(o.polygonEnd(),x=!1),d=p=null},sphere:function(){o.polygonStart(),o.lineStart(),e(null,null,1,o),o.lineEnd(),o.polygonEnd()}};return b}},f_=s_(function(){return!0},$i,Wi,[-Tg,-Sg]),l_=function(t,n){function e(e,r,i,o){ai(o,t,n,i,e,r)}function r(t,n){return qg(t)*qg(n)>a}function i(t){var n,e,i,a,f;return{lineStart:function(){a=i=!1,f=1},point:function(l,h){var p,d=[l,h],v=r(l,h),g=c?v?0:u(l,h):v?u(l+(l<0?Tg:-Tg),h):0;if(!n&&(a=i=v)&&t.lineStart(),v!==i&&(!(p=o(n,d))||my(n,p)||my(d,p))&&(d[0]+=Eg,d[1]+=Eg,v=r(d[0],d[1])),v!==i)f=0,v?(t.lineStart(),p=o(d,n),t.point(p[0],p[1])):(p=o(n,d),t.point(p[0],p[1]),t.lineEnd()),n=p;else if(s&&n&&c^v){var y;g&e||!(y=o(d,n,!0))||(f=0,c?(t.lineStart(),t.point(y[0][0],y[0][1]),t.point(y[1][0],y[1][1]),t.lineEnd()):(t.point(y[1][0],y[1][1]),t.lineEnd(),t.lineStart(),t.point(y[0][0],y[0][1])))}!v||n&&my(n,d)||t.point(d[0],d[1]),n=d,i=v,e=g},lineEnd:function(){i&&t.lineEnd(),n=null},clean:function(){return f|(a&&i)<<1}}}function o(t,n,e){var r=Cr(t),i=Cr(n),o=[1,0,0],u=zr(r,i),c=Pr(u,u),s=u[0],f=c-s*s;if(!f)return!e&&t;var l=a*c/f,h=-a*s/f,p=zr(o,u),d=Rr(o,l);Lr(d,Rr(u,h));var v=p,g=Pr(d,v),y=Pr(v,v),_=g*g-y*(Pr(d,d)-1);if(!(_<0)){var m=Yg(_),x=Rr(v,(-g-m)/y);if(Lr(x,d),x=Nr(x),!e)return x;var b,w=t[0],M=n[0],k=t[1],E=n[1];M<w&&(b=w,w=M,M=b);var T=M-w,S=zg(T-Tg)<Eg,A=S||T<Eg;if(!S&&E<k&&(b=k,k=E,E=b),A?S?k+E>0^x[1]<(zg(x[0]-w)<Eg?k:E):k<=x[1]&&x[1]<=E:T>Tg^(w<=x[0]&&x[0]<=M)){var N=Rr(v,(-g+m)/y);return Lr(N,d),[x,Nr(N)]}}}function u(n,e){var r=c?t:Tg-t,i=0;return n<-r?i|=1:n>r&&(i|=2),e<-r?i|=4:e>r&&(i|=8),i}var a=qg(t),c=a>0,s=zg(a)>Eg;return s_(r,i,e,c?[0,-t]:[-Tg,t-Tg])},h_=function(t){return{stream:Zi(t)}};Ji.prototype={constructor:Ji,point:function(t,n){this.stream.point(t,n)},sphere:function(){this.stream.sphere()},lineStart:function(){this.stream.lineStart()},lineEnd:function(){this.stream.lineEnd()},polygonStart:function(){this.stream.polygonStart()},polygonEnd:function(){this.stream.polygonEnd()}};var p_=16,d_=qg(30*Pg),v_=function(t,n){return+n?no(t,n):to(t)},g_=Zi({point:function(t,n){this.stream.point(t*Pg,n*Pg)}}),y_=function(){return io(uo).scale(155.424).center([0,33.6442])},__=function(){return y_().parallels([29.5,45.5]).scale(1070).translate([480,250]).rotate([96,0]).center([-.6,38.7])},m_=function(){function t(t){var n=t[0],e=t[1];return a=null,i.point(n,e),a||(o.point(n,e),a)||(u.point(n,e),a)}function n(){return e=r=null,t}var e,r,i,o,u,a,c=__(),s=y_().rotate([154,0]).center([-2,58.5]).parallels([55,65]),f=y_().rotate([157,0]).center([-3,19.9]).parallels([8,18]),l={point:function(t,n){a=[t,n]}};return t.invert=function(t){var n=c.scale(),e=c.translate(),r=(t[0]-e[0])/n,i=(t[1]-e[1])/n;return(i>=.12&&i<.234&&r>=-.425&&r<-.214?s:i>=.166&&i<.234&&r>=-.214&&r<-.115?f:c).invert(t)},t.stream=function(t){return e&&r===t?e:e=ao([c.stream(r=t),s.stream(t),f.stream(t)])},t.precision=function(t){return arguments.length?(c.precision(t),s.precision(t),f.precision(t),n()):c.precision()},t.scale=function(n){return arguments.length?(c.scale(n),s.scale(.35*n),f.scale(n),t.translate(c.translate())):c.scale()},t.translate=function(t){if(!arguments.length)return c.translate();var e=c.scale(),r=+t[0],a=+t[1];return i=c.translate(t).clipExtent([[r-.455*e,a-.238*e],[r+.455*e,a+.238*e]]).stream(l),o=s.translate([r-.307*e,a+.201*e]).clipExtent([[r-.425*e+Eg,a+.12*e+Eg],[r-.214*e-Eg,a+.234*e-Eg]]).stream(l),u=f.translate([r-.205*e,a+.212*e]).clipExtent([[r-.214*e+Eg,a+.166*e+Eg],[r-.115*e-Eg,a+.234*e-Eg]]).stream(l),n()},t.fitExtent=function(n,e){return Qi(t,n,e)},t.fitSize=function(n,e){return Ki(t,n,e)},t.scale(1070)},x_=co(function(t){return Yg(2/(1+t))});x_.invert=so(function(t){return 2*mr(t/2)});var b_=function(){return eo(x_).scale(124.75).clipAngle(179.999)},w_=co(function(t){return(t=_r(t))&&t/Fg(t)});w_.invert=so(function(t){return t});var M_=function(){return eo(w_).scale(79.4188).clipAngle(179.999)};fo.invert=function(t,n){return[t,2*Lg(Og(n))-Sg]};var k_=function(){return lo(fo).scale(961/Ng)},E_=function(){return io(po).scale(109.5).parallels([30,30])};vo.invert=vo;var T_=function(){return eo(vo).scale(152.63)},S_=function(){return io(go).scale(131.154).center([0,13.9389])};yo.invert=so(Lg);var A_=function(){return eo(yo).scale(144.049).clipAngle(60)},N_=function(){function t(){return i=o=null,u}var n,e,r,i,o,u,a=1,c=0,s=0,f=1,l=1,h=Uy,p=null,d=Uy;return u={stream:function(t){return i&&o===t?i:i=h(d(o=t))},clipExtent:function(i){return arguments.length?(d=null==i?(p=n=e=r=null,Uy):li(p=+i[0][0],n=+i[0][1],e=+i[1][0],r=+i[1][1]),t()):null==p?null:[[p,n],[e,r]]},scale:function(n){return arguments.length?(h=_o((a=+n)*f,a*l,c,s),t()):a},translate:function(n){return arguments.length?(h=_o(a*f,a*l,c=+n[0],s=+n[1]),t()):[c,s]},reflectX:function(n){return arguments.length?(h=_o(a*(f=n?-1:1),a*l,c,s),t()):f<0},reflectY:function(n){return arguments.length?(h=_o(a*f,a*(l=n?-1:1),c,s),t()):l<0},fitExtent:function(t,n){return Qi(u,t,n)},fitSize:function(t,n){return Ki(u,t,n)}}};mo.invert=so(mr);var C_=function(){return eo(mo).scale(249.5).clipAngle(90+Eg)};xo.invert=so(function(t){return 2*Lg(t)});var P_=function(){return eo(xo).scale(250).clipAngle(142)};bo.invert=function(t,n){return[-n,2*Lg(Og(t))-Sg]};var z_=function(){var t=lo(bo),n=t.center,e=t.rotate;return t.center=function(t){return arguments.length?n([-t[1],t[0]]):(t=n(),[t[1],-t[0]])},t.rotate=function(t){return arguments.length?e([t[0],t[1],t.length>2?t[2]+90:90]):(t=e(),[t[0],t[1],t[2]-90])},e([0,0,90]).scale(159.155)},L_=function(){function t(t){var o,u=0;t.eachAfter(function(t){var e=t.children;e?(t.x=Mo(e),t.y=Eo(e)):(t.x=o?u+=n(t,o):0,t.y=0,o=t)});var a=So(t),c=Ao(t),s=a.x-n(a,c)/2,f=c.x+n(c,a)/2;return t.eachAfter(i?function(n){n.x=(n.x-t.x)*e,n.y=(t.y-n.y)*r}:function(n){n.x=(n.x-s)/(f-s)*e,n.y=(1-(t.y?n.y/t.y:1))*r})}var n=wo,e=1,r=1,i=!1;return t.separation=function(e){return arguments.length?(n=e,t):n},t.size=function(n){return arguments.length?(i=!1,e=+n[0],r=+n[1],t):i?null:[e,r]},t.nodeSize=function(n){return arguments.length?(i=!0,e=+n[0],r=+n[1],t):i?[e,r]:null},t},R_=function(){return this.eachAfter(No)},q_=function(t){var n,e,r,i,o=this,u=[o];do{for(n=u.reverse(),u=[];o=n.pop();)if(t(o),e=o.children)for(r=0,i=e.length;r<i;++r)u.push(e[r])}while(u.length);return this},U_=function(t){for(var n,e,r=this,i=[r];r=i.pop();)if(t(r),n=r.children)for(e=n.length-1;e>=0;--e)i.push(n[e]);return this},O_=function(t){for(var n,e,r,i=this,o=[i],u=[];i=o.pop();)if(u.push(i),n=i.children)for(e=0,r=n.length;e<r;++e)o.push(n[e]);for(;i=u.pop();)t(i);return this},D_=function(t){return this.eachAfter(function(n){for(var e=+t(n.data)||0,r=n.children,i=r&&r.length;--i>=0;)e+=r[i].value;n.value=e})},I_=function(t){return this.eachBefore(function(n){n.children&&n.children.sort(t)})},F_=function(t){for(var n=this,e=Co(n,t),r=[n];n!==e;)n=n.parent,r.push(n);for(var i=r.length;t!==e;)r.splice(i,0,t),t=t.parent;return r},j_=function(){for(var t=this,n=[t];t=t.parent;)n.push(t);return n},Y_=function(){var t=[];return this.each(function(n){t.push(n)}),t},B_=function(){var t=[];return this.eachBefore(function(n){n.children||t.push(n)}),t},H_=function(){var t=this,n=[];return t.each(function(e){e!==t&&n.push({source:e.parent,target:e})}),n};Uo.prototype=Po.prototype={constructor:Uo,count:R_,each:q_,eachAfter:O_,eachBefore:U_,sum:D_,sort:I_,path:F_,ancestors:j_,descendants:Y_,leaves:B_,links:H_,copy:zo};var X_=function(t){for(var n=(t=t.slice()).length,e=null,r=e;n;){var i=new Oo(t[n-1]);r=r?r.next=i:e=i,t[void 0]=t[--n]}return{head:e,tail:r}},G_=function(t){return Io(X_(t),[])},$_=function(t){return $o(t),t},V_=function(t){return function(){return t}},W_=function(){function t(t){return t.x=e/2,t.y=r/2,n?t.eachBefore(Qo(n)).eachAfter(Ko(i,.5)).eachBefore(tu(1)):t.eachBefore(Qo(Jo)).eachAfter(Ko(Zo,1)).eachAfter(Ko(i,t.r/Math.min(e,r))).eachBefore(tu(Math.min(e,r)/(2*t.r))),t}var n=null,e=1,r=1,i=Zo;return t.radius=function(e){return arguments.length?(n=Vo(e),t):n},t.size=function(n){return arguments.length?(e=+n[0],r=+n[1],t):[e,r]},t.padding=function(n){return arguments.length?(i="function"==typeof n?n:V_(+n),t):i},t},Z_=function(t){t.x0=Math.round(t.x0),t.y0=Math.round(t.y0),t.x1=Math.round(t.x1),t.y1=Math.round(t.y1)},J_=function(t,n,e,r,i){for(var o,u=t.children,a=-1,c=u.length,s=t.value&&(r-n)/t.value;++a<c;)o=u[a],o.y0=e,o.y1=i,o.x0=n,o.x1=n+=o.value*s},Q_=function(){function t(t){var u=t.height+1;return t.x0=t.y0=i,t.x1=e,t.y1=r/u,t.eachBefore(n(r,u)),o&&t.eachBefore(Z_),t}function n(t,n){return function(e){e.children&&J_(e,e.x0,t*(e.depth+1)/n,e.x1,t*(e.depth+2)/n);var r=e.x0,o=e.y0,u=e.x1-i,a=e.y1-i;u<r&&(r=u=(r+u)/2),a<o&&(o=a=(o+a)/2),e.x0=r,e.y0=o,e.x1=u,e.y1=a}}var e=1,r=1,i=0,o=!1;return t.round=function(n){return arguments.length?(o=!!n,t):o},t.size=function(n){return arguments.length?(e=+n[0],r=+n[1],t):[e,r]},t.padding=function(n){return arguments.length?(i=+n,t):i},t},K_="$",tm={depth:-1},nm={},em=function(){function t(t){var r,i,o,u,a,c,s,f=t.length,l=new Array(f),h={};for(i=0;i<f;++i)r=t[i],a=l[i]=new Uo(r),null!=(c=n(r,i,t))&&(c+="")&&(s=K_+(a.id=c),h[s]=s in h?nm:a);for(i=0;i<f;++i)if(a=l[i],null!=(c=e(t[i],i,t))&&(c+="")){if(!(u=h[K_+c]))throw new Error("missing: "+c);if(u===nm)throw new Error("ambiguous: "+c);u.children?u.children.push(a):u.children=[a],a.parent=u}else{if(o)throw new Error("multiple roots");o=a}if(!o)throw new Error("no root");if(o.parent=tm,o.eachBefore(function(t){t.depth=t.parent.depth+1,--f}).eachBefore(qo),o.parent=null,f>0)throw new Error("cycle");return o}var n=nu,e=eu;return t.id=function(e){return arguments.length?(n=Wo(e),t):n},t.parentId=function(n){return arguments.length?(e=Wo(n),t):e},t};su.prototype=Object.create(Uo.prototype);var rm=function(){function t(t){var r=fu(t);if(r.eachAfter(n),r.parent.m=-r.z,r.eachBefore(e),c)t.eachBefore(i);else{var s=t,f=t,l=t;t.eachBefore(function(t){t.x<s.x&&(s=t),t.x>f.x&&(f=t),t.depth>l.depth&&(l=t)});var h=s===f?1:o(s,f)/2,p=h-s.x,d=u/(f.x+h+p),v=a/(l.depth||1);t.eachBefore(function(t){t.x=(t.x+p)*d,t.y=t.depth*v})}return t}function n(t){var n=t.children,e=t.parent.children,i=t.i?e[t.i-1]:null;if(n){au(t);var u=(n[0].z+n[n.length-1].z)/2;i?(t.z=i.z+o(t._,i._),t.m=t.z-u):t.z=u}else i&&(t.z=i.z+o(t._,i._));t.parent.A=r(t,i,t.parent.A||e[0])}function e(t){t._.x=t.z+t.parent.m,t.m+=t.parent.m}function r(t,n,e){if(n){for(var r,i=t,u=t,a=n,c=i.parent.children[0],s=i.m,f=u.m,l=a.m,h=c.m;a=ou(a),i=iu(i),a&&i;)c=iu(c),u=ou(u),u.a=t,r=a.z+l-i.z-s+o(a._,i._),r>0&&(uu(cu(a,t,e),t,r),s+=r,f+=r),l+=a.m,s+=i.m,h+=c.m,f+=u.m;a&&!ou(u)&&(u.t=a,u.m+=l-f),i&&!iu(c)&&(c.t=i,c.m+=s-h,e=t)}return e}function i(t){t.x*=u,t.y=t.depth*a}var o=ru,u=1,a=1,c=null;return t.separation=function(n){return arguments.length?(o=n,t):o},t.size=function(n){return arguments.length?(c=!1,u=+n[0],a=+n[1],t):c?null:[u,a]},t.nodeSize=function(n){return arguments.length?(c=!0,u=+n[0],a=+n[1],t):c?[u,a]:null},t},im=function(t,n,e,r,i){for(var o,u=t.children,a=-1,c=u.length,s=t.value&&(i-e)/t.value;++a<c;)o=u[a],o.x0=n,o.x1=r,o.y0=e,o.y1=e+=o.value*s},om=(1+Math.sqrt(5))/2,um=function t(n){function e(t,e,r,i,o){lu(n,t,e,r,i,o)}return e.ratio=function(n){return t((n=+n)>1?n:1)},e}(om),am=function(){function t(t){return t.x0=t.y0=0,t.x1=i,t.y1=o,t.eachBefore(n),u=[0],r&&t.eachBefore(Z_),t}function n(t){var n=u[t.depth],r=t.x0+n,i=t.y0+n,o=t.x1-n,h=t.y1-n;o<r&&(r=o=(r+o)/2),h<i&&(i=h=(i+h)/2),t.x0=r,t.y0=i,t.x1=o,t.y1=h,t.children&&(n=u[t.depth+1]=a(t)/2,r+=l(t)-n,i+=c(t)-n,o-=s(t)-n,h-=f(t)-n,o<r&&(r=o=(r+o)/2),h<i&&(i=h=(i+h)/2),e(t,r,i,o,h))}var e=um,r=!1,i=1,o=1,u=[0],a=Zo,c=Zo,s=Zo,f=Zo,l=Zo;return t.round=function(n){return arguments.length?(r=!!n,t):r},t.size=function(n){return arguments.length?(i=+n[0],o=+n[1],t):[i,o]},t.tile=function(n){return arguments.length?(e=Wo(n),t):e},t.padding=function(n){return arguments.length?t.paddingInner(n).paddingOuter(n):t.paddingInner()},t.paddingInner=function(n){return arguments.length?(a="function"==typeof n?n:V_(+n),t):a},t.paddingOuter=function(n){return arguments.length?t.paddingTop(n).paddingRight(n).paddingBottom(n).paddingLeft(n):t.paddingTop()},t.paddingTop=function(n){return arguments.length?(c="function"==typeof n?n:V_(+n),t):c},t.paddingRight=function(n){return arguments.length?(s="function"==typeof n?n:V_(+n),t):s},t.paddingBottom=function(n){return arguments.length?(f="function"==typeof n?n:V_(+n),t):f},t.paddingLeft=function(n){return arguments.length?(l="function"==typeof n?n:V_(+n),t):l},t},cm=function(t,n,e,r,i){function o(t,n,e,r,i,u,a){if(t>=n-1){var s=c[t];return s.x0=r,s.y0=i,s.x1=u,s.y1=a,void 0}for(var l=f[t],h=e/2+l,p=t+1,d=n-1;p<d;){var v=p+d>>>1;f[v]<h?p=v+1:d=v}h-f[p-1]<f[p]-h&&t+1<p&&--p;var g=f[p]-l,y=e-g;if(u-r>a-i){var _=(r*y+u*g)/e;o(t,p,g,r,i,_,a),o(p,n,y,_,i,u,a)}else{var m=(i*y+a*g)/e;o(t,p,g,r,i,u,m),o(p,n,y,r,m,u,a)}}var u,a,c=t.children,s=c.length,f=new Array(s+1);for(f[0]=a=u=0;u<s;++u)f[u+1]=a+=c[u].value;o(0,s,t.value,n,e,r,i)},sm=function(t,n,e,r,i){(1&t.depth?im:J_)(t,n,e,r,i)},fm=function t(n){function e(t,e,r,i,o){if((u=t._squarify)&&u.ratio===n)for(var u,a,c,s,f,l=-1,h=u.length,p=t.value;++l<h;){for(a=u[l],c=a.children,s=a.value=0,f=c.length;s<f;++s)a.value+=c[s].value;a.dice?J_(a,e,r,i,r+=(o-r)*a.value/p):im(a,e,r,e+=(i-e)*a.value/p,o),p-=a.value}else t._squarify=u=lu(n,t,e,r,i,o),u.ratio=n}return e.ratio=function(n){return t((n=+n)>1?n:1)},e}(om),lm=function(t){for(var n,e=-1,r=t.length,i=t[r-1],o=0;++e<r;)n=i,i=t[e],o+=n[1]*i[0]-n[0]*i[1];return o/2},hm=function(t){for(var n,e,r=-1,i=t.length,o=0,u=0,a=t[i-1],c=0;++r<i;)n=a,a=t[r],c+=e=n[0]*a[1]-a[0]*n[1],o+=(n[0]+a[0])*e,u+=(n[1]+a[1])*e;return c*=3,[o/c,u/c]},pm=function(t,n,e){return(n[0]-t[0])*(e[1]-t[1])-(n[1]-t[1])*(e[0]-t[0])},dm=function(t){if((e=t.length)<3)return null;var n,e,r=new Array(e),i=new Array(e);for(n=0;n<e;++n)r[n]=[+t[n][0],+t[n][1],n];for(r.sort(hu),n=0;n<e;++n)i[n]=[r[n][0],-r[n][1]];var o=pu(r),u=pu(i),a=u[0]===o[0],c=u[u.length-1]===o[o.length-1],s=[];for(n=o.length-1;n>=0;--n)s.push(t[r[o[n]][2]]);for(n=+a;n<u.length-c;++n)s.push(t[r[u[n]][2]]);return s},vm=function(t,n){for(var e,r,i=t.length,o=t[i-1],u=n[0],a=n[1],c=o[0],s=o[1],f=!1,l=0;l<i;++l)o=t[l],e=o[0],r=o[1],r>a!=s>a&&u<(c-e)*(a-r)/(s-r)+e&&(f=!f),c=e,s=r;return f},gm=function(t){for(var n,e,r=-1,i=t.length,o=t[i-1],u=o[0],a=o[1],c=0;++r<i;)n=u,e=a,o=t[r],u=o[0],a=o[1],n-=u,e-=a,c+=Math.sqrt(n*n+e*e);return c},ym=[].slice,_m={};du.prototype=xu.prototype={constructor:du,defer:function(t){if("function"!=typeof t)throw new Error("invalid callback");if(this._call)throw new Error("defer after await");if(null!=this._error)return this;var n=ym.call(arguments,1);return n.push(t),++this._waiting,this._tasks.push(n),vu(this),this},abort:function(){return null==this._error&&_u(this,new Error("abort")),this},await:function(t){if("function"!=typeof t)throw new Error("invalid callback");if(this._call)throw new Error("multiple await");return this._call=function(n,e){t.apply(null,[n].concat(e))},mu(this),this},awaitAll:function(t){if("function"!=typeof t)throw new Error("invalid callback");if(this._call)throw new Error("multiple await");return this._call=t,mu(this),this}};var mm=function(){return Math.random()},xm=function t(n){function e(t,e){return t=null==t?0:+t,e=null==e?1:+e,1===arguments.length?(e=t,t=0):e-=t,function(){return n()*e+t}}return e.source=t,e}(mm),bm=function t(n){function e(t,e){var r,i;return t=null==t?0:+t,e=null==e?1:+e,function(){var o;if(null!=r)o=r,r=null;else do{r=2*n()-1,o=2*n()-1,i=r*r+o*o}while(!i||i>1);return t+e*o*Math.sqrt(-2*Math.log(i)/i)}}return e.source=t,e}(mm),wm=function t(n){function e(){var t=bm.source(n).apply(this,arguments);return function(){return Math.exp(t())}}return e.source=t,e}(mm),Mm=function t(n){function e(t){return function(){for(var e=0,r=0;r<t;++r)e+=n();return e}}return e.source=t,e}(mm),km=function t(n){function e(t){var e=Mm.source(n)(t);return function(){return e()/t}}return e.source=t,e}(mm),Em=function t(n){function e(t){return function(){return-Math.log(1-n())/t}}return e.source=t,e}(mm),Tm=function(t,n){function e(t){var n,e=s.status;if(!e&&wu(s)||e>=200&&e<300||304===e){if(o)try{n=o.call(r,s)}catch(t){return void a.call("error",r,t)}else n=s;a.call("load",r,n)}else a.call("error",r,t)}var r,i,o,u,a=v("beforesend","progress","load","error"),c=Be(),s=new XMLHttpRequest,f=null,l=null,h=0;if("undefined"==typeof XDomainRequest||"withCredentials"in s||!/^(http(s)?:)?\/\//.test(t)||(s=new XDomainRequest),"onload"in s?s.onload=s.onerror=s.ontimeout=e:s.onreadystatechange=function(t){s.readyState>3&&e(t)},s.onprogress=function(t){a.call("progress",r,t)},r={header:function(t,n){return t=(t+"").toLowerCase(),arguments.length<2?c.get(t):(null==n?c.remove(t):c.set(t,n+""),r)},mimeType:function(t){return arguments.length?(i=null==t?null:t+"",r):i},responseType:function(t){return arguments.length?(u=t,r):u},timeout:function(t){return arguments.length?(h=+t,r):h},user:function(t){return arguments.length<1?f:(f=null==t?null:t+"",r)},password:function(t){return arguments.length<1?l:(l=null==t?null:t+"",r)},response:function(t){return o=t,r},get:function(t,n){return r.send("GET",t,n)},post:function(t,n){return r.send("POST",t,n)},send:function(n,e,o){return s.open(n,t,!0,f,l),null==i||c.has("accept")||c.set("accept",i+",*/*"),s.setRequestHeader&&c.each(function(t,n){s.setRequestHeader(n,t)}),null!=i&&s.overrideMimeType&&s.overrideMimeType(i),null!=u&&(s.responseType=u),h>0&&(s.timeout=h),null==o&&"function"==typeof e&&(o=e,e=null),null!=o&&1===o.length&&(o=bu(o)),null!=o&&r.on("error",o).on("load",function(t){o(null,t)}),a.call("beforesend",r,s),s.send(null==e?null:e),r},abort:function(){return s.abort(),r},on:function(){var t=a.on.apply(a,arguments);return t===a?r:t}},null!=n){if("function"!=typeof n)throw new Error("invalid callback: "+n);return r.get(n)}return r},Sm=function(t,n){return function(e,r){var i=Tm(e).mimeType(t).response(n);if(null!=r){if("function"!=typeof r)throw new Error("invalid callback: "+r);return i.get(r)}return i}},Am=Sm("text/html",function(t){return document.createRange().createContextualFragment(t.responseText)}),Nm=Sm("application/json",function(t){return JSON.parse(t.responseText)}),Cm=Sm("text/plain",function(t){return t.responseText}),Pm=Sm("application/xml",function(t){var n=t.responseXML;if(!n)throw new Error("parse error");return n}),zm=function(t,n){return function(e,r,i){arguments.length<3&&(i=r,r=null);var o=Tm(e).mimeType(t);return o.row=function(t){return arguments.length?o.response(Mu(n,r=t)):r},o.row(r),i?o.get(i):o}},Lm=zm("text/csv",Wd),Rm=zm("text/tab-separated-values",tv),qm=Array.prototype,Um=qm.map,Om=qm.slice,Dm={name:"implicit"},Im=function(t){return function(){return t}},Fm=function(t){return+t},jm=[0,1],Ym=function(n,e,r){var o,u=n[0],a=n[n.length-1],c=i(u,a,null==e?10:e);switch(r=pr(null==r?",f":r),r.type){case"s":var s=Math.max(Math.abs(u),Math.abs(a));return null!=r.precision||isNaN(o=Hv(c,s))||(r.precision=o),t.formatPrefix(r,s);case"":case"e":case"g":case"p":case"r":null!=r.precision||isNaN(o=Xv(c,Math.max(Math.abs(u),Math.abs(a))))||(r.precision=o-("e"===r.type));break;case"f":case"%":null!=r.precision||isNaN(o=Bv(c))||(r.precision=o-2*("%"===r.type))}return t.format(r)},Bm=function(t,n){t=t.slice();var e,r=0,i=t.length-1,o=t[r],u=t[i];return u<o&&(e=r,r=i,i=e,e=o,o=u,u=e),t[r]=n.floor(o),t[i]=n.ceil(u),t},Hm=new Date,Xm=new Date,Gm=Ju(function(){},function(t,n){t.setTime(+t+n)},function(t,n){return n-t});Gm.every=function(t){return t=Math.floor(t),isFinite(t)&&t>0?t>1?Ju(function(n){n.setTime(Math.floor(n/t)*t)},function(n,e){n.setTime(+n+e*t)},function(n,e){return(e-n)/t}):Gm:null};var $m=Gm.range,Vm=6e4,Wm=6048e5,Zm=Ju(function(t){t.setTime(1e3*Math.floor(t/1e3))},function(t,n){t.setTime(+t+1e3*n)},function(t,n){return(n-t)/1e3},function(t){return t.getUTCSeconds()}),Jm=Zm.range,Qm=Ju(function(t){t.setTime(Math.floor(t/Vm)*Vm)},function(t,n){t.setTime(+t+n*Vm)},function(t,n){return(n-t)/Vm},function(t){return t.getMinutes()}),Km=Qm.range,tx=Ju(function(t){var n=t.getTimezoneOffset()*Vm%36e5;n<0&&(n+=36e5),t.setTime(36e5*Math.floor((+t-n)/36e5)+n)},function(t,n){t.setTime(+t+36e5*n)},function(t,n){return(n-t)/36e5},function(t){return t.getHours()}),nx=tx.range,ex=Ju(function(t){t.setHours(0,0,0,0)},function(t,n){t.setDate(t.getDate()+n)},function(t,n){return(n-t-(n.getTimezoneOffset()-t.getTimezoneOffset())*Vm)/864e5},function(t){return t.getDate()-1}),rx=ex.range,ix=Qu(0),ox=Qu(1),ux=Qu(2),ax=Qu(3),cx=Qu(4),sx=Qu(5),fx=Qu(6),lx=ix.range,hx=ox.range,px=ux.range,dx=ax.range,vx=cx.range,gx=sx.range,yx=fx.range,_x=Ju(function(t){t.setDate(1),t.setHours(0,0,0,0)},function(t,n){t.setMonth(t.getMonth()+n)},function(t,n){return n.getMonth()-t.getMonth()+12*(n.getFullYear()-t.getFullYear())},function(t){return t.getMonth()}),mx=_x.range,xx=Ju(function(t){t.setMonth(0,1),t.setHours(0,0,0,0)},function(t,n){t.setFullYear(t.getFullYear()+n)},function(t,n){return n.getFullYear()-t.getFullYear()},function(t){return t.getFullYear()});xx.every=function(t){return isFinite(t=Math.floor(t))&&t>0?Ju(function(n){n.setFullYear(Math.floor(n.getFullYear()/t)*t),n.setMonth(0,1),n.setHours(0,0,0,0)},function(n,e){n.setFullYear(n.getFullYear()+e*t)}):null};var bx=xx.range,wx=Ju(function(t){t.setUTCSeconds(0,0)},function(t,n){t.setTime(+t+n*Vm)},function(t,n){return(n-t)/Vm},function(t){return t.getUTCMinutes()}),Mx=wx.range,kx=Ju(function(t){t.setUTCMinutes(0,0,0)},function(t,n){t.setTime(+t+36e5*n)},function(t,n){return(n-t)/36e5},function(t){return t.getUTCHours()}),Ex=kx.range,Tx=Ju(function(t){t.setUTCHours(0,0,0,0)},function(t,n){t.setUTCDate(t.getUTCDate()+n)},function(t,n){return(n-t)/864e5},function(t){return t.getUTCDate()-1}),Sx=Tx.range,Ax=Ku(0),Nx=Ku(1),Cx=Ku(2),Px=Ku(3),zx=Ku(4),Lx=Ku(5),Rx=Ku(6),qx=Ax.range,Ux=Nx.range,Ox=Cx.range,Dx=Px.range,Ix=zx.range,Fx=Lx.range,jx=Rx.range,Yx=Ju(function(t){t.setUTCDate(1),t.setUTCHours(0,0,0,0)},function(t,n){t.setUTCMonth(t.getUTCMonth()+n)},function(t,n){return n.getUTCMonth()-t.getUTCMonth()+12*(n.getUTCFullYear()-t.getUTCFullYear())},function(t){return t.getUTCMonth()}),Bx=Yx.range,Hx=Ju(function(t){t.setUTCMonth(0,1),t.setUTCHours(0,0,0,0)},function(t,n){t.setUTCFullYear(t.getUTCFullYear()+n)},function(t,n){return n.getUTCFullYear()-t.getUTCFullYear()},function(t){return t.getUTCFullYear()});Hx.every=function(t){return isFinite(t=Math.floor(t))&&t>0?Ju(function(n){n.setUTCFullYear(Math.floor(n.getUTCFullYear()/t)*t),n.setUTCMonth(0,1),n.setUTCHours(0,0,0,0)},function(n,e){n.setUTCFullYear(n.getUTCFullYear()+e*t)}):null};var Xx,Gx=Hx.range,$x={"-":"",_:" ",0:"0"},Vx=/^\s*\d+/,Wx=/^%/,Zx=/[\\\^\$\*\+\?\|\[\]\(\)\.\{\}]/g;Ja({dateTime:"%x, %X",date:"%-m/%-d/%Y",time:"%-I:%M:%S %p",periods:["AM","PM"],days:["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],shortDays:["Sun","Mon","Tue","Wed","Thu","Fri","Sat"],months:["January","February","March","April","May","June","July","August","September","October","November","December"],shortMonths:["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]});var Jx=Date.prototype.toISOString?Qa:t.utcFormat("%Y-%m-%dT%H:%M:%S.%LZ"),Qx=+new Date("2000-01-01T00:00:00.000Z")?Ka:t.utcParse("%Y-%m-%dT%H:%M:%S.%LZ"),Kx=1e3,tb=60*Kx,nb=60*tb,eb=24*nb,rb=7*eb,ib=30*eb,ob=365*eb,ub=function(){return ec(xx,_x,ix,ex,tx,Qm,Zm,Gm,t.timeFormat).domain([new Date(2e3,0,1),new Date(2e3,0,2)])},ab=function(){return ec(Hx,Yx,Ax,Tx,kx,wx,Zm,Gm,t.utcFormat).domain([Date.UTC(2e3,0,1),Date.UTC(2e3,0,2)])},cb=function(t){return t.match(/.{6}/g).map(function(t){return"#"+t})},sb=cb("1f77b4ff7f0e2ca02cd627289467bd8c564be377c27f7f7fbcbd2217becf"),fb=cb("393b795254a36b6ecf9c9ede6379398ca252b5cf6bcedb9c8c6d31bd9e39e7ba52e7cb94843c39ad494ad6616be7969c7b4173a55194ce6dbdde9ed6"),lb=cb("3182bd6baed69ecae1c6dbefe6550dfd8d3cfdae6bfdd0a231a35474c476a1d99bc7e9c0756bb19e9ac8bcbddcdadaeb636363969696bdbdbdd9d9d9"),hb=cb("1f77b4aec7e8ff7f0effbb782ca02c98df8ad62728ff98969467bdc5b0d58c564bc49c94e377c2f7b6d27f7f7fc7c7c7bcbd22dbdb8d17becf9edae5"),pb=Wh(Vt(300,.5,0),Vt(-240,.5,1)),db=Wh(Vt(-100,.75,.35),Vt(80,1.5,.8)),vb=Wh(Vt(260,.75,.35),Vt(80,1.5,.8)),gb=Vt(),yb=function(t){(t<0||t>1)&&(t-=Math.floor(t));var n=Math.abs(t-.5);return gb.h=360*t-100,gb.s=1.5-1.5*n,gb.l=.8-.9*n,gb+""},_b=rc(cb("44015444025645045745055946075a46085c460a5d460b5e470d60470e6147106347116447136548146748166848176948186a481a6c481b6d481c6e481d6f481f70482071482173482374482475482576482677482878482979472a7a472c7a472d7b472e7c472f7d46307e46327e46337f463480453581453781453882443983443a83443b84433d84433e85423f854240864241864142874144874045884046883f47883f48893e49893e4a893e4c8a3d4d8a3d4e8a3c4f8a3c508b3b518b3b528b3a538b3a548c39558c39568c38588c38598c375a8c375b8d365c8d365d8d355e8d355f8d34608d34618d33628d33638d32648e32658e31668e31678e31688e30698e306a8e2f6b8e2f6c8e2e6d8e2e6e8e2e6f8e2d708e2d718e2c718e2c728e2c738e2b748e2b758e2a768e2a778e2a788e29798e297a8e297b8e287c8e287d8e277e8e277f8e27808e26818e26828e26828e25838e25848e25858e24868e24878e23888e23898e238a8d228b8d228c8d228d8d218e8d218f8d21908d21918c20928c20928c20938c1f948c1f958b1f968b1f978b1f988b1f998a1f9a8a1e9b8a1e9c891e9d891f9e891f9f881fa0881fa1881fa1871fa28720a38620a48621a58521a68522a78522a88423a98324aa8325ab8225ac8226ad8127ad8128ae8029af7f2ab07f2cb17e2db27d2eb37c2fb47c31b57b32b67a34b67935b77937b87838b9773aba763bbb753dbc743fbc7340bd7242be7144bf7046c06f48c16e4ac16d4cc26c4ec36b50c46a52c56954c56856c66758c7655ac8645cc8635ec96260ca6063cb5f65cb5e67cc5c69cd5b6ccd5a6ece5870cf5773d05675d05477d1537ad1517cd2507fd34e81d34d84d44b86d54989d5488bd6468ed64590d74393d74195d84098d83e9bd93c9dd93ba0da39a2da37a5db36a8db34aadc32addc30b0dd2fb2dd2db5de2bb8de29bade28bddf26c0df25c2df23c5e021c8e020cae11fcde11dd0e11cd2e21bd5e21ad8e219dae319dde318dfe318e2e418e5e419e7e419eae51aece51befe51cf1e51df4e61ef6e620f8e621fbe723fde725")),mb=rc(cb("00000401000501010601010802010902020b02020d03030f03031204041405041606051806051a07061c08071e0907200a08220b09240c09260d0a290e0b2b100b2d110c2f120d31130d34140e36150e38160f3b180f3d19103f1a10421c10441d11471e114920114b21114e22115024125325125527125829115a2a115c2c115f2d11612f116331116533106734106936106b38106c390f6e3b0f703d0f713f0f72400f74420f75440f764510774710784910784a10794c117a4e117b4f127b51127c52137c54137d56147d57157e59157e5a167e5c167f5d177f5f187f601880621980641a80651a80671b80681c816a1c816b1d816d1d816e1e81701f81721f817320817521817621817822817922827b23827c23827e24828025828125818326818426818627818827818928818b29818c29818e2a81902a81912b81932b80942c80962c80982d80992d809b2e7f9c2e7f9e2f7fa02f7fa1307ea3307ea5317ea6317da8327daa337dab337cad347cae347bb0357bb2357bb3367ab5367ab73779b83779ba3878bc3978bd3977bf3a77c03a76c23b75c43c75c53c74c73d73c83e73ca3e72cc3f71cd4071cf4070d0416fd2426fd3436ed5446dd6456cd8456cd9466bdb476adc4869de4968df4a68e04c67e24d66e34e65e44f64e55064e75263e85362e95462ea5661eb5760ec5860ed5a5fee5b5eef5d5ef05f5ef1605df2625df2645cf3655cf4675cf4695cf56b5cf66c5cf66e5cf7705cf7725cf8745cf8765cf9785df9795df97b5dfa7d5efa7f5efa815ffb835ffb8560fb8761fc8961fc8a62fc8c63fc8e64fc9065fd9266fd9467fd9668fd9869fd9a6afd9b6bfe9d6cfe9f6dfea16efea36ffea571fea772fea973feaa74feac76feae77feb078feb27afeb47bfeb67cfeb77efeb97ffebb81febd82febf84fec185fec287fec488fec68afec88cfeca8dfecc8ffecd90fecf92fed194fed395fed597fed799fed89afdda9cfddc9efddea0fde0a1fde2a3fde3a5fde5a7fde7a9fde9aafdebacfcecaefceeb0fcf0b2fcf2b4fcf4b6fcf6b8fcf7b9fcf9bbfcfbbdfcfdbf")),xb=rc(cb("00000401000501010601010802010a02020c02020e03021004031204031405041706041907051b08051d09061f0a07220b07240c08260d08290e092b10092d110a30120a32140b34150b37160b39180c3c190c3e1b0c411c0c431e0c451f0c48210c4a230c4c240c4f260c51280b53290b552b0b572d0b592f0a5b310a5c320a5e340a5f3609613809623909633b09643d09653e0966400a67420a68440a68450a69470b6a490b6a4a0c6b4c0c6b4d0d6c4f0d6c510e6c520e6d540f6d550f6d57106e59106e5a116e5c126e5d126e5f136e61136e62146e64156e65156e67166e69166e6a176e6c186e6d186e6f196e71196e721a6e741a6e751b6e771c6d781c6d7a1d6d7c1d6d7d1e6d7f1e6c801f6c82206c84206b85216b87216b88226a8a226a8c23698d23698f24699025689225689326679526679727669827669a28659b29649d29649f2a63a02a63a22b62a32c61a52c60a62d60a82e5fa92e5eab2f5ead305dae305cb0315bb1325ab3325ab43359b63458b73557b93556ba3655bc3754bd3853bf3952c03a51c13a50c33b4fc43c4ec63d4dc73e4cc83f4bca404acb4149cc4248ce4347cf4446d04545d24644d34743d44842d54a41d74b3fd84c3ed94d3dda4e3cdb503bdd513ade5238df5337e05536e15635e25734e35933e45a31e55c30e65d2fe75e2ee8602de9612bea632aeb6429eb6628ec6726ed6925ee6a24ef6c23ef6e21f06f20f1711ff1731df2741cf3761bf37819f47918f57b17f57d15f67e14f68013f78212f78410f8850ff8870ef8890cf98b0bf98c0af98e09fa9008fa9207fa9407fb9606fb9706fb9906fb9b06fb9d07fc9f07fca108fca309fca50afca60cfca80dfcaa0ffcac11fcae12fcb014fcb216fcb418fbb61afbb81dfbba1ffbbc21fbbe23fac026fac228fac42afac62df9c72ff9c932f9cb35f8cd37f8cf3af7d13df7d340f6d543f6d746f5d949f5db4cf4dd4ff4df53f4e156f3e35af3e55df2e661f2e865f2ea69f1ec6df1ed71f1ef75f1f179f2f27df2f482f3f586f3f68af4f88ef5f992f6fa96f8fb9af9fc9dfafda1fcffa4")),bb=rc(cb("0d088710078813078916078a19068c1b068d1d068e20068f2206902406912605912805922a05932c05942e05952f059631059733059735049837049938049a3a049a3c049b3e049c3f049c41049d43039e44039e46039f48039f4903a04b03a14c02a14e02a25002a25102a35302a35502a45601a45801a45901a55b01a55c01a65e01a66001a66100a76300a76400a76600a76700a86900a86a00a86c00a86e00a86f00a87100a87201a87401a87501a87701a87801a87a02a87b02a87d03a87e03a88004a88104a78305a78405a78606a68707a68808a68a09a58b0aa58d0ba58e0ca48f0da4910ea3920fa39410a29511a19613a19814a099159f9a169f9c179e9d189d9e199da01a9ca11b9ba21d9aa31e9aa51f99a62098a72197a82296aa2395ab2494ac2694ad2793ae2892b02991b12a90b22b8fb32c8eb42e8db52f8cb6308bb7318ab83289ba3388bb3488bc3587bd3786be3885bf3984c03a83c13b82c23c81c33d80c43e7fc5407ec6417dc7427cc8437bc9447aca457acb4679cc4778cc4977cd4a76ce4b75cf4c74d04d73d14e72d24f71d35171d45270d5536fd5546ed6556dd7566cd8576bd9586ada5a6ada5b69db5c68dc5d67dd5e66de5f65de6164df6263e06363e16462e26561e26660e3685fe4695ee56a5de56b5de66c5ce76e5be76f5ae87059e97158e97257ea7457eb7556eb7655ec7754ed7953ed7a52ee7b51ef7c51ef7e50f07f4ff0804ef1814df1834cf2844bf3854bf3874af48849f48948f58b47f58c46f68d45f68f44f79044f79143f79342f89441f89540f9973ff9983ef99a3efa9b3dfa9c3cfa9e3bfb9f3afba139fba238fca338fca537fca636fca835fca934fdab33fdac33fdae32fdaf31fdb130fdb22ffdb42ffdb52efeb72dfeb82cfeba2cfebb2bfebd2afebe2afec029fdc229fdc328fdc527fdc627fdc827fdca26fdcb26fccd25fcce25fcd025fcd225fbd324fbd524fbd724fad824fada24f9dc24f9dd25f8df25f8e125f7e225f7e425f6e626f6e826f5e926f5eb27f4ed27f3ee27f3f027f2f227f1f426f1f525f0f724f0f921")),wb=function(t){return function(){return t}},Mb=Math.abs,kb=Math.atan2,Eb=Math.cos,Tb=Math.max,Sb=Math.min,Ab=Math.sin,Nb=Math.sqrt,Cb=1e-12,Pb=Math.PI,zb=Pb/2,Lb=2*Pb,Rb=function(){function t(){var t,s,f=+n.apply(this,arguments),l=+e.apply(this,arguments),h=o.apply(this,arguments)-zb,p=u.apply(this,arguments)-zb,d=Mb(p-h),v=p>h;if(c||(c=t=Ue()),l<f&&(s=l,l=f,f=s),l>Cb)if(d>Lb-Cb)c.moveTo(l*Eb(h),l*Ab(h)),c.arc(0,0,l,h,p,!v),f>Cb&&(c.moveTo(f*Eb(p),f*Ab(p)),c.arc(0,0,f,p,h,v));else{var g,y,_=h,m=p,x=h,b=p,w=d,M=d,k=a.apply(this,arguments)/2,E=k>Cb&&(i?+i.apply(this,arguments):Nb(f*f+l*l)),T=Sb(Mb(l-f)/2,+r.apply(this,arguments)),S=T,A=T;if(E>Cb){var N=uc(E/f*Ab(k)),C=uc(E/l*Ab(k));(w-=2*N)>Cb?(N*=v?1:-1,x+=N,b-=N):(w=0,x=b=(h+p)/2),(M-=2*C)>Cb?(C*=v?1:-1,_+=C,m-=C):(M=0,_=m=(h+p)/2)}var P=l*Eb(_),z=l*Ab(_),L=f*Eb(b),R=f*Ab(b);if(T>Cb){var q=l*Eb(m),U=l*Ab(m),O=f*Eb(x),D=f*Ab(x);if(d<Pb){var I=w>Cb?hc(P,z,O,D,q,U,L,R):[L,R],F=P-I[0],j=z-I[1],Y=q-I[0],B=U-I[1],H=1/Ab(oc((F*Y+j*B)/(Nb(F*F+j*j)*Nb(Y*Y+B*B)))/2),X=Nb(I[0]*I[0]+I[1]*I[1]);S=Sb(T,(f-X)/(H-1)),A=Sb(T,(l-X)/(H+1))}}M>Cb?A>Cb?(g=pc(O,D,P,z,l,A,v),y=pc(q,U,L,R,l,A,v),c.moveTo(g.cx+g.x01,g.cy+g.y01),A<T?c.arc(g.cx,g.cy,A,kb(g.y01,g.x01),kb(y.y01,y.x01),!v):(c.arc(g.cx,g.cy,A,kb(g.y01,g.x01),kb(g.y11,g.x11),!v),c.arc(0,0,l,kb(g.cy+g.y11,g.cx+g.x11),kb(y.cy+y.y11,y.cx+y.x11),!v),c.arc(y.cx,y.cy,A,kb(y.y11,y.x11),kb(y.y01,y.x01),!v))):(c.moveTo(P,z),c.arc(0,0,l,_,m,!v)):c.moveTo(P,z),f>Cb&&w>Cb?S>Cb?(g=pc(L,R,q,U,f,-S,v),y=pc(P,z,O,D,f,-S,v),c.lineTo(g.cx+g.x01,g.cy+g.y01),S<T?c.arc(g.cx,g.cy,S,kb(g.y01,g.x01),kb(y.y01,y.x01),!v):(c.arc(g.cx,g.cy,S,kb(g.y01,g.x01),kb(g.y11,g.x11),!v),c.arc(0,0,f,kb(g.cy+g.y11,g.cx+g.x11),kb(y.cy+y.y11,y.cx+y.x11),v),c.arc(y.cx,y.cy,S,kb(y.y11,y.x11),kb(y.y01,y.x01),!v))):c.arc(0,0,f,b,x,v):c.lineTo(L,R)}else c.moveTo(0,0);if(c.closePath(),t)return c=null,t+""||null}var n=ac,e=cc,r=wb(0),i=null,o=sc,u=fc,a=lc,c=null;return t.centroid=function(){var t=(+n.apply(this,arguments)+ +e.apply(this,arguments))/2,r=(+o.apply(this,arguments)+ +u.apply(this,arguments))/2-Pb/2;return[Eb(r)*t,Ab(r)*t]},t.innerRadius=function(e){return arguments.length?(n="function"==typeof e?e:wb(+e),t):n},t.outerRadius=function(n){return arguments.length?(e="function"==typeof n?n:wb(+n),t):e},t.cornerRadius=function(n){return arguments.length?(r="function"==typeof n?n:wb(+n),t):r},t.padRadius=function(n){return arguments.length?(i=null==n?null:"function"==typeof n?n:wb(+n),t):i},t.startAngle=function(n){return arguments.length?(o="function"==typeof n?n:wb(+n),t):o},t.endAngle=function(n){return arguments.length?(u="function"==typeof n?n:wb(+n),t):u},t.padAngle=function(n){return arguments.length?(a="function"==typeof n?n:wb(+n),t):a},t.context=function(n){return arguments.length?(c=null==n?null:n,t):c},t};dc.prototype={areaStart:function(){this._line=0},areaEnd:function(){this._line=NaN},lineStart:function(){this._point=0},lineEnd:function(){(this._line||0!==this._line&&1===this._point)&&this._context.closePath(),this._line=1-this._line},point:function(t,n){switch(t=+t,n=+n,this._point){case 0:this._point=1,this._line?this._context.lineTo(t,n):this._context.moveTo(t,n);break;case 1:this._point=2;default:this._context.lineTo(t,n)}}};var qb=function(t){return new dc(t)},Ub=function(){function t(t){var a,c,s,f=t.length,l=!1;for(null==i&&(u=o(s=Ue())),a=0;a<=f;++a)!(a<f&&r(c=t[a],a,t))===l&&((l=!l)?u.lineStart():u.lineEnd()),l&&u.point(+n(c,a,t),+e(c,a,t));if(s)return u=null,s+""||null}var n=vc,e=gc,r=wb(!0),i=null,o=qb,u=null;return t.x=function(e){return arguments.length?(n="function"==typeof e?e:wb(+e),t):n},t.y=function(n){return arguments.length?(e="function"==typeof n?n:wb(+n),t):e},t.defined=function(n){return arguments.length?(r="function"==typeof n?n:wb(!!n),t):r},t.curve=function(n){return arguments.length?(o=n,null!=i&&(u=o(i)),t):o},t.context=function(n){return arguments.length?(null==n?i=u=null:u=o(i=n),t):i},t},Ob=function(){function t(t){var n,f,l,h,p,d=t.length,v=!1,g=new Array(d),y=new Array(d);for(null==a&&(s=c(p=Ue())),n=0;n<=d;++n){if(!(n<d&&u(h=t[n],n,t))===v)if(v=!v)f=n,s.areaStart(),s.lineStart();else{for(s.lineEnd(),s.lineStart(),l=n-1;l>=f;--l)s.point(g[l],y[l]);s.lineEnd(),s.areaEnd()}v&&(g[n]=+e(h,n,t),y[n]=+i(h,n,t),s.point(r?+r(h,n,t):g[n],o?+o(h,n,t):y[n]))}if(p)return s=null,p+""||null}function n(){return Ub().defined(u).curve(c).context(a)}var e=vc,r=null,i=wb(0),o=gc,u=wb(!0),a=null,c=qb,s=null;return t.x=function(n){return arguments.length?(e="function"==typeof n?n:wb(+n),r=null,t):e},t.x0=function(n){return arguments.length?(e="function"==typeof n?n:wb(+n),t):e},t.x1=function(n){return arguments.length?(r=null==n?null:"function"==typeof n?n:wb(+n),t):r},t.y=function(n){return arguments.length?(i="function"==typeof n?n:wb(+n),o=null,t):i},t.y0=function(n){return arguments.length?(i="function"==typeof n?n:wb(+n),t):i},t.y1=function(n){return arguments.length?(o=null==n?null:"function"==typeof n?n:wb(+n),t):o},t.lineX0=t.lineY0=function(){return n().x(e).y(i)},t.lineY1=function(){return n().x(e).y(o)},t.lineX1=function(){return n().x(r).y(i)},t.defined=function(n){return arguments.length?(u="function"==typeof n?n:wb(!!n),t):u},t.curve=function(n){return arguments.length?(c=n,null!=a&&(s=c(a)),t):c},t.context=function(n){return arguments.length?(null==n?a=s=null:s=c(a=n),t):a},t},Db=function(t,n){return n<t?-1:n>t?1:n>=t?0:NaN},Ib=function(t){return t},Fb=function(){function t(t){var a,c,s,f,l,h=t.length,p=0,d=new Array(h),v=new Array(h),g=+i.apply(this,arguments),y=Math.min(Lb,Math.max(-Lb,o.apply(this,arguments)-g)),_=Math.min(Math.abs(y)/h,u.apply(this,arguments)),m=_*(y<0?-1:1);for(a=0;a<h;++a)(l=v[d[a]=a]=+n(t[a],a,t))>0&&(p+=l);for(null!=e?d.sort(function(t,n){return e(v[t],v[n])}):null!=r&&d.sort(function(n,e){return r(t[n],t[e])}),a=0,s=p?(y-h*m)/p:0;a<h;++a,g=f)c=d[a],l=v[c],f=g+(l>0?l*s:0)+m,v[c]={data:t[c],index:a,value:l,startAngle:g,endAngle:f,padAngle:_};return v}var n=Ib,e=Db,r=null,i=wb(0),o=wb(Lb),u=wb(0);return t.value=function(e){return arguments.length?(n="function"==typeof e?e:wb(+e),t):n},t.sortValues=function(n){return arguments.length?(e=n,r=null,t):e},t.sort=function(n){return arguments.length?(r=n,e=null,t):r},t.startAngle=function(n){return arguments.length?(i="function"==typeof n?n:wb(+n),t):i},t.endAngle=function(n){return arguments.length?(o="function"==typeof n?n:wb(+n),t):o},t.padAngle=function(n){return arguments.length?(u="function"==typeof n?n:wb(+n),t):u},t},jb=_c(qb);yc.prototype={areaStart:function(){this._curve.areaStart()},areaEnd:function(){this._curve.areaEnd()},lineStart:function(){this._curve.lineStart()},lineEnd:function(){this._curve.lineEnd()},point:function(t,n){this._curve.point(n*Math.sin(t),n*-Math.cos(t))}};var Yb=function(){return mc(Ub().curve(jb))},Bb=function(){var t=Ob().curve(jb),n=t.curve,e=t.lineX0,r=t.lineX1,i=t.lineY0,o=t.lineY1;return t.angle=t.x,delete t.x,t.startAngle=t.x0,delete t.x0,t.endAngle=t.x1,delete t.x1,t.radius=t.y,delete t.y,t.innerRadius=t.y0,delete t.y0,t.outerRadius=t.y1,delete t.y1,t.lineStartAngle=function(){return mc(e())},delete t.lineX0,t.lineEndAngle=function(){return mc(r())},delete t.lineX1,t.lineInnerRadius=function(){return mc(i())},delete t.lineY0,t.lineOuterRadius=function(){return mc(o())},delete t.lineY1,t.curve=function(t){return arguments.length?n(_c(t)):n()._curve},t},Hb=Array.prototype.slice,Xb=function(t,n){return[(n=+n)*Math.cos(t-=Math.PI/2),n*Math.sin(t)]},Gb={draw:function(t,n){var e=Math.sqrt(n/Pb);t.moveTo(e,0),t.arc(0,0,e,0,Lb)}},$b={draw:function(t,n){var e=Math.sqrt(n/5)/2;t.moveTo(-3*e,-e),t.lineTo(-e,-e),t.lineTo(-e,-3*e),t.lineTo(e,-3*e),t.lineTo(e,-e),t.lineTo(3*e,-e),t.lineTo(3*e,e),t.lineTo(e,e),t.lineTo(e,3*e),t.lineTo(-e,3*e),t.lineTo(-e,e),t.lineTo(-3*e,e),t.closePath()}},Vb=Math.sqrt(1/3),Wb=2*Vb,Zb={draw:function(t,n){var e=Math.sqrt(n/Wb),r=e*Vb;t.moveTo(0,-e),t.lineTo(r,0),t.lineTo(0,e),t.lineTo(-r,0),t.closePath()}},Jb=Math.sin(Pb/10)/Math.sin(7*Pb/10),Qb=Math.sin(Lb/10)*Jb,Kb=-Math.cos(Lb/10)*Jb,tw={draw:function(t,n){var e=Math.sqrt(.8908130915292852*n),r=Qb*e,i=Kb*e;t.moveTo(0,-e),t.lineTo(r,i);for(var o=1;o<5;++o){var u=Lb*o/5,a=Math.cos(u),c=Math.sin(u);t.lineTo(c*e,-a*e),t.lineTo(a*r-c*i,c*r+a*i)}t.closePath()}},nw={draw:function(t,n){var e=Math.sqrt(n),r=-e/2;t.rect(r,r,e,e)}},ew=Math.sqrt(3),rw={draw:function(t,n){var e=-Math.sqrt(n/(3*ew));t.moveTo(0,2*e),t.lineTo(-ew*e,-e),t.lineTo(ew*e,-e),t.closePath()}},iw=-.5,ow=Math.sqrt(3)/2,uw=1/Math.sqrt(12),aw=3*(uw/2+1),cw={draw:function(t,n){var e=Math.sqrt(n/aw),r=e/2,i=e*uw,o=r,u=e*uw+e,a=-o,c=u;t.moveTo(r,i),t.lineTo(o,u),t.lineTo(a,c),t.lineTo(iw*r-ow*i,ow*r+iw*i),t.lineTo(iw*o-ow*u,ow*o+iw*u),t.lineTo(iw*a-ow*c,ow*a+iw*c),t.lineTo(iw*r+ow*i,iw*i-ow*r),t.lineTo(iw*o+ow*u,iw*u-ow*o),t.lineTo(iw*a+ow*c,iw*c-ow*a),t.closePath()}},sw=[Gb,$b,Zb,nw,tw,rw,cw],fw=function(){function t(){var t;if(r||(r=t=Ue()),n.apply(this,arguments).draw(r,+e.apply(this,arguments)),t)return r=null,t+""||null}var n=wb(Gb),e=wb(64),r=null;return t.type=function(e){return arguments.length?(n="function"==typeof e?e:wb(e),t):n},t.size=function(n){return arguments.length?(e="function"==typeof n?n:wb(+n),t):e},t.context=function(n){return arguments.length?(r=null==n?null:n,t):r},t},lw=function(){};Cc.prototype={areaStart:function(){this._line=0},areaEnd:function(){this._line=NaN},lineStart:function(){this._x0=this._x1=this._y0=this._y1=NaN,this._point=0},lineEnd:function(){switch(this._point){case 3:Nc(this,this._x1,this._y1);case 2:this._context.lineTo(this._x1,this._y1)}(this._line||0!==this._line&&1===this._point)&&this._context.closePath(),this._line=1-this._line},point:function(t,n){switch(t=+t,n=+n,this._point){case 0:this._point=1,this._line?this._context.lineTo(t,n):this._context.moveTo(t,n);break;case 1:this._point=2;break;case 2:this._point=3,this._context.lineTo((5*this._x0+this._x1)/6,(5*this._y0+this._y1)/6);default:Nc(this,t,n)}this._x0=this._x1,this._x1=t,this._y0=this._y1,this._y1=n}};var hw=function(t){return new Cc(t)};Pc.prototype={areaStart:lw,areaEnd:lw,lineStart:function(){this._x0=this._x1=this._x2=this._x3=this._x4=this._y0=this._y1=this._y2=this._y3=this._y4=NaN,this._point=0},lineEnd:function(){switch(this._point){case 1:this._context.moveTo(this._x2,this._y2),this._context.closePath();break;case 2:this._context.moveTo((this._x2+2*this._x3)/3,(this._y2+2*this._y3)/3),this._context.lineTo((this._x3+2*this._x2)/3,(this._y3+2*this._y2)/3),this._context.closePath();break;case 3:this.point(this._x2,this._y2),this.point(this._x3,this._y3),this.point(this._x4,this._y4)}},point:function(t,n){switch(t=+t,n=+n,this._point){case 0:this._point=1,this._x2=t,this._y2=n;break;case 1:this._point=2,this._x3=t,this._y3=n;break;case 2:this._point=3,this._x4=t,this._y4=n,this._context.moveTo((this._x0+4*this._x1+t)/6,(this._y0+4*this._y1+n)/6);break;default:Nc(this,t,n)}this._x0=this._x1,this._x1=t,this._y0=this._y1,this._y1=n}};var pw=function(t){return new Pc(t)};zc.prototype={areaStart:function(){this._line=0},areaEnd:function(){this._line=NaN},lineStart:function(){this._x0=this._x1=this._y0=this._y1=NaN,this._point=0},lineEnd:function(){(this._line||0!==this._line&&3===this._point)&&this._context.closePath(),this._line=1-this._line},point:function(t,n){switch(t=+t,n=+n,this._point){case 0:this._point=1;break;case 1:this._point=2;break;case 2:this._point=3;var e=(this._x0+4*this._x1+t)/6,r=(this._y0+4*this._y1+n)/6;this._line?this._context.lineTo(e,r):this._context.moveTo(e,r);break;case 3:this._point=4;default:Nc(this,t,n)}this._x0=this._x1,this._x1=t,this._y0=this._y1,this._y1=n}};var dw=function(t){return new zc(t)};Lc.prototype={lineStart:function(){this._x=[],this._y=[],this._basis.lineStart()},lineEnd:function(){var t=this._x,n=this._y,e=t.length-1;if(e>0)for(var r,i=t[0],o=n[0],u=t[e]-i,a=n[e]-o,c=-1;++c<=e;)r=c/e,this._basis.point(this._beta*t[c]+(1-this._beta)*(i+r*u),this._beta*n[c]+(1-this._beta)*(o+r*a));this._x=this._y=null,this._basis.lineEnd()},point:function(t,n){this._x.push(+t),this._y.push(+n)}};var vw=function t(n){function e(t){return 1===n?new Cc(t):new Lc(t,n)}return e.beta=function(n){return t(+n)},e}(.85);qc.prototype={areaStart:function(){this._line=0},areaEnd:function(){this._line=NaN},lineStart:function(){this._x0=this._x1=this._x2=this._y0=this._y1=this._y2=NaN,this._point=0},lineEnd:function(){switch(this._point){case 2:this._context.lineTo(this._x2,this._y2);break;case 3:Rc(this,this._x1,this._y1)}(this._line||0!==this._line&&1===this._point)&&this._context.closePath(),this._line=1-this._line},point:function(t,n){switch(t=+t,n=+n,this._point){case 0:this._point=1,this._line?this._context.lineTo(t,n):this._context.moveTo(t,n);break;case 1:this._point=2,this._x1=t,this._y1=n;break;case 2:this._point=3;default:Rc(this,t,n)}this._x0=this._x1,this._x1=this._x2,this._x2=t,this._y0=this._y1,this._y1=this._y2,this._y2=n}};var gw=function t(n){function e(t){return new qc(t,n)}return e.tension=function(n){return t(+n)},e}(0);Uc.prototype={areaStart:lw,areaEnd:lw,lineStart:function(){this._x0=this._x1=this._x2=this._x3=this._x4=this._x5=this._y0=this._y1=this._y2=this._y3=this._y4=this._y5=NaN,this._point=0},lineEnd:function(){switch(this._point){case 1:this._context.moveTo(this._x3,this._y3),this._context.closePath();break;case 2:this._context.lineTo(this._x3,this._y3),this._context.closePath();break;case 3:this.point(this._x3,this._y3),this.point(this._x4,this._y4),this.point(this._x5,this._y5)}},point:function(t,n){switch(t=+t,n=+n,this._point){case 0:this._point=1,this._x3=t,this._y3=n;break;case 1:this._point=2,this._context.moveTo(this._x4=t,this._y4=n);break;case 2:this._point=3,this._x5=t,this._y5=n;break;default:Rc(this,t,n)}this._x0=this._x1,this._x1=this._x2,this._x2=t,this._y0=this._y1,this._y1=this._y2,this._y2=n}};var yw=function t(n){function e(t){return new Uc(t,n)}return e.tension=function(n){return t(+n)},e}(0);Oc.prototype={areaStart:function(){this._line=0},areaEnd:function(){this._line=NaN},lineStart:function(){this._x0=this._x1=this._x2=this._y0=this._y1=this._y2=NaN,this._point=0},lineEnd:function(){(this._line||0!==this._line&&3===this._point)&&this._context.closePath(),this._line=1-this._line},point:function(t,n){switch(t=+t,n=+n,this._point){case 0:this._point=1;break;case 1:this._point=2;break;case 2:this._point=3,this._line?this._context.lineTo(this._x2,this._y2):this._context.moveTo(this._x2,this._y2);break;case 3:this._point=4;default:Rc(this,t,n)}this._x0=this._x1,this._x1=this._x2,this._x2=t,this._y0=this._y1,this._y1=this._y2,this._y2=n}};var _w=function t(n){function e(t){return new Oc(t,n)}return e.tension=function(n){return t(+n)},e}(0);Ic.prototype={areaStart:function(){this._line=0},areaEnd:function(){this._line=NaN},lineStart:function(){this._x0=this._x1=this._x2=this._y0=this._y1=this._y2=NaN,this._l01_a=this._l12_a=this._l23_a=this._l01_2a=this._l12_2a=this._l23_2a=this._point=0},lineEnd:function(){switch(this._point){case 2:this._context.lineTo(this._x2,this._y2);break;case 3:this.point(this._x2,this._y2)}(this._line||0!==this._line&&1===this._point)&&this._context.closePath(),this._line=1-this._line},point:function(t,n){if(t=+t,n=+n,this._point){var e=this._x2-t,r=this._y2-n;this._l23_a=Math.sqrt(this._l23_2a=Math.pow(e*e+r*r,this._alpha))}switch(this._point){case 0:this._point=1,this._line?this._context.lineTo(t,n):this._context.moveTo(t,n);break;case 1:this._point=2;break;case 2:this._point=3;default:Dc(this,t,n)}this._l01_a=this._l12_a,this._l12_a=this._l23_a,this._l01_2a=this._l12_2a,this._l12_2a=this._l23_2a,this._x0=this._x1,this._x1=this._x2,this._x2=t,this._y0=this._y1,this._y1=this._y2,this._y2=n}};var mw=function t(n){function e(t){return n?new Ic(t,n):new qc(t,0)}return e.alpha=function(n){return t(+n)},e}(.5);Fc.prototype={areaStart:lw,areaEnd:lw,lineStart:function(){this._x0=this._x1=this._x2=this._x3=this._x4=this._x5=this._y0=this._y1=this._y2=this._y3=this._y4=this._y5=NaN,this._l01_a=this._l12_a=this._l23_a=this._l01_2a=this._l12_2a=this._l23_2a=this._point=0},lineEnd:function(){switch(this._point){case 1:this._context.moveTo(this._x3,this._y3),this._context.closePath();break;case 2:this._context.lineTo(this._x3,this._y3),this._context.closePath();break;case 3:this.point(this._x3,this._y3),this.point(this._x4,this._y4),this.point(this._x5,this._y5)}},point:function(t,n){if(t=+t,n=+n,this._point){var e=this._x2-t,r=this._y2-n;this._l23_a=Math.sqrt(this._l23_2a=Math.pow(e*e+r*r,this._alpha))}switch(this._point){case 0:this._point=1,this._x3=t,this._y3=n;break;case 1:this._point=2,this._context.moveTo(this._x4=t,this._y4=n);break;case 2:this._point=3,this._x5=t,this._y5=n;break;default:Dc(this,t,n)}this._l01_a=this._l12_a,this._l12_a=this._l23_a,this._l01_2a=this._l12_2a,this._l12_2a=this._l23_2a,this._x0=this._x1,this._x1=this._x2,this._x2=t,this._y0=this._y1,this._y1=this._y2,this._y2=n}};var xw=function t(n){function e(t){return n?new Fc(t,n):new Uc(t,0)}return e.alpha=function(n){return t(+n)},e}(.5);jc.prototype={areaStart:function(){this._line=0},areaEnd:function(){this._line=NaN},lineStart:function(){this._x0=this._x1=this._x2=this._y0=this._y1=this._y2=NaN,this._l01_a=this._l12_a=this._l23_a=this._l01_2a=this._l12_2a=this._l23_2a=this._point=0},lineEnd:function(){(this._line||0!==this._line&&3===this._point)&&this._context.closePath(),this._line=1-this._line},point:function(t,n){if(t=+t,n=+n,this._point){var e=this._x2-t,r=this._y2-n;this._l23_a=Math.sqrt(this._l23_2a=Math.pow(e*e+r*r,this._alpha))}switch(this._point){case 0:this._point=1;break;case 1:this._point=2;break;case 2:this._point=3,this._line?this._context.lineTo(this._x2,this._y2):this._context.moveTo(this._x2,this._y2);break;case 3:this._point=4;default:Dc(this,t,n)}this._l01_a=this._l12_a,this._l12_a=this._l23_a,this._l01_2a=this._l12_2a,this._l12_2a=this._l23_2a,this._x0=this._x1,this._x1=this._x2,this._x2=t,this._y0=this._y1,this._y1=this._y2,this._y2=n}};var bw=function t(n){function e(t){return n?new jc(t,n):new Oc(t,0)}return e.alpha=function(n){return t(+n)},e}(.5);Yc.prototype={areaStart:lw,areaEnd:lw,lineStart:function(){this._point=0},lineEnd:function(){this._point&&this._context.closePath()},point:function(t,n){t=+t,n=+n,this._point?this._context.lineTo(t,n):(this._point=1,this._context.moveTo(t,n))}};var ww=function(t){return new Yc(t)};$c.prototype={areaStart:function(){this._line=0},areaEnd:function(){this._line=NaN},lineStart:function(){this._x0=this._x1=this._y0=this._y1=this._t0=NaN,this._point=0},lineEnd:function(){switch(this._point){case 2:this._context.lineTo(this._x1,this._y1);break;case 3:Gc(this,this._t0,Xc(this,this._t0))}(this._line||0!==this._line&&1===this._point)&&this._context.closePath(),this._line=1-this._line},point:function(t,n){var e=NaN;if(t=+t,n=+n,t!==this._x1||n!==this._y1){switch(this._point){case 0:this._point=1,this._line?this._context.lineTo(t,n):this._context.moveTo(t,n);break;case 1:this._point=2;break;case 2:this._point=3,Gc(this,Xc(this,e=Hc(this,t,n)),e);break;default:Gc(this,this._t0,e=Hc(this,t,n))}this._x0=this._x1,this._x1=t,this._y0=this._y1,this._y1=n,this._t0=e}}},(Vc.prototype=Object.create($c.prototype)).point=function(t,n){$c.prototype.point.call(this,n,t)},Wc.prototype={moveTo:function(t,n){this._context.moveTo(n,t)},closePath:function(){this._context.closePath()},lineTo:function(t,n){this._context.lineTo(n,t)},bezierCurveTo:function(t,n,e,r,i,o){this._context.bezierCurveTo(n,t,r,e,o,i)}},Qc.prototype={areaStart:function(){this._line=0},areaEnd:function(){this._line=NaN},lineStart:function(){this._x=[],this._y=[]},lineEnd:function(){var t=this._x,n=this._y,e=t.length;if(e)if(this._line?this._context.lineTo(t[0],n[0]):this._context.moveTo(t[0],n[0]),2===e)this._context.lineTo(t[1],n[1]);else for(var r=Kc(t),i=Kc(n),o=0,u=1;u<e;++o,++u)this._context.bezierCurveTo(r[0][o],i[0][o],r[1][o],i[1][o],t[u],n[u]);(this._line||0!==this._line&&1===e)&&this._context.closePath(),this._line=1-this._line,this._x=this._y=null},point:function(t,n){this._x.push(+t),this._y.push(+n)}};var Mw=function(t){return new Qc(t)};ts.prototype={areaStart:function(){this._line=0},areaEnd:function(){this._line=NaN},lineStart:function(){this._x=this._y=NaN,this._point=0},lineEnd:function(){0<this._t&&this._t<1&&2===this._point&&this._context.lineTo(this._x,this._y),(this._line||0!==this._line&&1===this._point)&&this._context.closePath(),this._line>=0&&(this._t=1-this._t,this._line=1-this._line)},point:function(t,n){switch(t=+t,n=+n,this._point){case 0:this._point=1,this._line?this._context.lineTo(t,n):this._context.moveTo(t,n);break;case 1:this._point=2;default:if(this._t<=0)this._context.lineTo(this._x,n),this._context.lineTo(t,n);else{var e=this._x*(1-this._t)+t*this._t;this._context.lineTo(e,this._y),this._context.lineTo(e,n)}}this._x=t,this._y=n}};var kw=function(t){return new ts(t,.5)},Ew=function(t,n){if((i=t.length)>1)for(var e,r,i,o=1,u=t[n[0]],a=u.length;o<i;++o)for(r=u,u=t[n[o]],e=0;e<a;++e)u[e][1]+=u[e][0]=isNaN(r[e][1])?r[e][0]:r[e][1]},Tw=function(t){for(var n=t.length,e=new Array(n);--n>=0;)e[n]=n;return e},Sw=function(){function t(t){var o,u,a=n.apply(this,arguments),c=t.length,s=a.length,f=new Array(s);for(o=0;o<s;++o){for(var l,h=a[o],p=f[o]=new Array(c),d=0;d<c;++d)p[d]=l=[0,+i(t[d],h,d,t)],l.data=t[d];p.key=h}for(o=0,u=e(f);o<s;++o)f[u[o]].index=o;return r(f,u),f}var n=wb([]),e=Tw,r=Ew,i=rs;return t.keys=function(e){return arguments.length?(n="function"==typeof e?e:wb(Hb.call(e)),t):n},t.value=function(n){return arguments.length?(i="function"==typeof n?n:wb(+n),t):i},t.order=function(n){return arguments.length?(e=null==n?Tw:"function"==typeof n?n:wb(Hb.call(n)),t):e},t.offset=function(n){return arguments.length?(r=null==n?Ew:n,t):r},t},Aw=function(t,n){if((r=t.length)>0){for(var e,r,i,o=0,u=t[0].length;o<u;++o){for(i=e=0;e<r;++e)i+=t[e][o][1]||0;if(i)for(e=0;e<r;++e)t[e][o][1]/=i}Ew(t,n)}},Nw=function(t,n){if((a=t.length)>1)for(var e,r,i,o,u,a,c=0,s=t[n[0]].length;c<s;++c)for(o=u=0,e=0;e<a;++e)(i=(r=t[n[e]][c])[1]-r[0])>=0?(r[0]=o,r[1]=o+=i):i<0?(r[1]=u,r[0]=u+=i):r[0]=o},Cw=function(t,n){if((e=t.length)>0){for(var e,r=0,i=t[n[0]],o=i.length;r<o;++r){for(var u=0,a=0;u<e;++u)a+=t[u][r][1]||0;i[r][1]+=i[r][0]=-a/2}Ew(t,n)}},Pw=function(t,n){if((i=t.length)>0&&(r=(e=t[n[0]]).length)>0){for(var e,r,i,o=0,u=1;u<r;++u){for(var a=0,c=0,s=0;a<i;++a){for(var f=t[n[a]],l=f[u][1]||0,h=f[u-1][1]||0,p=(l-h)/2,d=0;d<a;++d){var v=t[n[d]];p+=(v[u][1]||0)-(v[u-1][1]||0)}c+=l,s+=p*l}e[u-1][1]+=e[u-1][0]=o,c&&(o-=s/c)}e[u-1][1]+=e[u-1][0]=o,Ew(t,n)}},zw=function(t){var n=t.map(is);return Tw(t).sort(function(t,e){return n[t]-n[e]})},Lw=function(t){return zw(t).reverse()},Rw=function(t){var n,e,r=t.length,i=t.map(is),o=Tw(t).sort(function(t,n){return i[n]-i[t]}),u=0,a=0,c=[],s=[];for(n=0;n<r;++n)e=o[n],u<a?(u+=i[e],c.push(e)):(a+=i[e],s.push(e));return s.reverse().concat(c)},qw=function(t){return Tw(t).reverse()},Uw=function(t){return function(){return t}};as.prototype={constructor:as,insert:function(t,n){var e,r,i;if(t){if(n.P=t,n.N=t.N,t.N&&(t.N.P=n),t.N=n,t.R){for(t=t.R;t.L;)t=t.L;t.L=n}else t.R=n;e=t}else this._?(t=ls(this._),n.P=null,n.N=t,t.P=t.L=n,e=t):(n.P=n.N=null,this._=n,e=null);for(n.L=n.R=null,n.U=e,n.C=!0,t=n;e&&e.C;)r=e.U,e===r.L?(i=r.R,i&&i.C?(e.C=i.C=!1,r.C=!0,t=r):(t===e.R&&(ss(this,e),t=e,e=t.U),e.C=!1,r.C=!0,fs(this,r))):(i=r.L,i&&i.C?(e.C=i.C=!1,r.C=!0,t=r):(t===e.L&&(fs(this,e),t=e,e=t.U),e.C=!1,r.C=!0,ss(this,r))),e=t.U;this._.C=!1},remove:function(t){t.N&&(t.N.P=t.P),t.P&&(t.P.N=t.N),t.N=t.P=null;var n,e,r,i=t.U,o=t.L,u=t.R;if(e=o?u?ls(u):o:u,i?i.L===t?i.L=e:i.R=e:this._=e,o&&u?(r=e.C,e.C=t.C,e.L=o,o.U=e,e!==u?(i=e.U,e.U=t.U,t=e.R,i.L=t,e.R=u,u.U=e):(e.U=i,i=e,t=e.R)):(r=t.C,t=e),t&&(t.U=i),!r){if(t&&t.C)return void(t.C=!1);do{if(t===this._)break;if(t===i.L){if(n=i.R,n.C&&(n.C=!1,i.C=!0,ss(this,i),n=i.R),n.L&&n.L.C||n.R&&n.R.C){n.R&&n.R.C||(n.L.C=!1,n.C=!0,fs(this,n),n=i.R),n.C=i.C,i.C=n.R.C=!1,ss(this,i),t=this._;break}}else if(n=i.L,n.C&&(n.C=!1,i.C=!0,fs(this,i),n=i.L),n.L&&n.L.C||n.R&&n.R.C){n.L&&n.L.C||(n.R.C=!1,n.C=!0,ss(this,n),n=i.L),n.C=i.C,i.C=n.L.C=!1,fs(this,i),t=this._;break}n.C=!0,t=i,i=i.U}while(!t.C);t&&(t.C=!1)}}};var Ow,Dw,Iw,Fw,jw,Yw=[],Bw=[],Hw=1e-6,Xw=1e-12;Us.prototype={constructor:Us,polygons:function(){var t=this.edges;return this.cells.map(function(n){var e=n.halfedges.map(function(e){return xs(n,t[e])});return e.data=n.site.data,e})},triangles:function(){var t=[],n=this.edges;return this.cells.forEach(function(e,r){if(o=(i=e.halfedges).length)for(var i,o,u,a=e.site,c=-1,s=n[i[o-1]],f=s.left===a?s.right:s.left;++c<o;)u=f,s=n[i[c]],f=s.left===a?s.right:s.left,u&&f&&r<u.index&&r<f.index&&Rs(a,u,f)<0&&t.push([a.data,u.data,f.data])}),t},links:function(){return this.edges.filter(function(t){return t.right}).map(function(t){return{source:t.left.data,target:t.right.data}})},find:function(t,n,e){for(var r,i,o=this,u=o._found||0,a=o.cells.length;!(i=o.cells[u]);)if(++u>=a)return null;var c=t-i.site[0],s=n-i.site[1],f=c*c+s*s;do{i=o.cells[r=u],u=null,i.halfedges.forEach(function(e){var r=o.edges[e],a=r.left;if(a!==i.site&&a||(a=r.right)){var c=t-a[0],s=n-a[1],l=c*c+s*s;l<f&&(f=l,u=a.index)}})}while(null!==u);return o._found=r,null==e||f<=e*e?i.site:null}};var Gw=function(){function t(t){return new Us(t.map(function(r,i){var o=[Math.round(n(r,i,t)/Hw)*Hw,Math.round(e(r,i,t)/Hw)*Hw];return o.index=i,o.data=r,o}),r)}var n=os,e=us,r=null;return t.polygons=function(n){return t(n).polygons()},t.links=function(n){return t(n).links()},t.triangles=function(n){return t(n).triangles()},t.x=function(e){return arguments.length?(n="function"==typeof e?e:Uw(+e),t):n},t.y=function(n){return arguments.length?(e="function"==typeof n?n:Uw(+n),t):e},t.extent=function(n){return arguments.length?(r=null==n?null:[[+n[0][0],+n[0][1]],[+n[1][0],+n[1][1]]],t):r&&[[r[0][0],r[0][1]],[r[1][0],r[1][1]]]},t.size=function(n){return arguments.length?(r=null==n?null:[[0,0],[+n[0],+n[1]]],t):r&&[r[1][0]-r[0][0],r[1][1]-r[0][1]]},t},$w=function(t){return function(){return t}};Ds.prototype={constructor:Ds,scale:function(t){return 1===t?this:new Ds(this.k*t,this.x,this.y)},translate:function(t,n){return 0===t&0===n?this:new Ds(this.k,this.x+this.k*t,this.y+this.k*n)},apply:function(t){return[t[0]*this.k+this.x,t[1]*this.k+this.y]},applyX:function(t){return t*this.k+this.x},applyY:function(t){return t*this.k+this.y},invert:function(t){return[(t[0]-this.x)/this.k,(t[1]-this.y)/this.k]},invertX:function(t){return(t-this.x)/this.k},invertY:function(t){return(t-this.y)/this.k},rescaleX:function(t){return t.copy().domain(t.range().map(this.invertX,this).map(t.invert,t))},rescaleY:function(t){return t.copy().domain(t.range().map(this.invertY,this).map(t.invert,t))},toString:function(){return"translate("+this.x+","+this.y+") scale("+this.k+")"}};var Vw=new Ds(1,0,0);Is.prototype=Ds.prototype;var Ww=function(){t.event.preventDefault(),t.event.stopImmediatePropagation()},Zw=function(){function n(t){t.on("wheel.zoom",s).on("mousedown.zoom",f).on("dblclick.zoom",l).on("touchstart.zoom",h).on("touchmove.zoom",p).on("touchend.zoom touchcancel.zoom",d).style("-webkit-tap-highlight-color","rgba(0,0,0,0)").property("__zoom",Bs)}function e(t,n){return n=Math.max(x,Math.min(b,n)),n===t.k?t:new Ds(n,t.x,t.y)}function r(t,n,e){var r=n[0]-e[0]*t.k,i=n[1]-e[1]*t.k;return r===t.x&&i===t.y?t:new Ds(t.k,r,i)}function i(t,n){var e=t.invertX(n[0][0])-w,r=t.invertX(n[1][0])-M,i=t.invertY(n[0][1])-k,o=t.invertY(n[1][1])-E;return t.translate(r>e?(e+r)/2:Math.min(0,e)||Math.max(0,r),o>i?(i+o)/2:Math.min(0,i)||Math.max(0,o))}function o(t){return[(+t[0][0]+ +t[1][0])/2,(+t[0][1]+ +t[1][1])/2]}function u(t,n,e){t.on("start.zoom",function(){a(this,arguments).start()}).on("interrupt.zoom end.zoom",function(){a(this,arguments).end()}).tween("zoom",function(){var t=this,r=arguments,i=a(t,r),u=m.apply(t,r),c=e||o(u),s=Math.max(u[1][0]-u[0][0],u[1][1]-u[0][1]),f=t.__zoom,l="function"==typeof n?n.apply(t,r):n,h=S(f.invert(c).concat(s/f.k),l.invert(c).concat(s/l.k));return function(t){if(1===t)t=l;else{var n=h(t),e=s/n[2];t=new Ds(e,c[0]-n[0]*e,c[1]-n[1]*e)}i.zoom(null,t)}})}function a(t,n){for(var e,r=0,i=A.length;r<i;++r)if((e=A[r]).that===t)return e;return new c(t,n)}function c(t,n){this.that=t,this.args=n,this.index=-1,this.active=0,this.extent=m.apply(t,n)}function s(){function n(){o.wheel=null,o.end()}if(_.apply(this,arguments)){var o=a(this,arguments),u=this.__zoom,c=Math.max(x,Math.min(b,u.k*Math.pow(2,-t.event.deltaY*(t.event.deltaMode?120:1)/500))),s=Zf(this);if(o.wheel)o.mouse[0][0]===s[0]&&o.mouse[0][1]===s[1]||(o.mouse[1]=u.invert(o.mouse[0]=s)),clearTimeout(o.wheel);else{if(u.k===c)return;o.mouse=[s,u.invert(s)],_p(this),o.start()}Ww(),o.wheel=setTimeout(n,z),o.zoom("mouse",i(r(e(u,c),o.mouse[0],o.mouse[1]),o.extent))}}function f(){function n(){if(Ww(),!o.moved){var n=t.event.clientX-s,e=t.event.clientY-f;o.moved=n*n+e*e>L}o.zoom("mouse",i(r(o.that.__zoom,o.mouse[0]=Zf(o.that),o.mouse[1]),o.extent))}function e(){u.on("mousemove.zoom mouseup.zoom",null),mt(t.event.view,o.moved),Ww(),o.end()}if(!y&&_.apply(this,arguments)){var o=a(this,arguments),u=zl(t.event.view).on("mousemove.zoom",n,!0).on("mouseup.zoom",e,!0),c=Zf(this),s=t.event.clientX,f=t.event.clientY;Ol(t.event.view),Fs(),o.mouse=[c,this.__zoom.invert(c)],_p(this),o.start()}}function l(){if(_.apply(this,arguments)){var o=this.__zoom,a=Zf(this),c=o.invert(a),s=o.k*(t.event.shiftKey?.5:2),f=i(r(e(o,s),a,c),m.apply(this,arguments));Ww(),T>0?zl(this).transition().duration(T).call(u,f,a):zl(this).call(n.transform,f)}}function h(){if(_.apply(this,arguments)){var n,e,r,i,o=a(this,arguments),u=t.event.changedTouches,c=u.length;for(Fs(),e=0;e<c;++e)r=u[e],i=Rl(this,u,r.identifier),i=[i,this.__zoom.invert(i),r.identifier],o.touch0?o.touch1||(o.touch1=i):(o.touch0=i,n=!0);if(g&&(g=clearTimeout(g),!o.touch1))return o.end(),void((i=zl(this).on("dblclick.zoom"))&&i.apply(this,arguments));n&&(g=setTimeout(function(){g=null},P),_p(this),o.start())}}function p(){var n,o,u,c,s=a(this,arguments),f=t.event.changedTouches,l=f.length;for(Ww(),g&&(g=clearTimeout(g)),n=0;n<l;++n)o=f[n],u=Rl(this,f,o.identifier),s.touch0&&s.touch0[2]===o.identifier?s.touch0[0]=u:s.touch1&&s.touch1[2]===o.identifier&&(s.touch1[0]=u);if(o=s.that.__zoom,s.touch1){var h=s.touch0[0],p=s.touch0[1],d=s.touch1[0],v=s.touch1[1],y=(y=d[0]-h[0])*y+(y=d[1]-h[1])*y,_=(_=v[0]-p[0])*_+(_=v[1]-p[1])*_;o=e(o,Math.sqrt(y/_)),u=[(h[0]+d[0])/2,(h[1]+d[1])/2],c=[(p[0]+v[0])/2,(p[1]+v[1])/2]}else{if(!s.touch0)return;u=s.touch0[0],c=s.touch0[1]}s.zoom("touch",i(r(o,u,c),s.extent))}function d(){var n,e,r=a(this,arguments),i=t.event.changedTouches,o=i.length;for(Fs(),y&&clearTimeout(y),y=setTimeout(function(){y=null},P),n=0;n<o;++n)e=i[n],r.touch0&&r.touch0[2]===e.identifier?delete r.touch0:r.touch1&&r.touch1[2]===e.identifier&&delete r.touch1;r.touch1&&!r.touch0&&(r.touch0=r.touch1,delete r.touch1),r.touch0?r.touch0[1]=this.__zoom.invert(r.touch0[0]):r.end()}var g,y,_=js,m=Ys,x=0,b=1/0,w=-b,M=b,k=w,E=M,T=250,S=Bh,A=[],C=v("start","zoom","end"),P=500,z=150,L=0;return n.transform=function(t,n){var e=t.selection?t.selection():t;e.property("__zoom",Bs),t!==e?u(t,n):e.interrupt().each(function(){a(this,arguments).start().zoom(null,"function"==typeof n?n.apply(this,arguments):n).end()})},n.scaleBy=function(t,e){n.scaleTo(t,function(){return this.__zoom.k*("function"==typeof e?e.apply(this,arguments):e)})},n.scaleTo=function(t,u){n.transform(t,function(){var t=m.apply(this,arguments),n=this.__zoom,a=o(t),c=n.invert(a);return i(r(e(n,"function"==typeof u?u.apply(this,arguments):u),a,c),t)})},n.translateBy=function(t,e,r){n.transform(t,function(){return i(this.__zoom.translate("function"==typeof e?e.apply(this,arguments):e,"function"==typeof r?r.apply(this,arguments):r),m.apply(this,arguments))})},c.prototype={start:function(){return 1==++this.active&&(this.index=A.push(this)-1,this.emit("start")),this},zoom:function(t,n){return this.mouse&&"mouse"!==t&&(this.mouse[1]=n.invert(this.mouse[0])),this.touch0&&"touch"!==t&&(this.touch0[1]=n.invert(this.touch0[0])),this.touch1&&"touch"!==t&&(this.touch1[1]=n.invert(this.touch1[0])),this.that.__zoom=n,this.emit("zoom"),this},end:function(){return 0==--this.active&&(A.splice(this.index,1),this.index=-1,this.emit("end")),this},emit:function(t){N(new Os(n,t,this.that.__zoom),C.apply,C,[t,this.that,this.args])}},n.filter=function(t){return arguments.length?(_="function"==typeof t?t:$w(!!t),n):_},n.extent=function(t){return arguments.length?(m="function"==typeof t?t:$w([[+t[0][0],+t[0][1]],[+t[1][0],+t[1][1]]]),n):m},n.scaleExtent=function(t){return arguments.length?(x=+t[0],b=+t[1],n):[x,b]},n.translateExtent=function(t){return arguments.length?(w=+t[0][0],M=+t[1][0],k=+t[0][1],E=+t[1][1],n):[[w,k],[M,E]]},n.duration=function(t){return arguments.length?(T=+t,n):T},n.interpolate=function(t){return arguments.length?(S=t,n):S},n.on=function(){var t=C.on.apply(C,arguments);return t===C?n:t},n.clickDistance=function(t){return arguments.length?(L=(t=+t)*t,n):Math.sqrt(L)},n};t.version="4.9.1",t.bisect=$s,t.bisectRight=$s,t.bisectLeft=Vs,t.ascending=Hs,t.bisector=Xs,t.cross=Zs,t.descending=Js,t.deviation=tf,t.extent=nf,t.histogram=df,t.thresholdFreedmanDiaconis=gf,t.thresholdScott=yf,t.thresholdSturges=pf,t.max=_f,t.mean=mf,t.median=xf,t.merge=bf,t.min=wf,t.pairs=Ws,t.permute=Mf,t.quantile=vf,t.range=cf,t.scan=kf,t.shuffle=Ef,t.sum=Tf,t.ticks=hf,t.tickIncrement=r,t.tickStep=i,t.transpose=Sf,t.variance=Ks,t.zip=Af,t.axisTop=l,t.axisRight=h,t.axisBottom=p,t.axisLeft=d,t.brush=Ad,t.brushX=Pe,t.brushY=ze,t.brushSelection=Ce,t.chord=qd,t.ribbon=jd,t.nest=Yd,t.set=We,t.map=Be,t.keys=Hd,t.values=Xd,t.entries=Gd,t.color=Tt,t.rgb=Ct,t.hsl=Rt,t.lab=Dt,t.hcl=Xt,t.cubehelix=Vt,t.dispatch=v,t.drag=Il,t.dragDisable=Ol,t.dragEnable=mt,t.dsvFormat=$d,t.csvParse=Wd,t.csvParseRows=Zd,t.csvFormat=Jd,t.csvFormatRows=Qd,t.tsvParse=tv,t.tsvParseRows=nv,t.tsvFormat=ev,t.tsvFormatRows=rv,t.easeLinear=ie,t.easeQuad=ae,t.easeQuadIn=oe,t.easeQuadOut=ue,t.easeQuadInOut=ae,t.easeCubic=fe,t.easeCubicIn=ce,t.easeCubicOut=se,t.easeCubicInOut=fe,t.easePoly=Bp,t.easePolyIn=jp,t.easePolyOut=Yp,t.easePolyInOut=Bp,t.easeSin=pe,t.easeSinIn=le,t.easeSinOut=he,t.easeSinInOut=pe,t.easeExp=ge,t.easeExpIn=de,t.easeExpOut=ve,t.easeExpInOut=ge,t.easeCircle=me,t.easeCircleIn=ye,t.easeCircleOut=_e,t.easeCircleInOut=me,t.easeBounce=be,t.easeBounceIn=xe,t.easeBounceOut=be,t.easeBounceInOut=we,t.easeBack=id,t.easeBackIn=ed,t.easeBackOut=rd,t.easeBackInOut=id,t.easeElastic=ad,t.easeElasticIn=ud,t.easeElasticOut=ad,t.easeElasticInOut=cd,t.forceCenter=iv,t.forceCollide=wv,t.forceLink=Mv,t.forceManyBody=Sv,t.forceSimulation=Tv,t.forceX=Av,t.forceY=Nv,t.formatDefaultLocale=vr,t.formatLocale=Yv,t.formatSpecifier=pr,t.precisionFixed=Bv,t.precisionPrefix=Hv,t.precisionRound=Xv,t.geoArea=Zg,t.geoBounds=Kg,t.geoCentroid=ny,t.geoCircle=gy,t.geoClipExtent=My,t.geoContains=Ry,t.geoDistance=Py,t.geoGraticule=ki,t.geoGraticule10=Ei,t.geoInterpolate=qy,t.geoLength=Ay,t.geoPath=c_,t.geoAlbers=__,t.geoAlbersUsa=m_,t.geoAzimuthalEqualArea=b_,t.geoAzimuthalEqualAreaRaw=x_,t.geoAzimuthalEquidistant=M_,t.geoAzimuthalEquidistantRaw=w_,t.geoConicConformal=E_,t.geoConicConformalRaw=po,t.geoConicEqualArea=y_,t.geoConicEqualAreaRaw=uo,t.geoConicEquidistant=S_,t.geoConicEquidistantRaw=go,t.geoEquirectangular=T_,t.geoEquirectangularRaw=vo,t.geoGnomonic=A_,t.geoGnomonicRaw=yo,t.geoIdentity=N_,t.geoProjection=eo,t.geoProjectionMutator=ro,t.geoMercator=k_,t.geoMercatorRaw=fo,t.geoOrthographic=C_,t.geoOrthographicRaw=mo,t.geoStereographic=P_,t.geoStereographicRaw=xo,t.geoTransverseMercator=z_,t.geoTransverseMercatorRaw=bo,t.geoRotation=vy,t.geoStream=Gg,t.geoTransform=h_,t.cluster=L_,t.hierarchy=Po,t.pack=W_,t.packSiblings=$_,t.packEnclose=G_,t.partition=Q_,t.stratify=em,t.tree=rm,t.treemap=am,t.treemapBinary=cm,t.treemapDice=J_,t.treemapSlice=im,t.treemapSliceDice=sm,t.treemapSquarify=um,t.treemapResquarify=fm,t.interpolate=qh,t.interpolateArray=Ah,t.interpolateBasis=wh,t.interpolateBasisClosed=Mh,t.interpolateDate=Nh,t.interpolateNumber=Ch,t.interpolateObject=Ph,t.interpolateRound=Uh,t.interpolateString=Rh,t.interpolateTransformCss=Fh,t.interpolateTransformSvg=jh,t.interpolateZoom=Bh,t.interpolateRgb=Eh,t.interpolateRgbBasis=Th,t.interpolateRgbBasisClosed=Sh,t.interpolateHsl=Hh,t.interpolateHslLong=Xh,t.interpolateLab=pn,t.interpolateHcl=Gh,t.interpolateHclLong=$h,t.interpolateCubehelix=Vh,t.interpolateCubehelixLong=Wh,t.quantize=Zh,t.path=Ue,t.polygonArea=lm,t.polygonCentroid=hm;t.polygonHull=dm,t.polygonContains=vm,t.polygonLength=gm,t.quadtree=ir,t.queue=xu,t.randomUniform=xm,t.randomNormal=bm,t.randomLogNormal=wm,t.randomBates=km,t.randomIrwinHall=Mm,t.randomExponential=Em,t.request=Tm,t.html=Am,t.json=Nm,t.text=Cm,t.xml=Pm,t.csv=Lm,t.tsv=Rm,t.scaleBand=Eu,t.scalePoint=Su,t.scaleIdentity=Ou,t.scaleLinear=Uu,t.scaleLog=Hu,t.scaleOrdinal=ku,t.scaleImplicit=Dm,t.scalePow=Gu,t.scaleSqrt=$u,t.scaleQuantile=Vu,t.scaleQuantize=Wu,t.scaleThreshold=Zu,t.scaleTime=ub,t.scaleUtc=ab,t.schemeCategory10=sb,t.schemeCategory20b=fb,t.schemeCategory20c=lb,t.schemeCategory20=hb,t.interpolateCubehelixDefault=pb,t.interpolateRainbow=yb,t.interpolateWarm=db,t.interpolateCool=vb,t.interpolateViridis=_b,t.interpolateMagma=mb,t.interpolateInferno=xb,t.interpolatePlasma=bb,t.scaleSequential=ic,t.creator=Ff,t.local=w,t.matcher=Xf,t.mouse=Zf,t.namespace=If,t.namespaces=Df,t.select=zl,t.selectAll=Ll,t.selection=yt,t.selector=Jf,t.selectorAll=Kf,t.style=X,t.touch=Rl,t.touches=ql,t.window=_l,t.customEvent=N,t.arc=Rb,t.area=Ob,t.line=Ub,t.pie=Fb,t.radialArea=Bb,t.radialLine=Yb,t.linkHorizontal=Tc,t.linkVertical=Sc,t.linkRadial=Ac,t.symbol=fw,t.symbols=sw,t.symbolCircle=Gb,t.symbolCross=$b,t.symbolDiamond=Zb,t.symbolSquare=nw,t.symbolStar=tw,t.symbolTriangle=rw,t.symbolWye=cw,t.curveBasisClosed=pw,t.curveBasisOpen=dw,t.curveBasis=hw,t.curveBundle=vw,t.curveCardinalClosed=yw,t.curveCardinalOpen=_w,t.curveCardinal=gw,t.curveCatmullRomClosed=xw,t.curveCatmullRomOpen=bw,t.curveCatmullRom=mw,t.curveLinearClosed=ww,t.curveLinear=qb,t.curveMonotoneX=Zc,t.curveMonotoneY=Jc,t.curveNatural=Mw,t.curveStep=kw,t.curveStepAfter=es,t.curveStepBefore=ns,t.stack=Sw,t.stackOffsetExpand=Aw,t.stackOffsetDiverging=Nw,t.stackOffsetNone=Ew,t.stackOffsetSilhouette=Cw,t.stackOffsetWiggle=Pw,t.stackOrderAscending=zw,t.stackOrderDescending=Lw,t.stackOrderInsideOut=Rw,t.stackOrderNone=Tw,t.stackOrderReverse=qw,t.timeInterval=Ju,t.timeMillisecond=Gm,t.timeMilliseconds=$m,t.utcMillisecond=Gm,t.utcMilliseconds=$m,t.timeSecond=Zm,t.timeSeconds=Jm,t.utcSecond=Zm,t.utcSeconds=Jm,t.timeMinute=Qm,t.timeMinutes=Km,t.timeHour=tx,t.timeHours=nx,t.timeDay=ex,t.timeDays=rx,t.timeWeek=ix,t.timeWeeks=lx,t.timeSunday=ix,t.timeSundays=lx,t.timeMonday=ox,t.timeMondays=hx,t.timeTuesday=ux,t.timeTuesdays=px,t.timeWednesday=ax,t.timeWednesdays=dx,t.timeThursday=cx,t.timeThursdays=vx,t.timeFriday=sx,t.timeFridays=gx,t.timeSaturday=fx,t.timeSaturdays=yx,t.timeMonth=_x,t.timeMonths=mx,t.timeYear=xx,t.timeYears=bx,t.utcMinute=wx,t.utcMinutes=Mx,t.utcHour=kx,t.utcHours=Ex,t.utcDay=Tx,t.utcDays=Sx,t.utcWeek=Ax,t.utcWeeks=qx,t.utcSunday=Ax,t.utcSundays=qx,t.utcMonday=Nx,t.utcMondays=Ux,t.utcTuesday=Cx,t.utcTuesdays=Ox,t.utcWednesday=Px,t.utcWednesdays=Dx,t.utcThursday=zx,t.utcThursdays=Ix,t.utcFriday=Lx,t.utcFridays=Fx,t.utcSaturday=Rx,t.utcSaturdays=jx,t.utcMonth=Yx,t.utcMonths=Bx,t.utcYear=Hx,t.utcYears=Gx,t.timeFormatDefaultLocale=Ja,t.timeFormatLocale=ra,t.isoFormat=Jx,t.isoParse=Qx,t.now=gn,t.timer=mn,t.timerFlush=xn,t.timeout=up,t.interval=ap,t.transition=ee,t.active=hd,t.interrupt=_p,t.voronoi=Gw,t.zoom=Zw,t.zoomTransform=Is,t.zoomIdentity=Vw,Object.defineProperty(t,"__esModule",{value:!0})})},function(t,n,e){!function(t,e){e(n)}(0,function(t){"use strict";function n(t,n){var r=n.id,i=n.bbox,o=null==n.properties?{}:n.properties,u=e(t,n);return null==r&&null==i?{type:"Feature",properties:o,geometry:u}:null==i?{type:"Feature",id:r,properties:o,geometry:u}:{type:"Feature",id:r,bbox:i,properties:o,geometry:u}}function e(t,n){function e(t,n){n.length&&n.pop();for(var e=s[t<0?~t:t],r=0,i=e.length;r<i;++r)n.push(c(e[r],r));t<0&&C(n,i)}function r(t){return c(t)}function i(t){for(var n=[],r=0,i=t.length;r<i;++r)e(t[r],n);return n.length<2&&n.push(n[0]),n}function o(t){for(var n=i(t);n.length<4;)n.push(n[0]);return n}function u(t){return t.map(o)}function a(t){var n,e=t.type;switch(e){case"GeometryCollection":return{type:e,geometries:t.geometries.map(a)};case"Point":n=r(t.coordinates);break;case"MultiPoint":n=t.coordinates.map(r);break;case"LineString":n=i(t.arcs);break;case"MultiLineString":n=t.arcs.map(i);break;case"Polygon":n=u(t.arcs);break;case"MultiPolygon":n=t.arcs.map(u);break;default:return null}return{type:e,coordinates:n}}var c=A(t.transform),s=t.arcs;return a(n)}function r(t,n,e){var r,o,u;if(arguments.length>1)r=i(t,n,e);else for(o=0,r=new Array(u=t.arcs.length);o<u;++o)r[o]=o;return{type:"MultiLineString",arcs:z(t,r)}}function i(t,n,e){function r(t){var n=t<0?~t:t;(f[n]||(f[n]=[])).push({i:t,g:c})}function i(t){t.forEach(r)}function o(t){t.forEach(i)}function u(t){t.forEach(o)}function a(t){switch(c=t,t.type){case"GeometryCollection":t.geometries.forEach(a);break;case"LineString":i(t.arcs);break;case"MultiLineString":case"Polygon":o(t.arcs);break;case"MultiPolygon":u(t.arcs)}}var c,s=[],f=[];return a(n),f.forEach(null==e?function(t){s.push(t[0].i)}:function(t){e(t[0].g,t[t.length-1].g)&&s.push(t[0].i)}),s}function o(t){for(var n,e=-1,r=t.length,i=t[r-1],o=0;++e<r;)n=i,i=t[e],o+=n[0]*i[1]-n[1]*i[0];return Math.abs(o)}function u(t,n){function r(t){switch(t.type){case"GeometryCollection":t.geometries.forEach(r);break;case"Polygon":i(t.arcs);break;case"MultiPolygon":t.arcs.forEach(i)}}function i(t){t.forEach(function(n){n.forEach(function(n){(a[n=n<0?~n:n]||(a[n]=[])).push(t)})}),c.push(t)}function u(n){return o(e(t,{type:"Polygon",arcs:[n]}).coordinates[0])}var a={},c=[],s=[];return n.forEach(r),c.forEach(function(t){if(!t._){var n=[],e=[t];for(t._=1,s.push(n);t=e.pop();)n.push(t),t.forEach(function(t){t.forEach(function(t){a[t<0?~t:t].forEach(function(t){t._||(t._=1,e.push(t))})})})}}),c.forEach(function(t){delete t._}),{type:"MultiPolygon",arcs:s.map(function(n){var e,r=[];if(n.forEach(function(t){t.forEach(function(t){t.forEach(function(t){a[t<0?~t:t].length<2&&r.push(t)})})}),r=z(t,r),(e=r.length)>1)for(var i,o,c=1,s=u(r[0]);c<e;++c)(i=u(r[c]))>s&&(o=r[0],r[0]=r[c],r[c]=o,s=i);return r})}}function a(t,n,e,r){c(t,n,e),c(t,n,n+r),c(t,n+r,e)}function c(t,n,e){for(var r,i=n+(e---n>>1);n<i;++n,--e)r=t[n],t[n]=t[e],t[e]=r}function s(t){return null==t?{type:null}:("FeatureCollection"===t.type?f:"Feature"===t.type?l:h)(t)}function f(t){var n={type:"GeometryCollection",geometries:t.features.map(l)};return null!=t.bbox&&(n.bbox=t.bbox),n}function l(t){var n,e=h(t.geometry);null!=t.id&&(e.id=t.id),null!=t.bbox&&(e.bbox=t.bbox);for(n in t.properties){e.properties=t.properties;break}return e}function h(t){if(null==t)return{type:null};var n="GeometryCollection"===t.type?{type:"GeometryCollection",geometries:t.geometries.map(h)}:"Point"===t.type||"MultiPoint"===t.type?{type:t.type,coordinates:t.coordinates}:{type:t.type,arcs:t.coordinates};return null!=t.bbox&&(n.bbox=t.bbox),n}function p(t){var n,e=t[0],r=t[1];return r<e&&(n=e,e=r,r=n),e+31*r}function d(t,n){var e,r=t[0],i=t[1],o=n[0],u=n[1];return i<r&&(e=r,r=i,i=e),u<o&&(e=o,o=u,u=e),r===o&&i===u}function v(){return!0}function g(t){return t}function y(t){return null!=t.type}function _(t){var n=t[0],e=t[1],r=t[2];return Math.abs((n[0]-r[0])*(e[1]-n[1])-(n[0]-e[0])*(r[1]-n[1]))/2}function m(t){for(var n,e=-1,r=t.length,i=t[r-1],o=0;++e<r;)n=i,i=t[e],o+=n[0]*i[1]-n[1]*i[0];return Math.abs(o)/2}function x(t,n){return t[1][2]-n[1][2]}function b(t){return[t[0],t[1],0]}function w(t,n){if(e=t.length){if((n=+n)<=0||e<2)return t[0];if(n>=1)return t[e-1];var e,r=(e-1)*n,i=Math.floor(r),o=t[i];return o+(t[i+1]-o)*(r-i)}}function M(t,n){return n-t}function k(t,n){for(var e,r,i,o=0,u=t.length,a=0,c=t[n?o++:u-1],s=c[0]*pt,f=c[1]*pt/2+ht,l=vt(f),h=gt(f);o<u;++o){c=t[o],e=s,s=c[0]*pt,f=c[1]*pt/2+ht,r=l,l=vt(f),i=h,h=gt(f);var p=s-e,d=p>=0?1:-1,v=d*p,g=i*h,y=r*l+g*vt(v),_=g*d*gt(v);a+=dt(_,y)}return a}function E(t,n){var e=k(t,!0);return n&&(e*=-1),2*(e<0?lt+e:e)}function T(t){var n=k(t,!1);return 2*(n<0?lt+n:n)}var S=function(t){return t},A=function(t){if(null==t)return S;var n,e,r=t.scale[0],i=t.scale[1],o=t.translate[0],u=t.translate[1];return function(t,a){a||(n=e=0);var c=2,s=t.length,f=new Array(s);for(f[0]=(n+=t[0])*r+o,f[1]=(e+=t[1])*i+u;c<s;)f[c]=t[c],++c;return f}},N=function(t){function n(t){t=i(t),t[0]<o&&(o=t[0]),t[0]>a&&(a=t[0]),t[1]<u&&(u=t[1]),t[1]>c&&(c=t[1])}function e(t){switch(t.type){case"GeometryCollection":t.geometries.forEach(e);break;case"Point":n(t.coordinates);break;case"MultiPoint":t.coordinates.forEach(n)}}var r,i=A(t.transform),o=1/0,u=o,a=-o,c=-o;t.arcs.forEach(function(t){for(var n,e=-1,r=t.length;++e<r;)n=i(t[e],e),n[0]<o&&(o=n[0]),n[0]>a&&(a=n[0]),n[1]<u&&(u=n[1]),n[1]>c&&(c=n[1])});for(r in t.objects)e(t.objects[r]);return[o,u,a,c]},C=function(t,n){for(var e,r=t.length,i=r-n;i<--r;)e=t[i],t[i++]=t[r],t[r]=e},P=function(t,e){return"GeometryCollection"===e.type?{type:"FeatureCollection",features:e.geometries.map(function(e){return n(t,e)})}:n(t,e)},z=function(t,n){function e(n){var e,r=t.arcs[n<0?~n:n],i=r[0];return t.transform?(e=[0,0],r.forEach(function(t){e[0]+=t[0],e[1]+=t[1]})):e=r[r.length-1],n<0?[e,i]:[i,e]}function r(t,n){for(var e in t){var r=t[e];delete n[r.start],delete r.start,delete r.end,r.forEach(function(t){i[t<0?~t:t]=1}),a.push(r)}}var i={},o={},u={},a=[],c=-1;return n.forEach(function(e,r){var i,o=t.arcs[e<0?~e:e];o.length<3&&!o[1][0]&&!o[1][1]&&(i=n[++c],n[c]=e,n[r]=i)}),n.forEach(function(t){var n,r,i=e(t),a=i[0],c=i[1];if(n=u[a])if(delete u[n.end],n.push(t),n.end=c,r=o[c]){delete o[r.start];var s=r===n?n:n.concat(r);o[s.start=n.start]=u[s.end=r.end]=s}else o[n.start]=u[n.end]=n;else if(n=o[c])if(delete o[n.start],n.unshift(t),n.start=a,r=u[a]){delete u[r.end];var f=r===n?n:r.concat(n);o[f.start=r.start]=u[f.end=n.end]=f}else o[n.start]=u[n.end]=n;else n=[t],o[n.start=a]=u[n.end=c]=n}),r(u,o),r(o,u),n.forEach(function(t){i[t<0?~t:t]||a.push([t])}),a},L=function(t){return e(t,r.apply(this,arguments))},R=function(t){return e(t,u.apply(this,arguments))},q=function(t,n){for(var e=0,r=t.length;e<r;){var i=e+r>>>1;t[i]<n?e=i+1:r=i}return e},U=function(t){function n(t,n){t.forEach(function(t){t<0&&(t=~t);var e=i[t];e?e.push(n):i[t]=[n]})}function e(t,e){t.forEach(function(t){n(t,e)})}function r(t,n){"GeometryCollection"===t.type?t.geometries.forEach(function(t){r(t,n)}):t.type in u&&u[t.type](t.arcs,n)}var i={},o=t.map(function(){return[]}),u={LineString:n,MultiLineString:e,Polygon:e,MultiPolygon:function(t,n){t.forEach(function(t){e(t,n)})}};t.forEach(r);for(var a in i)for(var c=i[a],s=c.length,f=0;f<s;++f)for(var l=f+1;l<s;++l){var h,p=c[f],d=c[l];(h=o[p])[a=q(h,d)]!==d&&h.splice(a,0,d),(h=o[d])[a=q(h,p)]!==p&&h.splice(a,0,p)}return o},O=function(t){if(null==t)return S;var n,e,r=t.scale[0],i=t.scale[1],o=t.translate[0],u=t.translate[1];return function(t,a){a||(n=e=0);var c=2,s=t.length,f=new Array(s),l=Math.round((t[0]-o)/r),h=Math.round((t[1]-u)/i);for(f[0]=l-n,n=l,f[1]=h-e,e=h;c<s;)f[c]=t[c],++c;return f}},D=function(t,n){function e(t){return h(t)}function r(t){var n;switch(t.type){case"GeometryCollection":n={type:"GeometryCollection",geometries:t.geometries.map(r)};break;case"Point":n={type:"Point",coordinates:e(t.coordinates)};break;case"MultiPoint":n={type:"MultiPoint",coordinates:t.coordinates.map(e)};break;default:return t}return null!=t.id&&(n.id=t.id),null!=t.bbox&&(n.bbox=t.bbox),null!=t.properties&&(n.properties=t.properties),n}function i(t){var n,e=0,r=1,i=t.length,o=new Array(i);for(o[0]=h(t[0],0);++e<i;)((n=h(t[e],e))[0]||n[1])&&(o[r++]=n);return 1===r&&(o[r++]=[0,0]),o.length=r,o}if(t.transform)throw new Error("already quantized");if(n&&n.scale)f=t.bbox;else{if(!((o=Math.floor(n))>=2))throw new Error("n must be ≥2");f=t.bbox||N(t);var o,u=f[0],a=f[1],c=f[2],s=f[3];n={scale:[c-u?(c-u)/(o-1):1,s-a?(s-a)/(o-1):1],translate:[u,a]}}var f,l,h=O(n),p=t.objects,d={};for(l in p)d[l]=r(p[l]);return{type:"Topology",bbox:f,transform:n,objects:d,arcs:t.arcs.map(i)}},I=function(t){function n(t){null!=t&&s.hasOwnProperty(t.type)&&s[t.type](t)}function e(t){var n=t[0],e=t[1];n<o&&(o=n),n>a&&(a=n),e<u&&(u=e),e>c&&(c=e)}function r(t){t.forEach(e)}function i(t){t.forEach(r)}var o=1/0,u=1/0,a=-1/0,c=-1/0,s={GeometryCollection:function(t){t.geometries.forEach(n)},Point:function(t){e(t.coordinates)},MultiPoint:function(t){t.coordinates.forEach(e)},LineString:function(t){r(t.arcs)},MultiLineString:function(t){t.arcs.forEach(r)},Polygon:function(t){t.arcs.forEach(r)},MultiPolygon:function(t){t.arcs.forEach(i)}};for(var f in t)n(t[f]);return a>=o&&c>=u?[o,u,a,c]:void 0},F=function(t,n,e,r,i){function o(r){for(var o=n(r)&s,u=c[o],a=0;u!=i;){if(e(u,r))return!0;if(++a>=t)throw new Error("full hashset");u=c[o=o+1&s]}return c[o]=r,!0}function u(r){for(var o=n(r)&s,u=c[o],a=0;u!=i;){if(e(u,r))return!0;if(++a>=t)break;u=c[o=o+1&s]}return!1}function a(){for(var t=[],n=0,e=c.length;n<e;++n){var r=c[n];r!=i&&t.push(r)}return t}3===arguments.length&&(r=Array,i=null);for(var c=new r(t=1<<Math.max(4,Math.ceil(Math.log(t)/Math.LN2))),s=t-1,f=0;f<t;++f)c[f]=i;return{add:o,has:u,values:a}},j=function(t,n,e,r,i,o){function u(r,o){for(var u=n(r)&h,a=f[u],c=0;a!=i;){if(e(a,r))return l[u]=o;if(++c>=t)throw new Error("full hashmap");a=f[u=u+1&h]}return f[u]=r,l[u]=o,o}function a(r,o){for(var u=n(r)&h,a=f[u],c=0;a!=i;){if(e(a,r))return l[u];if(++c>=t)throw new Error("full hashmap");a=f[u=u+1&h]}return f[u]=r,l[u]=o,o}function c(r,o){for(var u=n(r)&h,a=f[u],c=0;a!=i;){if(e(a,r))return l[u];if(++c>=t)break;a=f[u=u+1&h]}return o}function s(){for(var t=[],n=0,e=f.length;n<e;++n){var r=f[n];r!=i&&t.push(r)}return t}3===arguments.length&&(r=o=Array,i=null);for(var f=new r(t=1<<Math.max(4,Math.ceil(Math.log(t)/Math.LN2))),l=new o(t),h=t-1,p=0;p<t;++p)f[p]=i;return{set:u,maybeSet:a,get:c,keys:s}},Y=function(t,n){return t[0]===n[0]&&t[1]===n[1]},B=new ArrayBuffer(16),H=new Float64Array(B),X=new Uint32Array(B),G=function(t){H[0]=t[0],H[1]=t[1];var n=X[0]^X[1];return 2147483647&(n=n<<5^n>>7^X[2]^X[3])},$=function(t){function n(t,n,e,r){if(p[e]!==t){p[e]=t;var i=d[e];if(i>=0){var o=v[e];i===n&&o===r||i===r&&o===n||(++y,g[e]=1)}else d[e]=n,v[e]=r}}function e(t){return G(s[t])}function r(t,n){return Y(s[t],s[n])}var i,o,u,a,c,s=t.coordinates,f=t.lines,l=t.rings,h=function(){for(var t=j(1.4*s.length,e,r,Int32Array,-1,Int32Array),n=new Int32Array(s.length),i=0,o=s.length;i<o;++i)n[i]=t.maybeSet(i,i);return n}(),p=new Int32Array(s.length),d=new Int32Array(s.length),v=new Int32Array(s.length),g=new Int8Array(s.length),y=0;for(i=0,o=s.length;i<o;++i)p[i]=d[i]=v[i]=-1;for(i=0,o=f.length;i<o;++i){var _=f[i],m=_[0],x=_[1];for(a=h[m],c=h[++m],++y,g[a]=1;++m<=x;)n(i,u=a,a=c,c=h[m]);++y,g[c]=1}for(i=0,o=s.length;i<o;++i)p[i]=-1;for(i=0,o=l.length;i<o;++i){var b=l[i],w=b[0]+1,M=b[1];for(u=h[M-1],a=h[w-1],c=h[w],n(i,u,a,c);++w<=M;)n(i,u=a,a=c,c=h[w])}p=d=v=null;var k,E=F(1.4*y,G,Y);for(i=0,o=s.length;i<o;++i)g[k=h[i]]&&E.add(s[k]);return E},V=function(t){var n,e,r,i=$(t),o=t.coordinates,u=t.lines,c=t.rings;for(e=0,r=u.length;e<r;++e)for(var s=u[e],f=s[0],l=s[1];++f<l;)i.has(o[f])&&(n={0:f,1:s[1]},s[1]=f,s=s.next=n);for(e=0,r=c.length;e<r;++e)for(var h=c[e],p=h[0],d=p,v=h[1],g=i.has(o[p]);++d<v;)i.has(o[d])&&(g?(n={0:d,1:h[1]},h[1]=d,h=h.next=n):(a(o,p,v,v-d),o[v]=o[p],g=!0,d=p));return t},W=function(t){function n(t){var n,i,o,u,a,c,s,f;if(o=v.get(n=l[t[0]]))for(s=0,f=o.length;s<f;++s)if(u=o[s],e(u,t))return t[0]=u[0],void(t[1]=u[1]);if(a=v.get(i=l[t[1]]))for(s=0,f=a.length;s<f;++s)if(c=a[s],r(c,t))return t[1]=c[0],void(t[0]=c[1]);o?o.push(t):v.set(n,[t]),a?a.push(t):v.set(i,[t]),g.push(t)}function e(t,n){var e=t[0],r=n[0],i=t[1];if(e-i!=r-n[1])return!1;for(;e<=i;++e,++r)if(!Y(l[e],l[r]))return!1;return!0}function r(t,n){var e=t[0],r=n[0],i=t[1],o=n[1];if(e-i!=r-o)return!1;for(;e<=i;++e,--o)if(!Y(l[e],l[o]))return!1;return!0}function i(t,n){var e=t[0],r=n[0],i=t[1],o=n[1],a=i-e;if(a!==o-r)return!1;for(var c=u(t),s=u(n),f=0;f<a;++f)if(!Y(l[e+(f+c)%a],l[r+(f+s)%a]))return!1;return!0}function o(t,n){var e=t[0],r=n[0],i=t[1],o=n[1],a=i-e;if(a!==o-r)return!1;for(var c=u(t),s=a-u(n),f=0;f<a;++f)if(!Y(l[e+(f+c)%a],l[o-(f+s)%a]))return!1;return!0}function u(t){for(var n=t[0],e=t[1],r=n,i=r,o=l[r];++r<e;){var u=l[r];(u[0]<o[0]||u[0]===o[0]&&u[1]<o[1])&&(i=r,o=u)}return i-n}var a,c,s,f,l=t.coordinates,h=t.lines,p=t.rings,d=h.length+p.length;for(delete t.lines,delete t.rings,s=0,f=h.length;s<f;++s)for(a=h[s];a=a.next;)++d;for(s=0,f=p.length;s<f;++s)for(c=p[s];c=c.next;)++d;var v=j(2*d*1.4,G,Y),g=t.arcs=[];for(s=0,f=h.length;s<f;++s){a=h[s];do{n(a)}while(a=a.next)}for(s=0,f=p.length;s<f;++s)if(c=p[s],c.next)do{n(c)}while(c=c.next);else!function(t){var n,e,r,a,c;if(e=v.get(n=l[t[0]]))for(a=0,c=e.length;a<c;++a){if(r=e[a],i(r,t))return t[0]=r[0],void(t[1]=r[1]);if(o(r,t))return t[0]=r[1],void(t[1]=r[0])}if(e=v.get(n=l[t[0]+u(t)]))for(a=0,c=e.length;a<c;++a){if(r=e[a],i(r,t))return t[0]=r[0],void(t[1]=r[1]);if(o(r,t))return t[0]=r[1],void(t[1]=r[0])}e?e.push(t):v.set(n,[t]),g.push(t)}(c);return t},Z=function(t){for(var n=-1,e=t.length;++n<e;){for(var r,i,o=t[n],u=0,a=1,c=o.length,s=o[0],f=s[0],l=s[1];++u<c;)s=o[u],r=s[0],i=s[1],r===f&&i===l||(o[a++]=[r-f,i-l],f=r,l=i);1===a&&(o[a++]=[0,0]),o.length=a}return t},J=function(t){function n(t){t&&s.hasOwnProperty(t.type)&&s[t.type](t)}function e(t){for(var n=0,e=t.length;n<e;++n)c[++o]=t[n];var r={0:o-e+1,1:o};return u.push(r),r}function r(t){for(var n=0,e=t.length;n<e;++n)c[++o]=t[n];var r={0:o-e+1,1:o};return a.push(r),r}function i(t){return t.map(r)}var o=-1,u=[],a=[],c=[],s={GeometryCollection:function(t){t.geometries.forEach(n)},LineString:function(t){t.arcs=e(t.arcs)},MultiLineString:function(t){t.arcs=t.arcs.map(e)},Polygon:function(t){t.arcs=t.arcs.map(r)},MultiPolygon:function(t){t.arcs=t.arcs.map(i)}};for(var f in t)n(t[f]);return{type:"Topology",coordinates:c,lines:u,rings:a,objects:t}},Q=function(t){var n,e={};for(n in t)e[n]=s(t[n]);return e},K=function(t,n,e){function r(t){return[Math.round((t[0]-s)*p),Math.round((t[1]-f)*d)]}function i(t,n){for(var e,r,i,o,u,a=-1,c=0,l=t.length,h=new Array(l);++a<l;)e=t[a],o=Math.round((e[0]-s)*p),u=Math.round((e[1]-f)*d),o===r&&u===i||(h[c++]=[r=o,i=u]);for(h.length=c;c<n;)c=h.push([h[0][0],h[0][1]]);return h}function o(t){return i(t,2)}function u(t){return i(t,4)}function a(t){return t.map(u)}function c(t){null!=t&&v.hasOwnProperty(t.type)&&v[t.type](t)}var s=n[0],f=n[1],l=n[2],h=n[3],p=l-s?(e-1)/(l-s):1,d=h-f?(e-1)/(h-f):1,v={GeometryCollection:function(t){t.geometries.forEach(c)},Point:function(t){t.coordinates=r(t.coordinates)},MultiPoint:function(t){t.coordinates=t.coordinates.map(r)},LineString:function(t){t.arcs=o(t.arcs)},MultiLineString:function(t){t.arcs=t.arcs.map(o)},Polygon:function(t){t.arcs=a(t.arcs)},MultiPolygon:function(t){t.arcs=t.arcs.map(a)}};for(var g in t)c(t[g]);return{scale:[1/p,1/d],translate:[s,f]}},tt=function(t,n){function e(t){t&&f.hasOwnProperty(t.type)&&f[t.type](t)}function r(t){var n=[];do{var e=s.get(t);n.push(t[0]<t[1]?e:~e)}while(t=t.next);return n}function i(t){return t.map(r)}var o=I(t=Q(t)),u=n>0&&o&&K(t,o,n),a=W(V(J(t))),c=a.coordinates,s=j(1.4*a.arcs.length,p,d);t=a.objects,a.bbox=o,a.arcs=a.arcs.map(function(t,n){return s.set(t,n),c.slice(t[0],t[1]+1)}),delete a.coordinates,c=null;var f={GeometryCollection:function(t){t.geometries.forEach(e)},LineString:function(t){t.arcs=r(t.arcs)},MultiLineString:function(t){t.arcs=t.arcs.map(r)},Polygon:function(t){t.arcs=t.arcs.map(r)},MultiPolygon:function(t){t.arcs=t.arcs.map(i)}};for(var l in t)e(t[l]);return u&&(a.transform=u,a.arcs=Z(a.arcs)),a},nt=function(t){function n(t){var e;switch(t.type){case"GeometryCollection":e={type:"GeometryCollection",geometries:t.geometries.map(n)};break;case"LineString":e={type:"LineString",arcs:r(t.arcs)};break;case"MultiLineString":e={type:"MultiLineString",arcs:t.arcs.map(r)};break;case"Polygon":e={type:"Polygon",arcs:t.arcs.map(r)};break;case"MultiPolygon":e={type:"MultiPolygon",arcs:t.arcs.map(i)};break;default:return t}return null!=t.id&&(e.id=t.id),null!=t.bbox&&(e.bbox=t.bbox),null!=t.properties&&(e.properties=t.properties),e}function e(t){var n,e=t<0&&(t=~t,!0);return null==(n=l[t])&&(l[t]=n=++f,s[n]=c[t]),e?~n:n}function r(t){return t.map(e)}function i(t){return t.map(r)}var o,u=t.objects,a={},c=t.arcs,s=[],f=-1,l=new Array(c.length);for(o in u)a[o]=n(u[o]);return{type:"Topology",bbox:t.bbox,transform:t.transform,objects:a,arcs:s}},et=function(t,n){function e(t){var n,i;switch(t.type){case"Polygon":i=r(t.arcs),n=i?{type:"Polygon",arcs:i}:{type:null};break;case"MultiPolygon":i=t.arcs.map(r).filter(g),n=i.length?{type:"MultiPolygon",arcs:i}:{type:null};break;case"GeometryCollection":i=t.geometries.map(e).filter(y),n=i.length?{type:"GeometryCollection",geometries:i}:{type:null};break;default:return t}return null!=t.id&&(n.id=t.id),null!=t.bbox&&(n.bbox=t.bbox),null!=t.properties&&(n.properties=t.properties),n}function r(t){return t.length&&i(t[0])?[t[0]].concat(t.slice(1).filter(o)):null}function i(t){return n(t,!1)}function o(t){return n(t,!0)}var u,a=t.objects,c={};null==n&&(n=v);for(u in a)c[u]=e(a[u]);return nt({type:"Topology",bbox:t.bbox,transform:t.transform,objects:c,arcs:t.arcs})},rt=function(t){function n(t){switch(t.type){case"GeometryCollection":t.geometries.forEach(n);break;case"Polygon":e(t.arcs);break;case"MultiPolygon":t.arcs.forEach(e)}}function e(t){for(var n=0,e=t.length;n<e;++n,++o)for(var r=t[n],u=0,a=r.length;u<a;++u){var c=r[u];c<0&&(c=~c);var s=i[c];i[c]=s>=0&&s!==o?-1:o}}var r,i={},o=0;for(r in t.objects)n(t.objects[r]);return function(t){for(var n,e=0,r=t.length;e<r;++e)if(n=t[e],i[n<0?~n:n]<0)return!0;return!1}},it=function(t,n,e){return n=null==n?Number.MIN_VALUE:+n,null==e&&(e=m),function(r,i){return e(P(t,{type:"Polygon",arcs:[r]}).geometry.coordinates[0],i)>=n}},ot=function(t,n,e){var r=rt(t),i=it(t,n,e);return function(t,n){return r(t,n)||i(t,n)}},ut=function(){function t(t,n){for(;n>0;){var e=(n+1>>1)-1,i=r[e];if(x(t,i)>=0)break;r[i._=n]=i,r[t._=n=e]=t}}function n(t,n){for(;;){var e=n+1<<1,o=e-1,u=n,a=r[u];if(o<i&&x(r[o],a)<0&&(a=r[u=o]),e<i&&x(r[e],a)<0&&(a=r[u=e]),u===n)break;r[a._=n]=a,r[t._=n=u]=t}}var e={},r=[],i=0;return e.push=function(n){return t(r[n._=i]=n,i++),i},e.pop=function(){if(!(i<=0)){var t,e=r[0];return--i>0&&(t=r[i],n(r[t._=0]=t,0)),e}},e.remove=function(e){var o,u=e._;if(r[u]===e)return u!==--i&&(o=r[i],(x(o,e)<0?t:n)(r[o._=u]=o,u)),u},e},at=function(t,n){function e(t){i.remove(t),t[1][2]=n(t),i.push(t)}var r=t.transform?A(t.transform):b,i=ut();null==n&&(n=_);var o=t.arcs.map(function(t){var o,u,a,c=[],s=0;for(t=t.map(r),u=1,a=t.length-1;u<a;++u)o=[t[u-1],t[u],t[u+1]],o[1][2]=n(o),c.push(o),i.push(o);for(t[0][2]=t[a][2]=1/0,u=0,a=c.length;u<a;++u)o=c[u],o.previous=c[u-1],o.next=c[u+1];for(;o=i.pop();){var f=o.previous,l=o.next;o[1][2]<s?o[1][2]=s:s=o[1][2],f&&(f.next=l,f[2]=o[2],e(f)),l&&(l.previous=f,l[0]=o[0],e(l))}return t});return{type:"Topology",bbox:t.bbox,objects:t.objects,arcs:o}},ct=function(t,n){var e=[];return t.arcs.forEach(function(t){t.forEach(function(t){isFinite(t[2])&&e.push(t[2])})}),e.length&&w(e.sort(M),n)},st=function(t,n){n=null==n?Number.MIN_VALUE:+n;var e=t.arcs.map(function(t){for(var e,r=-1,i=0,o=t.length,u=new Array(o);++r<o;)(e=t[r])[2]>=n&&(u[i++]=[e[0],e[1]]);return u.length=i,u});return{type:"Topology",transform:t.transform,bbox:t.bbox,objects:t.objects,arcs:e}},ft=Math.PI,lt=2*ft,ht=ft/4,pt=ft/180,dt=Math.atan2,vt=Math.cos,gt=Math.sin;t.bbox=N,t.feature=P,t.mesh=L,t.meshArcs=r,t.merge=R,t.mergeArcs=u,t.neighbors=U,t.quantize=D,t.transform=A,t.untransform=O,t.topology=tt,t.filter=et,t.filterAttached=rt,t.filterAttachedWeight=ot,t.filterWeight=it,t.planarRingArea=m,t.planarTriangleArea=_,t.presimplify=at,t.quantile=ct,t.simplify=st,t.sphericalRingArea=E,t.sphericalTriangleArea=T,Object.defineProperty(t,"__esModule",{value:!0})})},function(t,n,e){var r,i=e(0),o=e(1),u=parseInt(i.select("#map").style("width"),10),a=.5*u,c=i.geoMercator().center([-71.3824374,42.4072107]).scale(10*u),s=i.geoPath().projection(c),f=i.select("#map").append("svg").style("width",u+"px").style("height",a+"px");i.json("data/towns.json",function(t,n){if(t)throw t;window.data=n;var e=o.feature(n,n.objects.TOWNS_POLYM);r=f.selectAll("path.town").data(e.features).enter().append("path").attr("class","town").attr("d",s)}),window.map=f,window.topojson=o,window.path=s,window.projection=c}]);
+/******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// identity function for calling harmony imports with the correct context
+/******/ 	__webpack_require__.i = function(value) { return value; };
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, {
+/******/ 				configurable: false,
+/******/ 				enumerable: true,
+/******/ 				get: getter
+/******/ 			});
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "";
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = 47);
+/******/ })
+/************************************************************************/
+/******/ ([
+/* 0 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "p", function() { return epsilon; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "w", function() { return epsilon2; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return pi; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "k", function() { return halfPi; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "q", function() { return quarterPi; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return tau; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "h", function() { return degrees; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "g", function() { return radians; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "o", function() { return abs; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "l", function() { return atan; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return atan2; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return cos; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "v", function() { return ceil; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "m", function() { return exp; });
+/* unused harmony export floor */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "i", function() { return log; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "t", function() { return pow; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return sin; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "s", function() { return sign; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "n", function() { return sqrt; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "j", function() { return tan; });
+/* harmony export (immutable) */ __webpack_exports__["r"] = acos;
+/* harmony export (immutable) */ __webpack_exports__["f"] = asin;
+/* harmony export (immutable) */ __webpack_exports__["u"] = haversin;
+var epsilon = 1e-6;
+var epsilon2 = 1e-12;
+var pi = Math.PI;
+var halfPi = pi / 2;
+var quarterPi = pi / 4;
+var tau = pi * 2;
+
+var degrees = 180 / pi;
+var radians = pi / 180;
+
+var abs = Math.abs;
+var atan = Math.atan;
+var atan2 = Math.atan2;
+var cos = Math.cos;
+var ceil = Math.ceil;
+var exp = Math.exp;
+var floor = Math.floor;
+var log = Math.log;
+var pow = Math.pow;
+var sin = Math.sin;
+var sign = Math.sign || function(x) { return x > 0 ? 1 : x < 0 ? -1 : 0; };
+var sqrt = Math.sqrt;
+var tan = Math.tan;
+
+function acos(x) {
+  return x > 1 ? 0 : x < -1 ? pi : Math.acos(x);
+}
+
+function asin(x) {
+  return x > 1 ? halfPi : x < -1 ? -halfPi : Math.asin(x);
+}
+
+function haversin(x) {
+  return (x = sin(x / 2)) * x;
+}
+
+
+/***/ }),
+/* 1 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (immutable) */ __webpack_exports__["a"] = projection;
+/* harmony export (immutable) */ __webpack_exports__["b"] = projectionMutator;
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__clip_antimeridian__ = __webpack_require__(78);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__clip_circle__ = __webpack_require__(79);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__clip_extent__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__compose__ = __webpack_require__(38);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__identity__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__math__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__rotation__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__transform__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__fit__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__resample__ = __webpack_require__(100);
+
+
+
+
+
+
+
+
+
+
+
+var transformRadians = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_7__transform__["a" /* transformer */])({
+  point: function(x, y) {
+    this.stream.point(x * __WEBPACK_IMPORTED_MODULE_5__math__["g" /* radians */], y * __WEBPACK_IMPORTED_MODULE_5__math__["g" /* radians */]);
+  }
+});
+
+function projection(project) {
+  return projectionMutator(function() { return project; })();
+}
+
+function projectionMutator(projectAt) {
+  var project,
+      k = 150, // scale
+      x = 480, y = 250, // translate
+      dx, dy, lambda = 0, phi = 0, // center
+      deltaLambda = 0, deltaPhi = 0, deltaGamma = 0, rotate, projectRotate, // rotate
+      theta = null, preclip = __WEBPACK_IMPORTED_MODULE_0__clip_antimeridian__["a" /* default */], // clip angle
+      x0 = null, y0, x1, y1, postclip = __WEBPACK_IMPORTED_MODULE_4__identity__["a" /* default */], // clip extent
+      delta2 = 0.5, projectResample = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_9__resample__["a" /* default */])(projectTransform, delta2), // precision
+      cache,
+      cacheStream;
+
+  function projection(point) {
+    point = projectRotate(point[0] * __WEBPACK_IMPORTED_MODULE_5__math__["g" /* radians */], point[1] * __WEBPACK_IMPORTED_MODULE_5__math__["g" /* radians */]);
+    return [point[0] * k + dx, dy - point[1] * k];
+  }
+
+  function invert(point) {
+    point = projectRotate.invert((point[0] - dx) / k, (dy - point[1]) / k);
+    return point && [point[0] * __WEBPACK_IMPORTED_MODULE_5__math__["h" /* degrees */], point[1] * __WEBPACK_IMPORTED_MODULE_5__math__["h" /* degrees */]];
+  }
+
+  function projectTransform(x, y) {
+    return x = project(x, y), [x[0] * k + dx, dy - x[1] * k];
+  }
+
+  projection.stream = function(stream) {
+    return cache && cacheStream === stream ? cache : cache = transformRadians(preclip(rotate, projectResample(postclip(cacheStream = stream))));
+  };
+
+  projection.clipAngle = function(_) {
+    return arguments.length ? (preclip = +_ ? __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__clip_circle__["a" /* default */])(theta = _ * __WEBPACK_IMPORTED_MODULE_5__math__["g" /* radians */], 6 * __WEBPACK_IMPORTED_MODULE_5__math__["g" /* radians */]) : (theta = null, __WEBPACK_IMPORTED_MODULE_0__clip_antimeridian__["a" /* default */]), reset()) : theta * __WEBPACK_IMPORTED_MODULE_5__math__["h" /* degrees */];
+  };
+
+  projection.clipExtent = function(_) {
+    return arguments.length ? (postclip = _ == null ? (x0 = y0 = x1 = y1 = null, __WEBPACK_IMPORTED_MODULE_4__identity__["a" /* default */]) : __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__clip_extent__["a" /* clipExtent */])(x0 = +_[0][0], y0 = +_[0][1], x1 = +_[1][0], y1 = +_[1][1]), reset()) : x0 == null ? null : [[x0, y0], [x1, y1]];
+  };
+
+  projection.scale = function(_) {
+    return arguments.length ? (k = +_, recenter()) : k;
+  };
+
+  projection.translate = function(_) {
+    return arguments.length ? (x = +_[0], y = +_[1], recenter()) : [x, y];
+  };
+
+  projection.center = function(_) {
+    return arguments.length ? (lambda = _[0] % 360 * __WEBPACK_IMPORTED_MODULE_5__math__["g" /* radians */], phi = _[1] % 360 * __WEBPACK_IMPORTED_MODULE_5__math__["g" /* radians */], recenter()) : [lambda * __WEBPACK_IMPORTED_MODULE_5__math__["h" /* degrees */], phi * __WEBPACK_IMPORTED_MODULE_5__math__["h" /* degrees */]];
+  };
+
+  projection.rotate = function(_) {
+    return arguments.length ? (deltaLambda = _[0] % 360 * __WEBPACK_IMPORTED_MODULE_5__math__["g" /* radians */], deltaPhi = _[1] % 360 * __WEBPACK_IMPORTED_MODULE_5__math__["g" /* radians */], deltaGamma = _.length > 2 ? _[2] % 360 * __WEBPACK_IMPORTED_MODULE_5__math__["g" /* radians */] : 0, recenter()) : [deltaLambda * __WEBPACK_IMPORTED_MODULE_5__math__["h" /* degrees */], deltaPhi * __WEBPACK_IMPORTED_MODULE_5__math__["h" /* degrees */], deltaGamma * __WEBPACK_IMPORTED_MODULE_5__math__["h" /* degrees */]];
+  };
+
+  projection.precision = function(_) {
+    return arguments.length ? (projectResample = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_9__resample__["a" /* default */])(projectTransform, delta2 = _ * _), reset()) : __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_5__math__["n" /* sqrt */])(delta2);
+  };
+
+  projection.fitExtent = function(extent, object) {
+    return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_8__fit__["a" /* fitExtent */])(projection, extent, object);
+  };
+
+  projection.fitSize = function(size, object) {
+    return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_8__fit__["b" /* fitSize */])(projection, size, object);
+  };
+
+  function recenter() {
+    projectRotate = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__compose__["a" /* default */])(rotate = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_6__rotation__["b" /* rotateRadians */])(deltaLambda, deltaPhi, deltaGamma), project);
+    var center = project(lambda, phi);
+    dx = x - center[0] * k;
+    dy = y + center[1] * k;
+    return reset();
+  }
+
+  function reset() {
+    cache = cacheStream = null;
+    return projection;
+  }
+
+  return function() {
+    project = projectAt.apply(this, arguments);
+    projection.invert = project.invert && invert;
+    return recenter();
+  };
+}
+
+
+/***/ }),
+/* 2 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (immutable) */ __webpack_exports__["a"] = noop;
+function noop() {}
+
+
+/***/ }),
+/* 3 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+function streamGeometry(geometry, stream) {
+  if (geometry && streamGeometryType.hasOwnProperty(geometry.type)) {
+    streamGeometryType[geometry.type](geometry, stream);
+  }
+}
+
+var streamObjectType = {
+  Feature: function(object, stream) {
+    streamGeometry(object.geometry, stream);
+  },
+  FeatureCollection: function(object, stream) {
+    var features = object.features, i = -1, n = features.length;
+    while (++i < n) streamGeometry(features[i].geometry, stream);
+  }
+};
+
+var streamGeometryType = {
+  Sphere: function(object, stream) {
+    stream.sphere();
+  },
+  Point: function(object, stream) {
+    object = object.coordinates;
+    stream.point(object[0], object[1], object[2]);
+  },
+  MultiPoint: function(object, stream) {
+    var coordinates = object.coordinates, i = -1, n = coordinates.length;
+    while (++i < n) object = coordinates[i], stream.point(object[0], object[1], object[2]);
+  },
+  LineString: function(object, stream) {
+    streamLine(object.coordinates, stream, 0);
+  },
+  MultiLineString: function(object, stream) {
+    var coordinates = object.coordinates, i = -1, n = coordinates.length;
+    while (++i < n) streamLine(coordinates[i], stream, 0);
+  },
+  Polygon: function(object, stream) {
+    streamPolygon(object.coordinates, stream);
+  },
+  MultiPolygon: function(object, stream) {
+    var coordinates = object.coordinates, i = -1, n = coordinates.length;
+    while (++i < n) streamPolygon(coordinates[i], stream);
+  },
+  GeometryCollection: function(object, stream) {
+    var geometries = object.geometries, i = -1, n = geometries.length;
+    while (++i < n) streamGeometry(geometries[i], stream);
+  }
+};
+
+function streamLine(coordinates, stream, closed) {
+  var i = -1, n = coordinates.length - closed, coordinate;
+  stream.lineStart();
+  while (++i < n) coordinate = coordinates[i], stream.point(coordinate[0], coordinate[1], coordinate[2]);
+  stream.lineEnd();
+}
+
+function streamPolygon(coordinates, stream) {
+  var i = -1, n = coordinates.length;
+  stream.polygonStart();
+  while (++i < n) streamLine(coordinates[i], stream, 1);
+  stream.polygonEnd();
+}
+
+/* harmony default export */ __webpack_exports__["a"] = (function(object, stream) {
+  if (object && streamObjectType.hasOwnProperty(object.type)) {
+    streamObjectType[object.type](object, stream);
+  } else {
+    streamGeometry(object, stream);
+  }
+});
+
+
+/***/ }),
+/* 4 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony default export */ __webpack_exports__["a"] = (function(a, b) {
+  return a < b ? -1 : a > b ? 1 : a >= b ? 0 : NaN;
+});
+
+
+/***/ }),
+/* 5 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+// Adds floating point numbers with twice the normal precision.
+// Reference: J. R. Shewchuk, Adaptive Precision Floating-Point Arithmetic and
+// Fast Robust Geometric Predicates, Discrete & Computational Geometry 18(3)
+// 305–363 (1997).
+// Code adapted from GeographicLib by Charles F. F. Karney,
+// http://geographiclib.sourceforge.net/
+
+/* harmony default export */ __webpack_exports__["a"] = (function() {
+  return new Adder;
+});
+
+function Adder() {
+  this.reset();
+}
+
+Adder.prototype = {
+  constructor: Adder,
+  reset: function() {
+    this.s = // rounded value
+    this.t = 0; // exact error
+  },
+  add: function(y) {
+    add(temp, y, this.t);
+    add(this, temp.s, this.s);
+    if (this.s) this.t += temp.t;
+    else this.s = temp.t;
+  },
+  valueOf: function() {
+    return this.s;
+  }
+};
+
+var temp = new Adder;
+
+function add(adder, a, b) {
+  var x = adder.s = a + b,
+      bv = x - a,
+      av = x - bv;
+  adder.t = (a - av) + (b - bv);
+}
+
+
+/***/ }),
+/* 6 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony default export */ __webpack_exports__["a"] = (function(x) {
+  return x === null ? NaN : +x;
+});
+
+
+/***/ }),
+/* 7 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (immutable) */ __webpack_exports__["f"] = spherical;
+/* harmony export (immutable) */ __webpack_exports__["a"] = cartesian;
+/* harmony export (immutable) */ __webpack_exports__["c"] = cartesianDot;
+/* harmony export (immutable) */ __webpack_exports__["b"] = cartesianCross;
+/* harmony export (immutable) */ __webpack_exports__["e"] = cartesianAddInPlace;
+/* harmony export (immutable) */ __webpack_exports__["d"] = cartesianScale;
+/* harmony export (immutable) */ __webpack_exports__["g"] = cartesianNormalizeInPlace;
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__math__ = __webpack_require__(0);
+
+
+function spherical(cartesian) {
+  return [__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__math__["e" /* atan2 */])(cartesian[1], cartesian[0]), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__math__["f" /* asin */])(cartesian[2])];
+}
+
+function cartesian(spherical) {
+  var lambda = spherical[0], phi = spherical[1], cosPhi = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__math__["c" /* cos */])(phi);
+  return [cosPhi * __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__math__["c" /* cos */])(lambda), cosPhi * __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__math__["d" /* sin */])(lambda), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__math__["d" /* sin */])(phi)];
+}
+
+function cartesianDot(a, b) {
+  return a[0] * b[0] + a[1] * b[1] + a[2] * b[2];
+}
+
+function cartesianCross(a, b) {
+  return [a[1] * b[2] - a[2] * b[1], a[2] * b[0] - a[0] * b[2], a[0] * b[1] - a[1] * b[0]];
+}
+
+// TODO return a
+function cartesianAddInPlace(a, b) {
+  a[0] += b[0], a[1] += b[1], a[2] += b[2];
+}
+
+function cartesianScale(vector, k) {
+  return [vector[0] * k, vector[1] * k, vector[2] * k];
+}
+
+// TODO return d
+function cartesianNormalizeInPlace(d) {
+  var l = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__math__["n" /* sqrt */])(d[0] * d[0] + d[1] * d[1] + d[2] * d[2]);
+  d[0] /= l, d[1] /= l, d[2] /= l;
+}
+
+
+/***/ }),
+/* 8 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (immutable) */ __webpack_exports__["b"] = azimuthalRaw;
+/* harmony export (immutable) */ __webpack_exports__["a"] = azimuthalInvert;
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__math__ = __webpack_require__(0);
+
+
+function azimuthalRaw(scale) {
+  return function(x, y) {
+    var cx = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__math__["c" /* cos */])(x),
+        cy = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__math__["c" /* cos */])(y),
+        k = scale(cx * cy);
+    return [
+      k * cy * __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__math__["d" /* sin */])(x),
+      k * __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__math__["d" /* sin */])(y)
+    ];
+  }
+}
+
+function azimuthalInvert(angle) {
+  return function(x, y) {
+    var z = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__math__["n" /* sqrt */])(x * x + y * y),
+        c = angle(z),
+        sc = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__math__["d" /* sin */])(c),
+        cc = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__math__["c" /* cos */])(c);
+    return [
+      __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__math__["e" /* atan2 */])(x * sc, z * cc),
+      __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__math__["f" /* asin */])(z && y * sc / z)
+    ];
+  }
+}
+
+
+/***/ }),
+/* 9 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (immutable) */ __webpack_exports__["b"] = rotateRadians;
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__compose__ = __webpack_require__(38);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__math__ = __webpack_require__(0);
+
+
+
+function rotationIdentity(lambda, phi) {
+  return [lambda > __WEBPACK_IMPORTED_MODULE_1__math__["a" /* pi */] ? lambda - __WEBPACK_IMPORTED_MODULE_1__math__["b" /* tau */] : lambda < -__WEBPACK_IMPORTED_MODULE_1__math__["a" /* pi */] ? lambda + __WEBPACK_IMPORTED_MODULE_1__math__["b" /* tau */] : lambda, phi];
+}
+
+rotationIdentity.invert = rotationIdentity;
+
+function rotateRadians(deltaLambda, deltaPhi, deltaGamma) {
+  return (deltaLambda %= __WEBPACK_IMPORTED_MODULE_1__math__["b" /* tau */]) ? (deltaPhi || deltaGamma ? __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__compose__["a" /* default */])(rotationLambda(deltaLambda), rotationPhiGamma(deltaPhi, deltaGamma))
+    : rotationLambda(deltaLambda))
+    : (deltaPhi || deltaGamma ? rotationPhiGamma(deltaPhi, deltaGamma)
+    : rotationIdentity);
+}
+
+function forwardRotationLambda(deltaLambda) {
+  return function(lambda, phi) {
+    return lambda += deltaLambda, [lambda > __WEBPACK_IMPORTED_MODULE_1__math__["a" /* pi */] ? lambda - __WEBPACK_IMPORTED_MODULE_1__math__["b" /* tau */] : lambda < -__WEBPACK_IMPORTED_MODULE_1__math__["a" /* pi */] ? lambda + __WEBPACK_IMPORTED_MODULE_1__math__["b" /* tau */] : lambda, phi];
+  };
+}
+
+function rotationLambda(deltaLambda) {
+  var rotation = forwardRotationLambda(deltaLambda);
+  rotation.invert = forwardRotationLambda(-deltaLambda);
+  return rotation;
+}
+
+function rotationPhiGamma(deltaPhi, deltaGamma) {
+  var cosDeltaPhi = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__math__["c" /* cos */])(deltaPhi),
+      sinDeltaPhi = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__math__["d" /* sin */])(deltaPhi),
+      cosDeltaGamma = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__math__["c" /* cos */])(deltaGamma),
+      sinDeltaGamma = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__math__["d" /* sin */])(deltaGamma);
+
+  function rotation(lambda, phi) {
+    var cosPhi = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__math__["c" /* cos */])(phi),
+        x = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__math__["c" /* cos */])(lambda) * cosPhi,
+        y = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__math__["d" /* sin */])(lambda) * cosPhi,
+        z = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__math__["d" /* sin */])(phi),
+        k = z * cosDeltaPhi + x * sinDeltaPhi;
+    return [
+      __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__math__["e" /* atan2 */])(y * cosDeltaGamma - k * sinDeltaGamma, x * cosDeltaPhi - z * sinDeltaPhi),
+      __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__math__["f" /* asin */])(k * cosDeltaGamma + y * sinDeltaGamma)
+    ];
+  }
+
+  rotation.invert = function(lambda, phi) {
+    var cosPhi = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__math__["c" /* cos */])(phi),
+        x = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__math__["c" /* cos */])(lambda) * cosPhi,
+        y = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__math__["d" /* sin */])(lambda) * cosPhi,
+        z = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__math__["d" /* sin */])(phi),
+        k = z * cosDeltaGamma - y * sinDeltaGamma;
+    return [
+      __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__math__["e" /* atan2 */])(y * cosDeltaGamma + z * sinDeltaGamma, x * cosDeltaPhi + k * sinDeltaPhi),
+      __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__math__["f" /* asin */])(k * cosDeltaPhi - x * sinDeltaPhi)
+    ];
+  };
+
+  return rotation;
+}
+
+/* harmony default export */ __webpack_exports__["a"] = (function(rotate) {
+  rotate = rotateRadians(rotate[0] * __WEBPACK_IMPORTED_MODULE_1__math__["g" /* radians */], rotate[1] * __WEBPACK_IMPORTED_MODULE_1__math__["g" /* radians */], rotate.length > 2 ? rotate[2] * __WEBPACK_IMPORTED_MODULE_1__math__["g" /* radians */] : 0);
+
+  function forward(coordinates) {
+    coordinates = rotate(coordinates[0] * __WEBPACK_IMPORTED_MODULE_1__math__["g" /* radians */], coordinates[1] * __WEBPACK_IMPORTED_MODULE_1__math__["g" /* radians */]);
+    return coordinates[0] *= __WEBPACK_IMPORTED_MODULE_1__math__["h" /* degrees */], coordinates[1] *= __WEBPACK_IMPORTED_MODULE_1__math__["h" /* degrees */], coordinates;
+  }
+
+  forward.invert = function(coordinates) {
+    coordinates = rotate.invert(coordinates[0] * __WEBPACK_IMPORTED_MODULE_1__math__["g" /* radians */], coordinates[1] * __WEBPACK_IMPORTED_MODULE_1__math__["g" /* radians */]);
+    return coordinates[0] *= __WEBPACK_IMPORTED_MODULE_1__math__["h" /* degrees */], coordinates[1] *= __WEBPACK_IMPORTED_MODULE_1__math__["h" /* degrees */], coordinates;
+  };
+
+  return forward;
+});
+
+
+/***/ }),
+/* 10 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (immutable) */ __webpack_exports__["a"] = transformer;
+/* unused harmony default export */ var _unused_webpack_default_export = (function(methods) {
+  return {
+    stream: transformer(methods)
+  };
+});
+
+function transformer(methods) {
+  return function(stream) {
+    var s = new TransformStream;
+    for (var key in methods) s[key] = methods[key];
+    s.stream = stream;
+    return s;
+  };
+}
+
+function TransformStream() {}
+
+TransformStream.prototype = {
+  constructor: TransformStream,
+  point: function(x, y) { this.stream.point(x, y); },
+  sphere: function() { this.stream.sphere(); },
+  lineStart: function() { this.stream.lineStart(); },
+  lineEnd: function() { this.stream.lineEnd(); },
+  polygonStart: function() { this.stream.polygonStart(); },
+  polygonEnd: function() { this.stream.polygonEnd(); }
+};
+
+
+/***/ }),
+/* 11 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__src_bisect__ = __webpack_require__(22);
+/* unused harmony reexport bisect */
+/* unused harmony reexport bisectRight */
+/* unused harmony reexport bisectLeft */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__src_ascending__ = __webpack_require__(4);
+/* unused harmony reexport ascending */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__src_bisector__ = __webpack_require__(23);
+/* unused harmony reexport bisector */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__src_cross__ = __webpack_require__(49);
+/* unused harmony reexport cross */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__src_descending__ = __webpack_require__(50);
+/* unused harmony reexport descending */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__src_deviation__ = __webpack_require__(24);
+/* unused harmony reexport deviation */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__src_extent__ = __webpack_require__(25);
+/* unused harmony reexport extent */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__src_histogram__ = __webpack_require__(51);
+/* unused harmony reexport histogram */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__src_threshold_freedmanDiaconis__ = __webpack_require__(61);
+/* unused harmony reexport thresholdFreedmanDiaconis */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__src_threshold_scott__ = __webpack_require__(62);
+/* unused harmony reexport thresholdScott */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__src_threshold_sturges__ = __webpack_require__(29);
+/* unused harmony reexport thresholdSturges */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__src_max__ = __webpack_require__(53);
+/* unused harmony reexport max */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__src_mean__ = __webpack_require__(54);
+/* unused harmony reexport mean */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__src_median__ = __webpack_require__(55);
+/* unused harmony reexport median */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__src_merge__ = __webpack_require__(56);
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_14__src_merge__["a"]; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__src_min__ = __webpack_require__(26);
+/* unused harmony reexport min */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__src_pairs__ = __webpack_require__(27);
+/* unused harmony reexport pairs */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__src_permute__ = __webpack_require__(57);
+/* unused harmony reexport permute */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__src_quantile__ = __webpack_require__(12);
+/* unused harmony reexport quantile */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__src_range__ = __webpack_require__(28);
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_19__src_range__["a"]; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__src_scan__ = __webpack_require__(58);
+/* unused harmony reexport scan */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__src_shuffle__ = __webpack_require__(59);
+/* unused harmony reexport shuffle */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__src_sum__ = __webpack_require__(60);
+/* unused harmony reexport sum */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__src_ticks__ = __webpack_require__(30);
+/* unused harmony reexport ticks */
+/* unused harmony reexport tickIncrement */
+/* unused harmony reexport tickStep */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__src_transpose__ = __webpack_require__(31);
+/* unused harmony reexport transpose */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__src_variance__ = __webpack_require__(32);
+/* unused harmony reexport variance */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__src_zip__ = __webpack_require__(63);
+/* unused harmony reexport zip */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/***/ }),
+/* 12 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__number__ = __webpack_require__(6);
+
+
+/* harmony default export */ __webpack_exports__["a"] = (function(values, p, valueof) {
+  if (valueof == null) valueof = __WEBPACK_IMPORTED_MODULE_0__number__["a" /* default */];
+  if (!(n = values.length)) return;
+  if ((p = +p) <= 0 || n < 2) return +valueof(values[0], 0, values);
+  if (p >= 1) return +valueof(values[n - 1], n - 1, values);
+  var n,
+      i = (n - 1) * p,
+      i0 = Math.floor(i),
+      value0 = +valueof(values[i0], i0, values),
+      value1 = +valueof(values[i0 + 1], i0 + 1, values);
+  return value0 + (value1 - value0) * (i - i0);
+});
+
+
+/***/ }),
+/* 13 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return prefix; });
+var prefix = "$";
+
+function Map() {}
+
+Map.prototype = map.prototype = {
+  constructor: Map,
+  has: function(key) {
+    return (prefix + key) in this;
+  },
+  get: function(key) {
+    return this[prefix + key];
+  },
+  set: function(key, value) {
+    this[prefix + key] = value;
+    return this;
+  },
+  remove: function(key) {
+    var property = prefix + key;
+    return property in this && delete this[property];
+  },
+  clear: function() {
+    for (var property in this) if (property[0] === prefix) delete this[property];
+  },
+  keys: function() {
+    var keys = [];
+    for (var property in this) if (property[0] === prefix) keys.push(property.slice(1));
+    return keys;
+  },
+  values: function() {
+    var values = [];
+    for (var property in this) if (property[0] === prefix) values.push(this[property]);
+    return values;
+  },
+  entries: function() {
+    var entries = [];
+    for (var property in this) if (property[0] === prefix) entries.push({key: property.slice(1), value: this[property]});
+    return entries;
+  },
+  size: function() {
+    var size = 0;
+    for (var property in this) if (property[0] === prefix) ++size;
+    return size;
+  },
+  empty: function() {
+    for (var property in this) if (property[0] === prefix) return false;
+    return true;
+  },
+  each: function(f) {
+    for (var property in this) if (property[0] === prefix) f(this[property], property.slice(1), this);
+  }
+};
+
+function map(object, f) {
+  var map = new Map;
+
+  // Copy constructor.
+  if (object instanceof Map) object.each(function(value, key) { map.set(key, value); });
+
+  // Index array by numeric index or specified key function.
+  else if (Array.isArray(object)) {
+    var i = -1,
+        n = object.length,
+        o;
+
+    if (f == null) while (++i < n) map.set(i, object[i]);
+    else while (++i < n) map.set(f(o = object[i], i, object), o);
+  }
+
+  // Convert object to map.
+  else if (object) for (var key in object) map.set(key, object[key]);
+
+  return map;
+}
+
+/* harmony default export */ __webpack_exports__["a"] = (map);
+
+
+/***/ }),
+/* 14 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+function objectConverter(columns) {
+  return new Function("d", "return {" + columns.map(function(name, i) {
+    return JSON.stringify(name) + ": d[" + i + "]";
+  }).join(",") + "}");
+}
+
+function customConverter(columns, f) {
+  var object = objectConverter(columns);
+  return function(row, i) {
+    return f(object(row), i, columns);
+  };
+}
+
+// Compute unique columns in order of discovery.
+function inferColumns(rows) {
+  var columnSet = Object.create(null),
+      columns = [];
+
+  rows.forEach(function(row) {
+    for (var column in row) {
+      if (!(column in columnSet)) {
+        columns.push(columnSet[column] = column);
+      }
+    }
+  });
+
+  return columns;
+}
+
+/* harmony default export */ __webpack_exports__["a"] = (function(delimiter) {
+  var reFormat = new RegExp("[\"" + delimiter + "\n\r]"),
+      delimiterCode = delimiter.charCodeAt(0);
+
+  function parse(text, f) {
+    var convert, columns, rows = parseRows(text, function(row, i) {
+      if (convert) return convert(row, i - 1);
+      columns = row, convert = f ? customConverter(row, f) : objectConverter(row);
+    });
+    rows.columns = columns;
+    return rows;
+  }
+
+  function parseRows(text, f) {
+    var EOL = {}, // sentinel value for end-of-line
+        EOF = {}, // sentinel value for end-of-file
+        rows = [], // output rows
+        N = text.length,
+        I = 0, // current character index
+        n = 0, // the current line number
+        t, // the current token
+        eol; // is the current token followed by EOL?
+
+    function token() {
+      if (I >= N) return EOF; // special case: end of file
+      if (eol) return eol = false, EOL; // special case: end of line
+
+      // special case: quotes
+      var j = I, c;
+      if (text.charCodeAt(j) === 34) {
+        var i = j;
+        while (i++ < N) {
+          if (text.charCodeAt(i) === 34) {
+            if (text.charCodeAt(i + 1) !== 34) break;
+            ++i;
+          }
+        }
+        I = i + 2;
+        c = text.charCodeAt(i + 1);
+        if (c === 13) {
+          eol = true;
+          if (text.charCodeAt(i + 2) === 10) ++I;
+        } else if (c === 10) {
+          eol = true;
+        }
+        return text.slice(j + 1, i).replace(/""/g, "\"");
+      }
+
+      // common case: find next delimiter or newline
+      while (I < N) {
+        var k = 1;
+        c = text.charCodeAt(I++);
+        if (c === 10) eol = true; // \n
+        else if (c === 13) { eol = true; if (text.charCodeAt(I) === 10) ++I, ++k; } // \r|\r\n
+        else if (c !== delimiterCode) continue;
+        return text.slice(j, I - k);
+      }
+
+      // special case: last token before EOF
+      return text.slice(j);
+    }
+
+    while ((t = token()) !== EOF) {
+      var a = [];
+      while (t !== EOL && t !== EOF) {
+        a.push(t);
+        t = token();
+      }
+      if (f && (a = f(a, n++)) == null) continue;
+      rows.push(a);
+    }
+
+    return rows;
+  }
+
+  function format(rows, columns) {
+    if (columns == null) columns = inferColumns(rows);
+    return [columns.map(formatValue).join(delimiter)].concat(rows.map(function(row) {
+      return columns.map(function(column) {
+        return formatValue(row[column]);
+      }).join(delimiter);
+    })).join("\n");
+  }
+
+  function formatRows(rows) {
+    return rows.map(formatRow).join("\n");
+  }
+
+  function formatRow(row) {
+    return row.map(formatValue).join(delimiter);
+  }
+
+  function formatValue(text) {
+    return text == null ? ""
+        : reFormat.test(text += "") ? "\"" + text.replace(/\"/g, "\"\"") + "\""
+        : text;
+  }
+
+  return {
+    parse: parse,
+    parseRows: parseRows,
+    format: format,
+    formatRows: formatRows
+  };
+});
+
+
+/***/ }),
+/* 15 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (immutable) */ __webpack_exports__["a"] = clipExtent;
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__math__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__buffer__ = __webpack_require__(35);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__line__ = __webpack_require__(80);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__polygon__ = __webpack_require__(37);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_d3_array__ = __webpack_require__(11);
+
+
+
+
+
+
+var clipMax = 1e9, clipMin = -clipMax;
+
+// TODO Use d3-polygon’s polygonContains here for the ring check?
+// TODO Eliminate duplicate buffering in clipBuffer and polygon.push?
+
+function clipExtent(x0, y0, x1, y1) {
+
+  function visible(x, y) {
+    return x0 <= x && x <= x1 && y0 <= y && y <= y1;
+  }
+
+  function interpolate(from, to, direction, stream) {
+    var a = 0, a1 = 0;
+    if (from == null
+        || (a = corner(from, direction)) !== (a1 = corner(to, direction))
+        || comparePoint(from, to) < 0 ^ direction > 0) {
+      do stream.point(a === 0 || a === 3 ? x0 : x1, a > 1 ? y1 : y0);
+      while ((a = (a + direction + 4) % 4) !== a1);
+    } else {
+      stream.point(to[0], to[1]);
+    }
+  }
+
+  function corner(p, direction) {
+    return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__math__["o" /* abs */])(p[0] - x0) < __WEBPACK_IMPORTED_MODULE_0__math__["p" /* epsilon */] ? direction > 0 ? 0 : 3
+        : __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__math__["o" /* abs */])(p[0] - x1) < __WEBPACK_IMPORTED_MODULE_0__math__["p" /* epsilon */] ? direction > 0 ? 2 : 1
+        : __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__math__["o" /* abs */])(p[1] - y0) < __WEBPACK_IMPORTED_MODULE_0__math__["p" /* epsilon */] ? direction > 0 ? 1 : 0
+        : direction > 0 ? 3 : 2; // abs(p[1] - y1) < epsilon
+  }
+
+  function compareIntersection(a, b) {
+    return comparePoint(a.x, b.x);
+  }
+
+  function comparePoint(a, b) {
+    var ca = corner(a, 1),
+        cb = corner(b, 1);
+    return ca !== cb ? ca - cb
+        : ca === 0 ? b[1] - a[1]
+        : ca === 1 ? a[0] - b[0]
+        : ca === 2 ? a[1] - b[1]
+        : b[0] - a[0];
+  }
+
+  return function(stream) {
+    var activeStream = stream,
+        bufferStream = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__buffer__["a" /* default */])(),
+        segments,
+        polygon,
+        ring,
+        x__, y__, v__, // first point
+        x_, y_, v_, // previous point
+        first,
+        clean;
+
+    var clipStream = {
+      point: point,
+      lineStart: lineStart,
+      lineEnd: lineEnd,
+      polygonStart: polygonStart,
+      polygonEnd: polygonEnd
+    };
+
+    function point(x, y) {
+      if (visible(x, y)) activeStream.point(x, y);
+    }
+
+    function polygonInside() {
+      var winding = 0;
+
+      for (var i = 0, n = polygon.length; i < n; ++i) {
+        for (var ring = polygon[i], j = 1, m = ring.length, point = ring[0], a0, a1, b0 = point[0], b1 = point[1]; j < m; ++j) {
+          a0 = b0, a1 = b1, point = ring[j], b0 = point[0], b1 = point[1];
+          if (a1 <= y1) { if (b1 > y1 && (b0 - a0) * (y1 - a1) > (b1 - a1) * (x0 - a0)) ++winding; }
+          else { if (b1 <= y1 && (b0 - a0) * (y1 - a1) < (b1 - a1) * (x0 - a0)) --winding; }
+        }
+      }
+
+      return winding;
+    }
+
+    // Buffer geometry within a polygon and then clip it en masse.
+    function polygonStart() {
+      activeStream = bufferStream, segments = [], polygon = [], clean = true;
+    }
+
+    function polygonEnd() {
+      var startInside = polygonInside(),
+          cleanInside = clean && startInside,
+          visible = (segments = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4_d3_array__["a" /* merge */])(segments)).length;
+      if (cleanInside || visible) {
+        stream.polygonStart();
+        if (cleanInside) {
+          stream.lineStart();
+          interpolate(null, null, 1, stream);
+          stream.lineEnd();
+        }
+        if (visible) {
+          __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__polygon__["a" /* default */])(segments, compareIntersection, startInside, interpolate, stream);
+        }
+        stream.polygonEnd();
+      }
+      activeStream = stream, segments = polygon = ring = null;
+    }
+
+    function lineStart() {
+      clipStream.point = linePoint;
+      if (polygon) polygon.push(ring = []);
+      first = true;
+      v_ = false;
+      x_ = y_ = NaN;
+    }
+
+    // TODO rather than special-case polygons, simply handle them separately.
+    // Ideally, coincident intersection points should be jittered to avoid
+    // clipping issues.
+    function lineEnd() {
+      if (segments) {
+        linePoint(x__, y__);
+        if (v__ && v_) bufferStream.rejoin();
+        segments.push(bufferStream.result());
+      }
+      clipStream.point = point;
+      if (v_) activeStream.lineEnd();
+    }
+
+    function linePoint(x, y) {
+      var v = visible(x, y);
+      if (polygon) ring.push([x, y]);
+      if (first) {
+        x__ = x, y__ = y, v__ = v;
+        first = false;
+        if (v) {
+          activeStream.lineStart();
+          activeStream.point(x, y);
+        }
+      } else {
+        if (v && v_) activeStream.point(x, y);
+        else {
+          var a = [x_ = Math.max(clipMin, Math.min(clipMax, x_)), y_ = Math.max(clipMin, Math.min(clipMax, y_))],
+              b = [x = Math.max(clipMin, Math.min(clipMax, x)), y = Math.max(clipMin, Math.min(clipMax, y))];
+          if (__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__line__["a" /* default */])(a, b, x0, y0, x1, y1)) {
+            if (!v_) {
+              activeStream.lineStart();
+              activeStream.point(a[0], a[1]);
+            }
+            activeStream.point(b[0], b[1]);
+            if (!v) activeStream.lineEnd();
+            clean = false;
+          } else if (v) {
+            activeStream.lineStart();
+            activeStream.point(x, y);
+            clean = false;
+          }
+        }
+      }
+      x_ = x, y_ = y, v_ = v;
+    }
+
+    return clipStream;
+  };
+}
+
+/* unused harmony default export */ var _unused_webpack_default_export = (function() {
+  var x0 = 0,
+      y0 = 0,
+      x1 = 960,
+      y1 = 500,
+      cache,
+      cacheStream,
+      clip;
+
+  return clip = {
+    stream: function(stream) {
+      return cache && cacheStream === stream ? cache : cache = clipExtent(x0, y0, x1, y1)(cacheStream = stream);
+    },
+    extent: function(_) {
+      return arguments.length ? (x0 = +_[0][0], y0 = +_[0][1], x1 = +_[1][0], y1 = +_[1][1], cache = cacheStream = null, clip) : [[x0, y0], [x1, y1]];
+    }
+  };
+});
+
+
+/***/ }),
+/* 16 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony default export */ __webpack_exports__["a"] = (function(x) {
+  return x;
+});
+
+
+/***/ }),
+/* 17 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (immutable) */ __webpack_exports__["a"] = conicProjection;
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__math__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__index__ = __webpack_require__(1);
+
+
+
+function conicProjection(projectAt) {
+  var phi0 = 0,
+      phi1 = __WEBPACK_IMPORTED_MODULE_0__math__["a" /* pi */] / 3,
+      m = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__index__["b" /* projectionMutator */])(projectAt),
+      p = m(phi0, phi1);
+
+  p.parallels = function(_) {
+    return arguments.length ? m(phi0 = _[0] * __WEBPACK_IMPORTED_MODULE_0__math__["g" /* radians */], phi1 = _[1] * __WEBPACK_IMPORTED_MODULE_0__math__["g" /* radians */]) : [phi0 * __WEBPACK_IMPORTED_MODULE_0__math__["h" /* degrees */], phi1 * __WEBPACK_IMPORTED_MODULE_0__math__["h" /* degrees */]];
+  };
+
+  return p;
+}
+
+
+/***/ }),
+/* 18 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* unused harmony export conicEqualAreaRaw */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__math__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__conic__ = __webpack_require__(17);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__cylindricalEqualArea__ = __webpack_require__(96);
+
+
+
+
+function conicEqualAreaRaw(y0, y1) {
+  var sy0 = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__math__["d" /* sin */])(y0), n = (sy0 + __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__math__["d" /* sin */])(y1)) / 2;
+
+  // Are the parallels symmetrical around the Equator?
+  if (__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__math__["o" /* abs */])(n) < __WEBPACK_IMPORTED_MODULE_0__math__["p" /* epsilon */]) return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__cylindricalEqualArea__["a" /* cylindricalEqualAreaRaw */])(y0);
+
+  var c = 1 + sy0 * (2 * n - sy0), r0 = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__math__["n" /* sqrt */])(c) / n;
+
+  function project(x, y) {
+    var r = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__math__["n" /* sqrt */])(c - 2 * n * __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__math__["d" /* sin */])(y)) / n;
+    return [r * __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__math__["d" /* sin */])(x *= n), r0 - r * __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__math__["c" /* cos */])(x)];
+  }
+
+  project.invert = function(x, y) {
+    var r0y = r0 - y;
+    return [__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__math__["e" /* atan2 */])(x, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__math__["o" /* abs */])(r0y)) / n * __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__math__["s" /* sign */])(r0y), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__math__["f" /* asin */])((c - (x * x + r0y * r0y) * n * n) / (2 * n))];
+  };
+
+  return project;
+}
+
+/* harmony default export */ __webpack_exports__["a"] = (function() {
+  return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__conic__["a" /* conicProjection */])(conicEqualAreaRaw)
+      .scale(155.424)
+      .center([0, 33.6442]);
+});
+
+
+/***/ }),
+/* 19 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (immutable) */ __webpack_exports__["a"] = fitExtent;
+/* harmony export (immutable) */ __webpack_exports__["b"] = fitSize;
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__stream__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__path_bounds__ = __webpack_require__(41);
+
+
+
+function fitExtent(projection, extent, object) {
+  var w = extent[1][0] - extent[0][0],
+      h = extent[1][1] - extent[0][1],
+      clip = projection.clipExtent && projection.clipExtent();
+
+  projection
+      .scale(150)
+      .translate([0, 0]);
+
+  if (clip != null) projection.clipExtent(null);
+
+  __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__stream__["a" /* default */])(object, projection.stream(__WEBPACK_IMPORTED_MODULE_1__path_bounds__["a" /* default */]));
+
+  var b = __WEBPACK_IMPORTED_MODULE_1__path_bounds__["a" /* default */].result(),
+      k = Math.min(w / (b[1][0] - b[0][0]), h / (b[1][1] - b[0][1])),
+      x = +extent[0][0] + (w - k * (b[1][0] + b[0][0])) / 2,
+      y = +extent[0][1] + (h - k * (b[1][1] + b[0][1])) / 2;
+
+  if (clip != null) projection.clipExtent(clip);
+
+  return projection
+      .scale(k * 150)
+      .translate([x, y]);
+}
+
+function fitSize(projection, size, object) {
+  return fitExtent(projection, [[0, 0], size], object);
+}
+
+
+/***/ }),
+/* 20 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (immutable) */ __webpack_exports__["c"] = mercatorRaw;
+/* harmony export (immutable) */ __webpack_exports__["b"] = mercatorProjection;
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__math__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__rotation__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__index__ = __webpack_require__(1);
+
+
+
+
+function mercatorRaw(lambda, phi) {
+  return [lambda, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__math__["i" /* log */])(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__math__["j" /* tan */])((__WEBPACK_IMPORTED_MODULE_0__math__["k" /* halfPi */] + phi) / 2))];
+}
+
+mercatorRaw.invert = function(x, y) {
+  return [x, 2 * __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__math__["l" /* atan */])(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__math__["m" /* exp */])(y)) - __WEBPACK_IMPORTED_MODULE_0__math__["k" /* halfPi */]];
+};
+
+/* harmony default export */ __webpack_exports__["a"] = (function() {
+  return mercatorProjection(mercatorRaw)
+      .scale(961 / __WEBPACK_IMPORTED_MODULE_0__math__["b" /* tau */]);
+});
+
+function mercatorProjection(project) {
+  var m = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__index__["a" /* default */])(project),
+      center = m.center,
+      scale = m.scale,
+      translate = m.translate,
+      clipExtent = m.clipExtent,
+      x0 = null, y0, x1, y1; // clip extent
+
+  m.scale = function(_) {
+    return arguments.length ? (scale(_), reclip()) : scale();
+  };
+
+  m.translate = function(_) {
+    return arguments.length ? (translate(_), reclip()) : translate();
+  };
+
+  m.center = function(_) {
+    return arguments.length ? (center(_), reclip()) : center();
+  };
+
+  m.clipExtent = function(_) {
+    return arguments.length ? ((_ == null ? x0 = y0 = x1 = y1 = null : (x0 = +_[0][0], y0 = +_[0][1], x1 = +_[1][0], y1 = +_[1][1])), reclip()) : x0 == null ? null : [[x0, y0], [x1, y1]];
+  };
+
+  function reclip() {
+    var k = __WEBPACK_IMPORTED_MODULE_0__math__["a" /* pi */] * scale(),
+        t = m(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__rotation__["a" /* default */])(m.rotate()).invert([0, 0]));
+    return clipExtent(x0 == null
+        ? [[t[0] - k, t[1] - k], [t[0] + k, t[1] + k]] : project === mercatorRaw
+        ? [[Math.max(t[0] - k, x0), y0], [Math.min(t[0] + k, x1), y1]]
+        : [[x0, Math.max(t[1] - k, y0)], [x1, Math.min(t[1] + k, y1)]]);
+  }
+
+  return reclip();
+}
+
+
+/***/ }),
+/* 21 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return slice; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return map; });
+var array = Array.prototype;
+
+var slice = array.slice;
+var map = array.map;
+
+
+/***/ }),
+/* 22 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* unused harmony export bisectRight */
+/* unused harmony export bisectLeft */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ascending__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__bisector__ = __webpack_require__(23);
+
+
+
+var ascendingBisect = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__bisector__["a" /* default */])(__WEBPACK_IMPORTED_MODULE_0__ascending__["a" /* default */]);
+var bisectRight = ascendingBisect.right;
+var bisectLeft = ascendingBisect.left;
+/* harmony default export */ __webpack_exports__["a"] = (bisectRight);
+
+
+/***/ }),
+/* 23 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ascending__ = __webpack_require__(4);
+
+
+/* harmony default export */ __webpack_exports__["a"] = (function(compare) {
+  if (compare.length === 1) compare = ascendingComparator(compare);
+  return {
+    left: function(a, x, lo, hi) {
+      if (lo == null) lo = 0;
+      if (hi == null) hi = a.length;
+      while (lo < hi) {
+        var mid = lo + hi >>> 1;
+        if (compare(a[mid], x) < 0) lo = mid + 1;
+        else hi = mid;
+      }
+      return lo;
+    },
+    right: function(a, x, lo, hi) {
+      if (lo == null) lo = 0;
+      if (hi == null) hi = a.length;
+      while (lo < hi) {
+        var mid = lo + hi >>> 1;
+        if (compare(a[mid], x) > 0) hi = mid;
+        else lo = mid + 1;
+      }
+      return lo;
+    }
+  };
+});
+
+function ascendingComparator(f) {
+  return function(d, x) {
+    return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__ascending__["a" /* default */])(f(d), x);
+  };
+}
+
+
+/***/ }),
+/* 24 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__variance__ = __webpack_require__(32);
+
+
+/* harmony default export */ __webpack_exports__["a"] = (function(array, f) {
+  var v = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__variance__["a" /* default */])(array, f);
+  return v ? Math.sqrt(v) : v;
+});
+
+
+/***/ }),
+/* 25 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony default export */ __webpack_exports__["a"] = (function(values, valueof) {
+  var n = values.length,
+      i = -1,
+      value,
+      min,
+      max;
+
+  if (valueof == null) {
+    while (++i < n) { // Find the first comparable value.
+      if ((value = values[i]) != null && value >= value) {
+        min = max = value;
+        while (++i < n) { // Compare the remaining values.
+          if ((value = values[i]) != null) {
+            if (min > value) min = value;
+            if (max < value) max = value;
+          }
+        }
+      }
+    }
+  }
+
+  else {
+    while (++i < n) { // Find the first comparable value.
+      if ((value = valueof(values[i], i, values)) != null && value >= value) {
+        min = max = value;
+        while (++i < n) { // Compare the remaining values.
+          if ((value = valueof(values[i], i, values)) != null) {
+            if (min > value) min = value;
+            if (max < value) max = value;
+          }
+        }
+      }
+    }
+  }
+
+  return [min, max];
+});
+
+
+/***/ }),
+/* 26 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony default export */ __webpack_exports__["a"] = (function(values, valueof) {
+  var n = values.length,
+      i = -1,
+      value,
+      min;
+
+  if (valueof == null) {
+    while (++i < n) { // Find the first comparable value.
+      if ((value = values[i]) != null && value >= value) {
+        min = value;
+        while (++i < n) { // Compare the remaining values.
+          if ((value = values[i]) != null && min > value) {
+            min = value;
+          }
+        }
+      }
+    }
+  }
+
+  else {
+    while (++i < n) { // Find the first comparable value.
+      if ((value = valueof(values[i], i, values)) != null && value >= value) {
+        min = value;
+        while (++i < n) { // Compare the remaining values.
+          if ((value = valueof(values[i], i, values)) != null && min > value) {
+            min = value;
+          }
+        }
+      }
+    }
+  }
+
+  return min;
+});
+
+
+/***/ }),
+/* 27 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (immutable) */ __webpack_exports__["a"] = pair;
+/* unused harmony default export */ var _unused_webpack_default_export = (function(array, f) {
+  if (f == null) f = pair;
+  var i = 0, n = array.length - 1, p = array[0], pairs = new Array(n < 0 ? 0 : n);
+  while (i < n) pairs[i] = f(p, p = array[++i]);
+  return pairs;
+});
+
+function pair(a, b) {
+  return [a, b];
+}
+
+
+/***/ }),
+/* 28 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony default export */ __webpack_exports__["a"] = (function(start, stop, step) {
+  start = +start, stop = +stop, step = (n = arguments.length) < 2 ? (stop = start, start = 0, 1) : n < 3 ? 1 : +step;
+
+  var i = -1,
+      n = Math.max(0, Math.ceil((stop - start) / step)) | 0,
+      range = new Array(n);
+
+  while (++i < n) {
+    range[i] = start + i * step;
+  }
+
+  return range;
+});
+
+
+/***/ }),
+/* 29 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony default export */ __webpack_exports__["a"] = (function(values) {
+  return Math.ceil(Math.log(values.length) / Math.LN2) + 1;
+});
+
+
+/***/ }),
+/* 30 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* unused harmony export tickIncrement */
+/* harmony export (immutable) */ __webpack_exports__["a"] = tickStep;
+var e10 = Math.sqrt(50),
+    e5 = Math.sqrt(10),
+    e2 = Math.sqrt(2);
+
+/* unused harmony default export */ var _unused_webpack_default_export = (function(start, stop, count) {
+  var reverse = stop < start,
+      i = -1,
+      n,
+      ticks,
+      step;
+
+  if (reverse) n = start, start = stop, stop = n;
+
+  if ((step = tickIncrement(start, stop, count)) === 0 || !isFinite(step)) return [];
+
+  if (step > 0) {
+    start = Math.ceil(start / step);
+    stop = Math.floor(stop / step);
+    ticks = new Array(n = Math.ceil(stop - start + 1));
+    while (++i < n) ticks[i] = (start + i) * step;
+  } else {
+    start = Math.floor(start * step);
+    stop = Math.ceil(stop * step);
+    ticks = new Array(n = Math.ceil(start - stop + 1));
+    while (++i < n) ticks[i] = (start - i) / step;
+  }
+
+  if (reverse) ticks.reverse();
+
+  return ticks;
+});
+
+function tickIncrement(start, stop, count) {
+  var step = (stop - start) / Math.max(0, count),
+      power = Math.floor(Math.log(step) / Math.LN10),
+      error = step / Math.pow(10, power);
+  return power >= 0
+      ? (error >= e10 ? 10 : error >= e5 ? 5 : error >= e2 ? 2 : 1) * Math.pow(10, power)
+      : -Math.pow(10, -power) / (error >= e10 ? 10 : error >= e5 ? 5 : error >= e2 ? 2 : 1);
+}
+
+function tickStep(start, stop, count) {
+  var step0 = Math.abs(stop - start) / Math.max(0, count),
+      step1 = Math.pow(10, Math.floor(Math.log(step0) / Math.LN10)),
+      error = step0 / step1;
+  if (error >= e10) step1 *= 10;
+  else if (error >= e5) step1 *= 5;
+  else if (error >= e2) step1 *= 2;
+  return stop < start ? -step1 : step1;
+}
+
+
+/***/ }),
+/* 31 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__min__ = __webpack_require__(26);
+
+
+/* harmony default export */ __webpack_exports__["a"] = (function(matrix) {
+  if (!(n = matrix.length)) return [];
+  for (var i = -1, m = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__min__["a" /* default */])(matrix, length), transpose = new Array(m); ++i < m;) {
+    for (var j = -1, n, row = transpose[i] = new Array(n); ++j < n;) {
+      row[j] = matrix[j][i];
+    }
+  }
+  return transpose;
+});
+
+function length(d) {
+  return d.length;
+}
+
+
+/***/ }),
+/* 32 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__number__ = __webpack_require__(6);
+
+
+/* harmony default export */ __webpack_exports__["a"] = (function(values, valueof) {
+  var n = values.length,
+      m = 0,
+      i = -1,
+      mean = 0,
+      value,
+      delta,
+      sum = 0;
+
+  if (valueof == null) {
+    while (++i < n) {
+      if (!isNaN(value = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__number__["a" /* default */])(values[i]))) {
+        delta = value - mean;
+        mean += delta / ++m;
+        sum += delta * (value - mean);
+      }
+    }
+  }
+
+  else {
+    while (++i < n) {
+      if (!isNaN(value = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__number__["a" /* default */])(valueof(values[i], i, values)))) {
+        delta = value - mean;
+        mean += delta / ++m;
+        sum += delta * (value - mean);
+      }
+    }
+  }
+
+  if (m > 1) return sum / (m - 1);
+});
+
+
+/***/ }),
+/* 33 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return areaRingSum; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return areaStream; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__adder__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__math__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__noop__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__stream__ = __webpack_require__(3);
+
+
+
+
+
+var areaRingSum = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__adder__["a" /* default */])();
+
+var areaSum = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__adder__["a" /* default */])(),
+    lambda00,
+    phi00,
+    lambda0,
+    cosPhi0,
+    sinPhi0;
+
+var areaStream = {
+  point: __WEBPACK_IMPORTED_MODULE_2__noop__["a" /* default */],
+  lineStart: __WEBPACK_IMPORTED_MODULE_2__noop__["a" /* default */],
+  lineEnd: __WEBPACK_IMPORTED_MODULE_2__noop__["a" /* default */],
+  polygonStart: function() {
+    areaRingSum.reset();
+    areaStream.lineStart = areaRingStart;
+    areaStream.lineEnd = areaRingEnd;
+  },
+  polygonEnd: function() {
+    var areaRing = +areaRingSum;
+    areaSum.add(areaRing < 0 ? __WEBPACK_IMPORTED_MODULE_1__math__["b" /* tau */] + areaRing : areaRing);
+    this.lineStart = this.lineEnd = this.point = __WEBPACK_IMPORTED_MODULE_2__noop__["a" /* default */];
+  },
+  sphere: function() {
+    areaSum.add(__WEBPACK_IMPORTED_MODULE_1__math__["b" /* tau */]);
+  }
+};
+
+function areaRingStart() {
+  areaStream.point = areaPointFirst;
+}
+
+function areaRingEnd() {
+  areaPoint(lambda00, phi00);
+}
+
+function areaPointFirst(lambda, phi) {
+  areaStream.point = areaPoint;
+  lambda00 = lambda, phi00 = phi;
+  lambda *= __WEBPACK_IMPORTED_MODULE_1__math__["g" /* radians */], phi *= __WEBPACK_IMPORTED_MODULE_1__math__["g" /* radians */];
+  lambda0 = lambda, cosPhi0 = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__math__["c" /* cos */])(phi = phi / 2 + __WEBPACK_IMPORTED_MODULE_1__math__["q" /* quarterPi */]), sinPhi0 = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__math__["d" /* sin */])(phi);
+}
+
+function areaPoint(lambda, phi) {
+  lambda *= __WEBPACK_IMPORTED_MODULE_1__math__["g" /* radians */], phi *= __WEBPACK_IMPORTED_MODULE_1__math__["g" /* radians */];
+  phi = phi / 2 + __WEBPACK_IMPORTED_MODULE_1__math__["q" /* quarterPi */]; // half the angular distance from south pole
+
+  // Spherical excess E for a spherical triangle with vertices: south pole,
+  // previous point, current point.  Uses a formula derived from Cagnoli’s
+  // theorem.  See Todhunter, Spherical Trig. (1871), Sec. 103, Eq. (2).
+  var dLambda = lambda - lambda0,
+      sdLambda = dLambda >= 0 ? 1 : -1,
+      adLambda = sdLambda * dLambda,
+      cosPhi = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__math__["c" /* cos */])(phi),
+      sinPhi = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__math__["d" /* sin */])(phi),
+      k = sinPhi0 * sinPhi,
+      u = cosPhi0 * cosPhi + k * __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__math__["c" /* cos */])(adLambda),
+      v = k * sdLambda * __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__math__["d" /* sin */])(adLambda);
+  areaRingSum.add(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__math__["e" /* atan2 */])(v, u));
+
+  // Advance the previous points.
+  lambda0 = lambda, cosPhi0 = cosPhi, sinPhi0 = sinPhi;
+}
+
+/* unused harmony default export */ var _unused_webpack_default_export = (function(object) {
+  areaSum.reset();
+  __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__stream__["a" /* default */])(object, areaStream);
+  return areaSum * 2;
+});
+
+
+/***/ }),
+/* 34 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (immutable) */ __webpack_exports__["a"] = circleStream;
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__cartesian__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__constant__ = __webpack_require__(81);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__math__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__rotation__ = __webpack_require__(9);
+
+
+
+
+
+// Generates a circle centered at [0°, 0°], with a given radius and precision.
+function circleStream(stream, radius, delta, direction, t0, t1) {
+  if (!delta) return;
+  var cosRadius = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__math__["c" /* cos */])(radius),
+      sinRadius = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__math__["d" /* sin */])(radius),
+      step = direction * delta;
+  if (t0 == null) {
+    t0 = radius + direction * __WEBPACK_IMPORTED_MODULE_2__math__["b" /* tau */];
+    t1 = radius - step / 2;
+  } else {
+    t0 = circleRadius(cosRadius, t0);
+    t1 = circleRadius(cosRadius, t1);
+    if (direction > 0 ? t0 < t1 : t0 > t1) t0 += direction * __WEBPACK_IMPORTED_MODULE_2__math__["b" /* tau */];
+  }
+  for (var point, t = t0; direction > 0 ? t > t1 : t < t1; t -= step) {
+    point = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__cartesian__["f" /* spherical */])([cosRadius, -sinRadius * __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__math__["c" /* cos */])(t), -sinRadius * __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__math__["d" /* sin */])(t)]);
+    stream.point(point[0], point[1]);
+  }
+}
+
+// Returns the signed angle of a cartesian point relative to [cosRadius, 0, 0].
+function circleRadius(cosRadius, point) {
+  point = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__cartesian__["a" /* cartesian */])(point), point[0] -= cosRadius;
+  __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__cartesian__["g" /* cartesianNormalizeInPlace */])(point);
+  var radius = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__math__["r" /* acos */])(-point[1]);
+  return ((-point[2] < 0 ? -radius : radius) + __WEBPACK_IMPORTED_MODULE_2__math__["b" /* tau */] - __WEBPACK_IMPORTED_MODULE_2__math__["p" /* epsilon */]) % __WEBPACK_IMPORTED_MODULE_2__math__["b" /* tau */];
+}
+
+/* unused harmony default export */ var _unused_webpack_default_export = (function() {
+  var center = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__constant__["a" /* default */])([0, 0]),
+      radius = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__constant__["a" /* default */])(90),
+      precision = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__constant__["a" /* default */])(6),
+      ring,
+      rotate,
+      stream = {point: point};
+
+  function point(x, y) {
+    ring.push(x = rotate(x, y));
+    x[0] *= __WEBPACK_IMPORTED_MODULE_2__math__["h" /* degrees */], x[1] *= __WEBPACK_IMPORTED_MODULE_2__math__["h" /* degrees */];
+  }
+
+  function circle() {
+    var c = center.apply(this, arguments),
+        r = radius.apply(this, arguments) * __WEBPACK_IMPORTED_MODULE_2__math__["g" /* radians */],
+        p = precision.apply(this, arguments) * __WEBPACK_IMPORTED_MODULE_2__math__["g" /* radians */];
+    ring = [];
+    rotate = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__rotation__["b" /* rotateRadians */])(-c[0] * __WEBPACK_IMPORTED_MODULE_2__math__["g" /* radians */], -c[1] * __WEBPACK_IMPORTED_MODULE_2__math__["g" /* radians */], 0).invert;
+    circleStream(stream, r, p, 1);
+    c = {type: "Polygon", coordinates: [ring]};
+    ring = rotate = null;
+    return c;
+  }
+
+  circle.center = function(_) {
+    return arguments.length ? (center = typeof _ === "function" ? _ : __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__constant__["a" /* default */])([+_[0], +_[1]]), circle) : center;
+  };
+
+  circle.radius = function(_) {
+    return arguments.length ? (radius = typeof _ === "function" ? _ : __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__constant__["a" /* default */])(+_), circle) : radius;
+  };
+
+  circle.precision = function(_) {
+    return arguments.length ? (precision = typeof _ === "function" ? _ : __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__constant__["a" /* default */])(+_), circle) : precision;
+  };
+
+  return circle;
+});
+
+
+/***/ }),
+/* 35 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__noop__ = __webpack_require__(2);
+
+
+/* harmony default export */ __webpack_exports__["a"] = (function() {
+  var lines = [],
+      line;
+  return {
+    point: function(x, y) {
+      line.push([x, y]);
+    },
+    lineStart: function() {
+      lines.push(line = []);
+    },
+    lineEnd: __WEBPACK_IMPORTED_MODULE_0__noop__["a" /* default */],
+    rejoin: function() {
+      if (lines.length > 1) lines.push(lines.pop().concat(lines.shift()));
+    },
+    result: function() {
+      var result = lines;
+      lines = [];
+      line = null;
+      return result;
+    }
+  };
+});
+
+
+/***/ }),
+/* 36 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__buffer__ = __webpack_require__(35);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__polygon__ = __webpack_require__(37);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__math__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__polygonContains__ = __webpack_require__(43);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_d3_array__ = __webpack_require__(11);
+
+
+
+
+
+
+/* harmony default export */ __webpack_exports__["a"] = (function(pointVisible, clipLine, interpolate, start) {
+  return function(rotate, sink) {
+    var line = clipLine(sink),
+        rotatedStart = rotate.invert(start[0], start[1]),
+        ringBuffer = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__buffer__["a" /* default */])(),
+        ringSink = clipLine(ringBuffer),
+        polygonStarted = false,
+        polygon,
+        segments,
+        ring;
+
+    var clip = {
+      point: point,
+      lineStart: lineStart,
+      lineEnd: lineEnd,
+      polygonStart: function() {
+        clip.point = pointRing;
+        clip.lineStart = ringStart;
+        clip.lineEnd = ringEnd;
+        segments = [];
+        polygon = [];
+      },
+      polygonEnd: function() {
+        clip.point = point;
+        clip.lineStart = lineStart;
+        clip.lineEnd = lineEnd;
+        segments = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4_d3_array__["a" /* merge */])(segments);
+        var startInside = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__polygonContains__["a" /* default */])(polygon, rotatedStart);
+        if (segments.length) {
+          if (!polygonStarted) sink.polygonStart(), polygonStarted = true;
+          __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__polygon__["a" /* default */])(segments, compareIntersection, startInside, interpolate, sink);
+        } else if (startInside) {
+          if (!polygonStarted) sink.polygonStart(), polygonStarted = true;
+          sink.lineStart();
+          interpolate(null, null, 1, sink);
+          sink.lineEnd();
+        }
+        if (polygonStarted) sink.polygonEnd(), polygonStarted = false;
+        segments = polygon = null;
+      },
+      sphere: function() {
+        sink.polygonStart();
+        sink.lineStart();
+        interpolate(null, null, 1, sink);
+        sink.lineEnd();
+        sink.polygonEnd();
+      }
+    };
+
+    function point(lambda, phi) {
+      var point = rotate(lambda, phi);
+      if (pointVisible(lambda = point[0], phi = point[1])) sink.point(lambda, phi);
+    }
+
+    function pointLine(lambda, phi) {
+      var point = rotate(lambda, phi);
+      line.point(point[0], point[1]);
+    }
+
+    function lineStart() {
+      clip.point = pointLine;
+      line.lineStart();
+    }
+
+    function lineEnd() {
+      clip.point = point;
+      line.lineEnd();
+    }
+
+    function pointRing(lambda, phi) {
+      ring.push([lambda, phi]);
+      var point = rotate(lambda, phi);
+      ringSink.point(point[0], point[1]);
+    }
+
+    function ringStart() {
+      ringSink.lineStart();
+      ring = [];
+    }
+
+    function ringEnd() {
+      pointRing(ring[0][0], ring[0][1]);
+      ringSink.lineEnd();
+
+      var clean = ringSink.clean(),
+          ringSegments = ringBuffer.result(),
+          i, n = ringSegments.length, m,
+          segment,
+          point;
+
+      ring.pop();
+      polygon.push(ring);
+      ring = null;
+
+      if (!n) return;
+
+      // No intersections.
+      if (clean & 1) {
+        segment = ringSegments[0];
+        if ((m = segment.length - 1) > 0) {
+          if (!polygonStarted) sink.polygonStart(), polygonStarted = true;
+          sink.lineStart();
+          for (i = 0; i < m; ++i) sink.point((point = segment[i])[0], point[1]);
+          sink.lineEnd();
+        }
+        return;
+      }
+
+      // Rejoin connected segments.
+      // TODO reuse ringBuffer.rejoin()?
+      if (n > 1 && clean & 2) ringSegments.push(ringSegments.pop().concat(ringSegments.shift()));
+
+      segments.push(ringSegments.filter(validSegment));
+    }
+
+    return clip;
+  };
+});
+
+function validSegment(segment) {
+  return segment.length > 1;
+}
+
+// Intersections are sorted along the clip edge. For both antimeridian cutting
+// and circle clipping, the same comparison is used.
+function compareIntersection(a, b) {
+  return ((a = a.x)[0] < 0 ? a[1] - __WEBPACK_IMPORTED_MODULE_2__math__["k" /* halfPi */] - __WEBPACK_IMPORTED_MODULE_2__math__["p" /* epsilon */] : __WEBPACK_IMPORTED_MODULE_2__math__["k" /* halfPi */] - a[1])
+       - ((b = b.x)[0] < 0 ? b[1] - __WEBPACK_IMPORTED_MODULE_2__math__["k" /* halfPi */] - __WEBPACK_IMPORTED_MODULE_2__math__["p" /* epsilon */] : __WEBPACK_IMPORTED_MODULE_2__math__["k" /* halfPi */] - b[1]);
+}
+
+
+/***/ }),
+/* 37 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__pointEqual__ = __webpack_require__(42);
+
+
+function Intersection(point, points, other, entry) {
+  this.x = point;
+  this.z = points;
+  this.o = other; // another intersection
+  this.e = entry; // is an entry?
+  this.v = false; // visited
+  this.n = this.p = null; // next & previous
+}
+
+// A generalized polygon clipping algorithm: given a polygon that has been cut
+// into its visible line segments, and rejoins the segments by interpolating
+// along the clip edge.
+/* harmony default export */ __webpack_exports__["a"] = (function(segments, compareIntersection, startInside, interpolate, stream) {
+  var subject = [],
+      clip = [],
+      i,
+      n;
+
+  segments.forEach(function(segment) {
+    if ((n = segment.length - 1) <= 0) return;
+    var n, p0 = segment[0], p1 = segment[n], x;
+
+    // If the first and last points of a segment are coincident, then treat as a
+    // closed ring. TODO if all rings are closed, then the winding order of the
+    // exterior ring should be checked.
+    if (__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__pointEqual__["a" /* default */])(p0, p1)) {
+      stream.lineStart();
+      for (i = 0; i < n; ++i) stream.point((p0 = segment[i])[0], p0[1]);
+      stream.lineEnd();
+      return;
+    }
+
+    subject.push(x = new Intersection(p0, segment, null, true));
+    clip.push(x.o = new Intersection(p0, null, x, false));
+    subject.push(x = new Intersection(p1, segment, null, false));
+    clip.push(x.o = new Intersection(p1, null, x, true));
+  });
+
+  if (!subject.length) return;
+
+  clip.sort(compareIntersection);
+  link(subject);
+  link(clip);
+
+  for (i = 0, n = clip.length; i < n; ++i) {
+    clip[i].e = startInside = !startInside;
+  }
+
+  var start = subject[0],
+      points,
+      point;
+
+  while (1) {
+    // Find first unvisited intersection.
+    var current = start,
+        isSubject = true;
+    while (current.v) if ((current = current.n) === start) return;
+    points = current.z;
+    stream.lineStart();
+    do {
+      current.v = current.o.v = true;
+      if (current.e) {
+        if (isSubject) {
+          for (i = 0, n = points.length; i < n; ++i) stream.point((point = points[i])[0], point[1]);
+        } else {
+          interpolate(current.x, current.n.x, 1, stream);
+        }
+        current = current.n;
+      } else {
+        if (isSubject) {
+          points = current.p.z;
+          for (i = points.length - 1; i >= 0; --i) stream.point((point = points[i])[0], point[1]);
+        } else {
+          interpolate(current.x, current.p.x, -1, stream);
+        }
+        current = current.p;
+      }
+      current = current.o;
+      points = current.z;
+      isSubject = !isSubject;
+    } while (!current.v);
+    stream.lineEnd();
+  }
+});
+
+function link(array) {
+  if (!(n = array.length)) return;
+  var n,
+      i = 0,
+      a = array[0],
+      b;
+  while (++i < n) {
+    a.n = b = array[i];
+    b.p = a;
+    a = b;
+  }
+  a.n = b = array[0];
+  b.p = a;
+}
+
+
+/***/ }),
+/* 38 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony default export */ __webpack_exports__["a"] = (function(a, b) {
+
+  function compose(x, y) {
+    return x = a(x, y), b(x[0], x[1]);
+  }
+
+  if (a.invert && b.invert) compose.invert = function(x, y) {
+    return x = b.invert(x, y), x && a.invert(x[0], x[1]);
+  };
+
+  return compose;
+});
+
+
+/***/ }),
+/* 39 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__length__ = __webpack_require__(40);
+
+
+var coordinates = [null, null],
+    object = {type: "LineString", coordinates: coordinates};
+
+/* harmony default export */ __webpack_exports__["a"] = (function(a, b) {
+  coordinates[0] = a;
+  coordinates[1] = b;
+  return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__length__["a" /* default */])(object);
+});
+
+
+/***/ }),
+/* 40 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__adder__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__math__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__noop__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__stream__ = __webpack_require__(3);
+
+
+
+
+
+var lengthSum = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__adder__["a" /* default */])(),
+    lambda0,
+    sinPhi0,
+    cosPhi0;
+
+var lengthStream = {
+  sphere: __WEBPACK_IMPORTED_MODULE_2__noop__["a" /* default */],
+  point: __WEBPACK_IMPORTED_MODULE_2__noop__["a" /* default */],
+  lineStart: lengthLineStart,
+  lineEnd: __WEBPACK_IMPORTED_MODULE_2__noop__["a" /* default */],
+  polygonStart: __WEBPACK_IMPORTED_MODULE_2__noop__["a" /* default */],
+  polygonEnd: __WEBPACK_IMPORTED_MODULE_2__noop__["a" /* default */]
+};
+
+function lengthLineStart() {
+  lengthStream.point = lengthPointFirst;
+  lengthStream.lineEnd = lengthLineEnd;
+}
+
+function lengthLineEnd() {
+  lengthStream.point = lengthStream.lineEnd = __WEBPACK_IMPORTED_MODULE_2__noop__["a" /* default */];
+}
+
+function lengthPointFirst(lambda, phi) {
+  lambda *= __WEBPACK_IMPORTED_MODULE_1__math__["g" /* radians */], phi *= __WEBPACK_IMPORTED_MODULE_1__math__["g" /* radians */];
+  lambda0 = lambda, sinPhi0 = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__math__["d" /* sin */])(phi), cosPhi0 = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__math__["c" /* cos */])(phi);
+  lengthStream.point = lengthPoint;
+}
+
+function lengthPoint(lambda, phi) {
+  lambda *= __WEBPACK_IMPORTED_MODULE_1__math__["g" /* radians */], phi *= __WEBPACK_IMPORTED_MODULE_1__math__["g" /* radians */];
+  var sinPhi = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__math__["d" /* sin */])(phi),
+      cosPhi = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__math__["c" /* cos */])(phi),
+      delta = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__math__["o" /* abs */])(lambda - lambda0),
+      cosDelta = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__math__["c" /* cos */])(delta),
+      sinDelta = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__math__["d" /* sin */])(delta),
+      x = cosPhi * sinDelta,
+      y = cosPhi0 * sinPhi - sinPhi0 * cosPhi * cosDelta,
+      z = sinPhi0 * sinPhi + cosPhi0 * cosPhi * cosDelta;
+  lengthSum.add(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__math__["e" /* atan2 */])(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__math__["n" /* sqrt */])(x * x + y * y), z));
+  lambda0 = lambda, sinPhi0 = sinPhi, cosPhi0 = cosPhi;
+}
+
+/* harmony default export */ __webpack_exports__["a"] = (function(object) {
+  lengthSum.reset();
+  __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__stream__["a" /* default */])(object, lengthStream);
+  return +lengthSum;
+});
+
+
+/***/ }),
+/* 41 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__noop__ = __webpack_require__(2);
+
+
+var x0 = Infinity,
+    y0 = x0,
+    x1 = -x0,
+    y1 = x1;
+
+var boundsStream = {
+  point: boundsPoint,
+  lineStart: __WEBPACK_IMPORTED_MODULE_0__noop__["a" /* default */],
+  lineEnd: __WEBPACK_IMPORTED_MODULE_0__noop__["a" /* default */],
+  polygonStart: __WEBPACK_IMPORTED_MODULE_0__noop__["a" /* default */],
+  polygonEnd: __WEBPACK_IMPORTED_MODULE_0__noop__["a" /* default */],
+  result: function() {
+    var bounds = [[x0, y0], [x1, y1]];
+    x1 = y1 = -(y0 = x0 = Infinity);
+    return bounds;
+  }
+};
+
+function boundsPoint(x, y) {
+  if (x < x0) x0 = x;
+  if (x > x1) x1 = x;
+  if (y < y0) y0 = y;
+  if (y > y1) y1 = y;
+}
+
+/* harmony default export */ __webpack_exports__["a"] = (boundsStream);
+
+
+/***/ }),
+/* 42 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__math__ = __webpack_require__(0);
+
+
+/* harmony default export */ __webpack_exports__["a"] = (function(a, b) {
+  return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__math__["o" /* abs */])(a[0] - b[0]) < __WEBPACK_IMPORTED_MODULE_0__math__["p" /* epsilon */] && __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__math__["o" /* abs */])(a[1] - b[1]) < __WEBPACK_IMPORTED_MODULE_0__math__["p" /* epsilon */];
+});
+
+
+/***/ }),
+/* 43 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__adder__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__cartesian__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__math__ = __webpack_require__(0);
+
+
+
+
+var sum = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__adder__["a" /* default */])();
+
+/* harmony default export */ __webpack_exports__["a"] = (function(polygon, point) {
+  var lambda = point[0],
+      phi = point[1],
+      normal = [__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__math__["d" /* sin */])(lambda), -__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__math__["c" /* cos */])(lambda), 0],
+      angle = 0,
+      winding = 0;
+
+  sum.reset();
+
+  for (var i = 0, n = polygon.length; i < n; ++i) {
+    if (!(m = (ring = polygon[i]).length)) continue;
+    var ring,
+        m,
+        point0 = ring[m - 1],
+        lambda0 = point0[0],
+        phi0 = point0[1] / 2 + __WEBPACK_IMPORTED_MODULE_2__math__["q" /* quarterPi */],
+        sinPhi0 = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__math__["d" /* sin */])(phi0),
+        cosPhi0 = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__math__["c" /* cos */])(phi0);
+
+    for (var j = 0; j < m; ++j, lambda0 = lambda1, sinPhi0 = sinPhi1, cosPhi0 = cosPhi1, point0 = point1) {
+      var point1 = ring[j],
+          lambda1 = point1[0],
+          phi1 = point1[1] / 2 + __WEBPACK_IMPORTED_MODULE_2__math__["q" /* quarterPi */],
+          sinPhi1 = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__math__["d" /* sin */])(phi1),
+          cosPhi1 = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__math__["c" /* cos */])(phi1),
+          delta = lambda1 - lambda0,
+          sign = delta >= 0 ? 1 : -1,
+          absDelta = sign * delta,
+          antimeridian = absDelta > __WEBPACK_IMPORTED_MODULE_2__math__["a" /* pi */],
+          k = sinPhi0 * sinPhi1;
+
+      sum.add(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__math__["e" /* atan2 */])(k * sign * __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__math__["d" /* sin */])(absDelta), cosPhi0 * cosPhi1 + k * __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__math__["c" /* cos */])(absDelta)));
+      angle += antimeridian ? delta + sign * __WEBPACK_IMPORTED_MODULE_2__math__["b" /* tau */] : delta;
+
+      // Are the longitudes either side of the point’s meridian (lambda),
+      // and are the latitudes smaller than the parallel (phi)?
+      if (antimeridian ^ lambda0 >= lambda ^ lambda1 >= lambda) {
+        var arc = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__cartesian__["b" /* cartesianCross */])(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__cartesian__["a" /* cartesian */])(point0), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__cartesian__["a" /* cartesian */])(point1));
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__cartesian__["g" /* cartesianNormalizeInPlace */])(arc);
+        var intersection = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__cartesian__["b" /* cartesianCross */])(normal, arc);
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__cartesian__["g" /* cartesianNormalizeInPlace */])(intersection);
+        var phiArc = (antimeridian ^ delta >= 0 ? -1 : 1) * __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__math__["f" /* asin */])(intersection[2]);
+        if (phi > phiArc || phi === phiArc && (arc[0] || arc[1])) {
+          winding += antimeridian ^ delta >= 0 ? 1 : -1;
+        }
+      }
+    }
+  }
+
+  // First, determine whether the South pole is inside or outside:
+  //
+  // It is inside if:
+  // * the polygon winds around it in a clockwise direction.
+  // * the polygon does not (cumulatively) wind around it, but has a negative
+  //   (counter-clockwise) area.
+  //
+  // Second, count the (signed) number of times a segment crosses a lambda
+  // from the point to the South pole.  If it is zero, then the point is the
+  // same side as the South pole.
+
+  return (angle < -__WEBPACK_IMPORTED_MODULE_2__math__["p" /* epsilon */] || angle < __WEBPACK_IMPORTED_MODULE_2__math__["p" /* epsilon */] && sum < -__WEBPACK_IMPORTED_MODULE_2__math__["p" /* epsilon */]) ^ (winding & 1);
+});
+
+
+/***/ }),
+/* 44 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__conicEqualArea__ = __webpack_require__(18);
+
+
+/* harmony default export */ __webpack_exports__["a"] = (function() {
+  return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__conicEqualArea__["a" /* default */])()
+      .parallels([29.5, 45.5])
+      .scale(1070)
+      .translate([480, 250])
+      .rotate([96, 0])
+      .center([-0.6, 38.7]);
+});
+
+
+/***/ }),
+/* 45 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (immutable) */ __webpack_exports__["a"] = equirectangularRaw;
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__index__ = __webpack_require__(1);
+
+
+function equirectangularRaw(lambda, phi) {
+  return [lambda, phi];
+}
+
+equirectangularRaw.invert = equirectangularRaw;
+
+/* unused harmony default export */ var _unused_webpack_default_export = (function() {
+  return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__index__["a" /* default */])(equirectangularRaw)
+      .scale(152.63);
+});
+
+
+/***/ }),
+/* 46 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_d3_request__ = __webpack_require__(103);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_d3_request___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_d3_request__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_d3_geo__ = __webpack_require__(75);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_topojson__ = __webpack_require__(105);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_topojson___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_topojson__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Users_chris_amico_code_guess_mass_guess_mass_node_modules_svelte_shared_js__ = __webpack_require__(104);
+
+
+
+
+
+
+var template = (function () {
+const projection = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_d3_geo__["a" /* geoMercator */])()
+    .center([-71.3824374, 42.4072107]);
+
+var path = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_d3_geo__["b" /* geoPath */])()
+    .projection(projection);
+
+return {
+
+    data() {
+        return {
+            url: 'data/towns.json',
+            object: 'TOWNS_POLYM',
+            features: []
+        }
+    },
+
+    helpers: {
+        path,
+        projection
+    },
+
+    methods: {
+        resize() {
+            const {width, height} = this.refs.svg.getBoundingClientRect();
+
+            this.set({ height: width / 2 });
+
+            projection.scale(width * 10);
+        }
+    },
+
+    oncreate() {
+        this.resize();
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_d3_request__["json"])(this.get('url'), (err, data) => {
+            this.set(__WEBPACK_IMPORTED_MODULE_2_topojson__["feature"](data, data.objects[this.get('object')]));
+        });
+    },
+}
+}());
+
+function add_css () {
+	var style = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__Users_chris_amico_code_guess_mass_guess_mass_node_modules_svelte_shared_js__["a" /* createElement */])( 'style' );
+	style.id = "svelte-4215748598-style";
+	style.textContent = "\n    svg[svelte-4215748598], [svelte-4215748598] svg {\n        width: 100%;\n        min-height: 400px;\n    }\n";
+	__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__Users_chris_amico_code_guess_mass_guess_mass_node_modules_svelte_shared_js__["b" /* appendNode */])( style, document.head );
+}
+
+function create_main_fragment ( state, component ) {
+	var svg_style_value;
+
+	function onwindowresize ( event ) {
+		component.resize();
+	};
+	window.addEventListener( 'resize', onwindowresize );
+
+	var text = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__Users_chris_amico_code_guess_mass_guess_mass_node_modules_svelte_shared_js__["c" /* createText */])( "\n\n" );
+	var svg = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__Users_chris_amico_code_guess_mass_guess_mass_node_modules_svelte_shared_js__["d" /* createSvgElement */])( 'svg' );
+	__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__Users_chris_amico_code_guess_mass_guess_mass_node_modules_svelte_shared_js__["e" /* setAttribute */])( svg, 'svelte-4215748598', '' );
+	__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__Users_chris_amico_code_guess_mass_guess_mass_node_modules_svelte_shared_js__["e" /* setAttribute */])( svg, 'style', svg_style_value = "height: " + ( state.height ) + "px;" );
+	component.refs.svg = svg;
+	var each_block_value = state.features;
+
+	var each_block_iterations = [];
+
+	for ( var i = 0; i < each_block_value.length; i += 1 ) {
+		each_block_iterations[i] = create_each_block( state, each_block_value, each_block_value[i], i, component );
+		each_block_iterations[i].mount( svg, null );
+	}
+
+	return {
+		mount: function ( target, anchor ) {
+			__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__Users_chris_amico_code_guess_mass_guess_mass_node_modules_svelte_shared_js__["f" /* insertNode */])( text, target, anchor );
+			__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__Users_chris_amico_code_guess_mass_guess_mass_node_modules_svelte_shared_js__["f" /* insertNode */])( svg, target, anchor );
+		},
+
+		update: function ( changed, state ) {
+			if ( svg_style_value !== ( svg_style_value = "height: " + ( state.height ) + "px;" ) ) {
+				__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__Users_chris_amico_code_guess_mass_guess_mass_node_modules_svelte_shared_js__["e" /* setAttribute */])( svg, 'style', svg_style_value );
+			}
+
+			var each_block_value = state.features;
+
+			if ( 'features' in changed ) {
+				for ( var i = 0; i < each_block_value.length; i += 1 ) {
+					if ( each_block_iterations[i] ) {
+						each_block_iterations[i].update( changed, state, each_block_value, each_block_value[i], i );
+					} else {
+						each_block_iterations[i] = create_each_block( state, each_block_value, each_block_value[i], i, component );
+						each_block_iterations[i].mount( svg, null );
+					}
+				}
+
+				__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__Users_chris_amico_code_guess_mass_guess_mass_node_modules_svelte_shared_js__["g" /* destroyEach */])( each_block_iterations, true, each_block_value.length );
+				each_block_iterations.length = each_block_value.length;
+			}
+		},
+
+		destroy: function ( detach ) {
+			window.removeEventListener( 'resize', onwindowresize );
+
+			if ( component.refs.svg === svg ) component.refs.svg = null;
+
+			__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__Users_chris_amico_code_guess_mass_guess_mass_node_modules_svelte_shared_js__["g" /* destroyEach */])( each_block_iterations, false, 0 );
+
+			if ( detach ) {
+				__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__Users_chris_amico_code_guess_mass_guess_mass_node_modules_svelte_shared_js__["h" /* detachNode */])( text );
+				__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__Users_chris_amico_code_guess_mass_guess_mass_node_modules_svelte_shared_js__["h" /* detachNode */])( svg );
+			}
+		}
+	};
+}
+
+function create_each_block ( state, each_block_value, feature, feature_index, component ) {
+	var path_d_value;
+
+	var path = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__Users_chris_amico_code_guess_mass_guess_mass_node_modules_svelte_shared_js__["d" /* createSvgElement */])( 'path' );
+	__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__Users_chris_amico_code_guess_mass_guess_mass_node_modules_svelte_shared_js__["e" /* setAttribute */])( path, 'class', "town" );
+	__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__Users_chris_amico_code_guess_mass_guess_mass_node_modules_svelte_shared_js__["e" /* setAttribute */])( path, 'd', path_d_value = template.helpers.path(feature) );
+
+	return {
+		mount: function ( target, anchor ) {
+			__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__Users_chris_amico_code_guess_mass_guess_mass_node_modules_svelte_shared_js__["f" /* insertNode */])( path, target, anchor );
+		},
+
+		update: function ( changed, state, each_block_value, feature, feature_index ) {
+			if ( path_d_value !== ( path_d_value = template.helpers.path(feature) ) ) {
+				__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__Users_chris_amico_code_guess_mass_guess_mass_node_modules_svelte_shared_js__["e" /* setAttribute */])( path, 'd', path_d_value );
+			}
+		},
+
+		destroy: function ( detach ) {
+			if ( detach ) {
+				__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__Users_chris_amico_code_guess_mass_guess_mass_node_modules_svelte_shared_js__["h" /* detachNode */])( path );
+			}
+		}
+	};
+}
+
+function Map ( options ) {
+	options = options || {};
+	this.refs = {};
+	this._state = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__Users_chris_amico_code_guess_mass_guess_mass_node_modules_svelte_shared_js__["i" /* assign */])( template.data(), options.data );
+
+	this._observers = {
+		pre: Object.create( null ),
+		post: Object.create( null )
+	};
+
+	this._handlers = Object.create( null );
+
+	this._root = options._root || this;
+	this._yield = options._yield;
+
+	this._torndown = false;
+	if ( !document.getElementById( "svelte-4215748598-style" ) ) add_css();
+
+	this._fragment = create_main_fragment( this._state, this );
+	if ( options.target ) this._fragment.mount( options.target, null );
+
+	if ( options._root ) {
+		options._root._renderHooks.push( template.oncreate.bind( this ) );
+	} else {
+		template.oncreate.call( this );
+	}
+}
+
+__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__Users_chris_amico_code_guess_mass_guess_mass_node_modules_svelte_shared_js__["i" /* assign */])( Map.prototype, template.methods, __WEBPACK_IMPORTED_MODULE_3__Users_chris_amico_code_guess_mass_guess_mass_node_modules_svelte_shared_js__["j" /* proto */] );
+
+Map.prototype._set = function _set ( newState ) {
+	var oldState = this._state;
+	this._state = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__Users_chris_amico_code_guess_mass_guess_mass_node_modules_svelte_shared_js__["i" /* assign */])( {}, oldState, newState );
+	__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__Users_chris_amico_code_guess_mass_guess_mass_node_modules_svelte_shared_js__["k" /* dispatchObservers */])( this, this._observers.pre, newState, oldState );
+	this._fragment.update( newState, this._state );
+	__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__Users_chris_amico_code_guess_mass_guess_mass_node_modules_svelte_shared_js__["k" /* dispatchObservers */])( this, this._observers.post, newState, oldState );
+};
+
+Map.prototype.teardown = Map.prototype.destroy = function destroy ( detach ) {
+	this.fire( 'destroy' );
+
+	this._fragment.destroy( detach !== false );
+	this._fragment = null;
+
+	this._state = {};
+	this._torndown = true;
+};
+
+/* harmony default export */ __webpack_exports__["a"] = (Map);
+
+/***/ }),
+/* 47 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_Map_html__ = __webpack_require__(46);
+
+
+const map = new __WEBPACK_IMPORTED_MODULE_0__components_Map_html__["a" /* default */]({
+    target: document.querySelector('#map')
+});
+
+window.map = map;
+
+/***/ }),
+/* 48 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony default export */ __webpack_exports__["a"] = (function(x) {
+  return function() {
+    return x;
+  };
+});
+
+
+/***/ }),
+/* 49 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__pairs__ = __webpack_require__(27);
+
+
+/* unused harmony default export */ var _unused_webpack_default_export = (function(values0, values1, reduce) {
+  var n0 = values0.length,
+      n1 = values1.length,
+      values = new Array(n0 * n1),
+      i0,
+      i1,
+      i,
+      value0;
+
+  if (reduce == null) reduce = __WEBPACK_IMPORTED_MODULE_0__pairs__["a" /* pair */];
+
+  for (i0 = i = 0; i0 < n0; ++i0) {
+    for (value0 = values0[i0], i1 = 0; i1 < n1; ++i1, ++i) {
+      values[i] = reduce(value0, values1[i1]);
+    }
+  }
+
+  return values;
+});
+
+
+/***/ }),
+/* 50 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* unused harmony default export */ var _unused_webpack_default_export = (function(a, b) {
+  return b < a ? -1 : b > a ? 1 : b >= a ? 0 : NaN;
+});
+
+
+/***/ }),
+/* 51 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__array__ = __webpack_require__(21);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__bisect__ = __webpack_require__(22);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constant__ = __webpack_require__(48);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__extent__ = __webpack_require__(25);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__identity__ = __webpack_require__(52);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__range__ = __webpack_require__(28);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__ticks__ = __webpack_require__(30);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__threshold_sturges__ = __webpack_require__(29);
+
+
+
+
+
+
+
+
+
+/* unused harmony default export */ var _unused_webpack_default_export = (function() {
+  var value = __WEBPACK_IMPORTED_MODULE_4__identity__["a" /* default */],
+      domain = __WEBPACK_IMPORTED_MODULE_3__extent__["a" /* default */],
+      threshold = __WEBPACK_IMPORTED_MODULE_7__threshold_sturges__["a" /* default */];
+
+  function histogram(data) {
+    var i,
+        n = data.length,
+        x,
+        values = new Array(n);
+
+    for (i = 0; i < n; ++i) {
+      values[i] = value(data[i], i, data);
+    }
+
+    var xz = domain(values),
+        x0 = xz[0],
+        x1 = xz[1],
+        tz = threshold(values, x0, x1);
+
+    // Convert number of thresholds into uniform thresholds.
+    if (!Array.isArray(tz)) {
+      tz = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_6__ticks__["a" /* tickStep */])(x0, x1, tz);
+      tz = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_5__range__["a" /* default */])(Math.ceil(x0 / tz) * tz, Math.floor(x1 / tz) * tz, tz); // exclusive
+    }
+
+    // Remove any thresholds outside the domain.
+    var m = tz.length;
+    while (tz[0] <= x0) tz.shift(), --m;
+    while (tz[m - 1] > x1) tz.pop(), --m;
+
+    var bins = new Array(m + 1),
+        bin;
+
+    // Initialize bins.
+    for (i = 0; i <= m; ++i) {
+      bin = bins[i] = [];
+      bin.x0 = i > 0 ? tz[i - 1] : x0;
+      bin.x1 = i < m ? tz[i] : x1;
+    }
+
+    // Assign data to bins by value, ignoring any outside the domain.
+    for (i = 0; i < n; ++i) {
+      x = values[i];
+      if (x0 <= x && x <= x1) {
+        bins[__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__bisect__["a" /* default */])(tz, x, 0, m)].push(data[i]);
+      }
+    }
+
+    return bins;
+  }
+
+  histogram.value = function(_) {
+    return arguments.length ? (value = typeof _ === "function" ? _ : __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__constant__["a" /* default */])(_), histogram) : value;
+  };
+
+  histogram.domain = function(_) {
+    return arguments.length ? (domain = typeof _ === "function" ? _ : __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__constant__["a" /* default */])([_[0], _[1]]), histogram) : domain;
+  };
+
+  histogram.thresholds = function(_) {
+    return arguments.length ? (threshold = typeof _ === "function" ? _ : Array.isArray(_) ? __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__constant__["a" /* default */])(__WEBPACK_IMPORTED_MODULE_0__array__["b" /* slice */].call(_)) : __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__constant__["a" /* default */])(_), histogram) : threshold;
+  };
+
+  return histogram;
+});
+
+
+/***/ }),
+/* 52 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony default export */ __webpack_exports__["a"] = (function(x) {
+  return x;
+});
+
+
+/***/ }),
+/* 53 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* unused harmony default export */ var _unused_webpack_default_export = (function(values, valueof) {
+  var n = values.length,
+      i = -1,
+      value,
+      max;
+
+  if (valueof == null) {
+    while (++i < n) { // Find the first comparable value.
+      if ((value = values[i]) != null && value >= value) {
+        max = value;
+        while (++i < n) { // Compare the remaining values.
+          if ((value = values[i]) != null && value > max) {
+            max = value;
+          }
+        }
+      }
+    }
+  }
+
+  else {
+    while (++i < n) { // Find the first comparable value.
+      if ((value = valueof(values[i], i, values)) != null && value >= value) {
+        max = value;
+        while (++i < n) { // Compare the remaining values.
+          if ((value = valueof(values[i], i, values)) != null && value > max) {
+            max = value;
+          }
+        }
+      }
+    }
+  }
+
+  return max;
+});
+
+
+/***/ }),
+/* 54 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__number__ = __webpack_require__(6);
+
+
+/* unused harmony default export */ var _unused_webpack_default_export = (function(values, valueof) {
+  var n = values.length,
+      m = n,
+      i = -1,
+      value,
+      sum = 0;
+
+  if (valueof == null) {
+    while (++i < n) {
+      if (!isNaN(value = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__number__["a" /* default */])(values[i]))) sum += value;
+      else --m;
+    }
+  }
+
+  else {
+    while (++i < n) {
+      if (!isNaN(value = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__number__["a" /* default */])(valueof(values[i], i, values)))) sum += value;
+      else --m;
+    }
+  }
+
+  if (m) return sum / m;
+});
+
+
+/***/ }),
+/* 55 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ascending__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__number__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__quantile__ = __webpack_require__(12);
+
+
+
+
+/* unused harmony default export */ var _unused_webpack_default_export = (function(values, valueof) {
+  var n = values.length,
+      i = -1,
+      value,
+      numbers = [];
+
+  if (valueof == null) {
+    while (++i < n) {
+      if (!isNaN(value = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__number__["a" /* default */])(values[i]))) {
+        numbers.push(value);
+      }
+    }
+  }
+
+  else {
+    while (++i < n) {
+      if (!isNaN(value = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__number__["a" /* default */])(valueof(values[i], i, values)))) {
+        numbers.push(value);
+      }
+    }
+  }
+
+  return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__quantile__["a" /* default */])(numbers.sort(__WEBPACK_IMPORTED_MODULE_0__ascending__["a" /* default */]), 0.5);
+});
+
+
+/***/ }),
+/* 56 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony default export */ __webpack_exports__["a"] = (function(arrays) {
+  var n = arrays.length,
+      m,
+      i = -1,
+      j = 0,
+      merged,
+      array;
+
+  while (++i < n) j += arrays[i].length;
+  merged = new Array(j);
+
+  while (--n >= 0) {
+    array = arrays[n];
+    m = array.length;
+    while (--m >= 0) {
+      merged[--j] = array[m];
+    }
+  }
+
+  return merged;
+});
+
+
+/***/ }),
+/* 57 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* unused harmony default export */ var _unused_webpack_default_export = (function(array, indexes) {
+  var i = indexes.length, permutes = new Array(i);
+  while (i--) permutes[i] = array[indexes[i]];
+  return permutes;
+});
+
+
+/***/ }),
+/* 58 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ascending__ = __webpack_require__(4);
+
+
+/* unused harmony default export */ var _unused_webpack_default_export = (function(values, compare) {
+  if (!(n = values.length)) return;
+  var n,
+      i = 0,
+      j = 0,
+      xi,
+      xj = values[j];
+
+  if (compare == null) compare = __WEBPACK_IMPORTED_MODULE_0__ascending__["a" /* default */];
+
+  while (++i < n) {
+    if (compare(xi = values[i], xj) < 0 || compare(xj, xj) !== 0) {
+      xj = xi, j = i;
+    }
+  }
+
+  if (compare(xj, xj) === 0) return j;
+});
+
+
+/***/ }),
+/* 59 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* unused harmony default export */ var _unused_webpack_default_export = (function(array, i0, i1) {
+  var m = (i1 == null ? array.length : i1) - (i0 = i0 == null ? 0 : +i0),
+      t,
+      i;
+
+  while (m) {
+    i = Math.random() * m-- | 0;
+    t = array[m + i0];
+    array[m + i0] = array[i + i0];
+    array[i + i0] = t;
+  }
+
+  return array;
+});
+
+
+/***/ }),
+/* 60 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* unused harmony default export */ var _unused_webpack_default_export = (function(values, valueof) {
+  var n = values.length,
+      i = -1,
+      value,
+      sum = 0;
+
+  if (valueof == null) {
+    while (++i < n) {
+      if (value = +values[i]) sum += value; // Note: zero and null are equivalent.
+    }
+  }
+
+  else {
+    while (++i < n) {
+      if (value = +valueof(values[i], i, values)) sum += value;
+    }
+  }
+
+  return sum;
+});
+
+
+/***/ }),
+/* 61 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__array__ = __webpack_require__(21);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ascending__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__number__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__quantile__ = __webpack_require__(12);
+
+
+
+
+
+/* unused harmony default export */ var _unused_webpack_default_export = (function(values, min, max) {
+  values = __WEBPACK_IMPORTED_MODULE_0__array__["a" /* map */].call(values, __WEBPACK_IMPORTED_MODULE_2__number__["a" /* default */]).sort(__WEBPACK_IMPORTED_MODULE_1__ascending__["a" /* default */]);
+  return Math.ceil((max - min) / (2 * (__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__quantile__["a" /* default */])(values, 0.75) - __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__quantile__["a" /* default */])(values, 0.25)) * Math.pow(values.length, -1 / 3)));
+});
+
+
+/***/ }),
+/* 62 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__deviation__ = __webpack_require__(24);
+
+
+/* unused harmony default export */ var _unused_webpack_default_export = (function(values, min, max) {
+  return Math.ceil((max - min) / (3.5 * __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__deviation__["a" /* default */])(values) * Math.pow(values.length, -1 / 3)));
+});
+
+
+/***/ }),
+/* 63 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__transpose__ = __webpack_require__(31);
+
+
+/* unused harmony default export */ var _unused_webpack_default_export = (function() {
+  return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__transpose__["a" /* default */])(arguments);
+});
+
+
+/***/ }),
+/* 64 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__src_nest__ = __webpack_require__(67);
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "nest", function() { return __WEBPACK_IMPORTED_MODULE_0__src_nest__["a"]; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__src_set__ = __webpack_require__(68);
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "set", function() { return __WEBPACK_IMPORTED_MODULE_1__src_set__["a"]; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__src_map__ = __webpack_require__(13);
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "map", function() { return __WEBPACK_IMPORTED_MODULE_2__src_map__["a"]; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__src_keys__ = __webpack_require__(66);
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "keys", function() { return __WEBPACK_IMPORTED_MODULE_3__src_keys__["a"]; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__src_values__ = __webpack_require__(69);
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "values", function() { return __WEBPACK_IMPORTED_MODULE_4__src_values__["a"]; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__src_entries__ = __webpack_require__(65);
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "entries", function() { return __WEBPACK_IMPORTED_MODULE_5__src_entries__["a"]; });
+
+
+
+
+
+
+
+
+/***/ }),
+/* 65 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony default export */ __webpack_exports__["a"] = (function(map) {
+  var entries = [];
+  for (var key in map) entries.push({key: key, value: map[key]});
+  return entries;
+});
+
+
+/***/ }),
+/* 66 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony default export */ __webpack_exports__["a"] = (function(map) {
+  var keys = [];
+  for (var key in map) keys.push(key);
+  return keys;
+});
+
+
+/***/ }),
+/* 67 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__map__ = __webpack_require__(13);
+
+
+/* harmony default export */ __webpack_exports__["a"] = (function() {
+  var keys = [],
+      sortKeys = [],
+      sortValues,
+      rollup,
+      nest;
+
+  function apply(array, depth, createResult, setResult) {
+    if (depth >= keys.length) return rollup != null
+        ? rollup(array) : (sortValues != null
+        ? array.sort(sortValues)
+        : array);
+
+    var i = -1,
+        n = array.length,
+        key = keys[depth++],
+        keyValue,
+        value,
+        valuesByKey = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__map__["a" /* default */])(),
+        values,
+        result = createResult();
+
+    while (++i < n) {
+      if (values = valuesByKey.get(keyValue = key(value = array[i]) + "")) {
+        values.push(value);
+      } else {
+        valuesByKey.set(keyValue, [value]);
+      }
+    }
+
+    valuesByKey.each(function(values, key) {
+      setResult(result, key, apply(values, depth, createResult, setResult));
+    });
+
+    return result;
+  }
+
+  function entries(map, depth) {
+    if (++depth > keys.length) return map;
+    var array, sortKey = sortKeys[depth - 1];
+    if (rollup != null && depth >= keys.length) array = map.entries();
+    else array = [], map.each(function(v, k) { array.push({key: k, values: entries(v, depth)}); });
+    return sortKey != null ? array.sort(function(a, b) { return sortKey(a.key, b.key); }) : array;
+  }
+
+  return nest = {
+    object: function(array) { return apply(array, 0, createObject, setObject); },
+    map: function(array) { return apply(array, 0, createMap, setMap); },
+    entries: function(array) { return entries(apply(array, 0, createMap, setMap), 0); },
+    key: function(d) { keys.push(d); return nest; },
+    sortKeys: function(order) { sortKeys[keys.length - 1] = order; return nest; },
+    sortValues: function(order) { sortValues = order; return nest; },
+    rollup: function(f) { rollup = f; return nest; }
+  };
+});
+
+function createObject() {
+  return {};
+}
+
+function setObject(object, key, value) {
+  object[key] = value;
+}
+
+function createMap() {
+  return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__map__["a" /* default */])();
+}
+
+function setMap(map, key, value) {
+  map.set(key, value);
+}
+
+
+/***/ }),
+/* 68 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__map__ = __webpack_require__(13);
+
+
+function Set() {}
+
+var proto = __WEBPACK_IMPORTED_MODULE_0__map__["a" /* default */].prototype;
+
+Set.prototype = set.prototype = {
+  constructor: Set,
+  has: proto.has,
+  add: function(value) {
+    value += "";
+    this[__WEBPACK_IMPORTED_MODULE_0__map__["b" /* prefix */] + value] = value;
+    return this;
+  },
+  remove: proto.remove,
+  clear: proto.clear,
+  values: proto.keys,
+  size: proto.size,
+  empty: proto.empty,
+  each: proto.each
+};
+
+function set(object, f) {
+  var set = new Set;
+
+  // Copy constructor.
+  if (object instanceof Set) object.each(function(value) { set.add(value); });
+
+  // Otherwise, assume it’s an array.
+  else if (object) {
+    var i = -1, n = object.length;
+    if (f == null) while (++i < n) set.add(object[i]);
+    else while (++i < n) set.add(f(object[i], i, object));
+  }
+
+  return set;
+}
+
+/* harmony default export */ __webpack_exports__["a"] = (set);
+
+
+/***/ }),
+/* 69 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony default export */ __webpack_exports__["a"] = (function(map) {
+  var values = [];
+  for (var key in map) values.push(map[key]);
+  return values;
+});
+
+
+/***/ }),
+/* 70 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__src_dispatch__ = __webpack_require__(71);
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "dispatch", function() { return __WEBPACK_IMPORTED_MODULE_0__src_dispatch__["a"]; });
+
+
+
+/***/ }),
+/* 71 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+var noop = {value: function() {}};
+
+function dispatch() {
+  for (var i = 0, n = arguments.length, _ = {}, t; i < n; ++i) {
+    if (!(t = arguments[i] + "") || (t in _)) throw new Error("illegal type: " + t);
+    _[t] = [];
+  }
+  return new Dispatch(_);
+}
+
+function Dispatch(_) {
+  this._ = _;
+}
+
+function parseTypenames(typenames, types) {
+  return typenames.trim().split(/^|\s+/).map(function(t) {
+    var name = "", i = t.indexOf(".");
+    if (i >= 0) name = t.slice(i + 1), t = t.slice(0, i);
+    if (t && !types.hasOwnProperty(t)) throw new Error("unknown type: " + t);
+    return {type: t, name: name};
+  });
+}
+
+Dispatch.prototype = dispatch.prototype = {
+  constructor: Dispatch,
+  on: function(typename, callback) {
+    var _ = this._,
+        T = parseTypenames(typename + "", _),
+        t,
+        i = -1,
+        n = T.length;
+
+    // If no callback was specified, return the callback of the given type and name.
+    if (arguments.length < 2) {
+      while (++i < n) if ((t = (typename = T[i]).type) && (t = get(_[t], typename.name))) return t;
+      return;
+    }
+
+    // If a type was specified, set the callback for the given type and name.
+    // Otherwise, if a null callback was specified, remove callbacks of the given name.
+    if (callback != null && typeof callback !== "function") throw new Error("invalid callback: " + callback);
+    while (++i < n) {
+      if (t = (typename = T[i]).type) _[t] = set(_[t], typename.name, callback);
+      else if (callback == null) for (t in _) _[t] = set(_[t], typename.name, null);
+    }
+
+    return this;
+  },
+  copy: function() {
+    var copy = {}, _ = this._;
+    for (var t in _) copy[t] = _[t].slice();
+    return new Dispatch(copy);
+  },
+  call: function(type, that) {
+    if ((n = arguments.length - 2) > 0) for (var args = new Array(n), i = 0, n, t; i < n; ++i) args[i] = arguments[i + 2];
+    if (!this._.hasOwnProperty(type)) throw new Error("unknown type: " + type);
+    for (t = this._[type], i = 0, n = t.length; i < n; ++i) t[i].value.apply(that, args);
+  },
+  apply: function(type, that, args) {
+    if (!this._.hasOwnProperty(type)) throw new Error("unknown type: " + type);
+    for (var t = this._[type], i = 0, n = t.length; i < n; ++i) t[i].value.apply(that, args);
+  }
+};
+
+function get(type, name) {
+  for (var i = 0, n = type.length, c; i < n; ++i) {
+    if ((c = type[i]).name === name) {
+      return c.value;
+    }
+  }
+}
+
+function set(type, name, callback) {
+  for (var i = 0, n = type.length; i < n; ++i) {
+    if (type[i].name === name) {
+      type[i] = noop, type = type.slice(0, i).concat(type.slice(i + 1));
+      break;
+    }
+  }
+  if (callback != null) type.push({name: name, value: callback});
+  return type;
+}
+
+/* harmony default export */ __webpack_exports__["a"] = (dispatch);
+
+
+/***/ }),
+/* 72 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__src_dsv__ = __webpack_require__(14);
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "dsvFormat", function() { return __WEBPACK_IMPORTED_MODULE_0__src_dsv__["a"]; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__src_csv__ = __webpack_require__(73);
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "csvParse", function() { return __WEBPACK_IMPORTED_MODULE_1__src_csv__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "csvParseRows", function() { return __WEBPACK_IMPORTED_MODULE_1__src_csv__["b"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "csvFormat", function() { return __WEBPACK_IMPORTED_MODULE_1__src_csv__["c"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "csvFormatRows", function() { return __WEBPACK_IMPORTED_MODULE_1__src_csv__["d"]; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__src_tsv__ = __webpack_require__(74);
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "tsvParse", function() { return __WEBPACK_IMPORTED_MODULE_2__src_tsv__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "tsvParseRows", function() { return __WEBPACK_IMPORTED_MODULE_2__src_tsv__["b"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "tsvFormat", function() { return __WEBPACK_IMPORTED_MODULE_2__src_tsv__["c"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "tsvFormatRows", function() { return __WEBPACK_IMPORTED_MODULE_2__src_tsv__["d"]; });
+
+
+
+
+
+/***/ }),
+/* 73 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return csvParse; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return csvParseRows; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return csvFormat; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return csvFormatRows; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__dsv__ = __webpack_require__(14);
+
+
+var csv = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__dsv__["a" /* default */])(",");
+
+var csvParse = csv.parse;
+var csvParseRows = csv.parseRows;
+var csvFormat = csv.format;
+var csvFormatRows = csv.formatRows;
+
+
+/***/ }),
+/* 74 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return tsvParse; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return tsvParseRows; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return tsvFormat; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return tsvFormatRows; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__dsv__ = __webpack_require__(14);
+
+
+var tsv = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__dsv__["a" /* default */])("\t");
+
+var tsvParse = tsv.parse;
+var tsvParseRows = tsv.parseRows;
+var tsvFormat = tsv.format;
+var tsvFormatRows = tsv.formatRows;
+
+
+/***/ }),
+/* 75 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__src_area__ = __webpack_require__(33);
+/* unused harmony reexport geoArea */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__src_bounds__ = __webpack_require__(76);
+/* unused harmony reexport geoBounds */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__src_centroid__ = __webpack_require__(77);
+/* unused harmony reexport geoCentroid */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__src_circle__ = __webpack_require__(34);
+/* unused harmony reexport geoCircle */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__src_clip_extent__ = __webpack_require__(15);
+/* unused harmony reexport geoClipExtent */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__src_contains__ = __webpack_require__(82);
+/* unused harmony reexport geoContains */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__src_distance__ = __webpack_require__(39);
+/* unused harmony reexport geoDistance */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__src_graticule__ = __webpack_require__(83);
+/* unused harmony reexport geoGraticule */
+/* unused harmony reexport geoGraticule10 */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__src_interpolate__ = __webpack_require__(84);
+/* unused harmony reexport geoInterpolate */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__src_length__ = __webpack_require__(40);
+/* unused harmony reexport geoLength */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__src_path_index__ = __webpack_require__(88);
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_10__src_path_index__["a"]; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__src_projection_albers__ = __webpack_require__(44);
+/* unused harmony reexport geoAlbers */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__src_projection_albersUsa__ = __webpack_require__(91);
+/* unused harmony reexport geoAlbersUsa */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__src_projection_azimuthalEqualArea__ = __webpack_require__(92);
+/* unused harmony reexport geoAzimuthalEqualArea */
+/* unused harmony reexport geoAzimuthalEqualAreaRaw */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__src_projection_azimuthalEquidistant__ = __webpack_require__(93);
+/* unused harmony reexport geoAzimuthalEquidistant */
+/* unused harmony reexport geoAzimuthalEquidistantRaw */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__src_projection_conicConformal__ = __webpack_require__(94);
+/* unused harmony reexport geoConicConformal */
+/* unused harmony reexport geoConicConformalRaw */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__src_projection_conicEqualArea__ = __webpack_require__(18);
+/* unused harmony reexport geoConicEqualArea */
+/* unused harmony reexport geoConicEqualAreaRaw */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__src_projection_conicEquidistant__ = __webpack_require__(95);
+/* unused harmony reexport geoConicEquidistant */
+/* unused harmony reexport geoConicEquidistantRaw */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__src_projection_equirectangular__ = __webpack_require__(45);
+/* unused harmony reexport geoEquirectangular */
+/* unused harmony reexport geoEquirectangularRaw */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__src_projection_gnomonic__ = __webpack_require__(97);
+/* unused harmony reexport geoGnomonic */
+/* unused harmony reexport geoGnomonicRaw */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__src_projection_identity__ = __webpack_require__(98);
+/* unused harmony reexport geoIdentity */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__src_projection_index__ = __webpack_require__(1);
+/* unused harmony reexport geoProjection */
+/* unused harmony reexport geoProjectionMutator */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__src_projection_mercator__ = __webpack_require__(20);
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_22__src_projection_mercator__["a"]; });
+/* unused harmony reexport geoMercatorRaw */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__src_projection_orthographic__ = __webpack_require__(99);
+/* unused harmony reexport geoOrthographic */
+/* unused harmony reexport geoOrthographicRaw */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__src_projection_stereographic__ = __webpack_require__(101);
+/* unused harmony reexport geoStereographic */
+/* unused harmony reexport geoStereographicRaw */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__src_projection_transverseMercator__ = __webpack_require__(102);
+/* unused harmony reexport geoTransverseMercator */
+/* unused harmony reexport geoTransverseMercatorRaw */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__src_rotation__ = __webpack_require__(9);
+/* unused harmony reexport geoRotation */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__src_stream__ = __webpack_require__(3);
+/* unused harmony reexport geoStream */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__src_transform__ = __webpack_require__(10);
+/* unused harmony reexport geoTransform */
+
+
+
+
+ // DEPRECATED! Use d3.geoIdentity().clipExtent(…).
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/***/ }),
+/* 76 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__adder__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__area__ = __webpack_require__(33);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__cartesian__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__math__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__stream__ = __webpack_require__(3);
+
+
+
+
+
+
+var lambda0, phi0, lambda1, phi1, // bounds
+    lambda2, // previous lambda-coordinate
+    lambda00, phi00, // first point
+    p0, // previous 3D point
+    deltaSum = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__adder__["a" /* default */])(),
+    ranges,
+    range;
+
+var boundsStream = {
+  point: boundsPoint,
+  lineStart: boundsLineStart,
+  lineEnd: boundsLineEnd,
+  polygonStart: function() {
+    boundsStream.point = boundsRingPoint;
+    boundsStream.lineStart = boundsRingStart;
+    boundsStream.lineEnd = boundsRingEnd;
+    deltaSum.reset();
+    __WEBPACK_IMPORTED_MODULE_1__area__["a" /* areaStream */].polygonStart();
+  },
+  polygonEnd: function() {
+    __WEBPACK_IMPORTED_MODULE_1__area__["a" /* areaStream */].polygonEnd();
+    boundsStream.point = boundsPoint;
+    boundsStream.lineStart = boundsLineStart;
+    boundsStream.lineEnd = boundsLineEnd;
+    if (__WEBPACK_IMPORTED_MODULE_1__area__["b" /* areaRingSum */] < 0) lambda0 = -(lambda1 = 180), phi0 = -(phi1 = 90);
+    else if (deltaSum > __WEBPACK_IMPORTED_MODULE_3__math__["p" /* epsilon */]) phi1 = 90;
+    else if (deltaSum < -__WEBPACK_IMPORTED_MODULE_3__math__["p" /* epsilon */]) phi0 = -90;
+    range[0] = lambda0, range[1] = lambda1;
+  }
+};
+
+function boundsPoint(lambda, phi) {
+  ranges.push(range = [lambda0 = lambda, lambda1 = lambda]);
+  if (phi < phi0) phi0 = phi;
+  if (phi > phi1) phi1 = phi;
+}
+
+function linePoint(lambda, phi) {
+  var p = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__cartesian__["a" /* cartesian */])([lambda * __WEBPACK_IMPORTED_MODULE_3__math__["g" /* radians */], phi * __WEBPACK_IMPORTED_MODULE_3__math__["g" /* radians */]]);
+  if (p0) {
+    var normal = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__cartesian__["b" /* cartesianCross */])(p0, p),
+        equatorial = [normal[1], -normal[0], 0],
+        inflection = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__cartesian__["b" /* cartesianCross */])(equatorial, normal);
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__cartesian__["g" /* cartesianNormalizeInPlace */])(inflection);
+    inflection = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__cartesian__["f" /* spherical */])(inflection);
+    var delta = lambda - lambda2,
+        sign = delta > 0 ? 1 : -1,
+        lambdai = inflection[0] * __WEBPACK_IMPORTED_MODULE_3__math__["h" /* degrees */] * sign,
+        phii,
+        antimeridian = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__math__["o" /* abs */])(delta) > 180;
+    if (antimeridian ^ (sign * lambda2 < lambdai && lambdai < sign * lambda)) {
+      phii = inflection[1] * __WEBPACK_IMPORTED_MODULE_3__math__["h" /* degrees */];
+      if (phii > phi1) phi1 = phii;
+    } else if (lambdai = (lambdai + 360) % 360 - 180, antimeridian ^ (sign * lambda2 < lambdai && lambdai < sign * lambda)) {
+      phii = -inflection[1] * __WEBPACK_IMPORTED_MODULE_3__math__["h" /* degrees */];
+      if (phii < phi0) phi0 = phii;
+    } else {
+      if (phi < phi0) phi0 = phi;
+      if (phi > phi1) phi1 = phi;
+    }
+    if (antimeridian) {
+      if (lambda < lambda2) {
+        if (angle(lambda0, lambda) > angle(lambda0, lambda1)) lambda1 = lambda;
+      } else {
+        if (angle(lambda, lambda1) > angle(lambda0, lambda1)) lambda0 = lambda;
+      }
+    } else {
+      if (lambda1 >= lambda0) {
+        if (lambda < lambda0) lambda0 = lambda;
+        if (lambda > lambda1) lambda1 = lambda;
+      } else {
+        if (lambda > lambda2) {
+          if (angle(lambda0, lambda) > angle(lambda0, lambda1)) lambda1 = lambda;
+        } else {
+          if (angle(lambda, lambda1) > angle(lambda0, lambda1)) lambda0 = lambda;
+        }
+      }
+    }
+  } else {
+    ranges.push(range = [lambda0 = lambda, lambda1 = lambda]);
+  }
+  if (phi < phi0) phi0 = phi;
+  if (phi > phi1) phi1 = phi;
+  p0 = p, lambda2 = lambda;
+}
+
+function boundsLineStart() {
+  boundsStream.point = linePoint;
+}
+
+function boundsLineEnd() {
+  range[0] = lambda0, range[1] = lambda1;
+  boundsStream.point = boundsPoint;
+  p0 = null;
+}
+
+function boundsRingPoint(lambda, phi) {
+  if (p0) {
+    var delta = lambda - lambda2;
+    deltaSum.add(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__math__["o" /* abs */])(delta) > 180 ? delta + (delta > 0 ? 360 : -360) : delta);
+  } else {
+    lambda00 = lambda, phi00 = phi;
+  }
+  __WEBPACK_IMPORTED_MODULE_1__area__["a" /* areaStream */].point(lambda, phi);
+  linePoint(lambda, phi);
+}
+
+function boundsRingStart() {
+  __WEBPACK_IMPORTED_MODULE_1__area__["a" /* areaStream */].lineStart();
+}
+
+function boundsRingEnd() {
+  boundsRingPoint(lambda00, phi00);
+  __WEBPACK_IMPORTED_MODULE_1__area__["a" /* areaStream */].lineEnd();
+  if (__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__math__["o" /* abs */])(deltaSum) > __WEBPACK_IMPORTED_MODULE_3__math__["p" /* epsilon */]) lambda0 = -(lambda1 = 180);
+  range[0] = lambda0, range[1] = lambda1;
+  p0 = null;
+}
+
+// Finds the left-right distance between two longitudes.
+// This is almost the same as (lambda1 - lambda0 + 360°) % 360°, except that we want
+// the distance between ±180° to be 360°.
+function angle(lambda0, lambda1) {
+  return (lambda1 -= lambda0) < 0 ? lambda1 + 360 : lambda1;
+}
+
+function rangeCompare(a, b) {
+  return a[0] - b[0];
+}
+
+function rangeContains(range, x) {
+  return range[0] <= range[1] ? range[0] <= x && x <= range[1] : x < range[0] || range[1] < x;
+}
+
+/* unused harmony default export */ var _unused_webpack_default_export = (function(feature) {
+  var i, n, a, b, merged, deltaMax, delta;
+
+  phi1 = lambda1 = -(lambda0 = phi0 = Infinity);
+  ranges = [];
+  __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__stream__["a" /* default */])(feature, boundsStream);
+
+  // First, sort ranges by their minimum longitudes.
+  if (n = ranges.length) {
+    ranges.sort(rangeCompare);
+
+    // Then, merge any ranges that overlap.
+    for (i = 1, a = ranges[0], merged = [a]; i < n; ++i) {
+      b = ranges[i];
+      if (rangeContains(a, b[0]) || rangeContains(a, b[1])) {
+        if (angle(a[0], b[1]) > angle(a[0], a[1])) a[1] = b[1];
+        if (angle(b[0], a[1]) > angle(a[0], a[1])) a[0] = b[0];
+      } else {
+        merged.push(a = b);
+      }
+    }
+
+    // Finally, find the largest gap between the merged ranges.
+    // The final bounding box will be the inverse of this gap.
+    for (deltaMax = -Infinity, n = merged.length - 1, i = 0, a = merged[n]; i <= n; a = b, ++i) {
+      b = merged[i];
+      if ((delta = angle(a[1], b[0])) > deltaMax) deltaMax = delta, lambda0 = b[0], lambda1 = a[1];
+    }
+  }
+
+  ranges = range = null;
+
+  return lambda0 === Infinity || phi0 === Infinity
+      ? [[NaN, NaN], [NaN, NaN]]
+      : [[lambda0, phi0], [lambda1, phi1]];
+});
+
+
+/***/ }),
+/* 77 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__math__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__noop__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__stream__ = __webpack_require__(3);
+
+
+
+
+var W0, W1,
+    X0, Y0, Z0,
+    X1, Y1, Z1,
+    X2, Y2, Z2,
+    lambda00, phi00, // first point
+    x0, y0, z0; // previous point
+
+var centroidStream = {
+  sphere: __WEBPACK_IMPORTED_MODULE_1__noop__["a" /* default */],
+  point: centroidPoint,
+  lineStart: centroidLineStart,
+  lineEnd: centroidLineEnd,
+  polygonStart: function() {
+    centroidStream.lineStart = centroidRingStart;
+    centroidStream.lineEnd = centroidRingEnd;
+  },
+  polygonEnd: function() {
+    centroidStream.lineStart = centroidLineStart;
+    centroidStream.lineEnd = centroidLineEnd;
+  }
+};
+
+// Arithmetic mean of Cartesian vectors.
+function centroidPoint(lambda, phi) {
+  lambda *= __WEBPACK_IMPORTED_MODULE_0__math__["g" /* radians */], phi *= __WEBPACK_IMPORTED_MODULE_0__math__["g" /* radians */];
+  var cosPhi = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__math__["c" /* cos */])(phi);
+  centroidPointCartesian(cosPhi * __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__math__["c" /* cos */])(lambda), cosPhi * __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__math__["d" /* sin */])(lambda), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__math__["d" /* sin */])(phi));
+}
+
+function centroidPointCartesian(x, y, z) {
+  ++W0;
+  X0 += (x - X0) / W0;
+  Y0 += (y - Y0) / W0;
+  Z0 += (z - Z0) / W0;
+}
+
+function centroidLineStart() {
+  centroidStream.point = centroidLinePointFirst;
+}
+
+function centroidLinePointFirst(lambda, phi) {
+  lambda *= __WEBPACK_IMPORTED_MODULE_0__math__["g" /* radians */], phi *= __WEBPACK_IMPORTED_MODULE_0__math__["g" /* radians */];
+  var cosPhi = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__math__["c" /* cos */])(phi);
+  x0 = cosPhi * __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__math__["c" /* cos */])(lambda);
+  y0 = cosPhi * __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__math__["d" /* sin */])(lambda);
+  z0 = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__math__["d" /* sin */])(phi);
+  centroidStream.point = centroidLinePoint;
+  centroidPointCartesian(x0, y0, z0);
+}
+
+function centroidLinePoint(lambda, phi) {
+  lambda *= __WEBPACK_IMPORTED_MODULE_0__math__["g" /* radians */], phi *= __WEBPACK_IMPORTED_MODULE_0__math__["g" /* radians */];
+  var cosPhi = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__math__["c" /* cos */])(phi),
+      x = cosPhi * __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__math__["c" /* cos */])(lambda),
+      y = cosPhi * __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__math__["d" /* sin */])(lambda),
+      z = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__math__["d" /* sin */])(phi),
+      w = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__math__["e" /* atan2 */])(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__math__["n" /* sqrt */])((w = y0 * z - z0 * y) * w + (w = z0 * x - x0 * z) * w + (w = x0 * y - y0 * x) * w), x0 * x + y0 * y + z0 * z);
+  W1 += w;
+  X1 += w * (x0 + (x0 = x));
+  Y1 += w * (y0 + (y0 = y));
+  Z1 += w * (z0 + (z0 = z));
+  centroidPointCartesian(x0, y0, z0);
+}
+
+function centroidLineEnd() {
+  centroidStream.point = centroidPoint;
+}
+
+// See J. E. Brock, The Inertia Tensor for a Spherical Triangle,
+// J. Applied Mechanics 42, 239 (1975).
+function centroidRingStart() {
+  centroidStream.point = centroidRingPointFirst;
+}
+
+function centroidRingEnd() {
+  centroidRingPoint(lambda00, phi00);
+  centroidStream.point = centroidPoint;
+}
+
+function centroidRingPointFirst(lambda, phi) {
+  lambda00 = lambda, phi00 = phi;
+  lambda *= __WEBPACK_IMPORTED_MODULE_0__math__["g" /* radians */], phi *= __WEBPACK_IMPORTED_MODULE_0__math__["g" /* radians */];
+  centroidStream.point = centroidRingPoint;
+  var cosPhi = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__math__["c" /* cos */])(phi);
+  x0 = cosPhi * __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__math__["c" /* cos */])(lambda);
+  y0 = cosPhi * __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__math__["d" /* sin */])(lambda);
+  z0 = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__math__["d" /* sin */])(phi);
+  centroidPointCartesian(x0, y0, z0);
+}
+
+function centroidRingPoint(lambda, phi) {
+  lambda *= __WEBPACK_IMPORTED_MODULE_0__math__["g" /* radians */], phi *= __WEBPACK_IMPORTED_MODULE_0__math__["g" /* radians */];
+  var cosPhi = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__math__["c" /* cos */])(phi),
+      x = cosPhi * __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__math__["c" /* cos */])(lambda),
+      y = cosPhi * __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__math__["d" /* sin */])(lambda),
+      z = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__math__["d" /* sin */])(phi),
+      cx = y0 * z - z0 * y,
+      cy = z0 * x - x0 * z,
+      cz = x0 * y - y0 * x,
+      m = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__math__["n" /* sqrt */])(cx * cx + cy * cy + cz * cz),
+      w = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__math__["f" /* asin */])(m), // line weight = angle
+      v = m && -w / m; // area weight multiplier
+  X2 += v * cx;
+  Y2 += v * cy;
+  Z2 += v * cz;
+  W1 += w;
+  X1 += w * (x0 + (x0 = x));
+  Y1 += w * (y0 + (y0 = y));
+  Z1 += w * (z0 + (z0 = z));
+  centroidPointCartesian(x0, y0, z0);
+}
+
+/* unused harmony default export */ var _unused_webpack_default_export = (function(object) {
+  W0 = W1 =
+  X0 = Y0 = Z0 =
+  X1 = Y1 = Z1 =
+  X2 = Y2 = Z2 = 0;
+  __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__stream__["a" /* default */])(object, centroidStream);
+
+  var x = X2,
+      y = Y2,
+      z = Z2,
+      m = x * x + y * y + z * z;
+
+  // If the area-weighted ccentroid is undefined, fall back to length-weighted ccentroid.
+  if (m < __WEBPACK_IMPORTED_MODULE_0__math__["w" /* epsilon2 */]) {
+    x = X1, y = Y1, z = Z1;
+    // If the feature has zero length, fall back to arithmetic mean of point vectors.
+    if (W1 < __WEBPACK_IMPORTED_MODULE_0__math__["p" /* epsilon */]) x = X0, y = Y0, z = Z0;
+    m = x * x + y * y + z * z;
+    // If the feature still has an undefined ccentroid, then return.
+    if (m < __WEBPACK_IMPORTED_MODULE_0__math__["w" /* epsilon2 */]) return [NaN, NaN];
+  }
+
+  return [__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__math__["e" /* atan2 */])(y, x) * __WEBPACK_IMPORTED_MODULE_0__math__["h" /* degrees */], __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__math__["f" /* asin */])(z / __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__math__["n" /* sqrt */])(m)) * __WEBPACK_IMPORTED_MODULE_0__math__["h" /* degrees */]];
+});
+
+
+/***/ }),
+/* 78 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__index__ = __webpack_require__(36);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__math__ = __webpack_require__(0);
+
+
+
+/* harmony default export */ __webpack_exports__["a"] = (__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__index__["a" /* default */])(
+  function() { return true; },
+  clipAntimeridianLine,
+  clipAntimeridianInterpolate,
+  [-__WEBPACK_IMPORTED_MODULE_1__math__["a" /* pi */], -__WEBPACK_IMPORTED_MODULE_1__math__["k" /* halfPi */]]
+));
+
+// Takes a line and cuts into visible segments. Return values: 0 - there were
+// intersections or the line was empty; 1 - no intersections; 2 - there were
+// intersections, and the first and last segments should be rejoined.
+function clipAntimeridianLine(stream) {
+  var lambda0 = NaN,
+      phi0 = NaN,
+      sign0 = NaN,
+      clean; // no intersections
+
+  return {
+    lineStart: function() {
+      stream.lineStart();
+      clean = 1;
+    },
+    point: function(lambda1, phi1) {
+      var sign1 = lambda1 > 0 ? __WEBPACK_IMPORTED_MODULE_1__math__["a" /* pi */] : -__WEBPACK_IMPORTED_MODULE_1__math__["a" /* pi */],
+          delta = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__math__["o" /* abs */])(lambda1 - lambda0);
+      if (__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__math__["o" /* abs */])(delta - __WEBPACK_IMPORTED_MODULE_1__math__["a" /* pi */]) < __WEBPACK_IMPORTED_MODULE_1__math__["p" /* epsilon */]) { // line crosses a pole
+        stream.point(lambda0, phi0 = (phi0 + phi1) / 2 > 0 ? __WEBPACK_IMPORTED_MODULE_1__math__["k" /* halfPi */] : -__WEBPACK_IMPORTED_MODULE_1__math__["k" /* halfPi */]);
+        stream.point(sign0, phi0);
+        stream.lineEnd();
+        stream.lineStart();
+        stream.point(sign1, phi0);
+        stream.point(lambda1, phi0);
+        clean = 0;
+      } else if (sign0 !== sign1 && delta >= __WEBPACK_IMPORTED_MODULE_1__math__["a" /* pi */]) { // line crosses antimeridian
+        if (__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__math__["o" /* abs */])(lambda0 - sign0) < __WEBPACK_IMPORTED_MODULE_1__math__["p" /* epsilon */]) lambda0 -= sign0 * __WEBPACK_IMPORTED_MODULE_1__math__["p" /* epsilon */]; // handle degeneracies
+        if (__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__math__["o" /* abs */])(lambda1 - sign1) < __WEBPACK_IMPORTED_MODULE_1__math__["p" /* epsilon */]) lambda1 -= sign1 * __WEBPACK_IMPORTED_MODULE_1__math__["p" /* epsilon */];
+        phi0 = clipAntimeridianIntersect(lambda0, phi0, lambda1, phi1);
+        stream.point(sign0, phi0);
+        stream.lineEnd();
+        stream.lineStart();
+        stream.point(sign1, phi0);
+        clean = 0;
+      }
+      stream.point(lambda0 = lambda1, phi0 = phi1);
+      sign0 = sign1;
+    },
+    lineEnd: function() {
+      stream.lineEnd();
+      lambda0 = phi0 = NaN;
+    },
+    clean: function() {
+      return 2 - clean; // if intersections, rejoin first and last segments
+    }
+  };
+}
+
+function clipAntimeridianIntersect(lambda0, phi0, lambda1, phi1) {
+  var cosPhi0,
+      cosPhi1,
+      sinLambda0Lambda1 = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__math__["d" /* sin */])(lambda0 - lambda1);
+  return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__math__["o" /* abs */])(sinLambda0Lambda1) > __WEBPACK_IMPORTED_MODULE_1__math__["p" /* epsilon */]
+      ? __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__math__["l" /* atan */])((__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__math__["d" /* sin */])(phi0) * (cosPhi1 = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__math__["c" /* cos */])(phi1)) * __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__math__["d" /* sin */])(lambda1)
+          - __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__math__["d" /* sin */])(phi1) * (cosPhi0 = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__math__["c" /* cos */])(phi0)) * __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__math__["d" /* sin */])(lambda0))
+          / (cosPhi0 * cosPhi1 * sinLambda0Lambda1))
+      : (phi0 + phi1) / 2;
+}
+
+function clipAntimeridianInterpolate(from, to, direction, stream) {
+  var phi;
+  if (from == null) {
+    phi = direction * __WEBPACK_IMPORTED_MODULE_1__math__["k" /* halfPi */];
+    stream.point(-__WEBPACK_IMPORTED_MODULE_1__math__["a" /* pi */], phi);
+    stream.point(0, phi);
+    stream.point(__WEBPACK_IMPORTED_MODULE_1__math__["a" /* pi */], phi);
+    stream.point(__WEBPACK_IMPORTED_MODULE_1__math__["a" /* pi */], 0);
+    stream.point(__WEBPACK_IMPORTED_MODULE_1__math__["a" /* pi */], -phi);
+    stream.point(0, -phi);
+    stream.point(-__WEBPACK_IMPORTED_MODULE_1__math__["a" /* pi */], -phi);
+    stream.point(-__WEBPACK_IMPORTED_MODULE_1__math__["a" /* pi */], 0);
+    stream.point(-__WEBPACK_IMPORTED_MODULE_1__math__["a" /* pi */], phi);
+  } else if (__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__math__["o" /* abs */])(from[0] - to[0]) > __WEBPACK_IMPORTED_MODULE_1__math__["p" /* epsilon */]) {
+    var lambda = from[0] < to[0] ? __WEBPACK_IMPORTED_MODULE_1__math__["a" /* pi */] : -__WEBPACK_IMPORTED_MODULE_1__math__["a" /* pi */];
+    phi = direction * lambda / 2;
+    stream.point(-lambda, phi);
+    stream.point(0, phi);
+    stream.point(lambda, phi);
+  } else {
+    stream.point(to[0], to[1]);
+  }
+}
+
+
+/***/ }),
+/* 79 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__cartesian__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__circle__ = __webpack_require__(34);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__math__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__pointEqual__ = __webpack_require__(42);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__index__ = __webpack_require__(36);
+
+
+
+
+
+
+/* harmony default export */ __webpack_exports__["a"] = (function(radius, delta) {
+  var cr = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__math__["c" /* cos */])(radius),
+      smallRadius = cr > 0,
+      notHemisphere = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__math__["o" /* abs */])(cr) > __WEBPACK_IMPORTED_MODULE_2__math__["p" /* epsilon */]; // TODO optimise for this common case
+
+  function interpolate(from, to, direction, stream) {
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__circle__["a" /* circleStream */])(stream, radius, delta, direction, from, to);
+  }
+
+  function visible(lambda, phi) {
+    return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__math__["c" /* cos */])(lambda) * __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__math__["c" /* cos */])(phi) > cr;
+  }
+
+  // Takes a line and cuts into visible segments. Return values used for polygon
+  // clipping: 0 - there were intersections or the line was empty; 1 - no
+  // intersections 2 - there were intersections, and the first and last segments
+  // should be rejoined.
+  function clipLine(stream) {
+    var point0, // previous point
+        c0, // code for previous point
+        v0, // visibility of previous point
+        v00, // visibility of first point
+        clean; // no intersections
+    return {
+      lineStart: function() {
+        v00 = v0 = false;
+        clean = 1;
+      },
+      point: function(lambda, phi) {
+        var point1 = [lambda, phi],
+            point2,
+            v = visible(lambda, phi),
+            c = smallRadius
+              ? v ? 0 : code(lambda, phi)
+              : v ? code(lambda + (lambda < 0 ? __WEBPACK_IMPORTED_MODULE_2__math__["a" /* pi */] : -__WEBPACK_IMPORTED_MODULE_2__math__["a" /* pi */]), phi) : 0;
+        if (!point0 && (v00 = v0 = v)) stream.lineStart();
+        // Handle degeneracies.
+        // TODO ignore if not clipping polygons.
+        if (v !== v0) {
+          point2 = intersect(point0, point1);
+          if (!point2 || __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__pointEqual__["a" /* default */])(point0, point2) || __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__pointEqual__["a" /* default */])(point1, point2)) {
+            point1[0] += __WEBPACK_IMPORTED_MODULE_2__math__["p" /* epsilon */];
+            point1[1] += __WEBPACK_IMPORTED_MODULE_2__math__["p" /* epsilon */];
+            v = visible(point1[0], point1[1]);
+          }
+        }
+        if (v !== v0) {
+          clean = 0;
+          if (v) {
+            // outside going in
+            stream.lineStart();
+            point2 = intersect(point1, point0);
+            stream.point(point2[0], point2[1]);
+          } else {
+            // inside going out
+            point2 = intersect(point0, point1);
+            stream.point(point2[0], point2[1]);
+            stream.lineEnd();
+          }
+          point0 = point2;
+        } else if (notHemisphere && point0 && smallRadius ^ v) {
+          var t;
+          // If the codes for two points are different, or are both zero,
+          // and there this segment intersects with the small circle.
+          if (!(c & c0) && (t = intersect(point1, point0, true))) {
+            clean = 0;
+            if (smallRadius) {
+              stream.lineStart();
+              stream.point(t[0][0], t[0][1]);
+              stream.point(t[1][0], t[1][1]);
+              stream.lineEnd();
+            } else {
+              stream.point(t[1][0], t[1][1]);
+              stream.lineEnd();
+              stream.lineStart();
+              stream.point(t[0][0], t[0][1]);
+            }
+          }
+        }
+        if (v && (!point0 || !__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__pointEqual__["a" /* default */])(point0, point1))) {
+          stream.point(point1[0], point1[1]);
+        }
+        point0 = point1, v0 = v, c0 = c;
+      },
+      lineEnd: function() {
+        if (v0) stream.lineEnd();
+        point0 = null;
+      },
+      // Rejoin first and last segments if there were intersections and the first
+      // and last points were visible.
+      clean: function() {
+        return clean | ((v00 && v0) << 1);
+      }
+    };
+  }
+
+  // Intersects the great circle between a and b with the clip circle.
+  function intersect(a, b, two) {
+    var pa = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__cartesian__["a" /* cartesian */])(a),
+        pb = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__cartesian__["a" /* cartesian */])(b);
+
+    // We have two planes, n1.p = d1 and n2.p = d2.
+    // Find intersection line p(t) = c1 n1 + c2 n2 + t (n1 ⨯ n2).
+    var n1 = [1, 0, 0], // normal
+        n2 = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__cartesian__["b" /* cartesianCross */])(pa, pb),
+        n2n2 = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__cartesian__["c" /* cartesianDot */])(n2, n2),
+        n1n2 = n2[0], // cartesianDot(n1, n2),
+        determinant = n2n2 - n1n2 * n1n2;
+
+    // Two polar points.
+    if (!determinant) return !two && a;
+
+    var c1 =  cr * n2n2 / determinant,
+        c2 = -cr * n1n2 / determinant,
+        n1xn2 = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__cartesian__["b" /* cartesianCross */])(n1, n2),
+        A = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__cartesian__["d" /* cartesianScale */])(n1, c1),
+        B = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__cartesian__["d" /* cartesianScale */])(n2, c2);
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__cartesian__["e" /* cartesianAddInPlace */])(A, B);
+
+    // Solve |p(t)|^2 = 1.
+    var u = n1xn2,
+        w = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__cartesian__["c" /* cartesianDot */])(A, u),
+        uu = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__cartesian__["c" /* cartesianDot */])(u, u),
+        t2 = w * w - uu * (__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__cartesian__["c" /* cartesianDot */])(A, A) - 1);
+
+    if (t2 < 0) return;
+
+    var t = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__math__["n" /* sqrt */])(t2),
+        q = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__cartesian__["d" /* cartesianScale */])(u, (-w - t) / uu);
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__cartesian__["e" /* cartesianAddInPlace */])(q, A);
+    q = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__cartesian__["f" /* spherical */])(q);
+
+    if (!two) return q;
+
+    // Two intersection points.
+    var lambda0 = a[0],
+        lambda1 = b[0],
+        phi0 = a[1],
+        phi1 = b[1],
+        z;
+
+    if (lambda1 < lambda0) z = lambda0, lambda0 = lambda1, lambda1 = z;
+
+    var delta = lambda1 - lambda0,
+        polar = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__math__["o" /* abs */])(delta - __WEBPACK_IMPORTED_MODULE_2__math__["a" /* pi */]) < __WEBPACK_IMPORTED_MODULE_2__math__["p" /* epsilon */],
+        meridian = polar || delta < __WEBPACK_IMPORTED_MODULE_2__math__["p" /* epsilon */];
+
+    if (!polar && phi1 < phi0) z = phi0, phi0 = phi1, phi1 = z;
+
+    // Check that the first point is between a and b.
+    if (meridian
+        ? polar
+          ? phi0 + phi1 > 0 ^ q[1] < (__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__math__["o" /* abs */])(q[0] - lambda0) < __WEBPACK_IMPORTED_MODULE_2__math__["p" /* epsilon */] ? phi0 : phi1)
+          : phi0 <= q[1] && q[1] <= phi1
+        : delta > __WEBPACK_IMPORTED_MODULE_2__math__["a" /* pi */] ^ (lambda0 <= q[0] && q[0] <= lambda1)) {
+      var q1 = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__cartesian__["d" /* cartesianScale */])(u, (-w + t) / uu);
+      __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__cartesian__["e" /* cartesianAddInPlace */])(q1, A);
+      return [q, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__cartesian__["f" /* spherical */])(q1)];
+    }
+  }
+
+  // Generates a 4-bit vector representing the location of a point relative to
+  // the small circle's bounding box.
+  function code(lambda, phi) {
+    var r = smallRadius ? radius : __WEBPACK_IMPORTED_MODULE_2__math__["a" /* pi */] - radius,
+        code = 0;
+    if (lambda < -r) code |= 1; // left
+    else if (lambda > r) code |= 2; // right
+    if (phi < -r) code |= 4; // below
+    else if (phi > r) code |= 8; // above
+    return code;
+  }
+
+  return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__index__["a" /* default */])(visible, clipLine, interpolate, smallRadius ? [0, -radius] : [-__WEBPACK_IMPORTED_MODULE_2__math__["a" /* pi */], radius - __WEBPACK_IMPORTED_MODULE_2__math__["a" /* pi */]]);
+});
+
+
+/***/ }),
+/* 80 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony default export */ __webpack_exports__["a"] = (function(a, b, x0, y0, x1, y1) {
+  var ax = a[0],
+      ay = a[1],
+      bx = b[0],
+      by = b[1],
+      t0 = 0,
+      t1 = 1,
+      dx = bx - ax,
+      dy = by - ay,
+      r;
+
+  r = x0 - ax;
+  if (!dx && r > 0) return;
+  r /= dx;
+  if (dx < 0) {
+    if (r < t0) return;
+    if (r < t1) t1 = r;
+  } else if (dx > 0) {
+    if (r > t1) return;
+    if (r > t0) t0 = r;
+  }
+
+  r = x1 - ax;
+  if (!dx && r < 0) return;
+  r /= dx;
+  if (dx < 0) {
+    if (r > t1) return;
+    if (r > t0) t0 = r;
+  } else if (dx > 0) {
+    if (r < t0) return;
+    if (r < t1) t1 = r;
+  }
+
+  r = y0 - ay;
+  if (!dy && r > 0) return;
+  r /= dy;
+  if (dy < 0) {
+    if (r < t0) return;
+    if (r < t1) t1 = r;
+  } else if (dy > 0) {
+    if (r > t1) return;
+    if (r > t0) t0 = r;
+  }
+
+  r = y1 - ay;
+  if (!dy && r < 0) return;
+  r /= dy;
+  if (dy < 0) {
+    if (r > t1) return;
+    if (r > t0) t0 = r;
+  } else if (dy > 0) {
+    if (r < t0) return;
+    if (r < t1) t1 = r;
+  }
+
+  if (t0 > 0) a[0] = ax + t0 * dx, a[1] = ay + t0 * dy;
+  if (t1 < 1) b[0] = ax + t1 * dx, b[1] = ay + t1 * dy;
+  return true;
+});
+
+
+/***/ }),
+/* 81 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony default export */ __webpack_exports__["a"] = (function(x) {
+  return function() {
+    return x;
+  };
+});
+
+
+/***/ }),
+/* 82 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__polygonContains__ = __webpack_require__(43);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__distance__ = __webpack_require__(39);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__math__ = __webpack_require__(0);
+
+
+
+
+var containsObjectType = {
+  Feature: function(object, point) {
+    return containsGeometry(object.geometry, point);
+  },
+  FeatureCollection: function(object, point) {
+    var features = object.features, i = -1, n = features.length;
+    while (++i < n) if (containsGeometry(features[i].geometry, point)) return true;
+    return false;
+  }
+};
+
+var containsGeometryType = {
+  Sphere: function() {
+    return true;
+  },
+  Point: function(object, point) {
+    return containsPoint(object.coordinates, point);
+  },
+  MultiPoint: function(object, point) {
+    var coordinates = object.coordinates, i = -1, n = coordinates.length;
+    while (++i < n) if (containsPoint(coordinates[i], point)) return true;
+    return false;
+  },
+  LineString: function(object, point) {
+    return containsLine(object.coordinates, point);
+  },
+  MultiLineString: function(object, point) {
+    var coordinates = object.coordinates, i = -1, n = coordinates.length;
+    while (++i < n) if (containsLine(coordinates[i], point)) return true;
+    return false;
+  },
+  Polygon: function(object, point) {
+    return containsPolygon(object.coordinates, point);
+  },
+  MultiPolygon: function(object, point) {
+    var coordinates = object.coordinates, i = -1, n = coordinates.length;
+    while (++i < n) if (containsPolygon(coordinates[i], point)) return true;
+    return false;
+  },
+  GeometryCollection: function(object, point) {
+    var geometries = object.geometries, i = -1, n = geometries.length;
+    while (++i < n) if (containsGeometry(geometries[i], point)) return true;
+    return false;
+  }
+};
+
+function containsGeometry(geometry, point) {
+  return geometry && containsGeometryType.hasOwnProperty(geometry.type)
+      ? containsGeometryType[geometry.type](geometry, point)
+      : false;
+}
+
+function containsPoint(coordinates, point) {
+  return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__distance__["a" /* default */])(coordinates, point) === 0;
+}
+
+function containsLine(coordinates, point) {
+  var ab = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__distance__["a" /* default */])(coordinates[0], coordinates[1]),
+      ao = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__distance__["a" /* default */])(coordinates[0], point),
+      ob = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__distance__["a" /* default */])(point, coordinates[1]);
+  return ao + ob <= ab + __WEBPACK_IMPORTED_MODULE_2__math__["p" /* epsilon */];
+}
+
+function containsPolygon(coordinates, point) {
+  return !!__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__polygonContains__["a" /* default */])(coordinates.map(ringRadians), pointRadians(point));
+}
+
+function ringRadians(ring) {
+  return ring = ring.map(pointRadians), ring.pop(), ring;
+}
+
+function pointRadians(point) {
+  return [point[0] * __WEBPACK_IMPORTED_MODULE_2__math__["g" /* radians */], point[1] * __WEBPACK_IMPORTED_MODULE_2__math__["g" /* radians */]];
+}
+
+/* unused harmony default export */ var _unused_webpack_default_export = (function(object, point) {
+  return (object && containsObjectType.hasOwnProperty(object.type)
+      ? containsObjectType[object.type]
+      : containsGeometry)(object, point);
+});
+
+
+/***/ }),
+/* 83 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* unused harmony export default */
+/* unused harmony export graticule10 */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_d3_array__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__math__ = __webpack_require__(0);
+
+
+
+function graticuleX(y0, y1, dy) {
+  var y = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_d3_array__["b" /* range */])(y0, y1 - __WEBPACK_IMPORTED_MODULE_1__math__["p" /* epsilon */], dy).concat(y1);
+  return function(x) { return y.map(function(y) { return [x, y]; }); };
+}
+
+function graticuleY(x0, x1, dx) {
+  var x = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_d3_array__["b" /* range */])(x0, x1 - __WEBPACK_IMPORTED_MODULE_1__math__["p" /* epsilon */], dx).concat(x1);
+  return function(y) { return x.map(function(x) { return [x, y]; }); };
+}
+
+function graticule() {
+  var x1, x0, X1, X0,
+      y1, y0, Y1, Y0,
+      dx = 10, dy = dx, DX = 90, DY = 360,
+      x, y, X, Y,
+      precision = 2.5;
+
+  function graticule() {
+    return {type: "MultiLineString", coordinates: lines()};
+  }
+
+  function lines() {
+    return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_d3_array__["b" /* range */])(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__math__["v" /* ceil */])(X0 / DX) * DX, X1, DX).map(X)
+        .concat(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_d3_array__["b" /* range */])(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__math__["v" /* ceil */])(Y0 / DY) * DY, Y1, DY).map(Y))
+        .concat(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_d3_array__["b" /* range */])(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__math__["v" /* ceil */])(x0 / dx) * dx, x1, dx).filter(function(x) { return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__math__["o" /* abs */])(x % DX) > __WEBPACK_IMPORTED_MODULE_1__math__["p" /* epsilon */]; }).map(x))
+        .concat(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_d3_array__["b" /* range */])(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__math__["v" /* ceil */])(y0 / dy) * dy, y1, dy).filter(function(y) { return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__math__["o" /* abs */])(y % DY) > __WEBPACK_IMPORTED_MODULE_1__math__["p" /* epsilon */]; }).map(y));
+  }
+
+  graticule.lines = function() {
+    return lines().map(function(coordinates) { return {type: "LineString", coordinates: coordinates}; });
+  };
+
+  graticule.outline = function() {
+    return {
+      type: "Polygon",
+      coordinates: [
+        X(X0).concat(
+        Y(Y1).slice(1),
+        X(X1).reverse().slice(1),
+        Y(Y0).reverse().slice(1))
+      ]
+    };
+  };
+
+  graticule.extent = function(_) {
+    if (!arguments.length) return graticule.extentMinor();
+    return graticule.extentMajor(_).extentMinor(_);
+  };
+
+  graticule.extentMajor = function(_) {
+    if (!arguments.length) return [[X0, Y0], [X1, Y1]];
+    X0 = +_[0][0], X1 = +_[1][0];
+    Y0 = +_[0][1], Y1 = +_[1][1];
+    if (X0 > X1) _ = X0, X0 = X1, X1 = _;
+    if (Y0 > Y1) _ = Y0, Y0 = Y1, Y1 = _;
+    return graticule.precision(precision);
+  };
+
+  graticule.extentMinor = function(_) {
+    if (!arguments.length) return [[x0, y0], [x1, y1]];
+    x0 = +_[0][0], x1 = +_[1][0];
+    y0 = +_[0][1], y1 = +_[1][1];
+    if (x0 > x1) _ = x0, x0 = x1, x1 = _;
+    if (y0 > y1) _ = y0, y0 = y1, y1 = _;
+    return graticule.precision(precision);
+  };
+
+  graticule.step = function(_) {
+    if (!arguments.length) return graticule.stepMinor();
+    return graticule.stepMajor(_).stepMinor(_);
+  };
+
+  graticule.stepMajor = function(_) {
+    if (!arguments.length) return [DX, DY];
+    DX = +_[0], DY = +_[1];
+    return graticule;
+  };
+
+  graticule.stepMinor = function(_) {
+    if (!arguments.length) return [dx, dy];
+    dx = +_[0], dy = +_[1];
+    return graticule;
+  };
+
+  graticule.precision = function(_) {
+    if (!arguments.length) return precision;
+    precision = +_;
+    x = graticuleX(y0, y1, 90);
+    y = graticuleY(x0, x1, precision);
+    X = graticuleX(Y0, Y1, 90);
+    Y = graticuleY(X0, X1, precision);
+    return graticule;
+  };
+
+  return graticule
+      .extentMajor([[-180, -90 + __WEBPACK_IMPORTED_MODULE_1__math__["p" /* epsilon */]], [180, 90 - __WEBPACK_IMPORTED_MODULE_1__math__["p" /* epsilon */]]])
+      .extentMinor([[-180, -80 - __WEBPACK_IMPORTED_MODULE_1__math__["p" /* epsilon */]], [180, 80 + __WEBPACK_IMPORTED_MODULE_1__math__["p" /* epsilon */]]]);
+}
+
+function graticule10() {
+  return graticule()();
+}
+
+
+/***/ }),
+/* 84 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__math__ = __webpack_require__(0);
+
+
+/* unused harmony default export */ var _unused_webpack_default_export = (function(a, b) {
+  var x0 = a[0] * __WEBPACK_IMPORTED_MODULE_0__math__["g" /* radians */],
+      y0 = a[1] * __WEBPACK_IMPORTED_MODULE_0__math__["g" /* radians */],
+      x1 = b[0] * __WEBPACK_IMPORTED_MODULE_0__math__["g" /* radians */],
+      y1 = b[1] * __WEBPACK_IMPORTED_MODULE_0__math__["g" /* radians */],
+      cy0 = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__math__["c" /* cos */])(y0),
+      sy0 = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__math__["d" /* sin */])(y0),
+      cy1 = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__math__["c" /* cos */])(y1),
+      sy1 = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__math__["d" /* sin */])(y1),
+      kx0 = cy0 * __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__math__["c" /* cos */])(x0),
+      ky0 = cy0 * __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__math__["d" /* sin */])(x0),
+      kx1 = cy1 * __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__math__["c" /* cos */])(x1),
+      ky1 = cy1 * __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__math__["d" /* sin */])(x1),
+      d = 2 * __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__math__["f" /* asin */])(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__math__["n" /* sqrt */])(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__math__["u" /* haversin */])(y1 - y0) + cy0 * cy1 * __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__math__["u" /* haversin */])(x1 - x0))),
+      k = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__math__["d" /* sin */])(d);
+
+  var interpolate = d ? function(t) {
+    var B = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__math__["d" /* sin */])(t *= d) / k,
+        A = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__math__["d" /* sin */])(d - t) / k,
+        x = A * kx0 + B * kx1,
+        y = A * ky0 + B * ky1,
+        z = A * sy0 + B * sy1;
+    return [
+      __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__math__["e" /* atan2 */])(y, x) * __WEBPACK_IMPORTED_MODULE_0__math__["h" /* degrees */],
+      __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__math__["e" /* atan2 */])(z, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__math__["n" /* sqrt */])(x * x + y * y)) * __WEBPACK_IMPORTED_MODULE_0__math__["h" /* degrees */]
+    ];
+  } : function() {
+    return [x0 * __WEBPACK_IMPORTED_MODULE_0__math__["h" /* degrees */], y0 * __WEBPACK_IMPORTED_MODULE_0__math__["h" /* degrees */]];
+  };
+
+  interpolate.distance = d;
+
+  return interpolate;
+});
+
+
+/***/ }),
+/* 85 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__adder__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__math__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__noop__ = __webpack_require__(2);
+
+
+
+
+var areaSum = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__adder__["a" /* default */])(),
+    areaRingSum = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__adder__["a" /* default */])(),
+    x00,
+    y00,
+    x0,
+    y0;
+
+var areaStream = {
+  point: __WEBPACK_IMPORTED_MODULE_2__noop__["a" /* default */],
+  lineStart: __WEBPACK_IMPORTED_MODULE_2__noop__["a" /* default */],
+  lineEnd: __WEBPACK_IMPORTED_MODULE_2__noop__["a" /* default */],
+  polygonStart: function() {
+    areaStream.lineStart = areaRingStart;
+    areaStream.lineEnd = areaRingEnd;
+  },
+  polygonEnd: function() {
+    areaStream.lineStart = areaStream.lineEnd = areaStream.point = __WEBPACK_IMPORTED_MODULE_2__noop__["a" /* default */];
+    areaSum.add(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__math__["o" /* abs */])(areaRingSum));
+    areaRingSum.reset();
+  },
+  result: function() {
+    var area = areaSum / 2;
+    areaSum.reset();
+    return area;
+  }
+};
+
+function areaRingStart() {
+  areaStream.point = areaPointFirst;
+}
+
+function areaPointFirst(x, y) {
+  areaStream.point = areaPoint;
+  x00 = x0 = x, y00 = y0 = y;
+}
+
+function areaPoint(x, y) {
+  areaRingSum.add(y0 * x - x0 * y);
+  x0 = x, y0 = y;
+}
+
+function areaRingEnd() {
+  areaPoint(x00, y00);
+}
+
+/* harmony default export */ __webpack_exports__["a"] = (areaStream);
+
+
+/***/ }),
+/* 86 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__math__ = __webpack_require__(0);
+
+
+// TODO Enforce positive area for exterior, negative area for interior?
+
+var X0 = 0,
+    Y0 = 0,
+    Z0 = 0,
+    X1 = 0,
+    Y1 = 0,
+    Z1 = 0,
+    X2 = 0,
+    Y2 = 0,
+    Z2 = 0,
+    x00,
+    y00,
+    x0,
+    y0;
+
+var centroidStream = {
+  point: centroidPoint,
+  lineStart: centroidLineStart,
+  lineEnd: centroidLineEnd,
+  polygonStart: function() {
+    centroidStream.lineStart = centroidRingStart;
+    centroidStream.lineEnd = centroidRingEnd;
+  },
+  polygonEnd: function() {
+    centroidStream.point = centroidPoint;
+    centroidStream.lineStart = centroidLineStart;
+    centroidStream.lineEnd = centroidLineEnd;
+  },
+  result: function() {
+    var centroid = Z2 ? [X2 / Z2, Y2 / Z2]
+        : Z1 ? [X1 / Z1, Y1 / Z1]
+        : Z0 ? [X0 / Z0, Y0 / Z0]
+        : [NaN, NaN];
+    X0 = Y0 = Z0 =
+    X1 = Y1 = Z1 =
+    X2 = Y2 = Z2 = 0;
+    return centroid;
+  }
+};
+
+function centroidPoint(x, y) {
+  X0 += x;
+  Y0 += y;
+  ++Z0;
+}
+
+function centroidLineStart() {
+  centroidStream.point = centroidPointFirstLine;
+}
+
+function centroidPointFirstLine(x, y) {
+  centroidStream.point = centroidPointLine;
+  centroidPoint(x0 = x, y0 = y);
+}
+
+function centroidPointLine(x, y) {
+  var dx = x - x0, dy = y - y0, z = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__math__["n" /* sqrt */])(dx * dx + dy * dy);
+  X1 += z * (x0 + x) / 2;
+  Y1 += z * (y0 + y) / 2;
+  Z1 += z;
+  centroidPoint(x0 = x, y0 = y);
+}
+
+function centroidLineEnd() {
+  centroidStream.point = centroidPoint;
+}
+
+function centroidRingStart() {
+  centroidStream.point = centroidPointFirstRing;
+}
+
+function centroidRingEnd() {
+  centroidPointRing(x00, y00);
+}
+
+function centroidPointFirstRing(x, y) {
+  centroidStream.point = centroidPointRing;
+  centroidPoint(x00 = x0 = x, y00 = y0 = y);
+}
+
+function centroidPointRing(x, y) {
+  var dx = x - x0,
+      dy = y - y0,
+      z = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__math__["n" /* sqrt */])(dx * dx + dy * dy);
+
+  X1 += z * (x0 + x) / 2;
+  Y1 += z * (y0 + y) / 2;
+  Z1 += z;
+
+  z = y0 * x - x0 * y;
+  X2 += z * (x0 + x);
+  Y2 += z * (y0 + y);
+  Z2 += z * 3;
+  centroidPoint(x0 = x, y0 = y);
+}
+
+/* harmony default export */ __webpack_exports__["a"] = (centroidStream);
+
+
+/***/ }),
+/* 87 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (immutable) */ __webpack_exports__["a"] = PathContext;
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__math__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__noop__ = __webpack_require__(2);
+
+
+
+function PathContext(context) {
+  this._context = context;
+}
+
+PathContext.prototype = {
+  _radius: 4.5,
+  pointRadius: function(_) {
+    return this._radius = _, this;
+  },
+  polygonStart: function() {
+    this._line = 0;
+  },
+  polygonEnd: function() {
+    this._line = NaN;
+  },
+  lineStart: function() {
+    this._point = 0;
+  },
+  lineEnd: function() {
+    if (this._line === 0) this._context.closePath();
+    this._point = NaN;
+  },
+  point: function(x, y) {
+    switch (this._point) {
+      case 0: {
+        this._context.moveTo(x, y);
+        this._point = 1;
+        break;
+      }
+      case 1: {
+        this._context.lineTo(x, y);
+        break;
+      }
+      default: {
+        this._context.moveTo(x + this._radius, y);
+        this._context.arc(x, y, this._radius, 0, __WEBPACK_IMPORTED_MODULE_0__math__["b" /* tau */]);
+        break;
+      }
+    }
+  },
+  result: __WEBPACK_IMPORTED_MODULE_1__noop__["a" /* default */]
+};
+
+
+/***/ }),
+/* 88 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__identity__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__stream__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__area__ = __webpack_require__(85);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__bounds__ = __webpack_require__(41);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__centroid__ = __webpack_require__(86);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__context__ = __webpack_require__(87);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__measure__ = __webpack_require__(89);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__string__ = __webpack_require__(90);
+
+
+
+
+
+
+
+
+
+/* harmony default export */ __webpack_exports__["a"] = (function(projection, context) {
+  var pointRadius = 4.5,
+      projectionStream,
+      contextStream;
+
+  function path(object) {
+    if (object) {
+      if (typeof pointRadius === "function") contextStream.pointRadius(+pointRadius.apply(this, arguments));
+      __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__stream__["a" /* default */])(object, projectionStream(contextStream));
+    }
+    return contextStream.result();
+  }
+
+  path.area = function(object) {
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__stream__["a" /* default */])(object, projectionStream(__WEBPACK_IMPORTED_MODULE_2__area__["a" /* default */]));
+    return __WEBPACK_IMPORTED_MODULE_2__area__["a" /* default */].result();
+  };
+
+  path.measure = function(object) {
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__stream__["a" /* default */])(object, projectionStream(__WEBPACK_IMPORTED_MODULE_6__measure__["a" /* default */]));
+    return __WEBPACK_IMPORTED_MODULE_6__measure__["a" /* default */].result();
+  };
+
+  path.bounds = function(object) {
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__stream__["a" /* default */])(object, projectionStream(__WEBPACK_IMPORTED_MODULE_3__bounds__["a" /* default */]));
+    return __WEBPACK_IMPORTED_MODULE_3__bounds__["a" /* default */].result();
+  };
+
+  path.centroid = function(object) {
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__stream__["a" /* default */])(object, projectionStream(__WEBPACK_IMPORTED_MODULE_4__centroid__["a" /* default */]));
+    return __WEBPACK_IMPORTED_MODULE_4__centroid__["a" /* default */].result();
+  };
+
+  path.projection = function(_) {
+    return arguments.length ? (projectionStream = _ == null ? (projection = null, __WEBPACK_IMPORTED_MODULE_0__identity__["a" /* default */]) : (projection = _).stream, path) : projection;
+  };
+
+  path.context = function(_) {
+    if (!arguments.length) return context;
+    contextStream = _ == null ? (context = null, new __WEBPACK_IMPORTED_MODULE_7__string__["a" /* default */]) : new __WEBPACK_IMPORTED_MODULE_5__context__["a" /* default */](context = _);
+    if (typeof pointRadius !== "function") contextStream.pointRadius(pointRadius);
+    return path;
+  };
+
+  path.pointRadius = function(_) {
+    if (!arguments.length) return pointRadius;
+    pointRadius = typeof _ === "function" ? _ : (contextStream.pointRadius(+_), +_);
+    return path;
+  };
+
+  return path.projection(projection).context(context);
+});
+
+
+/***/ }),
+/* 89 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__adder__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__math__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__noop__ = __webpack_require__(2);
+
+
+
+
+var lengthSum = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__adder__["a" /* default */])(),
+    lengthRing,
+    x00,
+    y00,
+    x0,
+    y0;
+
+var lengthStream = {
+  point: __WEBPACK_IMPORTED_MODULE_2__noop__["a" /* default */],
+  lineStart: function() {
+    lengthStream.point = lengthPointFirst;
+  },
+  lineEnd: function() {
+    if (lengthRing) lengthPoint(x00, y00);
+    lengthStream.point = __WEBPACK_IMPORTED_MODULE_2__noop__["a" /* default */];
+  },
+  polygonStart: function() {
+    lengthRing = true;
+  },
+  polygonEnd: function() {
+    lengthRing = null;
+  },
+  result: function() {
+    var length = +lengthSum;
+    lengthSum.reset();
+    return length;
+  }
+};
+
+function lengthPointFirst(x, y) {
+  lengthStream.point = lengthPoint;
+  x00 = x0 = x, y00 = y0 = y;
+}
+
+function lengthPoint(x, y) {
+  x0 -= x, y0 -= y;
+  lengthSum.add(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__math__["n" /* sqrt */])(x0 * x0 + y0 * y0));
+  x0 = x, y0 = y;
+}
+
+/* harmony default export */ __webpack_exports__["a"] = (lengthStream);
+
+
+/***/ }),
+/* 90 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (immutable) */ __webpack_exports__["a"] = PathString;
+function PathString() {
+  this._string = [];
+}
+
+PathString.prototype = {
+  _radius: 4.5,
+  _circle: circle(4.5),
+  pointRadius: function(_) {
+    if ((_ = +_) !== this._radius) this._radius = _, this._circle = null;
+    return this;
+  },
+  polygonStart: function() {
+    this._line = 0;
+  },
+  polygonEnd: function() {
+    this._line = NaN;
+  },
+  lineStart: function() {
+    this._point = 0;
+  },
+  lineEnd: function() {
+    if (this._line === 0) this._string.push("Z");
+    this._point = NaN;
+  },
+  point: function(x, y) {
+    switch (this._point) {
+      case 0: {
+        this._string.push("M", x, ",", y);
+        this._point = 1;
+        break;
+      }
+      case 1: {
+        this._string.push("L", x, ",", y);
+        break;
+      }
+      default: {
+        if (this._circle == null) this._circle = circle(this._radius);
+        this._string.push("M", x, ",", y, this._circle);
+        break;
+      }
+    }
+  },
+  result: function() {
+    if (this._string.length) {
+      var result = this._string.join("");
+      this._string = [];
+      return result;
+    } else {
+      return null;
+    }
+  }
+};
+
+function circle(radius) {
+  return "m0," + radius
+      + "a" + radius + "," + radius + " 0 1,1 0," + -2 * radius
+      + "a" + radius + "," + radius + " 0 1,1 0," + 2 * radius
+      + "z";
+}
+
+
+/***/ }),
+/* 91 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__math__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__albers__ = __webpack_require__(44);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__conicEqualArea__ = __webpack_require__(18);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__fit__ = __webpack_require__(19);
+
+
+
+
+
+// The projections must have mutually exclusive clip regions on the sphere,
+// as this will avoid emitting interleaving lines and polygons.
+function multiplex(streams) {
+  var n = streams.length;
+  return {
+    point: function(x, y) { var i = -1; while (++i < n) streams[i].point(x, y); },
+    sphere: function() { var i = -1; while (++i < n) streams[i].sphere(); },
+    lineStart: function() { var i = -1; while (++i < n) streams[i].lineStart(); },
+    lineEnd: function() { var i = -1; while (++i < n) streams[i].lineEnd(); },
+    polygonStart: function() { var i = -1; while (++i < n) streams[i].polygonStart(); },
+    polygonEnd: function() { var i = -1; while (++i < n) streams[i].polygonEnd(); }
+  };
+}
+
+// A composite projection for the United States, configured by default for
+// 960×500. The projection also works quite well at 960×600 if you change the
+// scale to 1285 and adjust the translate accordingly. The set of standard
+// parallels for each region comes from USGS, which is published here:
+// http://egsc.usgs.gov/isb/pubs/MapProjections/projections.html#albers
+/* unused harmony default export */ var _unused_webpack_default_export = (function() {
+  var cache,
+      cacheStream,
+      lower48 = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__albers__["a" /* default */])(), lower48Point,
+      alaska = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__conicEqualArea__["a" /* default */])().rotate([154, 0]).center([-2, 58.5]).parallels([55, 65]), alaskaPoint, // EPSG:3338
+      hawaii = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__conicEqualArea__["a" /* default */])().rotate([157, 0]).center([-3, 19.9]).parallels([8, 18]), hawaiiPoint, // ESRI:102007
+      point, pointStream = {point: function(x, y) { point = [x, y]; }};
+
+  function albersUsa(coordinates) {
+    var x = coordinates[0], y = coordinates[1];
+    return point = null,
+        (lower48Point.point(x, y), point)
+        || (alaskaPoint.point(x, y), point)
+        || (hawaiiPoint.point(x, y), point);
+  }
+
+  albersUsa.invert = function(coordinates) {
+    var k = lower48.scale(),
+        t = lower48.translate(),
+        x = (coordinates[0] - t[0]) / k,
+        y = (coordinates[1] - t[1]) / k;
+    return (y >= 0.120 && y < 0.234 && x >= -0.425 && x < -0.214 ? alaska
+        : y >= 0.166 && y < 0.234 && x >= -0.214 && x < -0.115 ? hawaii
+        : lower48).invert(coordinates);
+  };
+
+  albersUsa.stream = function(stream) {
+    return cache && cacheStream === stream ? cache : cache = multiplex([lower48.stream(cacheStream = stream), alaska.stream(stream), hawaii.stream(stream)]);
+  };
+
+  albersUsa.precision = function(_) {
+    if (!arguments.length) return lower48.precision();
+    lower48.precision(_), alaska.precision(_), hawaii.precision(_);
+    return reset();
+  };
+
+  albersUsa.scale = function(_) {
+    if (!arguments.length) return lower48.scale();
+    lower48.scale(_), alaska.scale(_ * 0.35), hawaii.scale(_);
+    return albersUsa.translate(lower48.translate());
+  };
+
+  albersUsa.translate = function(_) {
+    if (!arguments.length) return lower48.translate();
+    var k = lower48.scale(), x = +_[0], y = +_[1];
+
+    lower48Point = lower48
+        .translate(_)
+        .clipExtent([[x - 0.455 * k, y - 0.238 * k], [x + 0.455 * k, y + 0.238 * k]])
+        .stream(pointStream);
+
+    alaskaPoint = alaska
+        .translate([x - 0.307 * k, y + 0.201 * k])
+        .clipExtent([[x - 0.425 * k + __WEBPACK_IMPORTED_MODULE_0__math__["p" /* epsilon */], y + 0.120 * k + __WEBPACK_IMPORTED_MODULE_0__math__["p" /* epsilon */]], [x - 0.214 * k - __WEBPACK_IMPORTED_MODULE_0__math__["p" /* epsilon */], y + 0.234 * k - __WEBPACK_IMPORTED_MODULE_0__math__["p" /* epsilon */]]])
+        .stream(pointStream);
+
+    hawaiiPoint = hawaii
+        .translate([x - 0.205 * k, y + 0.212 * k])
+        .clipExtent([[x - 0.214 * k + __WEBPACK_IMPORTED_MODULE_0__math__["p" /* epsilon */], y + 0.166 * k + __WEBPACK_IMPORTED_MODULE_0__math__["p" /* epsilon */]], [x - 0.115 * k - __WEBPACK_IMPORTED_MODULE_0__math__["p" /* epsilon */], y + 0.234 * k - __WEBPACK_IMPORTED_MODULE_0__math__["p" /* epsilon */]]])
+        .stream(pointStream);
+
+    return reset();
+  };
+
+  albersUsa.fitExtent = function(extent, object) {
+    return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__fit__["a" /* fitExtent */])(albersUsa, extent, object);
+  };
+
+  albersUsa.fitSize = function(size, object) {
+    return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__fit__["b" /* fitSize */])(albersUsa, size, object);
+  };
+
+  function reset() {
+    cache = cacheStream = null;
+    return albersUsa;
+  }
+
+  return albersUsa.scale(1070);
+});
+
+
+/***/ }),
+/* 92 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* unused harmony export azimuthalEqualAreaRaw */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__math__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__azimuthal__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__index__ = __webpack_require__(1);
+
+
+
+
+var azimuthalEqualAreaRaw = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__azimuthal__["b" /* azimuthalRaw */])(function(cxcy) {
+  return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__math__["n" /* sqrt */])(2 / (1 + cxcy));
+});
+
+azimuthalEqualAreaRaw.invert = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__azimuthal__["a" /* azimuthalInvert */])(function(z) {
+  return 2 * __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__math__["f" /* asin */])(z / 2);
+});
+
+/* unused harmony default export */ var _unused_webpack_default_export = (function() {
+  return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__index__["a" /* default */])(azimuthalEqualAreaRaw)
+      .scale(124.75)
+      .clipAngle(180 - 1e-3);
+});
+
+
+/***/ }),
+/* 93 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* unused harmony export azimuthalEquidistantRaw */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__math__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__azimuthal__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__index__ = __webpack_require__(1);
+
+
+
+
+var azimuthalEquidistantRaw = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__azimuthal__["b" /* azimuthalRaw */])(function(c) {
+  return (c = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__math__["r" /* acos */])(c)) && c / __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__math__["d" /* sin */])(c);
+});
+
+azimuthalEquidistantRaw.invert = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__azimuthal__["a" /* azimuthalInvert */])(function(z) {
+  return z;
+});
+
+/* unused harmony default export */ var _unused_webpack_default_export = (function() {
+  return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__index__["a" /* default */])(azimuthalEquidistantRaw)
+      .scale(79.4188)
+      .clipAngle(180 - 1e-3);
+});
+
+
+/***/ }),
+/* 94 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* unused harmony export conicConformalRaw */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__math__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__conic__ = __webpack_require__(17);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__mercator__ = __webpack_require__(20);
+
+
+
+
+function tany(y) {
+  return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__math__["j" /* tan */])((__WEBPACK_IMPORTED_MODULE_0__math__["k" /* halfPi */] + y) / 2);
+}
+
+function conicConformalRaw(y0, y1) {
+  var cy0 = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__math__["c" /* cos */])(y0),
+      n = y0 === y1 ? __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__math__["d" /* sin */])(y0) : __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__math__["i" /* log */])(cy0 / __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__math__["c" /* cos */])(y1)) / __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__math__["i" /* log */])(tany(y1) / tany(y0)),
+      f = cy0 * __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__math__["t" /* pow */])(tany(y0), n) / n;
+
+  if (!n) return __WEBPACK_IMPORTED_MODULE_2__mercator__["c" /* mercatorRaw */];
+
+  function project(x, y) {
+    if (f > 0) { if (y < -__WEBPACK_IMPORTED_MODULE_0__math__["k" /* halfPi */] + __WEBPACK_IMPORTED_MODULE_0__math__["p" /* epsilon */]) y = -__WEBPACK_IMPORTED_MODULE_0__math__["k" /* halfPi */] + __WEBPACK_IMPORTED_MODULE_0__math__["p" /* epsilon */]; }
+    else { if (y > __WEBPACK_IMPORTED_MODULE_0__math__["k" /* halfPi */] - __WEBPACK_IMPORTED_MODULE_0__math__["p" /* epsilon */]) y = __WEBPACK_IMPORTED_MODULE_0__math__["k" /* halfPi */] - __WEBPACK_IMPORTED_MODULE_0__math__["p" /* epsilon */]; }
+    var r = f / __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__math__["t" /* pow */])(tany(y), n);
+    return [r * __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__math__["d" /* sin */])(n * x), f - r * __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__math__["c" /* cos */])(n * x)];
+  }
+
+  project.invert = function(x, y) {
+    var fy = f - y, r = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__math__["s" /* sign */])(n) * __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__math__["n" /* sqrt */])(x * x + fy * fy);
+    return [__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__math__["e" /* atan2 */])(x, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__math__["o" /* abs */])(fy)) / n * __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__math__["s" /* sign */])(fy), 2 * __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__math__["l" /* atan */])(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__math__["t" /* pow */])(f / r, 1 / n)) - __WEBPACK_IMPORTED_MODULE_0__math__["k" /* halfPi */]];
+  };
+
+  return project;
+}
+
+/* unused harmony default export */ var _unused_webpack_default_export = (function() {
+  return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__conic__["a" /* conicProjection */])(conicConformalRaw)
+      .scale(109.5)
+      .parallels([30, 30]);
+});
+
+
+/***/ }),
+/* 95 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* unused harmony export conicEquidistantRaw */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__math__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__conic__ = __webpack_require__(17);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__equirectangular__ = __webpack_require__(45);
+
+
+
+
+function conicEquidistantRaw(y0, y1) {
+  var cy0 = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__math__["c" /* cos */])(y0),
+      n = y0 === y1 ? __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__math__["d" /* sin */])(y0) : (cy0 - __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__math__["c" /* cos */])(y1)) / (y1 - y0),
+      g = cy0 / n + y0;
+
+  if (__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__math__["o" /* abs */])(n) < __WEBPACK_IMPORTED_MODULE_0__math__["p" /* epsilon */]) return __WEBPACK_IMPORTED_MODULE_2__equirectangular__["a" /* equirectangularRaw */];
+
+  function project(x, y) {
+    var gy = g - y, nx = n * x;
+    return [gy * __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__math__["d" /* sin */])(nx), g - gy * __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__math__["c" /* cos */])(nx)];
+  }
+
+  project.invert = function(x, y) {
+    var gy = g - y;
+    return [__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__math__["e" /* atan2 */])(x, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__math__["o" /* abs */])(gy)) / n * __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__math__["s" /* sign */])(gy), g - __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__math__["s" /* sign */])(n) * __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__math__["n" /* sqrt */])(x * x + gy * gy)];
+  };
+
+  return project;
+}
+
+/* unused harmony default export */ var _unused_webpack_default_export = (function() {
+  return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__conic__["a" /* conicProjection */])(conicEquidistantRaw)
+      .scale(131.154)
+      .center([0, 13.9389]);
+});
+
+
+/***/ }),
+/* 96 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (immutable) */ __webpack_exports__["a"] = cylindricalEqualAreaRaw;
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__math__ = __webpack_require__(0);
+
+
+function cylindricalEqualAreaRaw(phi0) {
+  var cosPhi0 = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__math__["c" /* cos */])(phi0);
+
+  function forward(lambda, phi) {
+    return [lambda * cosPhi0, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__math__["d" /* sin */])(phi) / cosPhi0];
+  }
+
+  forward.invert = function(x, y) {
+    return [x / cosPhi0, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__math__["f" /* asin */])(y * cosPhi0)];
+  };
+
+  return forward;
+}
+
+
+/***/ }),
+/* 97 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* unused harmony export gnomonicRaw */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__math__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__azimuthal__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__index__ = __webpack_require__(1);
+
+
+
+
+function gnomonicRaw(x, y) {
+  var cy = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__math__["c" /* cos */])(y), k = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__math__["c" /* cos */])(x) * cy;
+  return [cy * __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__math__["d" /* sin */])(x) / k, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__math__["d" /* sin */])(y) / k];
+}
+
+gnomonicRaw.invert = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__azimuthal__["a" /* azimuthalInvert */])(__WEBPACK_IMPORTED_MODULE_0__math__["l" /* atan */]);
+
+/* unused harmony default export */ var _unused_webpack_default_export = (function() {
+  return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__index__["a" /* default */])(gnomonicRaw)
+      .scale(144.049)
+      .clipAngle(60);
+});
+
+
+/***/ }),
+/* 98 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__clip_extent__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__identity__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__transform__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__fit__ = __webpack_require__(19);
+
+
+
+
+
+function scaleTranslate(kx, ky, tx, ty) {
+  return kx === 1 && ky === 1 && tx === 0 && ty === 0 ? __WEBPACK_IMPORTED_MODULE_1__identity__["a" /* default */] : __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__transform__["a" /* transformer */])({
+    point: function(x, y) {
+      this.stream.point(x * kx + tx, y * ky + ty);
+    }
+  });
+}
+
+/* unused harmony default export */ var _unused_webpack_default_export = (function() {
+  var k = 1, tx = 0, ty = 0, sx = 1, sy = 1, transform = __WEBPACK_IMPORTED_MODULE_1__identity__["a" /* default */], // scale, translate and reflect
+      x0 = null, y0, x1, y1, clip = __WEBPACK_IMPORTED_MODULE_1__identity__["a" /* default */], // clip extent
+      cache,
+      cacheStream,
+      projection;
+
+  function reset() {
+    cache = cacheStream = null;
+    return projection;
+  }
+
+  return projection = {
+    stream: function(stream) {
+      return cache && cacheStream === stream ? cache : cache = transform(clip(cacheStream = stream));
+    },
+    clipExtent: function(_) {
+      return arguments.length ? (clip = _ == null ? (x0 = y0 = x1 = y1 = null, __WEBPACK_IMPORTED_MODULE_1__identity__["a" /* default */]) : __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__clip_extent__["a" /* clipExtent */])(x0 = +_[0][0], y0 = +_[0][1], x1 = +_[1][0], y1 = +_[1][1]), reset()) : x0 == null ? null : [[x0, y0], [x1, y1]];
+    },
+    scale: function(_) {
+      return arguments.length ? (transform = scaleTranslate((k = +_) * sx, k * sy, tx, ty), reset()) : k;
+    },
+    translate: function(_) {
+      return arguments.length ? (transform = scaleTranslate(k * sx, k * sy, tx = +_[0], ty = +_[1]), reset()) : [tx, ty];
+    },
+    reflectX: function(_) {
+      return arguments.length ? (transform = scaleTranslate(k * (sx = _ ? -1 : 1), k * sy, tx, ty), reset()) : sx < 0;
+    },
+    reflectY: function(_) {
+      return arguments.length ? (transform = scaleTranslate(k * sx, k * (sy = _ ? -1 : 1), tx, ty), reset()) : sy < 0;
+    },
+    fitExtent: function(extent, object) {
+      return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__fit__["a" /* fitExtent */])(projection, extent, object);
+    },
+    fitSize: function(size, object) {
+      return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__fit__["b" /* fitSize */])(projection, size, object);
+    }
+  };
+});
+
+
+/***/ }),
+/* 99 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* unused harmony export orthographicRaw */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__math__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__azimuthal__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__index__ = __webpack_require__(1);
+
+
+
+
+function orthographicRaw(x, y) {
+  return [__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__math__["c" /* cos */])(y) * __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__math__["d" /* sin */])(x), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__math__["d" /* sin */])(y)];
+}
+
+orthographicRaw.invert = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__azimuthal__["a" /* azimuthalInvert */])(__WEBPACK_IMPORTED_MODULE_0__math__["f" /* asin */]);
+
+/* unused harmony default export */ var _unused_webpack_default_export = (function() {
+  return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__index__["a" /* default */])(orthographicRaw)
+      .scale(249.5)
+      .clipAngle(90 + __WEBPACK_IMPORTED_MODULE_0__math__["p" /* epsilon */]);
+});
+
+
+/***/ }),
+/* 100 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__cartesian__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__math__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__transform__ = __webpack_require__(10);
+
+
+
+
+var maxDepth = 16, // maximum depth of subdivision
+    cosMinDistance = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__math__["c" /* cos */])(30 * __WEBPACK_IMPORTED_MODULE_1__math__["g" /* radians */]); // cos(minimum angular distance)
+
+/* harmony default export */ __webpack_exports__["a"] = (function(project, delta2) {
+  return +delta2 ? resample(project, delta2) : resampleNone(project);
+});
+
+function resampleNone(project) {
+  return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__transform__["a" /* transformer */])({
+    point: function(x, y) {
+      x = project(x, y);
+      this.stream.point(x[0], x[1]);
+    }
+  });
+}
+
+function resample(project, delta2) {
+
+  function resampleLineTo(x0, y0, lambda0, a0, b0, c0, x1, y1, lambda1, a1, b1, c1, depth, stream) {
+    var dx = x1 - x0,
+        dy = y1 - y0,
+        d2 = dx * dx + dy * dy;
+    if (d2 > 4 * delta2 && depth--) {
+      var a = a0 + a1,
+          b = b0 + b1,
+          c = c0 + c1,
+          m = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__math__["n" /* sqrt */])(a * a + b * b + c * c),
+          phi2 = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__math__["f" /* asin */])(c /= m),
+          lambda2 = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__math__["o" /* abs */])(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__math__["o" /* abs */])(c) - 1) < __WEBPACK_IMPORTED_MODULE_1__math__["p" /* epsilon */] || __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__math__["o" /* abs */])(lambda0 - lambda1) < __WEBPACK_IMPORTED_MODULE_1__math__["p" /* epsilon */] ? (lambda0 + lambda1) / 2 : __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__math__["e" /* atan2 */])(b, a),
+          p = project(lambda2, phi2),
+          x2 = p[0],
+          y2 = p[1],
+          dx2 = x2 - x0,
+          dy2 = y2 - y0,
+          dz = dy * dx2 - dx * dy2;
+      if (dz * dz / d2 > delta2 // perpendicular projected distance
+          || __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__math__["o" /* abs */])((dx * dx2 + dy * dy2) / d2 - 0.5) > 0.3 // midpoint close to an end
+          || a0 * a1 + b0 * b1 + c0 * c1 < cosMinDistance) { // angular distance
+        resampleLineTo(x0, y0, lambda0, a0, b0, c0, x2, y2, lambda2, a /= m, b /= m, c, depth, stream);
+        stream.point(x2, y2);
+        resampleLineTo(x2, y2, lambda2, a, b, c, x1, y1, lambda1, a1, b1, c1, depth, stream);
+      }
+    }
+  }
+  return function(stream) {
+    var lambda00, x00, y00, a00, b00, c00, // first point
+        lambda0, x0, y0, a0, b0, c0; // previous point
+
+    var resampleStream = {
+      point: point,
+      lineStart: lineStart,
+      lineEnd: lineEnd,
+      polygonStart: function() { stream.polygonStart(); resampleStream.lineStart = ringStart; },
+      polygonEnd: function() { stream.polygonEnd(); resampleStream.lineStart = lineStart; }
+    };
+
+    function point(x, y) {
+      x = project(x, y);
+      stream.point(x[0], x[1]);
+    }
+
+    function lineStart() {
+      x0 = NaN;
+      resampleStream.point = linePoint;
+      stream.lineStart();
+    }
+
+    function linePoint(lambda, phi) {
+      var c = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__cartesian__["a" /* cartesian */])([lambda, phi]), p = project(lambda, phi);
+      resampleLineTo(x0, y0, lambda0, a0, b0, c0, x0 = p[0], y0 = p[1], lambda0 = lambda, a0 = c[0], b0 = c[1], c0 = c[2], maxDepth, stream);
+      stream.point(x0, y0);
+    }
+
+    function lineEnd() {
+      resampleStream.point = point;
+      stream.lineEnd();
+    }
+
+    function ringStart() {
+      lineStart();
+      resampleStream.point = ringPoint;
+      resampleStream.lineEnd = ringEnd;
+    }
+
+    function ringPoint(lambda, phi) {
+      linePoint(lambda00 = lambda, phi), x00 = x0, y00 = y0, a00 = a0, b00 = b0, c00 = c0;
+      resampleStream.point = linePoint;
+    }
+
+    function ringEnd() {
+      resampleLineTo(x0, y0, lambda0, a0, b0, c0, x00, y00, lambda00, a00, b00, c00, maxDepth, stream);
+      resampleStream.lineEnd = lineEnd;
+      lineEnd();
+    }
+
+    return resampleStream;
+  };
+}
+
+
+/***/ }),
+/* 101 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* unused harmony export stereographicRaw */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__math__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__azimuthal__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__index__ = __webpack_require__(1);
+
+
+
+
+function stereographicRaw(x, y) {
+  var cy = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__math__["c" /* cos */])(y), k = 1 + __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__math__["c" /* cos */])(x) * cy;
+  return [cy * __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__math__["d" /* sin */])(x) / k, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__math__["d" /* sin */])(y) / k];
+}
+
+stereographicRaw.invert = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__azimuthal__["a" /* azimuthalInvert */])(function(z) {
+  return 2 * __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__math__["l" /* atan */])(z);
+});
+
+/* unused harmony default export */ var _unused_webpack_default_export = (function() {
+  return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__index__["a" /* default */])(stereographicRaw)
+      .scale(250)
+      .clipAngle(142);
+});
+
+
+/***/ }),
+/* 102 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* unused harmony export transverseMercatorRaw */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__math__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mercator__ = __webpack_require__(20);
+
+
+
+function transverseMercatorRaw(lambda, phi) {
+  return [__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__math__["i" /* log */])(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__math__["j" /* tan */])((__WEBPACK_IMPORTED_MODULE_0__math__["k" /* halfPi */] + phi) / 2)), -lambda];
+}
+
+transverseMercatorRaw.invert = function(x, y) {
+  return [-y, 2 * __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__math__["l" /* atan */])(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__math__["m" /* exp */])(x)) - __WEBPACK_IMPORTED_MODULE_0__math__["k" /* halfPi */]];
+};
+
+/* unused harmony default export */ var _unused_webpack_default_export = (function() {
+  var m = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__mercator__["b" /* mercatorProjection */])(transverseMercatorRaw),
+      center = m.center,
+      rotate = m.rotate;
+
+  m.center = function(_) {
+    return arguments.length ? center([-_[1], _[0]]) : (_ = center(), [_[1], -_[0]]);
+  };
+
+  m.rotate = function(_) {
+    return arguments.length ? rotate([_[0], _[1], _.length > 2 ? _[2] + 90 : 90]) : (_ = rotate(), [_[0], _[1], _[2] - 90]);
+  };
+
+  return rotate([0, 0, 90])
+      .scale(159.155);
+});
+
+
+/***/ }),
+/* 103 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// https://d3js.org/d3-request/ Version 1.0.5. Copyright 2017 Mike Bostock.
+(function (global, factory) {
+	 true ? factory(exports, __webpack_require__(64), __webpack_require__(70), __webpack_require__(72)) :
+	typeof define === 'function' && define.amd ? define(['exports', 'd3-collection', 'd3-dispatch', 'd3-dsv'], factory) :
+	(factory((global.d3 = global.d3 || {}),global.d3,global.d3,global.d3));
+}(this, (function (exports,d3Collection,d3Dispatch,d3Dsv) { 'use strict';
+
+var request = function(url, callback) {
+  var request,
+      event = d3Dispatch.dispatch("beforesend", "progress", "load", "error"),
+      mimeType,
+      headers = d3Collection.map(),
+      xhr = new XMLHttpRequest,
+      user = null,
+      password = null,
+      response,
+      responseType,
+      timeout = 0;
+
+  // If IE does not support CORS, use XDomainRequest.
+  if (typeof XDomainRequest !== "undefined"
+      && !("withCredentials" in xhr)
+      && /^(http(s)?:)?\/\//.test(url)) xhr = new XDomainRequest;
+
+  "onload" in xhr
+      ? xhr.onload = xhr.onerror = xhr.ontimeout = respond
+      : xhr.onreadystatechange = function(o) { xhr.readyState > 3 && respond(o); };
+
+  function respond(o) {
+    var status = xhr.status, result;
+    if (!status && hasResponse(xhr)
+        || status >= 200 && status < 300
+        || status === 304) {
+      if (response) {
+        try {
+          result = response.call(request, xhr);
+        } catch (e) {
+          event.call("error", request, e);
+          return;
+        }
+      } else {
+        result = xhr;
+      }
+      event.call("load", request, result);
+    } else {
+      event.call("error", request, o);
+    }
+  }
+
+  xhr.onprogress = function(e) {
+    event.call("progress", request, e);
+  };
+
+  request = {
+    header: function(name, value) {
+      name = (name + "").toLowerCase();
+      if (arguments.length < 2) return headers.get(name);
+      if (value == null) headers.remove(name);
+      else headers.set(name, value + "");
+      return request;
+    },
+
+    // If mimeType is non-null and no Accept header is set, a default is used.
+    mimeType: function(value) {
+      if (!arguments.length) return mimeType;
+      mimeType = value == null ? null : value + "";
+      return request;
+    },
+
+    // Specifies what type the response value should take;
+    // for instance, arraybuffer, blob, document, or text.
+    responseType: function(value) {
+      if (!arguments.length) return responseType;
+      responseType = value;
+      return request;
+    },
+
+    timeout: function(value) {
+      if (!arguments.length) return timeout;
+      timeout = +value;
+      return request;
+    },
+
+    user: function(value) {
+      return arguments.length < 1 ? user : (user = value == null ? null : value + "", request);
+    },
+
+    password: function(value) {
+      return arguments.length < 1 ? password : (password = value == null ? null : value + "", request);
+    },
+
+    // Specify how to convert the response content to a specific type;
+    // changes the callback value on "load" events.
+    response: function(value) {
+      response = value;
+      return request;
+    },
+
+    // Alias for send("GET", …).
+    get: function(data, callback) {
+      return request.send("GET", data, callback);
+    },
+
+    // Alias for send("POST", …).
+    post: function(data, callback) {
+      return request.send("POST", data, callback);
+    },
+
+    // If callback is non-null, it will be used for error and load events.
+    send: function(method, data, callback) {
+      xhr.open(method, url, true, user, password);
+      if (mimeType != null && !headers.has("accept")) headers.set("accept", mimeType + ",*/*");
+      if (xhr.setRequestHeader) headers.each(function(value, name) { xhr.setRequestHeader(name, value); });
+      if (mimeType != null && xhr.overrideMimeType) xhr.overrideMimeType(mimeType);
+      if (responseType != null) xhr.responseType = responseType;
+      if (timeout > 0) xhr.timeout = timeout;
+      if (callback == null && typeof data === "function") callback = data, data = null;
+      if (callback != null && callback.length === 1) callback = fixCallback(callback);
+      if (callback != null) request.on("error", callback).on("load", function(xhr) { callback(null, xhr); });
+      event.call("beforesend", request, xhr);
+      xhr.send(data == null ? null : data);
+      return request;
+    },
+
+    abort: function() {
+      xhr.abort();
+      return request;
+    },
+
+    on: function() {
+      var value = event.on.apply(event, arguments);
+      return value === event ? request : value;
+    }
+  };
+
+  if (callback != null) {
+    if (typeof callback !== "function") throw new Error("invalid callback: " + callback);
+    return request.get(callback);
+  }
+
+  return request;
+};
+
+function fixCallback(callback) {
+  return function(error, xhr) {
+    callback(error == null ? xhr : null);
+  };
+}
+
+function hasResponse(xhr) {
+  var type = xhr.responseType;
+  return type && type !== "text"
+      ? xhr.response // null on error
+      : xhr.responseText; // "" on error
+}
+
+var type = function(defaultMimeType, response) {
+  return function(url, callback) {
+    var r = request(url).mimeType(defaultMimeType).response(response);
+    if (callback != null) {
+      if (typeof callback !== "function") throw new Error("invalid callback: " + callback);
+      return r.get(callback);
+    }
+    return r;
+  };
+};
+
+var html = type("text/html", function(xhr) {
+  return document.createRange().createContextualFragment(xhr.responseText);
+});
+
+var json = type("application/json", function(xhr) {
+  return JSON.parse(xhr.responseText);
+});
+
+var text = type("text/plain", function(xhr) {
+  return xhr.responseText;
+});
+
+var xml = type("application/xml", function(xhr) {
+  var xml = xhr.responseXML;
+  if (!xml) throw new Error("parse error");
+  return xml;
+});
+
+var dsv = function(defaultMimeType, parse) {
+  return function(url, row, callback) {
+    if (arguments.length < 3) callback = row, row = null;
+    var r = request(url).mimeType(defaultMimeType);
+    r.row = function(_) { return arguments.length ? r.response(responseOf(parse, row = _)) : row; };
+    r.row(row);
+    return callback ? r.get(callback) : r;
+  };
+};
+
+function responseOf(parse, row) {
+  return function(request$$1) {
+    return parse(request$$1.responseText, row);
+  };
+}
+
+var csv = dsv("text/csv", d3Dsv.csvParse);
+
+var tsv = dsv("text/tab-separated-values", d3Dsv.tsvParse);
+
+exports.request = request;
+exports.html = html;
+exports.json = json;
+exports.text = text;
+exports.xml = xml;
+exports.csv = csv;
+exports.tsv = tsv;
+
+Object.defineProperty(exports, '__esModule', { value: true });
+
+})));
+
+
+/***/ }),
+/* 104 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* unused harmony export differs */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "k", function() { return dispatchObservers; });
+/* unused harmony export get */
+/* unused harmony export fire */
+/* unused harmony export observe */
+/* unused harmony export observeDev */
+/* unused harmony export on */
+/* unused harmony export onDev */
+/* unused harmony export set */
+/* unused harmony export _flush */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "j", function() { return proto; });
+/* unused harmony export protoDev */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return appendNode; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return insertNode; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "h", function() { return detachNode; });
+/* unused harmony export detachBetween */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "g", function() { return destroyEach; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return createElement; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return createSvgElement; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return createText; });
+/* unused harmony export createComment */
+/* unused harmony export addEventListener */
+/* unused harmony export removeEventListener */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return setAttribute; });
+/* unused harmony export setXlinkAttribute */
+/* unused harmony export getBindingGroupValue */
+/* unused harmony export linear */
+/* unused harmony export generateKeyframes */
+/* unused harmony export wrapTransition */
+/* unused harmony export transitionManager */
+/* unused harmony export noop */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "i", function() { return assign; });
+function noop () {}
+
+function assign ( target ) {
+	for ( var i = 1; i < arguments.length; i += 1 ) {
+		var source = arguments[i];
+		for ( var k in source ) target[k] = source[k];
+	}
+
+	return target;
+}
+
+function appendNode ( node, target ) {
+	target.appendChild( node );
+}
+
+function insertNode ( node, target, anchor ) {
+	target.insertBefore( node, anchor );
+}
+
+function detachNode ( node ) {
+	node.parentNode.removeChild( node );
+}
+
+function detachBetween ( before, after ) {
+	while ( before.nextSibling && before.nextSibling !== after ) {
+		before.parentNode.removeChild( before.nextSibling );
+	}
+}
+
+function destroyEach ( iterations, detach, start ) {
+	for ( var i = start; i < iterations.length; i += 1 ) {
+		if ( iterations[i] ) iterations[i].destroy( detach );
+	}
+}
+
+function createElement ( name ) {
+	return document.createElement( name );
+}
+
+function createSvgElement ( name ) {
+	return document.createElementNS( 'http://www.w3.org/2000/svg', name );
+}
+
+function createText ( data ) {
+	return document.createTextNode( data );
+}
+
+function createComment () {
+	return document.createComment( '' );
+}
+
+function addEventListener ( node, event, handler ) {
+	node.addEventListener( event, handler, false );
+}
+
+function removeEventListener ( node, event, handler ) {
+	node.removeEventListener( event, handler, false );
+}
+
+function setAttribute ( node, attribute, value ) {
+	node.setAttribute( attribute, value );
+}
+
+function setXlinkAttribute ( node, attribute, value ) {
+	node.setAttributeNS( 'http://www.w3.org/1999/xlink', attribute, value );
+}
+
+function getBindingGroupValue ( group ) {
+	var value = [];
+	for ( var i = 0; i < group.length; i += 1 ) {
+		if ( group[i].checked ) value.push( group[i].__value );
+	}
+	return value;
+}
+
+function linear ( t ) {
+	return t;
+}
+
+function generateKeyframes ( a, b, delta, duration, ease, fn, node, style ) {
+	var id = '__svelte' + ~~( Math.random() * 1e9 ); // TODO make this more robust
+	var keyframes = '@keyframes ' + id + '{\n';
+
+	for ( var p = 0; p <= 1; p += 16.666 / duration ) {
+		var t = a + delta * ease( p );
+		keyframes += ( p * 100 ) + '%{' + fn( t ) + '}\n';
+	}
+
+	keyframes += '100% {' + fn( b ) + '}\n}';
+	style.textContent += keyframes;
+
+	document.head.appendChild( style );
+
+	node.style.animation = node.style.animation.split( ',' )
+		.filter( function ( anim ) {
+			// when introing, discard old animations if there are any
+			return anim && ( delta < 0 || !/__svelte/.test( anim ) );
+		})
+		.concat( id + ' ' + duration + 'ms linear 1 forwards' )
+		.join( ', ' );
+}
+
+function wrapTransition ( node, fn, params, intro, outgroup ) {
+	var obj = fn( node, params );
+	var duration = obj.duration || 300;
+	var ease = obj.easing || linear;
+
+	// TODO share <style> tag between all transitions?
+	if ( obj.css ) {
+		var style = document.createElement( 'style' );
+	}
+
+	if ( intro && obj.tick ) obj.tick( 0 );
+
+	return {
+		t: intro ? 0 : 1,
+		running: false,
+		program: null,
+		pending: null,
+		run: function ( intro, callback ) {
+			var program = {
+				start: window.performance.now() + ( obj.delay || 0 ),
+				intro: intro,
+				callback: callback
+			};
+
+			if ( obj.delay ) {
+				this.pending = program;
+			} else {
+				this.start( program );
+			}
+
+			if ( !this.running ) {
+				this.running = true;
+				transitionManager.add( this );
+			}
+		},
+		start: function ( program ) {
+			program.a = this.t;
+			program.b = program.intro ? 1 : 0;
+			program.delta = program.b - program.a;
+			program.duration = duration * Math.abs( program.b - program.a );
+			program.end = program.start + program.duration;
+
+			if ( obj.css ) {
+				generateKeyframes( program.a, program.b, program.delta, program.duration, ease, obj.css, node, style );
+			}
+
+			this.program = program;
+			this.pending = null;
+		},
+		update: function ( now ) {
+			var program = this.program;
+			if ( !program ) return;
+
+			var p = now - program.start;
+			this.t = program.a + program.delta * ease( p / program.duration );
+			if ( obj.tick ) obj.tick( this.t );
+		},
+		done: function () {
+			this.t = this.program.b;
+			if ( obj.tick ) obj.tick( this.t );
+			if ( obj.css ) document.head.removeChild( style );
+			this.program.callback();
+			this.program = null;
+			this.running = !!this.pending;
+		},
+		abort: function () {
+			if ( obj.tick ) obj.tick( 1 );
+			if ( obj.css ) document.head.removeChild( style );
+			this.program = this.pending = null;
+			this.running = false;
+		}
+	};
+}
+
+var transitionManager = {
+	running: false,
+	transitions: [],
+
+	add: function ( transition ) {
+		transitionManager.transitions.push( transition );
+
+		if ( !this.running ) {
+			this.running = true;
+			this.next();
+		}
+	},
+
+	next: function () {
+		transitionManager.running = false;
+
+		var now = window.performance.now();
+		var i = transitionManager.transitions.length;
+
+		while ( i-- ) {
+			var transition = transitionManager.transitions[i];
+
+			if ( transition.program && now >= transition.program.end ) {
+				transition.done();
+			}
+
+			if ( transition.pending && now >= transition.pending.start ) {
+				transition.start( transition.pending );
+			}
+
+			if ( transition.running ) {
+				transition.update( now );
+				transitionManager.running = true;
+			} else if ( !transition.pending ) {
+				transitionManager.transitions.splice( i, 1 );
+			}
+		}
+
+		if ( transitionManager.running ) {
+			requestAnimationFrame( transitionManager.next );
+		}
+	}
+};
+
+function differs ( a, b ) {
+	return ( a !== b ) || ( a && ( typeof a === 'object' ) || ( typeof a === 'function' ) );
+}
+
+function dispatchObservers ( component, group, newState, oldState ) {
+	for ( var key in group ) {
+		if ( !( key in newState ) ) continue;
+
+		var newValue = newState[ key ];
+		var oldValue = oldState[ key ];
+
+		if ( differs( newValue, oldValue ) ) {
+			var callbacks = group[ key ];
+			if ( !callbacks ) continue;
+
+			for ( var i = 0; i < callbacks.length; i += 1 ) {
+				var callback = callbacks[i];
+				if ( callback.__calling ) continue;
+
+				callback.__calling = true;
+				callback.call( component, newValue, oldValue );
+				callback.__calling = false;
+			}
+		}
+	}
+}
+
+function get ( key ) {
+	return key ? this._state[ key ] : this._state;
+}
+
+function fire ( eventName, data ) {
+	var handlers = eventName in this._handlers && this._handlers[ eventName ].slice();
+	if ( !handlers ) return;
+
+	for ( var i = 0; i < handlers.length; i += 1 ) {
+		handlers[i].call( this, data );
+	}
+}
+
+function observe ( key, callback, options ) {
+	var group = ( options && options.defer ) ? this._observers.post : this._observers.pre;
+
+	( group[ key ] || ( group[ key ] = [] ) ).push( callback );
+
+	if ( !options || options.init !== false ) {
+		callback.__calling = true;
+		callback.call( this, this._state[ key ] );
+		callback.__calling = false;
+	}
+
+	return {
+		cancel: function () {
+			var index = group[ key ].indexOf( callback );
+			if ( ~index ) group[ key ].splice( index, 1 );
+		}
+	};
+}
+
+function observeDev ( key, callback, options ) {
+	var c = ( key = '' + key ).search( /[^\w]/ );
+	if ( c > -1 ) {
+		var message = "The first argument to component.observe(...) must be the name of a top-level property";
+		if ( c > 0 ) message += ", i.e. '" + key.slice( 0, c ) + "' rather than '" + key + "'";
+
+		throw new Error( message );
+	}
+
+	return observe.call( this, key, callback, options );
+}
+
+function on ( eventName, handler ) {
+	if ( eventName === 'teardown' ) return this.on( 'destroy', handler );
+
+	var handlers = this._handlers[ eventName ] || ( this._handlers[ eventName ] = [] );
+	handlers.push( handler );
+
+	return {
+		cancel: function () {
+			var index = handlers.indexOf( handler );
+			if ( ~index ) handlers.splice( index, 1 );
+		}
+	};
+}
+
+function onDev ( eventName, handler ) {
+	if ( eventName === 'teardown' ) {
+		console.warn( "Use component.on('destroy', ...) instead of component.on('teardown', ...) which has been deprecated and will be unsupported in Svelte 2" );
+		return this.on( 'destroy', handler );
+	}
+
+	return on.call( this, eventName, handler );
+}
+
+function set ( newState ) {
+	this._set( assign( {}, newState ) );
+	this._root._flush();
+}
+
+function _flush () {
+	if ( !this._renderHooks ) return;
+
+	while ( this._renderHooks.length ) {
+		this._renderHooks.pop()();
+	}
+}
+
+var proto = {
+	get: get,
+	fire: fire,
+	observe: observe,
+	on: on,
+	set: set,
+	_flush: _flush
+};
+
+var protoDev = {
+	get: get,
+	fire: fire,
+	observe: observeDev,
+	on: onDev,
+	set: set,
+	_flush: _flush
+};
+
+
+
+
+/***/ }),
+/* 105 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// https://github.com/topojson/topojson Version 3.0.0. Copyright 2017 Mike Bostock.
+(function (global, factory) {
+	 true ? factory(exports) :
+	typeof define === 'function' && define.amd ? define(['exports'], factory) :
+	(factory((global.topojson = global.topojson || {})));
+}(this, (function (exports) { 'use strict';
+
+var identity = function(x) {
+  return x;
+};
+
+var transform = function(transform) {
+  if (transform == null) return identity;
+  var x0,
+      y0,
+      kx = transform.scale[0],
+      ky = transform.scale[1],
+      dx = transform.translate[0],
+      dy = transform.translate[1];
+  return function(input, i) {
+    if (!i) x0 = y0 = 0;
+    var j = 2, n = input.length, output = new Array(n);
+    output[0] = (x0 += input[0]) * kx + dx;
+    output[1] = (y0 += input[1]) * ky + dy;
+    while (j < n) output[j] = input[j], ++j;
+    return output;
+  };
+};
+
+var bbox = function(topology) {
+  var t = transform(topology.transform), key,
+      x0 = Infinity, y0 = x0, x1 = -x0, y1 = -x0;
+
+  function bboxPoint(p) {
+    p = t(p);
+    if (p[0] < x0) x0 = p[0];
+    if (p[0] > x1) x1 = p[0];
+    if (p[1] < y0) y0 = p[1];
+    if (p[1] > y1) y1 = p[1];
+  }
+
+  function bboxGeometry(o) {
+    switch (o.type) {
+      case "GeometryCollection": o.geometries.forEach(bboxGeometry); break;
+      case "Point": bboxPoint(o.coordinates); break;
+      case "MultiPoint": o.coordinates.forEach(bboxPoint); break;
+    }
+  }
+
+  topology.arcs.forEach(function(arc) {
+    var i = -1, n = arc.length, p;
+    while (++i < n) {
+      p = t(arc[i], i);
+      if (p[0] < x0) x0 = p[0];
+      if (p[0] > x1) x1 = p[0];
+      if (p[1] < y0) y0 = p[1];
+      if (p[1] > y1) y1 = p[1];
+    }
+  });
+
+  for (key in topology.objects) {
+    bboxGeometry(topology.objects[key]);
+  }
+
+  return [x0, y0, x1, y1];
+};
+
+var reverse = function(array, n) {
+  var t, j = array.length, i = j - n;
+  while (i < --j) t = array[i], array[i++] = array[j], array[j] = t;
+};
+
+var feature = function(topology, o) {
+  return o.type === "GeometryCollection"
+      ? {type: "FeatureCollection", features: o.geometries.map(function(o) { return feature$1(topology, o); })}
+      : feature$1(topology, o);
+};
+
+function feature$1(topology, o) {
+  var id = o.id,
+      bbox = o.bbox,
+      properties = o.properties == null ? {} : o.properties,
+      geometry = object(topology, o);
+  return id == null && bbox == null ? {type: "Feature", properties: properties, geometry: geometry}
+      : bbox == null ? {type: "Feature", id: id, properties: properties, geometry: geometry}
+      : {type: "Feature", id: id, bbox: bbox, properties: properties, geometry: geometry};
+}
+
+function object(topology, o) {
+  var transformPoint = transform(topology.transform),
+      arcs = topology.arcs;
+
+  function arc(i, points) {
+    if (points.length) points.pop();
+    for (var a = arcs[i < 0 ? ~i : i], k = 0, n = a.length; k < n; ++k) {
+      points.push(transformPoint(a[k], k));
+    }
+    if (i < 0) reverse(points, n);
+  }
+
+  function point(p) {
+    return transformPoint(p);
+  }
+
+  function line(arcs) {
+    var points = [];
+    for (var i = 0, n = arcs.length; i < n; ++i) arc(arcs[i], points);
+    if (points.length < 2) points.push(points[0]); // This should never happen per the specification.
+    return points;
+  }
+
+  function ring(arcs) {
+    var points = line(arcs);
+    while (points.length < 4) points.push(points[0]); // This may happen if an arc has only two points.
+    return points;
+  }
+
+  function polygon(arcs) {
+    return arcs.map(ring);
+  }
+
+  function geometry(o) {
+    var type = o.type, coordinates;
+    switch (type) {
+      case "GeometryCollection": return {type: type, geometries: o.geometries.map(geometry)};
+      case "Point": coordinates = point(o.coordinates); break;
+      case "MultiPoint": coordinates = o.coordinates.map(point); break;
+      case "LineString": coordinates = line(o.arcs); break;
+      case "MultiLineString": coordinates = o.arcs.map(line); break;
+      case "Polygon": coordinates = polygon(o.arcs); break;
+      case "MultiPolygon": coordinates = o.arcs.map(polygon); break;
+      default: return null;
+    }
+    return {type: type, coordinates: coordinates};
+  }
+
+  return geometry(o);
+}
+
+var stitch = function(topology, arcs) {
+  var stitchedArcs = {},
+      fragmentByStart = {},
+      fragmentByEnd = {},
+      fragments = [],
+      emptyIndex = -1;
+
+  // Stitch empty arcs first, since they may be subsumed by other arcs.
+  arcs.forEach(function(i, j) {
+    var arc = topology.arcs[i < 0 ? ~i : i], t;
+    if (arc.length < 3 && !arc[1][0] && !arc[1][1]) {
+      t = arcs[++emptyIndex], arcs[emptyIndex] = i, arcs[j] = t;
+    }
+  });
+
+  arcs.forEach(function(i) {
+    var e = ends(i),
+        start = e[0],
+        end = e[1],
+        f, g;
+
+    if (f = fragmentByEnd[start]) {
+      delete fragmentByEnd[f.end];
+      f.push(i);
+      f.end = end;
+      if (g = fragmentByStart[end]) {
+        delete fragmentByStart[g.start];
+        var fg = g === f ? f : f.concat(g);
+        fragmentByStart[fg.start = f.start] = fragmentByEnd[fg.end = g.end] = fg;
+      } else {
+        fragmentByStart[f.start] = fragmentByEnd[f.end] = f;
+      }
+    } else if (f = fragmentByStart[end]) {
+      delete fragmentByStart[f.start];
+      f.unshift(i);
+      f.start = start;
+      if (g = fragmentByEnd[start]) {
+        delete fragmentByEnd[g.end];
+        var gf = g === f ? f : g.concat(f);
+        fragmentByStart[gf.start = g.start] = fragmentByEnd[gf.end = f.end] = gf;
+      } else {
+        fragmentByStart[f.start] = fragmentByEnd[f.end] = f;
+      }
+    } else {
+      f = [i];
+      fragmentByStart[f.start = start] = fragmentByEnd[f.end = end] = f;
+    }
+  });
+
+  function ends(i) {
+    var arc = topology.arcs[i < 0 ? ~i : i], p0 = arc[0], p1;
+    if (topology.transform) p1 = [0, 0], arc.forEach(function(dp) { p1[0] += dp[0], p1[1] += dp[1]; });
+    else p1 = arc[arc.length - 1];
+    return i < 0 ? [p1, p0] : [p0, p1];
+  }
+
+  function flush(fragmentByEnd, fragmentByStart) {
+    for (var k in fragmentByEnd) {
+      var f = fragmentByEnd[k];
+      delete fragmentByStart[f.start];
+      delete f.start;
+      delete f.end;
+      f.forEach(function(i) { stitchedArcs[i < 0 ? ~i : i] = 1; });
+      fragments.push(f);
+    }
+  }
+
+  flush(fragmentByEnd, fragmentByStart);
+  flush(fragmentByStart, fragmentByEnd);
+  arcs.forEach(function(i) { if (!stitchedArcs[i < 0 ? ~i : i]) fragments.push([i]); });
+
+  return fragments;
+};
+
+var mesh = function(topology) {
+  return object(topology, meshArcs.apply(this, arguments));
+};
+
+function meshArcs(topology, object$$1, filter) {
+  var arcs, i, n;
+  if (arguments.length > 1) arcs = extractArcs(topology, object$$1, filter);
+  else for (i = 0, arcs = new Array(n = topology.arcs.length); i < n; ++i) arcs[i] = i;
+  return {type: "MultiLineString", arcs: stitch(topology, arcs)};
+}
+
+function extractArcs(topology, object$$1, filter) {
+  var arcs = [],
+      geomsByArc = [],
+      geom;
+
+  function extract0(i) {
+    var j = i < 0 ? ~i : i;
+    (geomsByArc[j] || (geomsByArc[j] = [])).push({i: i, g: geom});
+  }
+
+  function extract1(arcs) {
+    arcs.forEach(extract0);
+  }
+
+  function extract2(arcs) {
+    arcs.forEach(extract1);
+  }
+
+  function extract3(arcs) {
+    arcs.forEach(extract2);
+  }
+
+  function geometry(o) {
+    switch (geom = o, o.type) {
+      case "GeometryCollection": o.geometries.forEach(geometry); break;
+      case "LineString": extract1(o.arcs); break;
+      case "MultiLineString": case "Polygon": extract2(o.arcs); break;
+      case "MultiPolygon": extract3(o.arcs); break;
+    }
+  }
+
+  geometry(object$$1);
+
+  geomsByArc.forEach(filter == null
+      ? function(geoms) { arcs.push(geoms[0].i); }
+      : function(geoms) { if (filter(geoms[0].g, geoms[geoms.length - 1].g)) arcs.push(geoms[0].i); });
+
+  return arcs;
+}
+
+function planarRingArea(ring) {
+  var i = -1, n = ring.length, a, b = ring[n - 1], area = 0;
+  while (++i < n) a = b, b = ring[i], area += a[0] * b[1] - a[1] * b[0];
+  return Math.abs(area); // Note: doubled area!
+}
+
+var merge = function(topology) {
+  return object(topology, mergeArcs.apply(this, arguments));
+};
+
+function mergeArcs(topology, objects) {
+  var polygonsByArc = {},
+      polygons = [],
+      groups = [];
+
+  objects.forEach(geometry);
+
+  function geometry(o) {
+    switch (o.type) {
+      case "GeometryCollection": o.geometries.forEach(geometry); break;
+      case "Polygon": extract(o.arcs); break;
+      case "MultiPolygon": o.arcs.forEach(extract); break;
+    }
+  }
+
+  function extract(polygon) {
+    polygon.forEach(function(ring) {
+      ring.forEach(function(arc) {
+        (polygonsByArc[arc = arc < 0 ? ~arc : arc] || (polygonsByArc[arc] = [])).push(polygon);
+      });
+    });
+    polygons.push(polygon);
+  }
+
+  function area(ring) {
+    return planarRingArea(object(topology, {type: "Polygon", arcs: [ring]}).coordinates[0]);
+  }
+
+  polygons.forEach(function(polygon) {
+    if (!polygon._) {
+      var group = [],
+          neighbors = [polygon];
+      polygon._ = 1;
+      groups.push(group);
+      while (polygon = neighbors.pop()) {
+        group.push(polygon);
+        polygon.forEach(function(ring) {
+          ring.forEach(function(arc) {
+            polygonsByArc[arc < 0 ? ~arc : arc].forEach(function(polygon) {
+              if (!polygon._) {
+                polygon._ = 1;
+                neighbors.push(polygon);
+              }
+            });
+          });
+        });
+      }
+    }
+  });
+
+  polygons.forEach(function(polygon) {
+    delete polygon._;
+  });
+
+  return {
+    type: "MultiPolygon",
+    arcs: groups.map(function(polygons) {
+      var arcs = [], n;
+
+      // Extract the exterior (unique) arcs.
+      polygons.forEach(function(polygon) {
+        polygon.forEach(function(ring) {
+          ring.forEach(function(arc) {
+            if (polygonsByArc[arc < 0 ? ~arc : arc].length < 2) {
+              arcs.push(arc);
+            }
+          });
+        });
+      });
+
+      // Stitch the arcs into one or more rings.
+      arcs = stitch(topology, arcs);
+
+      // If more than one ring is returned,
+      // at most one of these rings can be the exterior;
+      // choose the one with the greatest absolute area.
+      if ((n = arcs.length) > 1) {
+        for (var i = 1, k = area(arcs[0]), ki, t; i < n; ++i) {
+          if ((ki = area(arcs[i])) > k) {
+            t = arcs[0], arcs[0] = arcs[i], arcs[i] = t, k = ki;
+          }
+        }
+      }
+
+      return arcs;
+    })
+  };
+}
+
+var bisect = function(a, x) {
+  var lo = 0, hi = a.length;
+  while (lo < hi) {
+    var mid = lo + hi >>> 1;
+    if (a[mid] < x) lo = mid + 1;
+    else hi = mid;
+  }
+  return lo;
+};
+
+var neighbors = function(objects) {
+  var indexesByArc = {}, // arc index -> array of object indexes
+      neighbors = objects.map(function() { return []; });
+
+  function line(arcs, i) {
+    arcs.forEach(function(a) {
+      if (a < 0) a = ~a;
+      var o = indexesByArc[a];
+      if (o) o.push(i);
+      else indexesByArc[a] = [i];
+    });
+  }
+
+  function polygon(arcs, i) {
+    arcs.forEach(function(arc) { line(arc, i); });
+  }
+
+  function geometry(o, i) {
+    if (o.type === "GeometryCollection") o.geometries.forEach(function(o) { geometry(o, i); });
+    else if (o.type in geometryType) geometryType[o.type](o.arcs, i);
+  }
+
+  var geometryType = {
+    LineString: line,
+    MultiLineString: polygon,
+    Polygon: polygon,
+    MultiPolygon: function(arcs, i) { arcs.forEach(function(arc) { polygon(arc, i); }); }
+  };
+
+  objects.forEach(geometry);
+
+  for (var i in indexesByArc) {
+    for (var indexes = indexesByArc[i], m = indexes.length, j = 0; j < m; ++j) {
+      for (var k = j + 1; k < m; ++k) {
+        var ij = indexes[j], ik = indexes[k], n;
+        if ((n = neighbors[ij])[i = bisect(n, ik)] !== ik) n.splice(i, 0, ik);
+        if ((n = neighbors[ik])[i = bisect(n, ij)] !== ij) n.splice(i, 0, ij);
+      }
+    }
+  }
+
+  return neighbors;
+};
+
+var untransform = function(transform) {
+  if (transform == null) return identity;
+  var x0,
+      y0,
+      kx = transform.scale[0],
+      ky = transform.scale[1],
+      dx = transform.translate[0],
+      dy = transform.translate[1];
+  return function(input, i) {
+    if (!i) x0 = y0 = 0;
+    var j = 2,
+        n = input.length,
+        output = new Array(n),
+        x1 = Math.round((input[0] - dx) / kx),
+        y1 = Math.round((input[1] - dy) / ky);
+    output[0] = x1 - x0, x0 = x1;
+    output[1] = y1 - y0, y0 = y1;
+    while (j < n) output[j] = input[j], ++j;
+    return output;
+  };
+};
+
+var quantize = function(topology, transform) {
+  if (topology.transform) throw new Error("already quantized");
+
+  if (!transform || !transform.scale) {
+    if (!((n = Math.floor(transform)) >= 2)) throw new Error("n must be \u22652");
+    box = topology.bbox || bbox(topology);
+    var x0 = box[0], y0 = box[1], x1 = box[2], y1 = box[3], n;
+    transform = {scale: [x1 - x0 ? (x1 - x0) / (n - 1) : 1, y1 - y0 ? (y1 - y0) / (n - 1) : 1], translate: [x0, y0]};
+  } else {
+    box = topology.bbox;
+  }
+
+  var t = untransform(transform), box, key, inputs = topology.objects, outputs = {};
+
+  function quantizePoint(point) {
+    return t(point);
+  }
+
+  function quantizeGeometry(input) {
+    var output;
+    switch (input.type) {
+      case "GeometryCollection": output = {type: "GeometryCollection", geometries: input.geometries.map(quantizeGeometry)}; break;
+      case "Point": output = {type: "Point", coordinates: quantizePoint(input.coordinates)}; break;
+      case "MultiPoint": output = {type: "MultiPoint", coordinates: input.coordinates.map(quantizePoint)}; break;
+      default: return input;
+    }
+    if (input.id != null) output.id = input.id;
+    if (input.bbox != null) output.bbox = input.bbox;
+    if (input.properties != null) output.properties = input.properties;
+    return output;
+  }
+
+  function quantizeArc(input) {
+    var i = 0, j = 1, n = input.length, p, output = new Array(n); // pessimistic
+    output[0] = t(input[0], 0);
+    while (++i < n) if ((p = t(input[i], i))[0] || p[1]) output[j++] = p; // non-coincident points
+    if (j === 1) output[j++] = [0, 0]; // an arc must have at least two points
+    output.length = j;
+    return output;
+  }
+
+  for (key in inputs) outputs[key] = quantizeGeometry(inputs[key]);
+
+  return {
+    type: "Topology",
+    bbox: box,
+    transform: transform,
+    objects: outputs,
+    arcs: topology.arcs.map(quantizeArc)
+  };
+};
+
+// Computes the bounding box of the specified hash of GeoJSON objects.
+var bounds = function(objects) {
+  var x0 = Infinity,
+      y0 = Infinity,
+      x1 = -Infinity,
+      y1 = -Infinity;
+
+  function boundGeometry(geometry) {
+    if (geometry != null && boundGeometryType.hasOwnProperty(geometry.type)) boundGeometryType[geometry.type](geometry);
+  }
+
+  var boundGeometryType = {
+    GeometryCollection: function(o) { o.geometries.forEach(boundGeometry); },
+    Point: function(o) { boundPoint(o.coordinates); },
+    MultiPoint: function(o) { o.coordinates.forEach(boundPoint); },
+    LineString: function(o) { boundLine(o.arcs); },
+    MultiLineString: function(o) { o.arcs.forEach(boundLine); },
+    Polygon: function(o) { o.arcs.forEach(boundLine); },
+    MultiPolygon: function(o) { o.arcs.forEach(boundMultiLine); }
+  };
+
+  function boundPoint(coordinates) {
+    var x = coordinates[0],
+        y = coordinates[1];
+    if (x < x0) x0 = x;
+    if (x > x1) x1 = x;
+    if (y < y0) y0 = y;
+    if (y > y1) y1 = y;
+  }
+
+  function boundLine(coordinates) {
+    coordinates.forEach(boundPoint);
+  }
+
+  function boundMultiLine(coordinates) {
+    coordinates.forEach(boundLine);
+  }
+
+  for (var key in objects) {
+    boundGeometry(objects[key]);
+  }
+
+  return x1 >= x0 && y1 >= y0 ? [x0, y0, x1, y1] : undefined;
+};
+
+var hashset = function(size, hash, equal, type, empty) {
+  if (arguments.length === 3) {
+    type = Array;
+    empty = null;
+  }
+
+  var store = new type(size = 1 << Math.max(4, Math.ceil(Math.log(size) / Math.LN2))),
+      mask = size - 1;
+
+  for (var i = 0; i < size; ++i) {
+    store[i] = empty;
+  }
+
+  function add(value) {
+    var index = hash(value) & mask,
+        match = store[index],
+        collisions = 0;
+    while (match != empty) {
+      if (equal(match, value)) return true;
+      if (++collisions >= size) throw new Error("full hashset");
+      match = store[index = (index + 1) & mask];
+    }
+    store[index] = value;
+    return true;
+  }
+
+  function has(value) {
+    var index = hash(value) & mask,
+        match = store[index],
+        collisions = 0;
+    while (match != empty) {
+      if (equal(match, value)) return true;
+      if (++collisions >= size) break;
+      match = store[index = (index + 1) & mask];
+    }
+    return false;
+  }
+
+  function values() {
+    var values = [];
+    for (var i = 0, n = store.length; i < n; ++i) {
+      var match = store[i];
+      if (match != empty) values.push(match);
+    }
+    return values;
+  }
+
+  return {
+    add: add,
+    has: has,
+    values: values
+  };
+};
+
+var hashmap = function(size, hash, equal, keyType, keyEmpty, valueType) {
+  if (arguments.length === 3) {
+    keyType = valueType = Array;
+    keyEmpty = null;
+  }
+
+  var keystore = new keyType(size = 1 << Math.max(4, Math.ceil(Math.log(size) / Math.LN2))),
+      valstore = new valueType(size),
+      mask = size - 1;
+
+  for (var i = 0; i < size; ++i) {
+    keystore[i] = keyEmpty;
+  }
+
+  function set(key, value) {
+    var index = hash(key) & mask,
+        matchKey = keystore[index],
+        collisions = 0;
+    while (matchKey != keyEmpty) {
+      if (equal(matchKey, key)) return valstore[index] = value;
+      if (++collisions >= size) throw new Error("full hashmap");
+      matchKey = keystore[index = (index + 1) & mask];
+    }
+    keystore[index] = key;
+    valstore[index] = value;
+    return value;
+  }
+
+  function maybeSet(key, value) {
+    var index = hash(key) & mask,
+        matchKey = keystore[index],
+        collisions = 0;
+    while (matchKey != keyEmpty) {
+      if (equal(matchKey, key)) return valstore[index];
+      if (++collisions >= size) throw new Error("full hashmap");
+      matchKey = keystore[index = (index + 1) & mask];
+    }
+    keystore[index] = key;
+    valstore[index] = value;
+    return value;
+  }
+
+  function get(key, missingValue) {
+    var index = hash(key) & mask,
+        matchKey = keystore[index],
+        collisions = 0;
+    while (matchKey != keyEmpty) {
+      if (equal(matchKey, key)) return valstore[index];
+      if (++collisions >= size) break;
+      matchKey = keystore[index = (index + 1) & mask];
+    }
+    return missingValue;
+  }
+
+  function keys() {
+    var keys = [];
+    for (var i = 0, n = keystore.length; i < n; ++i) {
+      var matchKey = keystore[i];
+      if (matchKey != keyEmpty) keys.push(matchKey);
+    }
+    return keys;
+  }
+
+  return {
+    set: set,
+    maybeSet: maybeSet, // set if unset
+    get: get,
+    keys: keys
+  };
+};
+
+var equalPoint = function(pointA, pointB) {
+  return pointA[0] === pointB[0] && pointA[1] === pointB[1];
+};
+
+// TODO if quantized, use simpler Int32 hashing?
+
+var buffer = new ArrayBuffer(16);
+var floats = new Float64Array(buffer);
+var uints = new Uint32Array(buffer);
+
+var hashPoint = function(point) {
+  floats[0] = point[0];
+  floats[1] = point[1];
+  var hash = uints[0] ^ uints[1];
+  hash = hash << 5 ^ hash >> 7 ^ uints[2] ^ uints[3];
+  return hash & 0x7fffffff;
+};
+
+// Given an extracted (pre-)topology, identifies all of the junctions. These are
+// the points at which arcs (lines or rings) will need to be cut so that each
+// arc is represented uniquely.
+//
+// A junction is a point where at least one arc deviates from another arc going
+// through the same point. For example, consider the point B. If there is a arc
+// through ABC and another arc through CBA, then B is not a junction because in
+// both cases the adjacent point pairs are {A,C}. However, if there is an
+// additional arc ABD, then {A,D} != {A,C}, and thus B becomes a junction.
+//
+// For a closed ring ABCA, the first point A’s adjacent points are the second
+// and last point {B,C}. For a line, the first and last point are always
+// considered junctions, even if the line is closed; this ensures that a closed
+// line is never rotated.
+var join = function(topology) {
+  var coordinates = topology.coordinates,
+      lines = topology.lines,
+      rings = topology.rings,
+      indexes = index(),
+      visitedByIndex = new Int32Array(coordinates.length),
+      leftByIndex = new Int32Array(coordinates.length),
+      rightByIndex = new Int32Array(coordinates.length),
+      junctionByIndex = new Int8Array(coordinates.length),
+      junctionCount = 0, // upper bound on number of junctions
+      i, n,
+      previousIndex,
+      currentIndex,
+      nextIndex;
+
+  for (i = 0, n = coordinates.length; i < n; ++i) {
+    visitedByIndex[i] = leftByIndex[i] = rightByIndex[i] = -1;
+  }
+
+  for (i = 0, n = lines.length; i < n; ++i) {
+    var line = lines[i],
+        lineStart = line[0],
+        lineEnd = line[1];
+    currentIndex = indexes[lineStart];
+    nextIndex = indexes[++lineStart];
+    ++junctionCount, junctionByIndex[currentIndex] = 1; // start
+    while (++lineStart <= lineEnd) {
+      sequence(i, previousIndex = currentIndex, currentIndex = nextIndex, nextIndex = indexes[lineStart]);
+    }
+    ++junctionCount, junctionByIndex[nextIndex] = 1; // end
+  }
+
+  for (i = 0, n = coordinates.length; i < n; ++i) {
+    visitedByIndex[i] = -1;
+  }
+
+  for (i = 0, n = rings.length; i < n; ++i) {
+    var ring = rings[i],
+        ringStart = ring[0] + 1,
+        ringEnd = ring[1];
+    previousIndex = indexes[ringEnd - 1];
+    currentIndex = indexes[ringStart - 1];
+    nextIndex = indexes[ringStart];
+    sequence(i, previousIndex, currentIndex, nextIndex);
+    while (++ringStart <= ringEnd) {
+      sequence(i, previousIndex = currentIndex, currentIndex = nextIndex, nextIndex = indexes[ringStart]);
+    }
+  }
+
+  function sequence(i, previousIndex, currentIndex, nextIndex) {
+    if (visitedByIndex[currentIndex] === i) return; // ignore self-intersection
+    visitedByIndex[currentIndex] = i;
+    var leftIndex = leftByIndex[currentIndex];
+    if (leftIndex >= 0) {
+      var rightIndex = rightByIndex[currentIndex];
+      if ((leftIndex !== previousIndex || rightIndex !== nextIndex)
+        && (leftIndex !== nextIndex || rightIndex !== previousIndex)) {
+        ++junctionCount, junctionByIndex[currentIndex] = 1;
+      }
+    } else {
+      leftByIndex[currentIndex] = previousIndex;
+      rightByIndex[currentIndex] = nextIndex;
+    }
+  }
+
+  function index() {
+    var indexByPoint = hashmap(coordinates.length * 1.4, hashIndex, equalIndex, Int32Array, -1, Int32Array),
+        indexes = new Int32Array(coordinates.length);
+
+    for (var i = 0, n = coordinates.length; i < n; ++i) {
+      indexes[i] = indexByPoint.maybeSet(i, i);
+    }
+
+    return indexes;
+  }
+
+  function hashIndex(i) {
+    return hashPoint(coordinates[i]);
+  }
+
+  function equalIndex(i, j) {
+    return equalPoint(coordinates[i], coordinates[j]);
+  }
+
+  visitedByIndex = leftByIndex = rightByIndex = null;
+
+  var junctionByPoint = hashset(junctionCount * 1.4, hashPoint, equalPoint), j;
+
+  // Convert back to a standard hashset by point for caller convenience.
+  for (i = 0, n = coordinates.length; i < n; ++i) {
+    if (junctionByIndex[j = indexes[i]]) {
+      junctionByPoint.add(coordinates[j]);
+    }
+  }
+
+  return junctionByPoint;
+};
+
+// Given an extracted (pre-)topology, cuts (or rotates) arcs so that all shared
+// point sequences are identified. The topology can then be subsequently deduped
+// to remove exact duplicate arcs.
+var cut = function(topology) {
+  var junctions = join(topology),
+      coordinates = topology.coordinates,
+      lines = topology.lines,
+      rings = topology.rings,
+      next,
+      i, n;
+
+  for (i = 0, n = lines.length; i < n; ++i) {
+    var line = lines[i],
+        lineMid = line[0],
+        lineEnd = line[1];
+    while (++lineMid < lineEnd) {
+      if (junctions.has(coordinates[lineMid])) {
+        next = {0: lineMid, 1: line[1]};
+        line[1] = lineMid;
+        line = line.next = next;
+      }
+    }
+  }
+
+  for (i = 0, n = rings.length; i < n; ++i) {
+    var ring = rings[i],
+        ringStart = ring[0],
+        ringMid = ringStart,
+        ringEnd = ring[1],
+        ringFixed = junctions.has(coordinates[ringStart]);
+    while (++ringMid < ringEnd) {
+      if (junctions.has(coordinates[ringMid])) {
+        if (ringFixed) {
+          next = {0: ringMid, 1: ring[1]};
+          ring[1] = ringMid;
+          ring = ring.next = next;
+        } else { // For the first junction, we can rotate rather than cut.
+          rotateArray(coordinates, ringStart, ringEnd, ringEnd - ringMid);
+          coordinates[ringEnd] = coordinates[ringStart];
+          ringFixed = true;
+          ringMid = ringStart; // restart; we may have skipped junctions
+        }
+      }
+    }
+  }
+
+  return topology;
+};
+
+function rotateArray(array, start, end, offset) {
+  reverse$1(array, start, end);
+  reverse$1(array, start, start + offset);
+  reverse$1(array, start + offset, end);
+}
+
+function reverse$1(array, start, end) {
+  for (var mid = start + ((end-- - start) >> 1), t; start < mid; ++start, --end) {
+    t = array[start], array[start] = array[end], array[end] = t;
+  }
+}
+
+// Given a cut topology, combines duplicate arcs.
+var dedup = function(topology) {
+  var coordinates = topology.coordinates,
+      lines = topology.lines, line,
+      rings = topology.rings, ring,
+      arcCount = lines.length + rings.length,
+      i, n;
+
+  delete topology.lines;
+  delete topology.rings;
+
+  // Count the number of (non-unique) arcs to initialize the hashmap safely.
+  for (i = 0, n = lines.length; i < n; ++i) {
+    line = lines[i]; while (line = line.next) ++arcCount;
+  }
+  for (i = 0, n = rings.length; i < n; ++i) {
+    ring = rings[i]; while (ring = ring.next) ++arcCount;
+  }
+
+  var arcsByEnd = hashmap(arcCount * 2 * 1.4, hashPoint, equalPoint),
+      arcs = topology.arcs = [];
+
+  for (i = 0, n = lines.length; i < n; ++i) {
+    line = lines[i];
+    do {
+      dedupLine(line);
+    } while (line = line.next);
+  }
+
+  for (i = 0, n = rings.length; i < n; ++i) {
+    ring = rings[i];
+    if (ring.next) { // arc is no longer closed
+      do {
+        dedupLine(ring);
+      } while (ring = ring.next);
+    } else {
+      dedupRing(ring);
+    }
+  }
+
+  function dedupLine(arc) {
+    var startPoint,
+        endPoint,
+        startArcs, startArc,
+        endArcs, endArc,
+        i, n;
+
+    // Does this arc match an existing arc in order?
+    if (startArcs = arcsByEnd.get(startPoint = coordinates[arc[0]])) {
+      for (i = 0, n = startArcs.length; i < n; ++i) {
+        startArc = startArcs[i];
+        if (equalLine(startArc, arc)) {
+          arc[0] = startArc[0];
+          arc[1] = startArc[1];
+          return;
+        }
+      }
+    }
+
+    // Does this arc match an existing arc in reverse order?
+    if (endArcs = arcsByEnd.get(endPoint = coordinates[arc[1]])) {
+      for (i = 0, n = endArcs.length; i < n; ++i) {
+        endArc = endArcs[i];
+        if (reverseEqualLine(endArc, arc)) {
+          arc[1] = endArc[0];
+          arc[0] = endArc[1];
+          return;
+        }
+      }
+    }
+
+    if (startArcs) startArcs.push(arc); else arcsByEnd.set(startPoint, [arc]);
+    if (endArcs) endArcs.push(arc); else arcsByEnd.set(endPoint, [arc]);
+    arcs.push(arc);
+  }
+
+  function dedupRing(arc) {
+    var endPoint,
+        endArcs,
+        endArc,
+        i, n;
+
+    // Does this arc match an existing line in order, or reverse order?
+    // Rings are closed, so their start point and end point is the same.
+    if (endArcs = arcsByEnd.get(endPoint = coordinates[arc[0]])) {
+      for (i = 0, n = endArcs.length; i < n; ++i) {
+        endArc = endArcs[i];
+        if (equalRing(endArc, arc)) {
+          arc[0] = endArc[0];
+          arc[1] = endArc[1];
+          return;
+        }
+        if (reverseEqualRing(endArc, arc)) {
+          arc[0] = endArc[1];
+          arc[1] = endArc[0];
+          return;
+        }
+      }
+    }
+
+    // Otherwise, does this arc match an existing ring in order, or reverse order?
+    if (endArcs = arcsByEnd.get(endPoint = coordinates[arc[0] + findMinimumOffset(arc)])) {
+      for (i = 0, n = endArcs.length; i < n; ++i) {
+        endArc = endArcs[i];
+        if (equalRing(endArc, arc)) {
+          arc[0] = endArc[0];
+          arc[1] = endArc[1];
+          return;
+        }
+        if (reverseEqualRing(endArc, arc)) {
+          arc[0] = endArc[1];
+          arc[1] = endArc[0];
+          return;
+        }
+      }
+    }
+
+    if (endArcs) endArcs.push(arc); else arcsByEnd.set(endPoint, [arc]);
+    arcs.push(arc);
+  }
+
+  function equalLine(arcA, arcB) {
+    var ia = arcA[0], ib = arcB[0],
+        ja = arcA[1], jb = arcB[1];
+    if (ia - ja !== ib - jb) return false;
+    for (; ia <= ja; ++ia, ++ib) if (!equalPoint(coordinates[ia], coordinates[ib])) return false;
+    return true;
+  }
+
+  function reverseEqualLine(arcA, arcB) {
+    var ia = arcA[0], ib = arcB[0],
+        ja = arcA[1], jb = arcB[1];
+    if (ia - ja !== ib - jb) return false;
+    for (; ia <= ja; ++ia, --jb) if (!equalPoint(coordinates[ia], coordinates[jb])) return false;
+    return true;
+  }
+
+  function equalRing(arcA, arcB) {
+    var ia = arcA[0], ib = arcB[0],
+        ja = arcA[1], jb = arcB[1],
+        n = ja - ia;
+    if (n !== jb - ib) return false;
+    var ka = findMinimumOffset(arcA),
+        kb = findMinimumOffset(arcB);
+    for (var i = 0; i < n; ++i) {
+      if (!equalPoint(coordinates[ia + (i + ka) % n], coordinates[ib + (i + kb) % n])) return false;
+    }
+    return true;
+  }
+
+  function reverseEqualRing(arcA, arcB) {
+    var ia = arcA[0], ib = arcB[0],
+        ja = arcA[1], jb = arcB[1],
+        n = ja - ia;
+    if (n !== jb - ib) return false;
+    var ka = findMinimumOffset(arcA),
+        kb = n - findMinimumOffset(arcB);
+    for (var i = 0; i < n; ++i) {
+      if (!equalPoint(coordinates[ia + (i + ka) % n], coordinates[jb - (i + kb) % n])) return false;
+    }
+    return true;
+  }
+
+  // Rings are rotated to a consistent, but arbitrary, start point.
+  // This is necessary to detect when a ring and a rotated copy are dupes.
+  function findMinimumOffset(arc) {
+    var start = arc[0],
+        end = arc[1],
+        mid = start,
+        minimum = mid,
+        minimumPoint = coordinates[mid];
+    while (++mid < end) {
+      var point = coordinates[mid];
+      if (point[0] < minimumPoint[0] || point[0] === minimumPoint[0] && point[1] < minimumPoint[1]) {
+        minimum = mid;
+        minimumPoint = point;
+      }
+    }
+    return minimum - start;
+  }
+
+  return topology;
+};
+
+// Given an array of arcs in absolute (but already quantized!) coordinates,
+// converts to fixed-point delta encoding.
+// This is a destructive operation that modifies the given arcs!
+var delta = function(arcs) {
+  var i = -1,
+      n = arcs.length;
+
+  while (++i < n) {
+    var arc = arcs[i],
+        j = 0,
+        k = 1,
+        m = arc.length,
+        point = arc[0],
+        x0 = point[0],
+        y0 = point[1],
+        x1,
+        y1;
+
+    while (++j < m) {
+      point = arc[j], x1 = point[0], y1 = point[1];
+      if (x1 !== x0 || y1 !== y0) arc[k++] = [x1 - x0, y1 - y0], x0 = x1, y0 = y1;
+    }
+
+    if (k === 1) arc[k++] = [0, 0]; // Each arc must be an array of two or more positions.
+
+    arc.length = k;
+  }
+
+  return arcs;
+};
+
+// Extracts the lines and rings from the specified hash of geometry objects.
+//
+// Returns an object with three properties:
+//
+// * coordinates - shared buffer of [x, y] coordinates
+// * lines - lines extracted from the hash, of the form [start, end]
+// * rings - rings extracted from the hash, of the form [start, end]
+//
+// For each ring or line, start and end represent inclusive indexes into the
+// coordinates buffer. For rings (and closed lines), coordinates[start] equals
+// coordinates[end].
+//
+// For each line or polygon geometry in the input hash, including nested
+// geometries as in geometry collections, the `coordinates` array is replaced
+// with an equivalent `arcs` array that, for each line (for line string
+// geometries) or ring (for polygon geometries), points to one of the above
+// lines or rings.
+var extract = function(objects) {
+  var index = -1,
+      lines = [],
+      rings = [],
+      coordinates = [];
+
+  function extractGeometry(geometry) {
+    if (geometry && extractGeometryType.hasOwnProperty(geometry.type)) extractGeometryType[geometry.type](geometry);
+  }
+
+  var extractGeometryType = {
+    GeometryCollection: function(o) { o.geometries.forEach(extractGeometry); },
+    LineString: function(o) { o.arcs = extractLine(o.arcs); },
+    MultiLineString: function(o) { o.arcs = o.arcs.map(extractLine); },
+    Polygon: function(o) { o.arcs = o.arcs.map(extractRing); },
+    MultiPolygon: function(o) { o.arcs = o.arcs.map(extractMultiRing); }
+  };
+
+  function extractLine(line) {
+    for (var i = 0, n = line.length; i < n; ++i) coordinates[++index] = line[i];
+    var arc = {0: index - n + 1, 1: index};
+    lines.push(arc);
+    return arc;
+  }
+
+  function extractRing(ring) {
+    for (var i = 0, n = ring.length; i < n; ++i) coordinates[++index] = ring[i];
+    var arc = {0: index - n + 1, 1: index};
+    rings.push(arc);
+    return arc;
+  }
+
+  function extractMultiRing(rings) {
+    return rings.map(extractRing);
+  }
+
+  for (var key in objects) {
+    extractGeometry(objects[key]);
+  }
+
+  return {
+    type: "Topology",
+    coordinates: coordinates,
+    lines: lines,
+    rings: rings,
+    objects: objects
+  };
+};
+
+// Given a hash of GeoJSON objects, returns a hash of GeoJSON geometry objects.
+// Any null input geometry objects are represented as {type: null} in the output.
+// Any feature.{id,properties,bbox} are transferred to the output geometry object.
+// Each output geometry object is a shallow copy of the input (e.g., properties, coordinates)!
+var geometry = function(inputs) {
+  var outputs = {}, key;
+  for (key in inputs) outputs[key] = geomifyObject(inputs[key]);
+  return outputs;
+};
+
+function geomifyObject(input) {
+  return input == null ? {type: null}
+      : (input.type === "FeatureCollection" ? geomifyFeatureCollection
+      : input.type === "Feature" ? geomifyFeature
+      : geomifyGeometry)(input);
+}
+
+function geomifyFeatureCollection(input) {
+  var output = {type: "GeometryCollection", geometries: input.features.map(geomifyFeature)};
+  if (input.bbox != null) output.bbox = input.bbox;
+  return output;
+}
+
+function geomifyFeature(input) {
+  var output = geomifyGeometry(input.geometry), key; // eslint-disable-line no-unused-vars
+  if (input.id != null) output.id = input.id;
+  if (input.bbox != null) output.bbox = input.bbox;
+  for (key in input.properties) { output.properties = input.properties; break; }
+  return output;
+}
+
+function geomifyGeometry(input) {
+  if (input == null) return {type: null};
+  var output = input.type === "GeometryCollection" ? {type: "GeometryCollection", geometries: input.geometries.map(geomifyGeometry)}
+      : input.type === "Point" || input.type === "MultiPoint" ? {type: input.type, coordinates: input.coordinates}
+      : {type: input.type, arcs: input.coordinates}; // TODO Check for unknown types?
+  if (input.bbox != null) output.bbox = input.bbox;
+  return output;
+}
+
+var prequantize = function(objects, bbox, n) {
+  var x0 = bbox[0],
+      y0 = bbox[1],
+      x1 = bbox[2],
+      y1 = bbox[3],
+      kx = x1 - x0 ? (n - 1) / (x1 - x0) : 1,
+      ky = y1 - y0 ? (n - 1) / (y1 - y0) : 1;
+
+  function quantizePoint(input) {
+    return [Math.round((input[0] - x0) * kx), Math.round((input[1] - y0) * ky)];
+  }
+
+  function quantizePoints(input, m) {
+    var i = -1,
+        j = 0,
+        n = input.length,
+        output = new Array(n), // pessimistic
+        pi,
+        px,
+        py,
+        x,
+        y;
+
+    while (++i < n) {
+      pi = input[i];
+      x = Math.round((pi[0] - x0) * kx);
+      y = Math.round((pi[1] - y0) * ky);
+      if (x !== px || y !== py) output[j++] = [px = x, py = y]; // non-coincident points
+    }
+
+    output.length = j;
+    while (j < m) j = output.push([output[0][0], output[0][1]]);
+    return output;
+  }
+
+  function quantizeLine(input) {
+    return quantizePoints(input, 2);
+  }
+
+  function quantizeRing(input) {
+    return quantizePoints(input, 4);
+  }
+
+  function quantizePolygon(input) {
+    return input.map(quantizeRing);
+  }
+
+  function quantizeGeometry(o) {
+    if (o != null && quantizeGeometryType.hasOwnProperty(o.type)) quantizeGeometryType[o.type](o);
+  }
+
+  var quantizeGeometryType = {
+    GeometryCollection: function(o) { o.geometries.forEach(quantizeGeometry); },
+    Point: function(o) { o.coordinates = quantizePoint(o.coordinates); },
+    MultiPoint: function(o) { o.coordinates = o.coordinates.map(quantizePoint); },
+    LineString: function(o) { o.arcs = quantizeLine(o.arcs); },
+    MultiLineString: function(o) { o.arcs = o.arcs.map(quantizeLine); },
+    Polygon: function(o) { o.arcs = quantizePolygon(o.arcs); },
+    MultiPolygon: function(o) { o.arcs = o.arcs.map(quantizePolygon); }
+  };
+
+  for (var key in objects) {
+    quantizeGeometry(objects[key]);
+  }
+
+  return {
+    scale: [1 / kx, 1 / ky],
+    translate: [x0, y0]
+  };
+};
+
+// Constructs the TopoJSON Topology for the specified hash of features.
+// Each object in the specified hash must be a GeoJSON object,
+// meaning FeatureCollection, a Feature or a geometry object.
+var topology = function(objects, quantization) {
+  var bbox = bounds(objects = geometry(objects)),
+      transform = quantization > 0 && bbox && prequantize(objects, bbox, quantization),
+      topology = dedup(cut(extract(objects))),
+      coordinates = topology.coordinates,
+      indexByArc = hashmap(topology.arcs.length * 1.4, hashArc, equalArc);
+
+  objects = topology.objects; // for garbage collection
+  topology.bbox = bbox;
+  topology.arcs = topology.arcs.map(function(arc, i) {
+    indexByArc.set(arc, i);
+    return coordinates.slice(arc[0], arc[1] + 1);
+  });
+
+  delete topology.coordinates;
+  coordinates = null;
+
+  function indexGeometry(geometry$$1) {
+    if (geometry$$1 && indexGeometryType.hasOwnProperty(geometry$$1.type)) indexGeometryType[geometry$$1.type](geometry$$1);
+  }
+
+  var indexGeometryType = {
+    GeometryCollection: function(o) { o.geometries.forEach(indexGeometry); },
+    LineString: function(o) { o.arcs = indexArcs(o.arcs); },
+    MultiLineString: function(o) { o.arcs = o.arcs.map(indexArcs); },
+    Polygon: function(o) { o.arcs = o.arcs.map(indexArcs); },
+    MultiPolygon: function(o) { o.arcs = o.arcs.map(indexMultiArcs); }
+  };
+
+  function indexArcs(arc) {
+    var indexes = [];
+    do {
+      var index = indexByArc.get(arc);
+      indexes.push(arc[0] < arc[1] ? index : ~index);
+    } while (arc = arc.next);
+    return indexes;
+  }
+
+  function indexMultiArcs(arcs) {
+    return arcs.map(indexArcs);
+  }
+
+  for (var key in objects) {
+    indexGeometry(objects[key]);
+  }
+
+  if (transform) {
+    topology.transform = transform;
+    topology.arcs = delta(topology.arcs);
+  }
+
+  return topology;
+};
+
+function hashArc(arc) {
+  var i = arc[0], j = arc[1], t;
+  if (j < i) t = i, i = j, j = t;
+  return i + 31 * j;
+}
+
+function equalArc(arcA, arcB) {
+  var ia = arcA[0], ja = arcA[1],
+      ib = arcB[0], jb = arcB[1], t;
+  if (ja < ia) t = ia, ia = ja, ja = t;
+  if (jb < ib) t = ib, ib = jb, jb = t;
+  return ia === ib && ja === jb;
+}
+
+var prune = function(topology) {
+  var oldObjects = topology.objects,
+      newObjects = {},
+      oldArcs = topology.arcs,
+      newArcs = [],
+      newArcIndex = -1,
+      newIndexByOldIndex = new Array(oldArcs.length),
+      key;
+
+  function pruneGeometry(input) {
+    var output;
+    switch (input.type) {
+      case "GeometryCollection": output = {type: "GeometryCollection", geometries: input.geometries.map(pruneGeometry)}; break;
+      case "LineString": output = {type: "LineString", arcs: pruneArcs(input.arcs)}; break;
+      case "MultiLineString": output = {type: "MultiLineString", arcs: input.arcs.map(pruneArcs)}; break;
+      case "Polygon": output = {type: "Polygon", arcs: input.arcs.map(pruneArcs)}; break;
+      case "MultiPolygon": output = {type: "MultiPolygon", arcs: input.arcs.map(pruneMultiArcs)}; break;
+      default: return input;
+    }
+    if (input.id != null) output.id = input.id;
+    if (input.bbox != null) output.bbox = input.bbox;
+    if (input.properties != null) output.properties = input.properties;
+    return output;
+  }
+
+  function pruneArc(oldIndex) {
+    var oldReverse = oldIndex < 0 && (oldIndex = ~oldIndex, true), newIndex;
+
+    // If this is the first instance of this arc, record it under its new index.
+    if ((newIndex = newIndexByOldIndex[oldIndex]) == null) {
+      newIndexByOldIndex[oldIndex] = newIndex = ++newArcIndex;
+      newArcs[newIndex] = oldArcs[oldIndex];
+    }
+
+    return oldReverse ? ~newIndex : newIndex;
+  }
+
+  function pruneArcs(arcs) {
+    return arcs.map(pruneArc);
+  }
+
+  function pruneMultiArcs(arcs) {
+    return arcs.map(pruneArcs);
+  }
+
+  for (key in oldObjects) {
+    newObjects[key] = pruneGeometry(oldObjects[key]);
+  }
+
+  return {
+    type: "Topology",
+    bbox: topology.bbox,
+    transform: topology.transform,
+    objects: newObjects,
+    arcs: newArcs
+  };
+};
+
+var filter = function(topology, filter) {
+  var oldObjects = topology.objects,
+      newObjects = {},
+      key;
+
+  if (filter == null) filter = filterTrue;
+
+  function filterGeometry(input) {
+    var output, arcs;
+    switch (input.type) {
+      case "Polygon": {
+        arcs = filterRings(input.arcs);
+        output = arcs ? {type: "Polygon", arcs: arcs} : {type: null};
+        break;
+      }
+      case "MultiPolygon": {
+        arcs = input.arcs.map(filterRings).filter(filterIdentity);
+        output = arcs.length ? {type: "MultiPolygon", arcs: arcs} : {type: null};
+        break;
+      }
+      case "GeometryCollection": {
+        arcs = input.geometries.map(filterGeometry).filter(filterNotNull);
+        output = arcs.length ? {type: "GeometryCollection", geometries: arcs} : {type: null};
+        break;
+      }
+      default: return input;
+    }
+    if (input.id != null) output.id = input.id;
+    if (input.bbox != null) output.bbox = input.bbox;
+    if (input.properties != null) output.properties = input.properties;
+    return output;
+  }
+
+  function filterRings(arcs) {
+    return arcs.length && filterExteriorRing(arcs[0]) // if the exterior is small, ignore any holes
+        ? [arcs[0]].concat(arcs.slice(1).filter(filterInteriorRing))
+        : null;
+  }
+
+  function filterExteriorRing(ring) {
+    return filter(ring, false);
+  }
+
+  function filterInteriorRing(ring) {
+    return filter(ring, true);
+  }
+
+  for (key in oldObjects) {
+    newObjects[key] = filterGeometry(oldObjects[key]);
+  }
+
+  return prune({
+    type: "Topology",
+    bbox: topology.bbox,
+    transform: topology.transform,
+    objects: newObjects,
+    arcs: topology.arcs
+  });
+};
+
+function filterTrue() {
+  return true;
+}
+
+function filterIdentity(x) {
+  return x;
+}
+
+function filterNotNull(geometry) {
+  return geometry.type != null;
+}
+
+var filterAttached = function(topology) {
+  var uniqueRingByArc = {}, // arc index -> index of unique associated ring, or -1 if used by multiple rings
+      ringIndex = 0,
+      name;
+
+  function testGeometry(o) {
+    switch (o.type) {
+      case "GeometryCollection": o.geometries.forEach(testGeometry); break;
+      case "Polygon": testArcs(o.arcs); break;
+      case "MultiPolygon": o.arcs.forEach(testArcs); break;
+    }
+  }
+
+  function testArcs(arcs) {
+    for (var i = 0, n = arcs.length; i < n; ++i, ++ringIndex) {
+      for (var ring = arcs[i], j = 0, m = ring.length; j < m; ++j) {
+        var arc = ring[j];
+        if (arc < 0) arc = ~arc;
+        var uniqueRing = uniqueRingByArc[arc];
+        if (uniqueRing >= 0 && uniqueRing !== ringIndex) uniqueRingByArc[arc] = -1;
+        else uniqueRingByArc[arc] = ringIndex;
+      }
+    }
+  }
+
+  for (name in topology.objects) {
+    testGeometry(topology.objects[name]);
+  }
+
+  return function(ring) {
+    for (var j = 0, m = ring.length, arc; j < m; ++j) {
+      if (arc = ring[j], uniqueRingByArc[arc < 0 ? ~arc : arc] < 0) {
+        return true;
+      }
+    }
+    return false;
+  };
+};
+
+function planarTriangleArea(triangle) {
+  var a = triangle[0], b = triangle[1], c = triangle[2];
+  return Math.abs((a[0] - c[0]) * (b[1] - a[1]) - (a[0] - b[0]) * (c[1] - a[1])) / 2;
+}
+
+function planarRingArea$1(ring) {
+  var i = -1, n = ring.length, a, b = ring[n - 1], area = 0;
+  while (++i < n) a = b, b = ring[i], area += a[0] * b[1] - a[1] * b[0];
+  return Math.abs(area) / 2;
+}
+
+var filterWeight = function(topology, minWeight, weight) {
+  minWeight = minWeight == null ? Number.MIN_VALUE : +minWeight;
+
+  if (weight == null) weight = planarRingArea$1;
+
+  return function(ring, interior) {
+    return weight(feature(topology, {type: "Polygon", arcs: [ring]}).geometry.coordinates[0], interior) >= minWeight;
+  };
+};
+
+var filterAttachedWeight = function(topology, minWeight, weight) {
+  var a = filterAttached(topology),
+      w = filterWeight(topology, minWeight, weight);
+  return function(ring, interior) {
+    return a(ring, interior) || w(ring, interior);
+  };
+};
+
+function compare(a, b) {
+  return a[1][2] - b[1][2];
+}
+
+var newHeap = function() {
+  var heap = {},
+      array = [],
+      size = 0;
+
+  heap.push = function(object) {
+    up(array[object._ = size] = object, size++);
+    return size;
+  };
+
+  heap.pop = function() {
+    if (size <= 0) return;
+    var removed = array[0], object;
+    if (--size > 0) object = array[size], down(array[object._ = 0] = object, 0);
+    return removed;
+  };
+
+  heap.remove = function(removed) {
+    var i = removed._, object;
+    if (array[i] !== removed) return; // invalid request
+    if (i !== --size) object = array[size], (compare(object, removed) < 0 ? up : down)(array[object._ = i] = object, i);
+    return i;
+  };
+
+  function up(object, i) {
+    while (i > 0) {
+      var j = ((i + 1) >> 1) - 1,
+          parent = array[j];
+      if (compare(object, parent) >= 0) break;
+      array[parent._ = i] = parent;
+      array[object._ = i = j] = object;
+    }
+  }
+
+  function down(object, i) {
+    while (true) {
+      var r = (i + 1) << 1,
+          l = r - 1,
+          j = i,
+          child = array[j];
+      if (l < size && compare(array[l], child) < 0) child = array[j = l];
+      if (r < size && compare(array[r], child) < 0) child = array[j = r];
+      if (j === i) break;
+      array[child._ = i] = child;
+      array[object._ = i = j] = object;
+    }
+  }
+
+  return heap;
+};
+
+function copy(point) {
+  return [point[0], point[1], 0];
+}
+
+var presimplify = function(topology, weight) {
+  var point = topology.transform ? transform(topology.transform) : copy,
+      heap = newHeap();
+
+  if (weight == null) weight = planarTriangleArea;
+
+  var arcs = topology.arcs.map(function(arc) {
+    var triangles = [],
+        maxWeight = 0,
+        triangle,
+        i,
+        n;
+
+    arc = arc.map(point);
+
+    for (i = 1, n = arc.length - 1; i < n; ++i) {
+      triangle = [arc[i - 1], arc[i], arc[i + 1]];
+      triangle[1][2] = weight(triangle);
+      triangles.push(triangle);
+      heap.push(triangle);
+    }
+
+    // Always keep the arc endpoints!
+    arc[0][2] = arc[n][2] = Infinity;
+
+    for (i = 0, n = triangles.length; i < n; ++i) {
+      triangle = triangles[i];
+      triangle.previous = triangles[i - 1];
+      triangle.next = triangles[i + 1];
+    }
+
+    while (triangle = heap.pop()) {
+      var previous = triangle.previous,
+          next = triangle.next;
+
+      // If the weight of the current point is less than that of the previous
+      // point to be eliminated, use the latter’s weight instead. This ensures
+      // that the current point cannot be eliminated without eliminating
+      // previously- eliminated points.
+      if (triangle[1][2] < maxWeight) triangle[1][2] = maxWeight;
+      else maxWeight = triangle[1][2];
+
+      if (previous) {
+        previous.next = next;
+        previous[2] = triangle[2];
+        update(previous);
+      }
+
+      if (next) {
+        next.previous = previous;
+        next[0] = triangle[0];
+        update(next);
+      }
+    }
+
+    return arc;
+  });
+
+  function update(triangle) {
+    heap.remove(triangle);
+    triangle[1][2] = weight(triangle);
+    heap.push(triangle);
+  }
+
+  return {
+    type: "Topology",
+    bbox: topology.bbox,
+    objects: topology.objects,
+    arcs: arcs
+  };
+};
+
+var quantile = function(topology, p) {
+  var array = [];
+
+  topology.arcs.forEach(function(arc) {
+    arc.forEach(function(point) {
+      if (isFinite(point[2])) { // Ignore endpoints, whose weight is Infinity.
+        array.push(point[2]);
+      }
+    });
+  });
+
+  return array.length && quantile$1(array.sort(descending), p);
+};
+
+function quantile$1(array, p) {
+  if (!(n = array.length)) return;
+  if ((p = +p) <= 0 || n < 2) return array[0];
+  if (p >= 1) return array[n - 1];
+  var n,
+      h = (n - 1) * p,
+      i = Math.floor(h),
+      a = array[i],
+      b = array[i + 1];
+  return a + (b - a) * (h - i);
+}
+
+function descending(a, b) {
+  return b - a;
+}
+
+var simplify = function(topology, minWeight) {
+  minWeight = minWeight == null ? Number.MIN_VALUE : +minWeight;
+
+  // Remove points whose weight is less than the minimum weight.
+  var arcs = topology.arcs.map(function(input) {
+    var i = -1,
+        j = 0,
+        n = input.length,
+        output = new Array(n), // pessimistic
+        point;
+
+    while (++i < n) {
+      if ((point = input[i])[2] >= minWeight) {
+        output[j++] = [point[0], point[1]];
+      }
+    }
+
+    output.length = j;
+    return output;
+  });
+
+  return {
+    type: "Topology",
+    transform: topology.transform,
+    bbox: topology.bbox,
+    objects: topology.objects,
+    arcs: arcs
+  };
+};
+
+var pi = Math.PI;
+var tau = 2 * pi;
+var quarterPi = pi / 4;
+var radians = pi / 180;
+var atan2 = Math.atan2;
+var cos = Math.cos;
+var sin = Math.sin;
+
+function halfArea(ring, closed) {
+  var i = 0,
+      n = ring.length,
+      sum = 0,
+      point = ring[closed ? i++ : n - 1],
+      lambda0, lambda1 = point[0] * radians,
+      phi1 = (point[1] * radians) / 2 + quarterPi,
+      cosPhi0, cosPhi1 = cos(phi1),
+      sinPhi0, sinPhi1 = sin(phi1);
+
+  for (; i < n; ++i) {
+    point = ring[i];
+    lambda0 = lambda1, lambda1 = point[0] * radians;
+    phi1 = (point[1] * radians) / 2 + quarterPi;
+    cosPhi0 = cosPhi1, cosPhi1 = cos(phi1);
+    sinPhi0 = sinPhi1, sinPhi1 = sin(phi1);
+
+    // Spherical excess E for a spherical triangle with vertices: south pole,
+    // previous point, current point.  Uses a formula derived from Cagnoli’s
+    // theorem.  See Todhunter, Spherical Trig. (1871), Sec. 103, Eq. (2).
+    // See https://github.com/d3/d3-geo/blob/master/README.md#geoArea
+    var dLambda = lambda1 - lambda0,
+        sdLambda = dLambda >= 0 ? 1 : -1,
+        adLambda = sdLambda * dLambda,
+        k = sinPhi0 * sinPhi1,
+        u = cosPhi0 * cosPhi1 + k * cos(adLambda),
+        v = k * sdLambda * sin(adLambda);
+    sum += atan2(v, u);
+  }
+
+  return sum;
+}
+
+function sphericalRingArea(ring, interior) {
+  var sum = halfArea(ring, true);
+  if (interior) sum *= -1;
+  return (sum < 0 ? tau + sum : sum) * 2;
+}
+
+function sphericalTriangleArea(t) {
+  var sum = halfArea(t, false);
+  return (sum < 0 ? tau + sum : sum) * 2;
+}
+
+exports.bbox = bbox;
+exports.feature = feature;
+exports.mesh = mesh;
+exports.meshArcs = meshArcs;
+exports.merge = merge;
+exports.mergeArcs = mergeArcs;
+exports.neighbors = neighbors;
+exports.quantize = quantize;
+exports.transform = transform;
+exports.untransform = untransform;
+exports.topology = topology;
+exports.filter = filter;
+exports.filterAttached = filterAttached;
+exports.filterAttachedWeight = filterAttachedWeight;
+exports.filterWeight = filterWeight;
+exports.planarRingArea = planarRingArea$1;
+exports.planarTriangleArea = planarTriangleArea;
+exports.presimplify = presimplify;
+exports.quantile = quantile;
+exports.simplify = simplify;
+exports.sphericalRingArea = sphericalRingArea;
+exports.sphericalTriangleArea = sphericalTriangleArea;
+
+Object.defineProperty(exports, '__esModule', { value: true });
+
+})));
+
+
+/***/ })
+/******/ ]);

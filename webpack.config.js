@@ -9,6 +9,18 @@ module.exports = {
         filename: 'app.js'
     },
 
+    module: {
+        rules: [
+            {
+                test: /\.html$/,
+                exclude: /node_modules/,
+                use: 'svelte-loader'
+            }
+        ]
+    },
+
+    //devtool: 'inline-source-map',
+
     devServer: {
         contentBase: __dirname, 
         publicPath: '/js',

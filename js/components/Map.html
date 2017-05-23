@@ -1,0 +1,59 @@
+<:Window on:resize='resize()'/>
+
+<svg ref:svg style="height: {{ height }}px;">
+    {{#each features as feature}}
+    <path class="town" d="{{ path(feature) }}"></path>
+    {{/each}}
+</svg>
+
+<style>
+    svg {
+        width: 100%;
+        min-height: 400px;
+    }
+</style>
+
+<script>
+import {json} from 'd3-request';
+import {geoPath, geoMercator} from 'd3-geo';
+import * as topojson from 'topojson';
+
+const projection = geoMercator()
+    .center([-71.3824374, 42.4072107]);
+
+var path = geoPath()
+    .projection(projection);
+
+export default {
+
+    data() {
+        return {
+            url: 'data/towns.json',
+            object: 'TOWNS_POLYM',
+            features: []
+        }
+    },
+
+    helpers: {
+        path,
+        projection
+    },
+
+    methods: {
+        resize() {
+            const {width, height} = this.refs.svg.getBoundingClientRect();
+
+            this.set({ height: width / 2 });
+
+            projection.scale(width * 10);
+        }
+    },
+
+    oncreate() {
+        this.resize();
+        json(this.get('url'), (err, data) => {
+            this.set(topojson.feature(data, data.objects[this.get('object')]));
+        });
+    },
+}
+</script>
